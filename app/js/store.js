@@ -131,9 +131,11 @@
     var obj = JSON.parse(text);
     if (!obj || typeof obj !== 'object' || !obj.progress || !obj.cards) throw new Error('Not a valid backup file.');
     state = obj;
-    load.call(null); // no-op; keep reference — actually re-merge defaults:
+    // merge in any newly added default keys without clobbering imported data
     var d = defaults();
     Object.keys(d).forEach(function (k) { if (state[k] == null) state[k] = d[k]; });
+    Object.keys(d.progress).forEach(function (k) { if (state.progress[k] == null) state.progress[k] = d.progress[k]; });
+    Object.keys(d.settings).forEach(function (k) { if (state.settings[k] == null) state.settings[k] = d.settings[k]; });
     save(true);
     return state;
   }

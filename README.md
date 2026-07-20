@@ -36,8 +36,15 @@ scheduling, streak, XP, settings) is stored locally in your browser via `localSt
 
 ## Screenshot
 
-<!-- SCREENSHOT PLACEHOLDER: add app/docs/screenshot.png once the UI is built -->
-_Screenshot coming once the UI milestone lands._
+<!-- SCREENSHOT PLACEHOLDER: drop a PNG at app/docs/screenshot.png and it will render here. -->
+![PsychMeds Learner — home dashboard](app/docs/screenshot.png)
+
+What you'll see: a **Home** dashboard (today's new med, a progress ring, streak + XP, daily
+quests, a class-mastery snapshot); a **Practice** engine that mixes exercise types adaptively;
+a **Review** queue (spaced repetition); a **Catalog** "dex" of all 120 meds with per-med and
+per-exercise stats; **Compare** (sortable class tables); **Cram** (timed bonus runs); and a
+**Progress** page with the class mastery map, mastery tiers, and achievements. Dark by default,
+with a light theme. _(Add your own `app/docs/screenshot.png` to populate the image above.)_
 
 ## Project structure
 

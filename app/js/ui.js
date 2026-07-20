@@ -39,7 +39,7 @@
 
   // ---------- router ----------
   function setActiveNav(view) {
-    U.qsa('button', navEl).forEach(function (b) { b.classList.toggle('active', b.dataset.view === view); });
+    U.qsa('button', navEl).forEach(function (b) { var on = b.dataset.view === view; b.classList.toggle('active', on); if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   }
   function go(view, params) {
     current.view = view; current.flash = null;
@@ -87,14 +87,17 @@
   // ---------- modal ----------
   function modal(node, opts) {
     opts = opts || {};
+    var prevFocus = document.activeElement;
     var back = ce('div', { class: 'modal-back', onclick: function (e) { if (e.target === back) close(); } });
-    var box = ce('div', { class: 'modal pop' });
-    box.appendChild(ce('button', { class: 'modal-close', 'aria-label': 'Close', onclick: close }, ['✕']));
+    var box = ce('div', { class: 'modal pop', role: 'dialog', 'aria-modal': 'true', 'aria-label': opts.label || 'Dialog', tabindex: '-1' });
+    var closeBtn = ce('button', { class: 'modal-close', 'aria-label': 'Close', onclick: close }, ['✕']);
+    box.appendChild(closeBtn);
     box.appendChild(node);
     back.appendChild(box);
     document.body.appendChild(back);
-    function close() { back.remove(); document.removeEventListener('keydown', esc); }
-    function esc(e) { if (e.key === 'Escape') close(); }
+    box.focus();
+    function close() { back.remove(); document.removeEventListener('keydown', esc); if (prevFocus && prevFocus.focus) prevFocus.focus(); }
+    function esc(e) { if (e.key === 'Escape') { e.preventDefault(); close(); } }
     document.addEventListener('keydown', esc);
     return { close: close, el: back };
   }
@@ -314,8 +317,10 @@
     navEl = ce('nav', { class: 'nav' });
     NAV.forEach(function (n) { navEl.appendChild(ce('button', { 'data-view': n[0], onclick: function () { go(n[0]); } }, [n[2] + ' ' + n[1]])); });
 
-    var app = ce('div', { class: 'app' }, [navEl, main = ce('main', { id: 'main' })]);
+    var app = ce('div', { class: 'app' }, [navEl, main = ce('main', { id: 'main', tabindex: '-1' })]);
     toastHost = ce('div', { class: 'toast-host' });
+    var skip = ce('a', { href: '#main', class: 'skip-link', onclick: function (e) { e.preventDefault(); main.focus(); main.scrollIntoView(); } }, ['Skip to content']);
+    document.body.appendChild(skip);
     document.body.appendChild(topbar);
     document.body.appendChild(app);
     document.body.appendChild(toastHost);

@@ -61,10 +61,11 @@
         ce('span', { class: 'muted', text: (i + 1) + ' / ' + ids.length }),
       ]);
 
-      var flip = ce('div', { class: 'flip' });
+      var flip = ce('div', { class: 'flip', tabindex: '0', role: 'button', 'aria-label': 'Reveal facts for ' + med.generic });
       var inner = ce('div', { class: 'flip-inner' }, [frontFace(med), backFace(med)]);
       flip.appendChild(inner);
       flip.addEventListener('click', function () { if (!revealed) reveal(); });
+      flip.addEventListener('keydown', function (e) { if (!revealed && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); reveal(); } });
 
       var actions = ce('div', { class: 'stack', style: { marginTop: 'var(--sp-4)' } });
 
