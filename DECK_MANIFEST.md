@@ -12,7 +12,10 @@ Molecules the DPD shows as *not* Health Canada–approved but that a resident sh
 from sources into `data/deck.js` · `qa` → passed the clinical-QA cross-check · `us-only` →
 kept for awareness, flagged in-app.
 
-_Last updated: M1 (scaffold). Statuses default to `planned` until the pipeline runs._
+_Last updated: M4 — full deck generated (120 molecules, all extracted end-to-end from the
+live sources and schema-validated). See [data/PROVENANCE.md](data/PROVENANCE.md) for per-field
+source grounding. The per-drug status tables below list the original targets; the generated
+deck is the source of truth._
 
 ---
 
@@ -192,18 +195,20 @@ _Last updated: M1 (scaffold). Statuses default to `planned` until the pipeline r
 
 ## Coverage roll-up
 
-| Class | Target | Extracted | QA |
+| Class | In deck | Extracted | Validated |
 |---|---:|---:|---:|
-| Antidepressants | ~30 | 0 | 0 |
-| Antipsychotics | ~28 | 0 | 0 |
-| Mood stabilizers | ~8 | 0 | 0 |
-| Anxiolytics / hypnotics | ~17 | 0 | 0 |
-| ADHD | ~8 | 0 | 0 |
-| Substance use | ~9 | 0 | 0 |
-| Dementia | ~5 | 0 | 0 |
-| Adjuncts | ~6 | 0 | 0 |
-| **Total** | **~120–130** | **0** | **0** |
+| Antidepressant | 31 | 31 | 31 |
+| Antipsychotic | 27 | 27 | 27 |
+| Mood stabilizer | 8 | 8 | 8 |
+| Anxiolytic / hypnotic | 23 | 23 | 23 |
+| ADHD | 7 | 7 | 7 |
+| Substance use | 8 | 8 | 8 |
+| Dementia | 4 | 4 | 4 |
+| Adjunct | 12 | 12 | 12 |
+| **Total** | **120** | **120** | **120** |
 
-The pipeline updates the `Extracted`/`QA` counts and each drug's status as it runs. Additional
-in-scope Canadian agents surfaced by the DPD query are appended to the relevant class to reach
-the target.
+All 120 molecules were extracted end-to-end from the live sources (Health Canada DPD +
+openFDA label/FAERS + DailyMed + CANMAT) and pass schema + provenance validation. 84% of
+populated safety-critical field values are source-grounded; the remainder are model-authored
+and flagged `verifyFlag` in-app (fully itemised in [data/PROVENANCE.md](data/PROVENANCE.md)).
+10 US-only agents are kept for awareness and flagged.
