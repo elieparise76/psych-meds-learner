@@ -1,0 +1,91 @@
+# psych-meds-learner
+
+A local, offline-capable, single-page app that teaches a psychiatry resident their
+psychopharmacology the way Duolingo teaches a language — **one new Canadian psych med a
+day**, spaced-repetition review, streaks, XP, and a genuinely game-like feel.
+
+> ⚠️ **Learning aid — not a prescribing reference.** Always verify against the current
+> Health Canada product monograph before any clinical use. See [Medical safety](#medical-safety).
+
+## What it is
+
+- **~120–130 Canadian-centered psychiatric medications**, organised by class.
+- A **source-attributed deck**: safety-critical facts (boxed warnings, contraindications,
+  therapeutic levels, monitoring) are extracted from real sources — Health Canada's Drug
+  Product Database, product monographs, openFDA, DailyMed — and every card carries its
+  provenance and a `lastVerified` date.
+- A **Duolingo-style study loop**: a new med each day in a fixed, seeded order; SM-2 spaced
+  repetition; a simple Flashcard surface and an adaptive **Practice** engine with many
+  exercise types (type-the-answer, matching, tap-to-build, MCQ, reverse recall, cloze,
+  confusables, board-style vignettes) weighted toward what you get wrong.
+- A full **Catalog** — a "dex" of psych meds — with per-med and per-exercise stats,
+  mastery tiers, and filters.
+- A **progression layer**: XP, levels, a streak (with streak-freeze so a post-call missed
+  day doesn't wipe a 40-day streak), per-med mastery tiers, a class mastery map,
+  achievements, a session combo multiplier, and daily quests.
+
+## How to use
+
+**Double-click `index.html`.** That's it — no server, no build step, no internet required.
+It runs from `file://` in any modern browser. All your progress (spaced-repetition
+scheduling, streak, XP, settings) is stored locally in your browser via `localStorage`.
+
+- **Back up / move devices:** Settings → *Export* writes a JSON backup; *Import* restores it.
+- **Offline:** everything (deck, animations, sounds) is vendored locally. Safe on call with
+  no wifi.
+
+## Screenshot
+
+<!-- SCREENSHOT PLACEHOLDER: add app/docs/screenshot.png once the UI is built -->
+_Screenshot coming once the UI milestone lands._
+
+## Project structure
+
+```
+index.html            The app — open this. Loads the deck + app scripts via <script> tags.
+app/                  App logic (CSS + classic-script JS modules) and vendored libs.
+data/deck.js          The generated deck: assigns window.MEDS = [...]. The app never mutates it.
+data/PROVENANCE.md    Coverage summary + which fields fell back to model authorship.
+pipeline/             The reproducible data-generation pipeline (re-runnable as drugs change).
+CLAUDE.md             Working agreement for anyone (incl. Claude) building on this repo.
+ARCHITECTURE.md       App structure, the SRS, the daily engine, the adaptive Practice engine.
+DATA_SOURCES.md       Every data source, what each contributes, and licensing notes.
+DECK_MANIFEST.md      The class → drug list with coverage status.
+```
+
+## Two phases
+
+1. **Data pipeline** (`pipeline/`) — a committed, re-runnable generator that queries the
+   sources above and produces a vetted, source-attributed `data/deck.js`. It is a
+   first-class artifact so the deck can be regenerated as drugs and warnings change.
+2. **The app** — built around the frozen deck. The app is strictly separated from the deck:
+   it reads `window.MEDS` and never writes to it; user state lives separately in
+   `localStorage`.
+
+## Medical safety
+
+This is a study tool for a trainee, not a clinical decision aid.
+
+- A persistent, quiet reminder is shown throughout the app: *"Learning aid — verify against
+  the current Health Canada product monograph before clinical use."*
+- Safety-critical fields trace to a cited source. Where a fact fell back to model authorship,
+  the card surfaces a **verify flag** so you know to double-check it.
+- The pipeline does not invent DINs, therapeutic levels, or warnings. When a source can't
+  confirm a safety-critical fact, it is marked *unknown* rather than guessed.
+
+## Licensing of data
+
+Health Canada's Drug Product Database, product monographs, and the U.S. openFDA/DailyMed data
+are public and reusable with attribution. The **Compendium of Pharmaceuticals and Specialties
+(CPS) is licensed** and is **never copied into this repo** — only linked. See
+[DATA_SOURCES.md](DATA_SOURCES.md).
+
+## Regenerating the deck
+
+```bash
+cd pipeline
+npm install        # only if the pipeline grows runtime deps; core clients use Node's built-in fetch
+node run.js        # queries the sources, writes ../data/deck.js and ../data/PROVENANCE.md
+```
+
+See [DATA_SOURCES.md](DATA_SOURCES.md) and [ARCHITECTURE.md](ARCHITECTURE.md) for details.
