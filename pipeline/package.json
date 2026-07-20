@@ -1,0 +1,17 @@
+{
+  "name": "psych-meds-learner-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Reproducible data-generation pipeline for psych-meds-learner. Queries Health Canada DPD, product monographs, openFDA (label + FAERS), and DailyMed; assembles a source-attributed deck at ../data/deck.js.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "run": "node run.js",
+    "run:refresh": "node run.js --refresh",
+    "validate": "node validate.js",
+    "smoke": "node smoke.js"
+  },
+  "dependencies": {}
+}
