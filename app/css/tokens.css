@@ -1,0 +1,120 @@
+/* tokens.css — design system for psych-meds-learner.
+ * Identity: warm "honey" signature accent on a deep plum-ink base. Deliberately NOT a
+ * clinical EMR blue and NOT a generic AI purple-gradient. Mint for "correct", coral for
+ * danger, amber-orange for the streak flame. Dark is the default (night-call friendly);
+ * a light "warm paper" theme is available. The reward layer is where we spend boldness. */
+
+:root {
+  /* ---- Signature palette ---- */
+  --honey: #ffb020;         /* primary accent */
+  --honey-deep: #f59300;
+  --honey-soft: #ffd27f;
+  --mint: #37d9a0;          /* correct / success */
+  --mint-deep: #16a97a;
+  --coral: #ff5d6c;         /* danger / wrong */
+  --coral-deep: #e23b4c;
+  --grape: #9b6dff;         /* secondary accent (classes, tiers) */
+  --sky: #49b6ff;           /* info */
+  --flame-1: #ff9d2e;       /* streak flame gradient */
+  --flame-2: #ff5722;
+
+  /* mastery tiers */
+  --tier-bronze: #cd7f45;
+  --tier-silver: #b9c4d0;
+  --tier-gold: #ffcf4d;
+  --tier-burnished: #7ef0d0;
+
+  /* ---- Type ---- */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  --fs-hero: clamp(2rem, 5vw, 3.2rem);
+  --fs-h1: clamp(1.5rem, 3.5vw, 2.1rem);
+  --fs-h2: 1.3rem;
+  --fs-h3: 1.08rem;
+  --fs-body: 1rem;
+  --fs-sm: 0.86rem;
+  --fs-xs: 0.75rem;
+
+  /* ---- Space & shape ---- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --r-sm: 8px;  --r-md: 14px; --r-lg: 22px; --r-xl: 30px; --r-pill: 999px;
+  --maxw: 1080px;
+
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease-bounce: cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ---- Dark theme (default) ---- */
+:root, :root[data-theme="dark"] {
+  --bg: #14111d;
+  --bg-grad-a: #1a1526;
+  --bg-grad-b: #100e18;
+  --surface: #1f1b2e;
+  --surface-2: #2a2540;
+  --surface-3: #342e4d;
+  --text: #f4f1fb;
+  --text-muted: #a99fc4;
+  --text-dim: #7c7396;
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --shadow: 0 10px 40px rgba(0,0,0,.45);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,.35);
+  --accent-contrast: #1a1220;
+  --card-glow: rgba(255,176,32,.14);
+  --overlay: rgba(8,6,14,.72);
+  color-scheme: dark;
+}
+
+/* ---- Light theme ---- */
+:root[data-theme="light"] {
+  --bg: #f6f1e9;
+  --bg-grad-a: #fbf7f0;
+  --bg-grad-b: #efe7db;
+  --surface: #ffffff;
+  --surface-2: #f4eee5;
+  --surface-3: #ece3d5;
+  --text: #221d2b;
+  --text-muted: #6a6076;
+  --text-dim: #938aa0;
+  --border: rgba(40,30,20,.12);
+  --border-strong: rgba(40,30,20,.22);
+  --shadow: 0 10px 34px rgba(80,60,30,.16);
+  --shadow-sm: 0 4px 14px rgba(80,60,30,.12);
+  --honey: #e6960a;
+  --honey-deep: #c67d00;
+  --accent-contrast: #ffffff;
+  --card-glow: rgba(230,150,10,.16);
+  --overlay: rgba(40,30,20,.5);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f6f1e9; --bg-grad-a: #fbf7f0; --bg-grad-b: #efe7db;
+    --surface: #ffffff; --surface-2: #f4eee5; --surface-3: #ece3d5;
+    --text: #221d2b; --text-muted: #6a6076; --text-dim: #938aa0;
+    --border: rgba(40,30,20,.12); --border-strong: rgba(40,30,20,.22);
+    --shadow: 0 10px 34px rgba(80,60,30,.16); --shadow-sm: 0 4px 14px rgba(80,60,30,.12);
+    --honey: #e6960a; --honey-deep: #c67d00; --accent-contrast: #ffffff;
+    --card-glow: rgba(230,150,10,.16); --overlay: rgba(40,30,20,.5);
+    color-scheme: light;
+  }
+}
+
+/* per-class accent hues (used for chips, class map) */
+:root {
+  --c-Antidepressant: #37d9a0;
+  --c-Antipsychotic: #9b6dff;
+  --c-Mood: #49b6ff;
+  --c-Anxiolytic: #ffb020;
+  --c-ADHD: #ff7ac0;
+  --c-Substance: #ff5d6c;
+  --c-Dementia: #62d0c9;
+  --c-Adjunct: #c0a367;
+}

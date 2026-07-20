@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Duolingo-style, offline psychopharmacology trainer for a Canadian psychiatry resident.">
+  <title>PsychMeds Learner</title>
+
+  <!-- Styles (vendored fonts + design system). No CDN. -->
+  <link rel="stylesheet" href="app/vendor/fonts.css">
+  <link rel="stylesheet" href="app/css/tokens.css">
+  <link rel="stylesheet" href="app/css/app.css">
+  <link rel="stylesheet" href="app/css/animations.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23ffb020'/><text x='32' y='46' font-size='40' text-anchor='middle' font-family='sans-serif' fill='%231a1220'>%CF%88</text></svg>">
+</head>
+<body>
+  <!-- The deck is a plain script that assigns window.MEDS (never fetched — CORS blocks
+       local fetch from file://). Everything below is classic scripts on window.PML. -->
+  <script src="data/deck.js"></script>
+
+  <!-- Vendored, offline helpers -->
+  <script src="app/vendor/confetti.js"></script>
+  <script src="app/vendor/sfx.js"></script>
+
+  <!-- App modules (order matters: each attaches to window.PML) -->
+  <script src="app/js/util.js"></script>
+  <script src="app/js/deck.js"></script>
+  <script src="app/js/store.js"></script>
+  <script src="app/js/srs.js"></script>
+  <script src="app/js/game.js"></script>
+  <script src="app/js/daily.js"></script>
+  <script src="app/js/render.js"></script>
+  <script src="app/js/flashcard.js"></script>
+  <script src="app/js/exercises.js"></script>
+  <script src="app/js/practice.js"></script>
+  <script src="app/js/catalog.js"></script>
+  <script src="app/js/compare.js"></script>
+  <script src="app/js/cram.js"></script>
+  <script src="app/js/progress.js"></script>
+  <script src="app/js/ui.js"></script>
+  <script src="app/js/main.js"></script>
+</body>
+</html>
