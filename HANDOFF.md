@@ -1,8 +1,8 @@
 # HANDOFF.md — full project state & how to continue
 
 Read this first if you're picking up the project fresh. It captures everything: what's built,
-how it fits together, how to regenerate the generated content, and the concrete plan for the
-one remaining piece (the macOS `.app`). Companion docs: [CLAUDE.md](CLAUDE.md) (working rules),
+how it fits together, how to regenerate the generated content, and how the macOS `.app` is built
+and packaged. Companion docs: [CLAUDE.md](CLAUDE.md) (working rules),
 [ARCHITECTURE.md](ARCHITECTURE.md) (design), [DATA_SOURCES.md](DATA_SOURCES.md),
 [DECK_MANIFEST.md](DECK_MANIFEST.md), [data/PROVENANCE.md](data/PROVENANCE.md).
 
@@ -176,46 +176,38 @@ cd pipeline && node build-tutorial-audio.js  # writes app/audio/<id>.mp3 for eac
 The definitive tutorial is 10 steps, ~1,262 chars total — well under the ElevenLabs free budget
 (~10k credits). Uses a STOCK voice (never a cloned real person). See `app/audio/README.md`.
 
-## Round 3 (NOT YET BUILT): macOS `.app` packaging
+## macOS `.app` (BUILT — Round 6): native WKWebView wrapper
 
-Goal (user's choice): a double-clickable **`PsychMeds.app`** that starts a bundled **local static
-server** and opens the user's default **Chromium browser in `--app` mode** (borderless window, no
-tabs), pointing at `http://localhost:<stable-port>`. Keeps localStorage + every visual/sound
-feature. `index.html` double-click keeps working too.
+A double-clickable **`Titrate.app`** — a tiny **native** wrapper that embeds the whole web app in a
+`WKWebView`. WebKit ships with every Mac, so there are **no runtime dependencies** (no browser, no
+server, no Python/Node) and it runs fully offline. This replaced the old server + Chromium plan —
+it's simpler, more robust, and truly "send to anyone." `index.html` double-click still works too.
 
-**Why a server (not just file://):** a stable `http://localhost:PORT` origin makes `localStorage`
-persist reliably across launches; `file://` localStorage in Chromium can be flaky/cleared.
+Everything lives in [`app-package/`](app-package/) (see [app-package/README.md](app-package/README.md)):
+- `src/main.swift` — `NSWindow` + `WKWebView`; a `WKURLSchemeHandler` serves the bundled assets over
+  **`titrate://app/…`** (with HTTP-range support so the tutorial MP3s play); persistent data store;
+  minimal menu. Universal (arm64 + x86_64), ad-hoc code-signed.
+- `src/make-icon.swift` — draws the purple-square/white-ψ icon → PNG → `iconutil` → `AppIcon.icns`.
+- `Info.plist` — `com.titrate.app`, icon, min macOS 11.
+- `make-app.sh` — reproducible assembler. Run **`app-package/make-app.sh`**; it compiles, bundles the
+  current `index.html` + `app/` + the five `data/*.js`, signs, and writes `dist/Titrate.app` +
+  **`dist/Titrate-macOS.zip`** (the zip is the sendable artifact; committed to the repo).
 
-**Migration note:** the `.app` runs at origin `http://localhost:PORT`, a DIFFERENT origin than
-`file://`, so existing `file://` progress does NOT carry over. The migration path is the built-in
-**Settings → Export / Import** (JSON). Pin a STABLE port so relaunches keep the same origin/state.
+**Storage persists across launches (verified).** The custom scheme gives a stable origin
+(`titrate://app`), so `WKWebsiteDataStore.default()` keeps `localStorage` on disk under
+`~/Library/WebKit/com.titrate.app/…/LocalStorage/localstorage.sqlite3`. Confirmed the state's
+`createdAt`/`seed` are unchanged across quit + relaunch (i.e. it reloads, never resets).
 
-**Suggested implementation:**
-1. `app-package/launch.sh` (the bundle executable): pick a fixed port (e.g. `PORT=8971`); if
-   already serving, reuse; else start a static server rooted at the app files:
-   - try `python3 -m http.server $PORT --directory <appdir>` (macOS commonly has python3 via CLT),
-   - else `node <appdir>/server.js` (tiny committed static server as a fallback),
-   - else fall back to opening `file://<appdir>/index.html` (works, minus the stable origin).
-   Then open a Chromium browser in app mode, trying in order:
-   `open -na "Google Chrome" --args --app="http://localhost:$PORT/index.html" --user-data-dir="$HOME/Library/Application Support/PsychMedsLearner"`
-   then Microsoft Edge / Brave Browser / Arc; else `open "http://localhost:$PORT/index.html"`.
-2. `PsychMeds.app/Contents/`:
-   - `MacOS/PsychMeds` → the launcher (shell script with `#!/bin/bash`, `chmod +x`).
-   - `Info.plist` (CFBundleName=PsychMeds Learner, CFBundleExecutable=PsychMeds, CFBundleIconFile,
-     LSUIElement optional).
-   - `Resources/AppIcon.icns` (generate from the ψ mark), and either the app files under
-     `Resources/app/` or the launcher `cd`s to the repo. Committing the app files inside the bundle
-     makes it self-contained.
-   - A committed `make-app.sh` that assembles the bundle from the repo (so it's reproducible).
-3. **Gatekeeper**: an unsigned `.app` downloaded from the internet is quarantined. Document:
-   right-click → Open (first launch), or `xattr -dr com.apple.quarantine PsychMeds.app`. (Signing/
-   notarization needs an Apple Developer account — out of scope unless the user has one.)
-4. **GitHub**: commit `app-package/` (launcher, Info.plist, make-app.sh, tiny server.js). A user
-   clones/downloads, runs `make-app.sh` (or the bundle is committed directly), then double-clicks
-   `PsychMeds.app`. Document all this in README.
+**Origin caveat / migration.** `titrate://app` is a DIFFERENT origin than `file://` (double-clicked
+`index.html`) or `http://localhost` — progress does not auto-carry between them. Move it with the
+built-in **Settings → Export / Import** (JSON).
 
-Keep it dependency-light and offline; do NOT introduce Electron/Tauri/npm build steps (violates the
-vanilla/no-build constraint). The server + browser-app-mode approach is deliberately minimal.
+**Gatekeeper.** The app is ad-hoc signed (required so Apple Silicon will launch it) but **not**
+notarized. First launch on another Mac: right-click → Open → Open (once), or
+`xattr -dr com.apple.quarantine Titrate.app`. Frictionless double-click needs Developer-ID signing +
+notarization (a paid Apple account) — out of scope unless the user has one. Do NOT switch to
+Electron/Tauri/npm (violates the vanilla/no-build constraint); the native WKWebView wrapper is the
+minimal approach.
 
 ## Known limitations / gotchas
 

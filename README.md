@@ -35,11 +35,22 @@ theme; guided by **Neuro**, a gleefully over-confident study buddy.
 
 ## How to use
 
-**Double-click `index.html`.** That's it — no server, no build step, no internet required.
-It runs from `file://` in any modern browser. All your progress (spaced-repetition
-scheduling, streak, XP, settings) is stored locally in your browser via `localStorage`.
+Two ways to run it:
+
+- **The macOS app (recommended for daily use):** a double-clickable **`Titrate.app`** — a native
+  WKWebView wrapper with **no dependencies** (no browser or server needed) that keeps your progress
+  across launches. Build it with `app-package/make-app.sh` → produces `dist/Titrate-macOS.zip` to
+  send to anyone. First launch on another Mac: right-click → *Open* (once). See
+  [app-package/README.md](app-package/README.md).
+- **Just the page:** **double-click `index.html`** — no server, no build step, no internet. Runs
+  from `file://` in any modern browser.
+
+All your progress (spaced-repetition scheduling, streak, XP, settings) is stored locally via
+`localStorage`.
 
 - **Back up / move devices:** Settings → *Export* writes a JSON backup; *Import* restores it.
+  (Progress doesn't auto-carry between the `.app` and `file://` — different origins — so use
+  Export/Import to move it.)
 - **Offline:** everything (deck, animations, sounds) is vendored locally. Safe on call with
   no wifi.
 
