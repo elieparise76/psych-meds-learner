@@ -33,8 +33,12 @@
     var li = PML.game.levelInfo(s.progress.xp);
     U.clear(hudEl);
     hudEl.appendChild(ce('div', { class: 'hud-item hud-streak', title: 'Daily streak' }, [ce('span', { class: 'ico flame-anim' }, ['🔥']), ce('span', { text: String(s.progress.streak || 0) })]));
-    hudEl.appendChild(ce('div', { class: 'hud-item hud-gem', title: 'Streak freezes' }, [ce('span', { class: 'ico' }, ['❄️']), ce('span', { text: String(s.progress.streakFreezes || 0) })]));
     hudEl.appendChild(ce('div', { class: 'hud-item hud-xp', title: 'Level ' + li.level + ' · ' + s.progress.xp + ' XP' }, [ce('span', { class: 'ico' }, ['⭐']), ce('span', { text: 'Lv ' + li.level })]));
+    if (s.profile) hudEl.appendChild(profileChip(s.profile));
+  }
+
+  function profileChip(p) {
+    return ce('button', { class: 'hud-item profile-chip', title: p.name + ' — profile & settings', 'aria-label': 'Profile: ' + p.name, onclick: settings }, [PML.profile.avatarEl(p.avatar, 22), ce('span', { class: 'pname' }, [p.name])]);
   }
 
   // ---------- router ----------
@@ -191,10 +195,9 @@
   // ---------- learn / review flows ----------
   function startLearn(ids) {
     U.clear(main); setActiveNav('home');
-    var wrap = ce('div', {});
-    main.appendChild(wrap);
-    current.flash = wrap;
-    PML.flashcard.session(wrap, { ids: ids, mode: 'learn', onComplete: function () { go('home'); } });
+    current.flash = null;
+    var id = Array.isArray(ids) ? ids[0] : ids;
+    PML.lesson.start(main, { id: id, onComplete: function () { go('home'); } });
   }
   function review(root) {
     var due = PML.srs.dueList();
@@ -244,6 +247,14 @@
   function settings() {
     var s = PML.store.get();
     var box = ce('div', { class: 'stack' }, [ce('h2', {}, ['Settings'])]);
+    // profile
+    if (s.profile) {
+      box.appendChild(ce('div', { class: 'row spread', style: { alignItems: 'center' } }, [
+        ce('div', { class: 'row', style: { gap: '10px' } }, [PML.profile.avatarEl(s.profile.avatar, 40), ce('div', {}, [ce('div', { style: { fontWeight: 700 } }, [s.profile.name]), ce('div', { class: 'dim', style: { fontSize: '.72rem' } }, ['Level ' + PML.game.levelInfo(s.progress.xp).level])])]),
+        ce('button', { class: 'btn sm', onclick: function () { var m = box.closest && box.closest('.modal-back'); PML.profile.setup(function () { refreshHud(); if (m) m.remove(); settings(); }, s.profile); } }, ['Edit profile']),
+      ]));
+      box.appendChild(ce('hr', { style: { border: 0, borderTop: '1px solid var(--border)' } }));
+    }
     // theme
     box.appendChild(row('Theme', selectEl(['dark', 'light', 'auto'], s.settings.theme, function (v) { s.settings.theme = v; applyTheme(); PML.store.save(); })));
     box.appendChild(row('Sound effects', toggleEl(s.settings.sound, function (v) { s.settings.sound = v; PML.sfx.enabled = v; if (v) PML.sfx.correct(); PML.store.save(); })));
@@ -283,8 +294,11 @@
     document.body.appendChild(inp); inp.click(); inp.remove();
   }
   function resetData() {
-    if (!confirm('Reset ALL progress (streak, XP, learned meds)? This cannot be undone. Consider exporting a backup first.')) return;
-    PML.store.reset(); PML.deck.init(); PML.store.initDeck(PML.deck.all()); refreshHud(); go('home');
+    if (!confirm('Reset ALL progress (profile, streak, XP, learned meds)? This cannot be undone. Consider exporting a backup first.')) return;
+    PML.store.reset(); PML.deck.init(); PML.store.initDeck(PML.deck.all());
+    U.qsa('.modal-back').forEach(function (m) { m.remove(); });
+    refreshHud(); go('home');
+    PML.profile.setup(function () { refreshHud(); go('home'); });  // re-run first-run profile setup
   }
 
   // ---------- view registry ----------
@@ -332,6 +346,11 @@
 
     refreshHud();
     go('home');
+
+    // First run: no profile yet → profile setup, then land on home.
+    if (!PML.store.get().profile && PML.profile) {
+      PML.profile.setup(function () { refreshHud(); go('home'); });
+    }
   }
 
   PML.ui = {

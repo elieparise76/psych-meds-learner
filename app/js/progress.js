@@ -22,7 +22,6 @@
       ce('div', { class: 'bar xpbar' }, [ce('span', { style: { width: Math.round(li.into / li.need * 100) + '%' } })]),
       ce('div', { class: 'stat-tiles' }, [
         tile('🔥 ' + (s.progress.streak || 0), 'day streak', 'best ' + (s.progress.longestStreak || 0)),
-        tile('❄️ ' + (s.progress.streakFreezes || 0), 'streak freezes'),
         tile((s.progress.weekXp || 0) + ' / ' + (s.settings.weeklyXpGoal || 210), 'weekly XP'),
         tile('⚡ ' + (s.stats.bestCombo || 0), 'best combo'),
         tile((s.stats.correct || 0) + '/' + (s.stats.answered || 0), 'answers', s.stats.answered ? Math.round((s.stats.correct / s.stats.answered) * 100) + '% lifetime' : ''),

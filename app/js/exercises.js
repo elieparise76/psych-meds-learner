@@ -208,15 +208,38 @@
   }
 
   // ---------- Vignette (board-style) ----------
+  // Draws from the cross-med bank (window.VIGNETTES) referencing this med, plus the med's own
+  // per-med vignettes. Carries `meds` + `disorder` for wiki interlinking.
   function vignette(med) {
-    if (!has(med.vignettes)) return null;
-    var v = U.pick(med.vignettes);
-    if (!v || !v.options || !v.answer) return null;
+    var pool = [];
+    (window.VIGNETTES || []).forEach(function (v) {
+      if ((v.meds || []).indexOf(med.id) >= 0 && Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0) {
+        pool.push({ stem: v.stem, options: v.options, answer: v.answer, explanation: v.explanation, source: v.source, meds: v.meds, disorder: v.disorder, tags: v.tags || [] });
+      }
+    });
+    (med.vignettes || []).forEach(function (v) {
+      if (v && v.options && v.answer) pool.push({ stem: v.stem, options: v.options, answer: v.answer, explanation: v.explanation, source: v.source, meds: [med.id], disorder: null, tags: tagsFor(med, (v.testedFact || '') + ' ' + (v.stem || '')) });
+    });
+    if (!pool.length) return null;
+    var v = U.pick(pool);
     return {
-      type: 'vignette', medId: med.id, subtype: 'board',
+      type: 'vignette', medId: med.id, subtype: v.disorder ? 'board · ' + v.disorder : 'board',
       stem: v.stem, options: shuffle(v.options.slice()), answer: v.answer,
       explanation: v.explanation || '', source: v.source || srcFor(med, 'seriousAE'),
-      tags: tagsFor(med, (v.testedFact || '') + ' ' + (v.stem || '')),
+      meds: v.meds || [med.id], disorder: v.disorder || null, tags: v.tags && v.tags.length ? v.tags : tagsFor(med, v.stem),
+    };
+  }
+
+  // A standalone bank vignette not tied to the adaptive med pick (adds variety to sessions).
+  function bankVignette() {
+    var bank = (window.VIGNETTES || []).filter(function (v) { return Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0; });
+    if (!bank.length) return null;
+    var v = U.pick(bank);
+    var med = (v.meds || []).map(function (id) { return PML.deck.get(id); }).filter(Boolean)[0];
+    return {
+      type: 'vignette', medId: med ? med.id : (v.meds || ['_'])[0], subtype: v.disorder ? 'board · ' + v.disorder : 'board',
+      stem: v.stem, options: shuffle(v.options.slice()), answer: v.answer,
+      explanation: v.explanation || '', source: v.source || null, meds: v.meds || [], disorder: v.disorder || null, tags: v.tags || [],
     };
   }
 
@@ -237,5 +260,5 @@
     return null;
   }
 
-  PML.exercises = { TYPES: TYPES, generate: generate, GEN: GEN };
+  PML.exercises = { TYPES: TYPES, generate: generate, GEN: GEN, bankVignette: bankVignette };
 })();

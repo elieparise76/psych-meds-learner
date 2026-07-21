@@ -47,6 +47,11 @@
     var lastType = null, lastMed = null, guard = 0;
     while (exercises.length < n && guard < n * 12) {
       guard++;
+      // occasional standalone cross-med bank vignette for variety (not when drilling one med)
+      if (!opts.medId && lastType !== 'vignette' && Math.random() < 0.16) {
+        var bv = PML.exercises.bankVignette();
+        if (bv) { exercises.push(bv); lastType = 'vignette'; lastMed = null; continue; }
+      }
       var med = opts.medId ? PML.deck.get(opts.medId) : weightedPick(pool, medWeight);
       if (med === lastMed && pool.length > 2) continue;
       var type = typeFor(med, lastType);

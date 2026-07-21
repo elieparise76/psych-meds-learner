@@ -18,11 +18,12 @@
       updatedAt: new Date().toISOString(),
       seed: (Math.floor(Math.random() * 2147483647) >>> 0) || 12345,
       seededOrder: [],
-      settings: { theme: 'dark', sound: false, dailyGoal: 1, weeklyXpGoal: 210, motion: 'auto' },
+      profile: null,       // { name, avatar } — set at first run
+      settings: { theme: 'dark', sound: true, dailyGoal: 1, weeklyXpGoal: 210, motion: 'auto' },
       cards: {},           // id -> card progress
       progress: {
         xp: 0, level: 1, streak: 0, longestStreak: 0,
-        lastGoalDay: null, streakFreezes: 2, freezeDays: [], activeDays: [],
+        lastGoalDay: null, activeDays: [],
         todayKey: null, newToday: 0, reviewsClearedToday: false, xpToday: 0,
         weekKey: null, weekXp: 0,
       },
@@ -101,19 +102,9 @@
     var wk = U.weekKey();
     if (p.weekKey !== wk) { p.weekKey = wk; p.weekXp = 0; }
 
-    if (p.todayKey) {
-      // gap handling: if the last goal day was 2+ days ago, consume freezes for missed days
-      var lastGoal = p.lastGoalDay;
-      if (lastGoal) {
-        var gap = U.daysBetween(lastGoal, tk);
-        if (gap >= 2) {
-          var missed = gap - 1;
-          for (var i = 0; i < missed; i++) {
-            if (p.streakFreezes > 0) { p.streakFreezes--; p.freezeDays.push(U.addDaysKey(lastGoal, i + 1)); }
-            else { p.streak = 0; break; }
-          }
-        }
-      }
+    if (p.todayKey && p.lastGoalDay) {
+      // a missed day breaks the streak (no streak-freeze feature)
+      if (U.daysBetween(p.lastGoalDay, tk) >= 2) p.streak = 0;
     }
     p.todayKey = tk;
     p.newToday = 0;
