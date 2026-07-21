@@ -65,6 +65,7 @@ data/PROVENANCE.md    Coverage summary + which fields fell back to model authors
 pipeline/             The reproducible data-generation pipeline (re-runnable as drugs change).
                       Sub-authoring lives in pipeline/{authored,lessons,vignettes,disorders}/;
                       `node run.js` builds the deck, `node build-content.js` builds the rest.
+HANDOFF.md            Full project state, module map, content regeneration, and the .app plan.
 CLAUDE.md             Working agreement for anyone (incl. Claude) building on this repo.
 ARCHITECTURE.md       App structure, the SRS, the daily engine, the adaptive Practice engine.
 DATA_SOURCES.md       Every data source, what each contributes, and licensing notes.

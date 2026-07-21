@@ -3,6 +3,10 @@
 This file governs how anyone (including Claude) builds on this repository. Read it before
 making changes.
 
+> **Picking up fresh? Start with [HANDOFF.md](HANDOFF.md)** — it has the complete current state
+> (all features built), the app module map, how to regenerate the generated content, the
+> ElevenLabs voice flow, and the concrete plan for the one remaining piece (the macOS `.app`).
+
 ## Project overview
 
 `psych-meds-learner` is a **local, offline-capable, single-page HTML app** that teaches a
@@ -91,6 +95,7 @@ safety-critical fact, mark it `unknown` and set `verifyFlag` — do not guess.
 
 ## Pointers
 
+- **Full handoff (state, module map, regeneration, .app plan):** [HANDOFF.md](HANDOFF.md)
 - **Data sources & licensing:** [DATA_SOURCES.md](DATA_SOURCES.md)
 - **App architecture, SRS, daily engine, adaptive Practice:** [ARCHITECTURE.md](ARCHITECTURE.md)
 - **Deck coverage (class → drug list):** [DECK_MANIFEST.md](DECK_MANIFEST.md)
