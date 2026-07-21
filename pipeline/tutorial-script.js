@@ -1,0 +1,29 @@
+// tutorial-script.js — the canonical guided-tutorial steps. Single source of truth used by
+// both the app (built into data/tutorial.js → window.TUTORIAL) and the ElevenLabs audio
+// generator (build-tutorial-audio.js). `id` names both the step and its audio clip
+// (app/audio/<id>.mp3). `highlight` = a nav view key to pulse, or null.
+
+export const TUTORIAL = [
+  { id: 'welcome', highlight: null,
+    text: "Hey — I'm Neuro, your study buddy! Give me thirty seconds and I'll show you around." },
+  { id: 'home', highlight: 'home',
+    text: "This is Home. Each day you get one new medication to learn, plus your streak, your XP, and a couple of quick daily quests." },
+  { id: 'lesson', highlight: 'home',
+    text: "Learning a med isn't a data dump. It's a short lesson — I teach you the three to five things that actually matter, and you check each one as we go." },
+  { id: 'review', highlight: 'review',
+    text: "The next day, that med comes back in Review. Spaced repetition brings each card back right when you're about to forget it — so it sticks." },
+  { id: 'practice', highlight: 'practice',
+    text: "Practice mixes question types — multiple choice, matching, fill-in-the-blank, and board-style cases — and leans harder on whatever you keep getting wrong." },
+  { id: 'wiki', highlight: 'wiki',
+    text: "The Wiki links every medication to the conditions it treats. See a blue term in a question? Tap it to jump straight to its page." },
+  { id: 'compare-cram', highlight: 'compare',
+    text: "Compare puts a whole drug class side by side. Cram is a fast, timed blast for bonus XP — perfect before a shift or an exam." },
+  { id: 'progress', highlight: 'progress',
+    text: "Progress tracks your level, streak, mastery tiers, a class map, and a wall of achievements to chase." },
+  { id: 'safety', highlight: null,
+    text: "One important rule: I'm a study aid, not a prescriber. Always double-check against the current Health Canada monograph before any real clinical use." },
+  { id: 'go', highlight: 'home',
+    text: "That's the tour! Ready to go? Let's learn your very first medication." },
+];
+
+export default TUTORIAL;

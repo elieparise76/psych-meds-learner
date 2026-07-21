@@ -258,6 +258,8 @@
     // theme
     box.appendChild(row('Theme', selectEl(['dark', 'light', 'auto'], s.settings.theme, function (v) { s.settings.theme = v; applyTheme(); PML.store.save(); })));
     box.appendChild(row('Sound effects', toggleEl(s.settings.sound, function (v) { s.settings.sound = v; PML.sfx.enabled = v; if (v) PML.sfx.correct(); PML.store.save(); })));
+    box.appendChild(row('Tutorial narration (voice)', toggleEl(s.settings.voice !== false, function (v) { s.settings.voice = v; PML.store.save(); })));
+    box.appendChild(ce('div', { class: 'row spread' }, [ce('span', {}, ['Guided tour']), ce('button', { class: 'btn sm', onclick: function () { U.qsa('.modal-back').forEach(function (x) { x.remove(); }); if (PML.tutorial) PML.tutorial.replay(); } }, ['▶ Replay tour'])]));
     box.appendChild(row('Daily goal (new/day)', selectEl(['1', '2', '3', '5'], String(s.settings.dailyGoal), function (v) { s.settings.dailyGoal = +v; PML.store.save(); })));
     box.appendChild(row('Weekly XP goal', selectEl(['140', '210', '350', '500'], String(s.settings.weeklyXpGoal), function (v) { s.settings.weeklyXpGoal = +v; PML.store.save(); })));
     box.appendChild(ce('hr', { style: { border: 0, borderTop: '1px solid var(--border)' } }));
@@ -326,6 +328,7 @@
           ce('span', {}, [ce('span', {}, ['PsychMeds']), ce('br'), ce('small', {}, ['learner'])]),
         ]),
         hudEl = ce('div', { class: 'hud' }),
+        ce('button', { class: 'btn sm ghost', 'aria-label': 'Replay tutorial', title: 'Replay the tour', onclick: function () { if (PML.tutorial) PML.tutorial.replay(); } }, ['?']),
         ce('button', { class: 'btn sm ghost', 'aria-label': 'Settings', onclick: settings }, ['⚙']),
       ]),
     ]);
@@ -348,9 +351,12 @@
     refreshHud();
     go('home');
 
-    // First run: no profile yet → profile setup, then land on home.
+    // First run: no profile yet → profile setup → offer the tour. Returning users who haven't
+    // seen the tour get offered it once too.
     if (!PML.store.get().profile && PML.profile) {
-      PML.profile.setup(function () { refreshHud(); go('home'); });
+      PML.profile.setup(function () { refreshHud(); go('home'); if (PML.tutorial) PML.tutorial.offerFirstRun(); });
+    } else if (PML.tutorial && !PML.store.get().settings.tutorialSeen) {
+      PML.tutorial.offerFirstRun();
     }
   }
 

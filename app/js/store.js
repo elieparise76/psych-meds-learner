@@ -19,7 +19,7 @@
       seed: (Math.floor(Math.random() * 2147483647) >>> 0) || 12345,
       seededOrder: [],
       profile: null,       // { name, avatar } — set at first run
-      settings: { theme: 'dark', sound: true, dailyGoal: 1, weeklyXpGoal: 210, motion: 'auto' },
+      settings: { theme: 'dark', sound: true, voice: true, dailyGoal: 1, weeklyXpGoal: 210, motion: 'auto', tutorialSeen: false },
       cards: {},           // id -> card progress
       progress: {
         xp: 0, level: 1, streak: 0, longestStreak: 0,

@@ -243,6 +243,20 @@ button { font-family: inherit; }
   font-weight: 700; box-shadow: var(--shadow); font-size: .9rem; }
 .toast.win { background: linear-gradient(135deg, var(--honey), var(--honey-deep)); color: var(--accent-contrast); border: 0; }
 
+/* ---------- Tutorial ---------- */
+.tutorial-overlay { position: fixed; inset: 0; z-index: 450; background: var(--overlay); backdrop-filter: blur(2px); display: grid; align-items: end; justify-items: center; padding: var(--sp-4); }
+.tutorial-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-xl); box-shadow: var(--shadow); padding: var(--sp-5); max-width: 560px; width: 100%; margin-bottom: 6vh; }
+.tut-mascot { flex: 0 0 auto; }
+.neuro { display: block; }
+.neuro-bob { animation: neuro-bob 3s ease-in-out infinite; transform-origin: 60px 66px; }
+.neuro-eyes { animation: neuro-blink 4.5s ease-in-out infinite; transform-origin: 60px 60px; transform-box: fill-box; }
+.tut-bubble { position: relative; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-3) var(--sp-4); flex: 1; }
+.tut-bubble::before { content: ""; position: absolute; left: -8px; top: 22px; width: 14px; height: 14px; background: var(--surface-2); border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); transform: rotate(45deg); }
+.tut-name { font-family: var(--font-display); font-weight: 700; color: var(--grape); font-size: .82rem; margin-bottom: 2px; }
+.tut-bubble-text { line-height: 1.5; font-size: 1.02rem; }
+.tut-pulse { position: relative; animation: tut-pulse 1.2s ease-in-out infinite; outline: 2px solid var(--honey); outline-offset: 2px; border-radius: var(--r-pill); }
+@media (max-width: 460px) { .tutorial-card { margin-bottom: 2vh; padding: var(--sp-4); } .tut-bubble-text { font-size: .95rem; } }
+
 /* ---------- Wiki ---------- */
 .wiki-page { max-width: 820px; margin: 0 auto; }
 .wiki-page h1 { line-height: 1.1; }

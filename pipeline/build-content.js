@@ -42,6 +42,13 @@ const clean = vignettes.filter((v) => {
 await writeFile(join(DATA, 'vignettes.js'), banner('vignettes.js') + `window.VIGNETTES = ${JSON.stringify(clean)};\n`);
 console.log(`vignettes.js: ${clean.length} vignettes (dropped ${vignettes.length - clean.length})`);
 
+// ---- tutorial ----
+try {
+  const { TUTORIAL } = await import(pathToFileURL(join(__dirname, 'tutorial-script.js')).href);
+  await writeFile(join(DATA, 'tutorial.js'), banner('tutorial.js') + `window.TUTORIAL = ${JSON.stringify(TUTORIAL)};\n`);
+  console.log(`tutorial.js: ${TUTORIAL.length} steps`);
+} catch (e) { console.log('tutorial-script.js not found — skipping tutorial.js'); }
+
 // ---- disorders ----
 const disorders = await mergeDir('disorders', 'array');
 const dSeen = new Set();
