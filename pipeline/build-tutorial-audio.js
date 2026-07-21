@@ -20,7 +20,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, '..', 'app', 'audio');
 
 const KEY = process.env.ELEVENLABS_API_KEY;
-const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM'; // stock "Rachel"
+// Default to a stock British male voice ("Daniel") — the poised, faintly superior register
+// that suits Neuro. Override with any stock voice id via ELEVENLABS_VOICE_ID.
+const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'onwK4e9ZLuTAKqWW03F9'; // stock "Daniel" (male)
 const MODEL = process.env.ELEVENLABS_MODEL || 'eleven_turbo_v2_5';
 
 if (!KEY) {
@@ -45,7 +47,8 @@ async function synth(step) {
     body: JSON.stringify({
       text: step.text,
       model_id: MODEL,
-      voice_settings: { stability: 0.5, similarity_boost: 0.75, style: 0.15, use_speaker_boost: true },
+      // a touch more "style" for Neuro's theatrical, self-assured delivery
+      voice_settings: { stability: 0.45, similarity_boost: 0.75, style: 0.35, use_speaker_boost: true },
     }),
   });
   if (!res.ok) {

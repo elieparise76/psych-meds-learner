@@ -84,14 +84,14 @@
 
     card.appendChild(ce('div', { class: 'center stack' }, [
       ce('div', { class: 'brand-mark', style: { fontSize: '2.4rem' } }, ['ψ']),
-      ce('h1', { style: { margin: 0 } }, [existing ? 'Edit your profile' : 'Welcome to PsychMeds Learner']),
-      ce('p', { class: 'muted', style: { margin: 0 } }, ['One psych med a day. Pick a name and a study buddy to get started.']),
+      ce('h1', { style: { margin: 0 } }, [existing ? 'Edit your profile' : 'Welcome to Titrate']),
+      ce('p', { class: 'muted', style: { margin: 0 } }, ['One psych med a day. Pick a name and an avatar to begin.']),
     ]));
 
     var nameInput = ce('input', { class: 'text-answer', placeholder: 'Your name (or a nickname)', maxlength: '24', value: existing ? existing.name : '' });
     card.appendChild(ce('div', { class: 'stack' }, [ce('label', { class: 'q-type-label' }, ['Name']), nameInput]));
 
-    card.appendChild(ce('label', { class: 'q-type-label' }, ['Choose a study buddy']));
+    card.appendChild(ce('label', { class: 'q-type-label' }, ['Choose your avatar']));
     var grid = ce('div', { class: 'avatar-grid' });
     AVATARS.forEach(function (av) {
       var btn = ce('button', { class: 'avatar-choice', 'aria-label': av.name, title: av.name, onclick: function () {

@@ -1,8 +1,11 @@
-# psych-meds-learner
+# Titrate
 
-A local, offline-capable, single-page app that teaches a psychiatry resident their
+*(repo slug `psych-meds-learner`)*
+
+**Titrate** — a local, offline-capable, single-page app that teaches a psychiatry resident their
 psychopharmacology the way Duolingo teaches a language — **one new Canadian psych med a
-day**, spaced-repetition review, streaks, XP, and a genuinely game-like feel.
+day**, spaced-repetition review, streaks, XP, and a genuinely game-like feel. Light "Regal Violet"
+theme; guided by **Neuro**, a gleefully over-confident study buddy.
 
 > ⚠️ **Learning aid — not a prescribing reference.** Always verify against the current
 > Health Canada product monograph before any clinical use. See [Medical safety](#medical-safety).
@@ -43,7 +46,7 @@ scheduling, streak, XP, settings) is stored locally in your browser via `localSt
 ## Screenshot
 
 <!-- SCREENSHOT PLACEHOLDER: drop a PNG at app/docs/screenshot.png and it will render here. -->
-![PsychMeds Learner — home dashboard](app/docs/screenshot.png)
+![Titrate — home dashboard](app/docs/screenshot.png)
 
 What you'll see: a **Home** dashboard (today's new med, a progress ring, streak + XP, daily
 quests, a class-mastery snapshot); a **Practice** engine that mixes exercise types adaptively;

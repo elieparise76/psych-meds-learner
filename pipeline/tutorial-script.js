@@ -2,28 +2,32 @@
 // both the app (built into data/tutorial.js → window.TUTORIAL) and the ElevenLabs audio
 // generator (build-tutorial-audio.js). `id` names both the step and its audio clip
 // (app/audio/<id>.mp3). `highlight` = a nav view key to pulse, or null.
+//
+// Voice: Neuro — the study buddy — an over-confident, faintly pretentious mentor. Witty and
+// self-assured, never cruel; the swagger is a bit; the teaching is real. Keep it under 10k
+// characters total (currently ~3k). Re-run `node build-content.js` after editing.
 
 export const TUTORIAL = [
   { id: 'welcome', highlight: null,
-    text: "Hey — I'm Neuro, your study buddy! Give me thirty seconds and I'll show you around." },
+    text: "Ah — a fresh mind to shape. I'm Neuro: pharmacologist, polymath, and, with all due modesty, the finest study companion you will ever be lucky enough to argue with. Welcome to Titrate. Give me one minute, and you'll be almost as sharp as I am. Almost." },
   { id: 'home', highlight: 'home',
-    text: "This is Home. Each day you get one new medication to learn, plus your streak, your XP, and a couple of quick daily quests." },
+    text: "This is Home — the command centre. One new medication a day, because true mastery is a discipline, not a cram. Your streak, your XP, and a couple of daily quests: small trophies, to keep your lesser instincts motivated." },
   { id: 'lesson', highlight: 'home',
-    text: "Learning a med is a proper little lesson — I walk you through it, explaining what matters clinically, with quick checks along the way. It's not just facts to memorize." },
+    text: "Every medication is a proper lesson, narrated by yours truly — the clinical reasoning, the traps, the pearls — with quick checks to confirm you were actually listening. I don't deal in flashcard trivia. I deal in understanding." },
   { id: 'review', highlight: 'review',
-    text: "The next day, that med comes back in Review. Spaced repetition brings each card back right when you're about to forget it — so it actually sticks." },
+    text: "The next day, that medication returns in Review. Spaced repetition: I resurface each card the very moment before you'd embarrass us both by forgetting it. You may thank me later." },
   { id: 'practice', highlight: 'practice',
-    text: "Practice mixes question types — multiple choice, matching, recall, and real clinical cases — and leans harder on whatever you keep getting wrong." },
+    text: "Practice mixes it up — multiple choice, matching, recall, real clinical cases. And it studies you, leaning without mercy on whatever you keep fumbling. Consider it tough love, from a demonstrably superior intellect." },
   { id: 'wiki', highlight: 'wiki',
-    text: "The Wiki links every medication to the conditions it treats. See a blue term in a question? Tap it to jump straight to its page." },
+    text: "The Wiki — my magnum opus. Every drug wired to the conditions it treats, and back again. See a highlighted term in a question? Tap it, and arrive there instantly. I did build the entire web of it, after all." },
   { id: 'compare-cram', highlight: 'compare',
-    text: "In Compare, line up any medications you pick — even across classes — side by side. And Cram is a fast, timed blast for bonus XP before a shift or an exam." },
+    text: "In Compare, set any medications side by side — across classes, if you're feeling brave. And Cram is a fast, timed sprint for bonus XP: ideal before a shift, or an exam you left — predictably — to the last minute." },
   { id: 'progress', highlight: 'progress',
-    text: "Progress tracks your level, streak, mastery tiers, a class map, and a wall of achievements to chase." },
+    text: "Progress keeps the receipts: your level, your streak, mastery tiers, a class map, and a wall of achievements to chase. Proof, in cold numbers, that you are slowly becoming impressive." },
   { id: 'safety', highlight: null,
-    text: "One important rule: I'm a study aid, not a prescriber. Always double-check against the current Health Canada monograph before any real clinical use." },
+    text: "One humbling caveat — yes, even for me. I am a study aid, not a prescriber. Before anything real, verify against the current Health Canada monograph. Brilliance without safety is merely arrogance." },
   { id: 'go', highlight: 'home',
-    text: "That's the tour! Ready to go? Let's learn your very first medication." },
+    text: "Enough preamble. The pupil is ready — or ready enough. Let's titrate your very first medication. Do try to keep pace." },
 ];
 
 export default TUTORIAL;

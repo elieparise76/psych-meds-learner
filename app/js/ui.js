@@ -20,10 +20,13 @@
   function playSfx(name) { if (sfxOn() && PML.sfx[name]) PML.sfx[name](); }
 
   // ---------- theme ----------
+  // Titrate is light-only by design; tokens.css defines the single Regal-Violet theme on :root.
+  // We clear any legacy data-theme (e.g. an old "dark" saved by a returning user) so it can't
+  // shadow the light tokens, and normalise the stored setting.
   function applyTheme() {
-    var t = PML.store.get().settings.theme;
-    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
-    else document.documentElement.removeAttribute('data-theme');
+    document.documentElement.removeAttribute('data-theme');
+    var s = PML.store.get().settings;
+    if (s.theme !== 'light') { s.theme = 'light'; PML.store.save(); }
   }
 
   // ---------- HUD ----------
@@ -361,8 +364,6 @@
       ]));
       box.appendChild(ce('hr', { style: { border: 0, borderTop: '1px solid var(--border)' } }));
     }
-    // theme
-    box.appendChild(row('Theme', selectEl(['dark', 'light', 'auto'], s.settings.theme, function (v) { s.settings.theme = v; applyTheme(); PML.store.save(); })));
     box.appendChild(row('Sound effects', toggleEl(s.settings.sound, function (v) { s.settings.sound = v; PML.sfx.enabled = v; if (v) PML.sfx.correct(); PML.store.save(); })));
     box.appendChild(row('Tutorial narration (voice)', toggleEl(s.settings.voice !== false, function (v) { s.settings.voice = v; PML.store.save(); })));
     box.appendChild(ce('div', { class: 'row spread' }, [ce('span', {}, ['Guided tour']), ce('button', { class: 'btn sm', onclick: function () { U.qsa('.modal-back').forEach(function (x) { x.remove(); }); if (PML.tutorial) PML.tutorial.replay(); } }, ['▶ Replay tour'])]));
@@ -387,7 +388,7 @@
 
   function exportData() {
     var blob = new Blob([PML.store.exportJSON()], { type: 'application/json' });
-    var a = ce('a', { href: URL.createObjectURL(blob), download: 'psych-meds-learner-backup-' + U.todayKey() + '.json' });
+    var a = ce('a', { href: URL.createObjectURL(blob), download: 'titrate-backup-' + U.todayKey() + '.json' });
     document.body.appendChild(a); a.click(); a.remove();
     toast('Backup downloaded', 'win');
   }
@@ -431,7 +432,7 @@
       ce('div', { class: 'topbar-inner' }, [
         ce('button', { class: 'brand', onclick: function () { go('home'); } }, [
           ce('span', { class: 'logo' }, ['ψ']),
-          ce('span', {}, [ce('span', {}, ['PsychMeds']), ce('br'), ce('small', {}, ['learner'])]),
+          ce('span', {}, [ce('span', {}, ['Titrate']), ce('br'), ce('small', {}, ['psychopharm, perfected'])]),
         ]),
         hudEl = ce('div', { class: 'hud' }),
         ce('button', { class: 'btn sm ghost', 'aria-label': 'Replay tutorial', title: 'Replay the tour', onclick: function () { if (PML.tutorial) PML.tutorial.replay(); } }, ['?']),

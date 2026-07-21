@@ -8,12 +8,19 @@ one remaining piece (the macOS `.app`). Companion docs: [CLAUDE.md](CLAUDE.md) (
 
 ## What this is
 
-`psych-meds-learner` — a **local, offline, single-page app** that teaches a Canadian psychiatry
-resident their psychopharmacology, Duolingo-style. Vanilla HTML/CSS/JS, **no build step, no
-framework, runs from `file://` by double-clicking `index.html`** (classic `<script>` tags only —
-NEVER ES modules or `fetch()` for local data; see CLAUDE.md "Tech constraints"). All per-user
-state is in `localStorage`; JSON export/import for backup. GitHub:
+**Titrate** (repo slug `psych-meds-learner`) — a **local, offline, single-page app** that teaches
+a Canadian psychiatry resident their psychopharmacology, Duolingo-style. Vanilla HTML/CSS/JS, **no
+build step, no framework, runs from `file://` by double-clicking `index.html`** (classic `<script>`
+tags only — NEVER ES modules or `fetch()` for local data; see CLAUDE.md "Tech constraints"). All
+per-user state is in `localStorage`; JSON export/import for backup. GitHub:
 `elieparise76/psych-meds-learner` (public).
+
+**Look & feel (Round 5):** the product name is **Titrate** ("psychopharm, perfected"). The theme is
+**light-only** — a "Regal Violet" palette (deep violet primary on soft lavender-paper), defined once
+on `:root` in `tokens.css` (no dark theme, no theme switcher; `applyTheme()` normalises any legacy
+saved theme to light). The primary-accent CSS var is still named `--honey` for compatibility — it
+just carries the violet value now. The guide/study buddy is **Neuro**, voiced as an over-confident,
+faintly pretentious mentor; the animal pictures are the user's **avatar** (not "study buddy").
 
 **It is a learning aid, not a prescribing reference.** Safety-critical facts are extracted from
 real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ badge).
@@ -54,12 +61,17 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   a strong Practice session (≥80%, ≥4 Qs) gets its own moment. The engine is `PML.ui.moment` /
   `celebrate` in `ui.js` (queued block moments + flash), keyframes under "big center-screen
   celebration" in `animations.css`, sounds `streakup`/`fanfare`/`poptick` in `vendor/sfx.js`. Plus
-  the pre-existing confetti/toast layer, now 20 synthesized sound effects (on by default), dark +
-  light, all `prefers-reduced-motion`-aware (count-up + rays degrade to a static number).
-- **Profile**: first-run name + one of 8 hand-drawn SVG animal avatars (in `profile.js`); shown
-  in the header; reset re-runs it.
-- **Tutorial**: guided walkthrough with an animated SVG mascot **Neuro** (text; optional voice —
-  see below). `data/tutorial.js` → `window.TUTORIAL`; offered on first run, replay via header `?`.
+  the pre-existing confetti/toast layer, now 20 synthesized sound effects (on by default), light
+  Regal-Violet theme, all `prefers-reduced-motion`-aware (count-up + rays degrade to a static number).
+- **Profile**: first-run name + one of 8 hand-drawn SVG **avatars** (in `profile.js`); shown in the
+  header; reset re-runs it. (The picker says "Choose your avatar" — "study buddy" now = Neuro, the guide.)
+- **Tutorial (Round 5)**: guided walkthrough narrated by **Neuro**, an over-confident, faintly
+  pretentious mentor, introducing "Titrate". **Not skippable** (no Skip control; Escape ignored;
+  mandatory on first run) and you **cannot press Next until the step's audio finishes** — with no
+  clip / narration off, a short reading-time gate stands in so you're never trapped. Canonical text
+  in `pipeline/tutorial-script.js` (~2k chars, 10 steps) → `data/tutorial.js` → `window.TUTORIAL`;
+  replay via header `?`. Voice clips are `app/audio/<step-id>.mp3` — see `app/audio/README.md` for
+  the ElevenLabs (browser or API) flow; recommended voice is a British male ("Daniel").
 - **Accessibility**: keyboard nav, focus rings, `prefers-reduced-motion`, mobile width, skip
   link, ARIA dialog roles.
 

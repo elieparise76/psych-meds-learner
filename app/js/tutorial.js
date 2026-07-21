@@ -39,17 +39,17 @@
   // ---- audio (optional) ----
   var currentAudio = null;
   function stopAudio() { if (currentAudio) { try { currentAudio.pause(); } catch (e) {} currentAudio = null; } }
+  // Returns { audio, promise } (promise = the play() promise if any) or null when narration is off.
   function playStep(id) {
     stopAudio();
     var s = PML.store.get().settings;
-    if (s.voice === false) return;
+    if (s.voice === false) return null;
     try {
       var a = new Audio('app/audio/' + id + '.mp3');
-      a.addEventListener('error', function () {}); // missing clip → silent
       currentAudio = a;
       var p = a.play();
-      if (p && p.catch) p.catch(function () {}); // autoplay block → silent
-    } catch (e) {}
+      return { audio: a, promise: (p && p.catch) ? p : null };
+    } catch (e) { return null; }
   }
 
   // ---- walkthrough ----
@@ -69,8 +69,9 @@
     var bubble = ce('div', { class: 'tut-bubble' }, [ce('div', { class: 'tut-name' }, ['Neuro']), bubbleText]);
     var backBtn = ce('button', { class: 'btn sm ghost', onclick: prev }, ['← Back']);
     var nextBtn = ce('button', { class: 'btn primary', onclick: next }, ['Next →']);
-    var skipBtn = ce('button', { class: 'btn sm ghost', onclick: finish }, ['Skip tour']);
-    var controls = ce('div', { class: 'row spread', style: { marginTop: 'var(--sp-3)' } }, [skipBtn, ce('div', { class: 'row', style: { gap: '8px' } }, [backBtn, nextBtn])]);
+    var hint = ce('span', { class: 'tut-hint' }, ['']);
+    // No "Skip" — the tour is not skippable.
+    var controls = ce('div', { class: 'row spread', style: { marginTop: 'var(--sp-3)' } }, [hint, ce('div', { class: 'row', style: { gap: '8px' } }, [backBtn, nextBtn])]);
 
     card.appendChild(dots);
     card.appendChild(ce('div', { class: 'row', style: { gap: '12px', alignItems: 'flex-start' } }, [mascotWrap, bubble]));
@@ -88,26 +89,61 @@
       var btn = U.qsa('.nav button').filter(function (b) { return b.dataset.view === view; })[0];
       if (btn) btn.classList.add('tut-pulse');
     }
+
+    // ---- advance-gate: you cannot press Next until Neuro finishes speaking. With no audio
+    // (clip missing or narration off) a short reading-time elapses instead, so you're never
+    // trapped — but you still can't blitz through. Combined with no Skip, the tour is mandatory. ----
+    var gateTimer = null, safetyTimer = null, resolved = false;
+    function clearGate() { clearTimeout(gateTimer); clearTimeout(safetyTimer); }
+    function setGate(locked) {
+      nextBtn.disabled = locked;
+      var last = (i === list.length - 1);
+      nextBtn.textContent = last ? "Let's go! ✨" : 'Next →';
+      if (locked) {
+        var voiceOn = PML.store.get().settings.voice !== false;
+        hint.textContent = voiceOn ? '🔊 Neuro is speaking…' : 'Read on…';
+      } else {
+        hint.textContent = '';
+        try { nextBtn.focus(); } catch (e) {}
+      }
+    }
+    function beginStepGate(step) {
+      clearGate();
+      resolved = false;
+      setGate(true);
+      function ungate() { if (resolved) return; resolved = true; clearGate(); setGate(false); }
+      var voiceOn = PML.store.get().settings.voice !== false;
+      var fallback = Math.min(6500, Math.max(2200, (step.text || '').length * 34)); // reading-time floor
+      var pl = voiceOn ? playStep(step.id) : (stopAudio(), null);
+      if (pl && pl.audio) {
+        var a = pl.audio;
+        a.addEventListener('ended', ungate);
+        a.addEventListener('error', function () { gateTimer = setTimeout(ungate, fallback); }); // missing clip
+        if (pl.promise) pl.promise.catch(function () { gateTimer = setTimeout(ungate, fallback); }); // autoplay blocked
+        safetyTimer = setTimeout(ungate, 90000); // never trap the user if 'ended' somehow never fires
+      } else {
+        gateTimer = setTimeout(ungate, fallback);
+      }
+    }
+
     function render() {
       var s = list[i];
       U.clear(dots);
       list.forEach(function (_, k) { dots.appendChild(ce('i', { class: k < i ? 'done' : (k === i ? 'cur' : '') })); });
       bubbleText.textContent = s.text;
       backBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
-      nextBtn.textContent = (i === list.length - 1) ? "Let's go! ✨" : 'Next →';
       highlight(s.highlight);
-      playStep(s.id);
-      nextBtn.focus();
+      beginStepGate(s);
     }
-    function next() { if (i < list.length - 1) { i++; render(); } else finish(); }
+    function next() { if (nextBtn.disabled) return; if (i < list.length - 1) { i++; render(); } else finish(); }
     function prev() { if (i > 0) { i--; render(); } }
     function onKey(e) {
-      if (e.key === 'Escape') { e.preventDefault(); finish(); }
-      else if (e.key === 'ArrowRight' || e.key === 'Enter') { e.preventDefault(); next(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      // Escape is intentionally ignored — the tour is not skippable.
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      else if ((e.key === 'ArrowRight' || e.key === 'Enter') && !nextBtn.disabled) { e.preventDefault(); next(); }
     }
     function finish() {
-      stopAudio(); clearHighlight();
+      clearGate(); stopAudio(); clearHighlight();
       document.removeEventListener('keydown', onKey);
       overlay.remove();
       PML.store.get().settings.tutorialSeen = true; PML.store.save();
@@ -115,18 +151,18 @@
     }
   }
 
-  // Offer the tour on first run (once). Shows a small prompt; respects an earlier "seen" flag.
+  // Offer the tour on first run (once). The tour is mandatory and not skippable, so there is no
+  // "maybe later" — just an entrance. Respects an earlier "seen" flag for returning users.
   function offerFirstRun() {
     var s = PML.store.get().settings;
     if (s.tutorialSeen) return;
     var overlay = ce('div', { class: 'tutorial-overlay' });
     var card = ce('div', { class: 'tutorial-card pop center stack' });
     card.appendChild(ce('div', { class: 'tut-mascot', style: { margin: '0 auto' } }, [mascot(96)]));
-    card.appendChild(ce('h3', { style: { margin: 0 } }, ["Hi, I'm Neuro!"]));
-    card.appendChild(ce('p', { class: 'muted', style: { margin: 0 } }, ['Want a quick 30-second tour of how everything works?']));
-    card.appendChild(ce('div', { class: 'row', style: { justifyContent: 'center', gap: '8px', marginTop: '4px' } }, [
-      ce('button', { class: 'btn ghost sm', onclick: function () { overlay.remove(); PML.store.get().settings.tutorialSeen = true; PML.store.save(); } }, ['Maybe later']),
-      ce('button', { class: 'btn primary', onclick: function () { overlay.remove(); start({}); } }, ['Start the tour →']),
+    card.appendChild(ce('h3', { style: { margin: 0 } }, ["Ah — you made it."]));
+    card.appendChild(ce('p', { class: 'muted', style: { margin: 0 } }, ["I'm Neuro. Before you touch a thing, let me show you around Titrate — properly. It'll take a minute, and no, you can't skip it."]));
+    card.appendChild(ce('div', { class: 'row', style: { justifyContent: 'center', marginTop: '4px' } }, [
+      ce('button', { class: 'btn primary lg', onclick: function () { overlay.remove(); start({}); } }, ['Show me →']),
     ]));
     overlay.appendChild(card);
     document.body.appendChild(overlay);
