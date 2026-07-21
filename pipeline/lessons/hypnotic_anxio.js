@@ -1,404 +1,509 @@
-// Hypnotic / anxiolytic micro-lessons. Key = molecule id. Facts grounded in data/deck.json.
+// Hypnotic / anxiolytic micro-lessons (v2, clinical-first). Narrated by Neuro.
+// Key = molecule id. Every fact grounded in data/deck.json — reuse, never invent.
 export default {
   zopiclone: {
-    hook: "The Canadian Z-drug standard for short-term insomnia — spot it by the metallic aftertaste, and don't call it 'non-addictive'.",
+    hook: "The Canadian go-to Z-drug for short-term insomnia — spot it by the metallic aftertaste, and never call it 'non-addictive'.",
     steps: [
       {
-        title: "What it is",
-        teach: "Zopiclone is a non-benzodiazepine cyclopyrrolone Z-drug. It's a positive allosteric modulator at the GABA-A benzodiazepine site, enhancing GABA-mediated Cl- influx (increases channel-opening FREQUENCY, just like benzos). It's the go-to Z-drug for short-term insomnia in Canada.",
+        title: "The big picture",
+        teach: "Zopiclone is a 'Z-drug' — a non-benzodiazepine sleeping pill. In Canada it's the workhorse hypnotic for short-term insomnia. But keep the frame straight: the first-line treatment for chronic insomnia is CBT-I (cognitive behavioural therapy), not a pill. Zopiclone is a short-term helper, not a cure."
+      },
+      {
+        title: "Where it sits",
+        teach: "Its only real job is the short-term treatment of insomnia. 'Short-term' is the operative word — you reach for it to get someone over a rough patch, not to keep them on it for months.",
         check: {
-          q: "Where does zopiclone act?",
-          options: ["The GABA-A benzodiazepine site", "Orexin OX1/OX2 receptors", "5-HT1A receptors"],
-          answer: "The GABA-A benzodiazepine site",
-          why: "Z-drugs are benzo-site positive allosteric modulators of GABA-A."
+          q: "How is zopiclone best positioned in insomnia care?",
+          options: ["Short-term aid while CBT-I does the real work", "First-line lifelong therapy", "A daytime anxiety pill"],
+          answer: "Short-term aid while CBT-I does the real work",
+          why: "Z-drugs bridge the short term; CBT-I is the durable first-line treatment."
         }
+      },
+      {
+        title: "How you use it",
+        teach: "Start 5 mg at bedtime — but only 3.75 mg in the elderly, debilitated, or those with liver impairment. Max is 7.5 mg/day (5 mg in those same lower-dose groups). Golden rule: take it only when a full 7–8 hours of sleep is actually possible, and reassess the need after 7–14 days."
       },
       {
         title: "The signature clue",
-        teach: "A metallic/bitter aftertaste is the near-pathognomonic tip-off that a Z-drug is zopiclone. Dry mouth and next-day drowsiness are also common.",
+        teach: "The near-pathognomonic tip-off that a Z-drug is zopiclone is a metallic/bitter aftertaste. Dry mouth, headache, dizziness, and next-day drowsiness round out the common effects. And never mix it with alcohol.",
         check: {
-          q: "Which hypnotic characteristically leaves a metallic/bitter taste?",
+          q: "Which hypnotic classically leaves a metallic/bitter taste?",
           options: ["Zopiclone", "Melatonin", "Buspirone"],
           answer: "Zopiclone",
-          why: "The metallic aftertaste is zopiclone's classic signature."
+          why: "That metallic aftertaste is zopiclone's calling card."
         }
       },
       {
-        title: "Not 'non-addictive'",
-        teach: "Because it binds the SAME benzo site, zopiclone still causes complex sleep behaviours (sleep-driving, sleep-eating), tolerance and dependence — and it's reversible with flumazenil. It is not a harmless sleep aid; use it short-term only.",
+        title: "The must-not-miss",
+        teach: "Here's the myth to kill: zopiclone is NOT a 'non-addictive' sleep aid. It acts at the very same GABA-A benzodiazepine site as benzos, so it still causes tolerance, dependence, and complex sleep behaviours — sleep-driving, sleep-eating, sleep-walking with no memory of it. If that happens, stop the drug and report it.",
         check: {
-          q: "Are Z-drugs like zopiclone reversible with flumazenil?",
-          options: ["Yes — they bind the benzodiazepine site", "No — flumazenil has no effect", "Only in overdose with opioids"],
-          answer: "Yes — they bind the benzodiazepine site",
-          why: "Flumazenil reverses benzo-site agents, including Z-drugs."
+          q: "A patient on zopiclone reports eating at night with no memory of it. What is this?",
+          options: ["A complex sleep behaviour — stop the drug", "A harmless dream", "Expected and safe to continue"],
+          answer: "A complex sleep behaviour — stop the drug",
+          why: "Complex sleep behaviours are a class effect; discontinue and report."
         }
       },
       {
-        title: "Stopping it",
-        teach: "Take it only when a full 7–8 h night is possible, and avoid alcohol. After prolonged use, stopping brings rebound insomnia and a benzo-like withdrawal (anxiety, tremor, rarely seizures) — taper rather than stop abruptly.",
+        title: "A touch of mechanism",
+        teach: "Mechanistically it's a positive allosteric modulator at the GABA-A benzodiazepine site — it makes the chloride channel open more FREQUENTLY when GABA is present. Because it's a benzo-site drug, its overdose is reversible with flumazenil, just like a benzodiazepine."
+      },
+      {
+        title: "Don't mix them up",
+        teach: "Zopiclone and zolpidem are both Z-drugs and sound alike, but they're different molecules. Zopiclone is the cyclopyrrolone with the metallic taste and a bit of anxiolytic action; zolpidem is the purely-hypnotic α1-selective one.",
         check: {
-          q: "How should prolonged zopiclone be discontinued?",
-          options: ["Taper gradually", "Stop abruptly — no withdrawal occurs", "Switch to alcohol at night"],
-          answer: "Taper gradually",
-          why: "Prolonged use causes benzo-like withdrawal; taper to avoid it."
+          q: "Your patient's Z-drug leaves a metallic taste. Which one is it?",
+          options: ["Zopiclone", "Zolpidem", "Neither — Z-drugs don't affect taste"],
+          answer: "Zopiclone",
+          why: "The metallic aftertaste separates zopiclone from its look-alike zolpidem."
         }
       }
     ],
-    trap: "Zopiclone vs zolpidem: both Z-drugs at the benzo site, but zopiclone = metallic taste + broader GABA-A action; zolpidem = α1-selective + sex-specific dosing.",
-    takeaway: "Zopiclone = the Canadian Z-drug standard: metallic taste, benzo-site action, real dependence and complex sleep behaviours — short-term use only."
+    trap: "Don't sell zopiclone as 'non-addictive' — it's a benzo-site drug with real dependence and complex-sleep-behaviour risk. And don't confuse it with zolpidem.",
+    takeaway: "Zopiclone = the Canadian short-term Z-drug — metallic taste, benzo-site action, and genuine dependence and complex-sleep-behaviour risk."
   },
 
   zolpidem: {
-    hook: "The α1-selective Z-drug: almost purely hypnotic, dosed lower in women, and carrying a boxed warning for sleep-driving.",
+    hook: "The most purely-hypnotic Z-drug — carries a boxed warning for complex sleep behaviours, and doses lower in women and the elderly.",
     steps: [
       {
-        title: "What it is",
-        teach: "Zolpidem is an imidazopyridine Z-drug — a GABA-A benzo-site modulator that PREFERS the α1 (BZ1) subunit. That selectivity makes it predominantly sedative-hypnotic with little anxiolytic or muscle-relaxant effect.",
+        title: "The big picture",
+        teach: "Zolpidem is a Z-drug for short-term insomnia, and it's the most single-mindedly hypnotic of the group — it puts you to sleep with little else going on. The Canadian product is Sublinox, a sublingual tablet."
+      },
+      {
+        title: "Where it sits",
+        teach: "Like all Z-drugs, it's for short-term insomnia only, and best aimed at trouble falling asleep. It's a bridge over a rough patch — CBT-I remains the durable first-line treatment for chronic insomnia."
+      },
+      {
+        title: "How you use it",
+        teach: "Give 5 mg sublingually at bedtime, taken immediately before lying down, and only when at least 7–8 hours in bed are available. The max is 10 mg/day. Its half-life is very short, which is why it's aimed at sleep onset."
+      },
+      {
+        title: "The sex-specific dose",
+        teach: "This is a favourite exam point: women and the elderly start at the LOWER dose (5 mg) because they clear zolpidem more slowly and wake with higher drug levels — meaning more next-morning impairment. Men may use 5–10 mg.",
         check: {
-          q: "Which GABA-A subunit does zolpidem preferentially target?",
-          options: ["α1 (BZ1)", "α2 only", "It avoids GABA-A entirely"],
-          answer: "α1 (BZ1)",
-          why: "α1-selectivity makes zolpidem mostly hypnotic."
+          q: "Why do women start zolpidem at the lower 5 mg dose?",
+          options: ["Slower clearance → higher next-morning levels", "Higher clearance needs more drug", "It has nothing to do with clearance"],
+          answer: "Slower clearance → higher next-morning levels",
+          why: "Slower elimination leaves more drug on board in the morning, so start low."
         }
       },
       {
-        title: "Sex-specific dosing",
-        teach: "Women and the elderly start at 5 mg because of slower clearance and higher next-morning drug levels; men may use 5–10 mg. Max is 10 mg/day, taken right before bed with ≥7–8 h to sleep.",
+        title: "The must-not-miss",
+        teach: "Zolpidem carries a BOXED WARNING for complex sleep behaviours — sleep-walking, sleep-driving, and doing things while not fully awake, sometimes with serious injury or even death. If a patient ever has one of these events, discontinue immediately, and don't restart it.",
         check: {
-          q: "Who gets the LOWER starting dose of zolpidem?",
-          options: ["Women and the elderly", "Young men", "Everyone starts at 10 mg"],
-          answer: "Women and the elderly",
-          why: "Slower clearance raises morning levels, so they start at 5 mg."
+          q: "A patient sleep-drives on zolpidem. What must you do?",
+          options: ["Discontinue immediately and don't rechallenge", "Halve the dose and continue", "Reassure — it's harmless"],
+          answer: "Discontinue immediately and don't rechallenge",
+          why: "Prior complex sleep behaviour is a contraindication to further zolpidem."
         }
       },
       {
-        title: "Boxed warning",
-        teach: "Zolpidem carries a boxed warning for complex sleep behaviours — sleep-walking, sleep-driving and other activities while not fully awake, which can cause serious injury or death. Discontinue immediately if they occur.",
-        check: {
-          q: "What is zolpidem's boxed warning about?",
-          options: ["Complex sleep behaviours (sleep-driving/walking)", "QT prolongation", "Enzyme induction"],
-          answer: "Complex sleep behaviours (sleep-driving/walking)",
-          why: "The boxed warning is for complex sleep behaviours."
-        }
+        title: "A touch of mechanism",
+        teach: "Zolpidem is a benzo-site GABA-A modulator like other Z-drugs, but it's the most α1-selective — and the α1 subunit is the sedative one. That selectivity is why it's almost purely hypnotic, with little of the anxiolytic or muscle-relaxant effect you'd get from a benzodiazepine."
       },
       {
-        title: "Short and reversible",
-        teach: "Half-life is very short (~2.5–3 h), so it's a sleep-onset agent. Like all Z-drugs it's reversible with flumazenil; the real danger is additive respiratory depression with alcohol or opioids.",
+        title: "Don't mix them up",
+        teach: "Zolpidem vs zopiclone: both Z-drugs, similar names, different drugs. Zolpidem is the α1-selective, purely-hypnotic imidazopyridine; zopiclone is the cyclopyrrolone with the tell-tale metallic taste.",
         check: {
-          q: "Zolpidem is reversible with which antidote?",
-          options: ["Flumazenil", "Naloxone", "Physostigmine"],
-          answer: "Flumazenil",
-          why: "Benzo-site agents, including zolpidem, respond to flumazenil."
+          q: "Which Z-drug is the most α1-selective and therefore most purely hypnotic?",
+          options: ["Zolpidem", "Zopiclone", "Both equally"],
+          answer: "Zolpidem",
+          why: "Zolpidem's α1 selectivity gives it a mostly-hypnotic, low-anxiolytic profile."
         }
       }
     ],
-    trap: "Zolpidem vs zopiclone: both Z-drugs at the benzo site; zolpidem = α1-selective + sex-specific dosing, zopiclone = metallic taste + broader action.",
-    takeaway: "Zolpidem = the α1-selective, short-acting Z-drug: purely hypnotic, dosed lower in women, boxed warning for complex sleep behaviours."
+    trap: "Don't confuse zolpidem with zopiclone, and don't forget women and the elderly get the lower dose because they clear it slowly.",
+    takeaway: "Zolpidem = the α1-selective, purely-hypnotic Z-drug — boxed warning for complex sleep behaviours, and lower dosing in women and the elderly."
   },
 
   buspirone: {
-    hook: "The non-addictive GAD anxiolytic: a 5-HT1A partial agonist that takes ~2 weeks to work and is useless as a PRN pill.",
+    hook: "The non-sedating, non-addictive GAD anxiolytic — but it takes ~2 weeks to work, must be taken daily, and is useless PRN.",
     steps: [
       {
-        title: "What it is",
-        teach: "Buspirone is a 5-HT1A receptor PARTIAL agonist (with modest D2 activity). It relieves anxiety with NO GABA/benzodiazepine action — so it's non-sedating, non-myorelaxant, and non-anticonvulsant.",
+        title: "The big picture",
+        teach: "Buspirone is the odd one out among anxiolytics: no sedation, no abuse potential, and no dependence. It's an anti-anxiety drug that works through serotonin, not GABA — so it behaves completely differently from benzodiazepines."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for generalized anxiety disorder (GAD). Off-label, it's used to augment antidepressants and to counter SSRI-induced sexual dysfunction.",
         check: {
-          q: "Buspirone's mechanism?",
-          options: ["5-HT1A partial agonist", "GABA-A benzo-site modulator", "H1 antihistamine"],
-          answer: "5-HT1A partial agonist",
-          why: "Buspirone is a 5-HT1A partial agonist with no GABAergic action."
+          q: "What is buspirone's approved indication?",
+          options: ["Generalized anxiety disorder", "Acute panic attacks, PRN", "Insomnia"],
+          answer: "Generalized anxiety disorder",
+          why: "Buspirone is a daily GAD anxiolytic — not a rescue or sleep drug."
         }
       },
       {
-        title: "Delayed onset, daily",
-        teach: "Its anxiolytic effect builds over 1–2 weeks (full effect ~4 weeks) and it's dosed BID–TID. It is NOT effective PRN or for acute anxiety — it must be taken regularly.",
+        title: "When you'd reach for it",
+        teach: "Because it doesn't cause dependence or a high, buspirone is the anxiolytic of choice for GAD in a patient with a substance-use history — where you'd want to steer clear of benzodiazepines.",
         check: {
-          q: "Which anxiolytic is ineffective taken PRN?",
-          options: ["Buspirone", "Hydroxyzine", "Zopiclone"],
+          q: "GAD in a patient with prior alcohol-use disorder. Which anxiolytic fits best?",
+          options: ["Buspirone", "A benzodiazepine", "Zopiclone"],
           answer: "Buspirone",
-          why: "Buspirone works only with regular daily dosing over ~2 weeks."
+          why: "No abuse potential makes buspirone ideal when addiction risk is a concern."
         }
       },
       {
-        title: "No dependence, no benzo cross-tolerance",
-        teach: "Buspirone has no abuse potential and no physiologic dependence — the anxiolytic of choice for GAD with a substance-use history. Crucially, it has NO cross-tolerance with benzodiazepines, so it will not relieve or cover benzo withdrawal.",
+        title: "How you use it",
+        teach: "Start 7.5 mg twice daily, taken consistently with or without food, and titrate up by 5 mg every 2–3 days toward the usual 20–30 mg/day divided (max 60 mg/day). One habit to build: it's dosed BID–TID on a fixed schedule, every single day."
+      },
+      {
+        title: "The key catch",
+        teach: "Two things trip people up. First, buspirone takes about 2 weeks to work — no immediate relief. Second, it must be taken daily and is useless as an as-needed pill. So it will NOT calm an acute panic surge, and it will NOT cover or relieve benzodiazepine withdrawal (there's no cross-tolerance).",
         check: {
-          q: "Can buspirone relieve benzodiazepine withdrawal?",
-          options: ["No — no cross-tolerance with benzos", "Yes — it fully covers withdrawal", "Only at high doses"],
-          answer: "No — no cross-tolerance with benzos",
-          why: "Buspirone isn't GABAergic, so it can't cover benzo withdrawal."
+          q: "Can buspirone be used PRN for a sudden spike of anxiety?",
+          options: ["No — it's daily and takes ~2 weeks to work", "Yes — it's a fast rescue pill", "Yes, but only at bedtime"],
+          answer: "No — it's daily and takes ~2 weeks to work",
+          why: "Delayed onset and daily dosing make buspirone useless PRN."
         }
       },
       {
-        title: "Key interactions",
-        teach: "MAOIs are contraindicated (hypertension / serotonin syndrome risk). Grapefruit juice and other strong CYP3A4 inhibitors markedly raise buspirone levels — reduce the dose.",
+        title: "What patients feel",
+        teach: "The common effects are mild and non-sedating: dizziness, nausea, headache, lightheadedness, and some nervousness. Notably absent are the grogginess, sexual dysfunction, and dependence that dog other anxiety drugs."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Buspirone is serotonergic, so it's contraindicated with MAOIs — combining them (or starting within 14 days of an MAOI) risks serotonin syndrome and blood-pressure spikes. Also warn patients off grapefruit juice, which blocks CYP3A4 and can markedly raise buspirone levels.",
         check: {
-          q: "Which markedly raises buspirone levels?",
-          options: ["Grapefruit juice (CYP3A4 inhibition)", "Smoking", "A high-fat meal"],
-          answer: "Grapefruit juice (CYP3A4 inhibition)",
-          why: "Buspirone is a CYP3A4 substrate; grapefruit juice raises its levels."
+          q: "Which combination is contraindicated with buspirone?",
+          options: ["An MAOI", "A statin", "Acetaminophen"],
+          answer: "An MAOI",
+          why: "Buspirone plus an MAOI risks serotonin syndrome — a hard contraindication."
+        }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Buspirone is a 5-HT1A partial agonist — that single serotonin action is where the anxiolysis comes from. Crucially it has zero GABA-A/benzodiazepine activity, which explains why it's non-sedating, non-addictive, and can't substitute for a benzo."
+      },
+      {
+        title: "Don't mix them up",
+        teach: "Watch the near-homophones: busPIRone is the 5-HT1A anxiolytic for GAD; buPROPion is the NDRI antidepressant / smoking-cessation drug that LOWERS the seizure threshold. Totally different drugs, one letter-swap apart.",
+        check: {
+          q: "Which is the anxiolytic for GAD?",
+          options: ["Buspirone", "Bupropion", "Both are anxiolytics"],
+          answer: "Buspirone",
+          why: "Buspirone treats anxiety; bupropion is an antidepressant/smoking-cessation NDRI."
         }
       }
     ],
-    trap: "Buspirone vs bupropion — sound-alike but unrelated: BUSpirone = 5-HT1A anxiolytic for GAD; buPROPion = NDRI antidepressant/smoking-cessation agent that LOWERS the seizure threshold.",
-    takeaway: "Buspirone = the non-dependence 5-HT1A GAD anxiolytic: slow (~2 wk) daily onset, useless PRN, and no benzo cross-tolerance."
+    trap: "Don't confuse buspirone (5-HT1A anxiolytic, GAD) with bupropion (NDRI antidepressant). And never expect buspirone to work PRN or to cover benzo withdrawal.",
+    takeaway: "Buspirone = the non-sedating, non-addictive GAD anxiolytic — daily dosing, ~2-week onset, no PRN use, and MAOI-contraindicated."
   },
 
   hydroxyzine: {
-    hook: "The antihistamine anxiolytic: rapid enough for PRN and non-addictive, but watch the anticholinergic load and the QT.",
+    hook: "A sedating antihistamine used PRN for anxiety — non-addictive, but watch anticholinergic burden and dose-related QT prolongation.",
     steps: [
       {
-        title: "What it is",
-        teach: "Hydroxyzine is a first-generation (piperazine) H1-antihistamine. Its anxiolytic/sedative effect comes from central H1 antagonism (plus antimuscarinic and mild 5-HT2 action) — with NO GABA/benzodiazepine activity.",
+        title: "The big picture",
+        teach: "Hydroxyzine is a first-generation antihistamine that doubles as an anxiolytic. Its selling point: it's non-dependence-forming and works fast, so you can use it as-needed — a handy PRN option when you want to avoid benzodiazepines."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for anxiety/tension, itch (pruritus — that's the antihistamine job), and pre/post-op sedation. Off-label, it's used for insomnia and as a nausea adjunct.",
         check: {
-          q: "What class is hydroxyzine?",
-          options: ["First-generation H1-antihistamine", "Benzodiazepine", "Orexin antagonist"],
-          answer: "First-generation H1-antihistamine",
-          why: "Hydroxyzine is a sedating H1-antihistamine, not a GABAergic drug."
+          q: "Which of these is an approved use of hydroxyzine?",
+          options: ["Anxiety/tension and pruritus", "Bipolar mania", "ADHD"],
+          answer: "Anxiety/tension and pruritus",
+          why: "As an antihistamine anxiolytic, it covers both anxiety and itch."
         }
       },
       {
-        title: "Rapid and non-addictive",
-        teach: "Onset is fast (~30–60 min), so hydroxyzine CAN be used PRN — and it's non-dependence-forming. That makes it a useful anxiolytic when abuse potential is a concern.",
+        title: "When you'd reach for it",
+        teach: "Like buspirone, hydroxyzine shines when abuse potential is a worry — a patient with a substance-use history who needs something for anxiety. The difference: hydroxyzine works quickly and can be dosed PRN, whereas buspirone is slow and daily.",
         check: {
-          q: "Can hydroxyzine be used PRN for anxiety?",
-          options: ["Yes — rapid onset, non-addictive", "No — it takes 2 weeks like buspirone", "No — it's a controlled substance"],
-          answer: "Yes — rapid onset, non-addictive",
-          why: "Its ~30–60 min onset and lack of dependence make PRN use reasonable."
+          q: "Why might you pick hydroxyzine over a benzodiazepine for PRN anxiety?",
+          options: ["It's not dependence-forming", "It works more slowly", "It has no side effects"],
+          answer: "It's not dependence-forming",
+          why: "No dependence risk makes it a safer as-needed option than a benzo."
         }
       },
       {
-        title: "Two cautions",
-        teach: "At higher doses watch two things: anticholinergic burden (dry mouth, constipation, urinary retention — worse in the elderly) and dose-related QT prolongation/torsades. It's contraindicated with a prolonged QT interval.",
+        title: "How you use it",
+        teach: "For anxiety, 25–50 mg three-to-four times daily or PRN, up to about 100 mg/day — stay at the lowest effective dose, since anticholinergic and QT effects climb above that. A bedtime dose conveniently exploits its sedation."
+      },
+      {
+        title: "What patients feel",
+        teach: "Expect sedation and drowsiness (that's the point), plus anticholinergic effects — dry mouth, constipation, blurred vision, urinary retention — and dizziness. Tell patients not to drive until they know their response, and never to combine it with alcohol."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Two dose-related dangers: anticholinergic toxicity (especially risky in the elderly) and QT prolongation that can lead to torsades. It's actually contraindicated in patients with a prolonged QT interval — so consider an ECG if there are cardiac risk factors, electrolyte issues, or other QT-prolonging drugs.",
         check: {
-          q: "Which cardiac risk is dose-related with hydroxyzine?",
-          options: ["QT prolongation", "Bradycardia from β-blockade", "Coronary vasospasm"],
-          answer: "QT prolongation",
-          why: "Hydroxyzine causes dose-related QT prolongation and is contraindicated in long QT."
+          q: "Hydroxyzine is contraindicated in a patient with what finding?",
+          options: ["A prolonged QT interval", "Well-controlled asthma", "Seasonal allergies"],
+          answer: "A prolonged QT interval",
+          why: "Dose-related QT prolongation makes a baseline long QT a contraindication."
         }
       },
       {
-        title: "Pearl: cetirizine",
-        teach: "Its major active metabolite is cetirizine — itself a marketed second-generation antihistamine. That's a neat link between an anxiolytic and an over-the-counter allergy pill.",
-        check: {
-          q: "Hydroxyzine's active metabolite is which marketed antihistamine?",
-          options: ["Cetirizine", "Loratadine", "Diphenhydramine"],
-          answer: "Cetirizine",
-          why: "Hydroxyzine is metabolised to the active antihistamine cetirizine."
-        }
+        title: "A touch of mechanism",
+        teach: "Its calming effect comes from blocking central H1 histamine receptors (it's also antimuscarinic — hence the dry mouth). Fun fact: its active metabolite is cetirizine, itself a familiar second-generation allergy pill."
       }
     ],
-    trap: "Hydroxyzine vs hydralazine (an antihypertensive) vs hydroxychloroquine — sound-alike, entirely unrelated drugs.",
-    takeaway: "Hydroxyzine = the rapid, PRN-friendly, non-addictive antihistamine anxiolytic — mind the anticholinergic burden and dose-related QT."
+    trap: "Hydroxyzine's non-addictive PRN appeal is real, but don't forget the two dose-related catches: anticholinergic burden (esp. elderly) and QT prolongation.",
+    takeaway: "Hydroxyzine = the fast, non-addictive antihistamine anxiolytic for PRN use — mind the sedation, anticholinergic load, and dose-related QT prolongation."
   },
 
   lemborexant: {
-    hook: "A dual orexin antagonist that blocks the wake signal for both sleep onset AND maintenance — the longer-acting DORA.",
+    hook: "A newer orexin-blocker for insomnia — non-addictive, works for onset AND maintenance, but next-day grogginess climbs at the higher dose.",
     steps: [
       {
-        title: "What it is",
-        teach: "Lemborexant is a Dual Orexin Receptor Antagonist (DORA): it competitively blocks OX1R and OX2R, dialling down the orexin wake drive to promote both sleep onset and maintenance. There's no GABA/benzo activity, and it's non-dependence-forming.",
+        title: "The big picture",
+        teach: "Lemborexant is a dual orexin receptor antagonist — a 'DORA'. Instead of sedating you like a benzo-site drug, it takes the foot off the wakefulness pedal. It's a newer, mechanistically distinct option for insomnia, and it's non-dependence-forming."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for insomnia — and unlike the sleep-onset-only agents, it helps with both falling asleep AND staying asleep.",
         check: {
-          q: "How do orexin antagonists like lemborexant work?",
-          options: ["Block orexin OX1/OX2 receptors", "Enhance GABA at the benzo site", "Agonise melatonin MT1/MT2"],
-          answer: "Block orexin OX1/OX2 receptors",
-          why: "DORAs reduce orexin wake-promoting signalling."
+          q: "What sleep problems does lemborexant address?",
+          options: ["Both sleep onset and maintenance", "Sleep onset only", "Daytime anxiety"],
+          answer: "Both sleep onset and maintenance",
+          why: "Orexin antagonists work across the night, covering onset and maintenance."
         }
       },
       {
-        title: "The longer-acting DORA",
-        teach: "Its half-life is ~17–19 h — longer than daridorexant — so next-day somnolence is more of an issue and is dose-related (greater at the 10 mg dose). Counsel about driving.",
+        title: "When you'd reach for it",
+        teach: "It's an attractive pick when you want a benzo-free hypnotic that also holds sleep through the night — for example, a patient who both struggles to fall asleep and wakes repeatedly, and where you'd rather avoid dependence.",
         check: {
-          q: "Compared with daridorexant, lemborexant's half-life is…",
-          options: ["Longer (more next-day somnolence)", "Shorter (less carryover)", "Identical"],
-          answer: "Longer (more next-day somnolence)",
-          why: "Lemborexant (~17–19 h) outlasts daridorexant (~8 h)."
+          q: "Why choose a DORA like lemborexant over a Z-drug?",
+          options: ["Non-dependence-forming and covers maintenance", "It's a controlled substance", "It only works for onset"],
+          answer: "Non-dependence-forming and covers maintenance",
+          why: "DORAs avoid dependence and treat both onset and maintenance."
         }
       },
       {
-        title: "Cautions",
-        teach: "It's CYP3A4-dependent — avoid strong CYP3A4 inhibitors. It's contraindicated in narcolepsy, and can cause sleep paralysis or brief cataplexy-like hypnagogic muscle weakness.",
+        title: "How you use it",
+        teach: "Give 5 mg immediately before bed, with at least 7 hours available to sleep; you can go up to 10 mg based on response. Take it on an empty stomach — a meal delays its onset."
+      },
+      {
+        title: "What patients feel",
+        teach: "The common effects are next-day sleepiness, headache, fatigue, and abnormal (vivid) dreams. Warn patients they may also experience unusual sleep phenomena and to report anything odd."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Next-day somnolence is dose-related — clearly greater at 10 mg — so counsel patients about driving the morning after. It can also cause sleep paralysis and cataplexy-like muscle weakness, and it's contraindicated in narcolepsy.",
         check: {
-          q: "Lemborexant is contraindicated in which condition?",
-          options: ["Narcolepsy", "Hypertension", "Asthma"],
+          q: "Lemborexant is contraindicated in patients with which condition?",
+          options: ["Narcolepsy", "Hypertension", "GERD"],
           answer: "Narcolepsy",
-          why: "DORAs are contraindicated in narcolepsy."
+          why: "Blocking orexin in narcolepsy — already an orexin-deficient state — is contraindicated."
         }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Orexin is the brain's wake-promoting signal. Lemborexant competitively blocks both orexin receptors (OX1R and OX2R), dialling down that wake drive so sleep can take over — with no GABA or benzodiazepine involvement at all. It's CYP3A4-dependent, so avoid strong CYP3A4 inhibitors."
       }
     ],
-    trap: "Lemborexant vs daridorexant: both DORAs, but lemborexant has the LONGER half-life → more next-day somnolence.",
-    takeaway: "Lemborexant = a non-addictive dual orexin antagonist for sleep onset and maintenance — the longer-acting DORA, so watch next-day grogginess."
+    trap: "Don't reflexively push to 10 mg — next-day somnolence and driving risk are clearly worse at the higher dose.",
+    takeaway: "Lemborexant = a non-addictive orexin antagonist for sleep onset AND maintenance — but next-day grogginess rises at 10 mg."
   },
 
   daridorexant: {
-    hook: "The shortest-acting orexin antagonist — engineered for the least next-day grogginess of the DORAs.",
+    hook: "The shortest-acting orexin-blocker — engineered for the least next-day hangover while still holding sleep through the night.",
     steps: [
       {
-        title: "What it is",
-        teach: "Daridorexant is a Dual Orexin Receptor Antagonist (DORA), blocking OX1R and OX2R to cut the orexin wake drive and promote both sleep onset and maintenance. Like the class, it's non-dependence-forming with no GABA/benzo activity.",
+        title: "The big picture",
+        teach: "Daridorexant is another dual orexin receptor antagonist (DORA), a cousin of lemborexant. Same idea — quiet the brain's wake signal rather than sedate — but it's the shortest-acting of the marketed orexin blockers, deliberately designed to minimize next-day impairment."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for insomnia, helping with both sleep onset and sleep maintenance — a full-night, benzo-free option."
+      },
+      {
+        title: "When you'd reach for it",
+        teach: "It's a natural pick when a patient needs maintenance coverage but can't afford morning grogginess — think someone who drives early or operates machinery, where you want the DORA benefits with the least residual sedation.",
         check: {
-          q: "Daridorexant belongs to which class?",
-          options: ["Orexin antagonist (DORA)", "Z-drug", "Barbiturate"],
-          answer: "Orexin antagonist (DORA)",
-          why: "It blocks OX1R/OX2R — a dual orexin receptor antagonist."
+          q: "What's the design advantage of daridorexant over other orexin antagonists?",
+          options: ["Shortest half-life → least next-day impairment", "It's the only one that's addictive", "It only helps sleep onset"],
+          answer: "Shortest half-life → least next-day impairment",
+          why: "Its ~8-hour half-life is engineered to reduce morning hangover."
         }
       },
       {
-        title: "Shortest half-life",
-        teach: "Its half-life is ~8 h — shorter than lemborexant — so it's engineered to leave the least next-day residual impairment of the marketed orexin antagonists.",
+        title: "How you use it",
+        teach: "Give 25 mg about 30 minutes before bed with at least 7 hours to sleep; you can increase to 50 mg if needed. As with lemborexant, take it on an empty stomach for faster onset."
+      },
+      {
+        title: "What patients feel",
+        teach: "Common effects are headache, some somnolence or fatigue, dizziness, and nausea — but residual daytime sleepiness tends to be less than with longer-acting hypnotics."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Even with the shorter half-life, use care driving the next morning. Like other DORAs it can cause sleep paralysis and cataplexy-like hypnagogic muscle weakness, it's contraindicated in narcolepsy, and it's CYP3A4-dependent — so avoid strong CYP3A4 inhibitors.",
         check: {
-          q: "Which DORA has the least next-day carryover?",
-          options: ["Daridorexant (~8 h half-life)", "Lemborexant (~17–19 h)", "They are equal"],
-          answer: "Daridorexant (~8 h half-life)",
-          why: "The shorter half-life minimises next-day impairment."
+          q: "Which drug interaction matters most with daridorexant?",
+          options: ["Strong CYP3A4 inhibitors", "Strong CYP2D6 inducers", "Calcium supplements"],
+          answer: "Strong CYP3A4 inhibitors",
+          why: "Daridorexant is CYP3A4-dependent, so strong inhibitors raise exposure."
         }
       },
       {
-        title: "Cautions",
-        teach: "CYP3A4-dependent — avoid strong CYP3A4 inhibitors. It's contraindicated in narcolepsy and, like other DORAs, can cause sleep paralysis or cataplexy-like muscle weakness.",
-        check: {
-          q: "Which enzyme handles daridorexant (so avoid strong inhibitors of it)?",
-          options: ["CYP3A4", "CYP1A2", "MAO-A"],
-          answer: "CYP3A4",
-          why: "Daridorexant is a CYP3A4 substrate; strong inhibitors raise exposure."
-        }
+        title: "A touch of mechanism",
+        teach: "Like all DORAs, it competitively blocks both orexin receptors (OX1R and OX2R) to reduce wake drive and let sleep come — no GABA or benzodiazepine action, and no dependence."
       }
     ],
-    trap: "Daridorexant vs lemborexant: same DORA class, but daridorexant is the SHORTER-acting one (less next-day carryover).",
-    takeaway: "Daridorexant = the shortest-acting, non-addictive orexin antagonist — a benzo-free sleep option with the least next-day impairment."
+    trap: "'Shortest-acting' doesn't mean zero next-day risk — still counsel on morning driving, and still respect the CYP3A4 interaction.",
+    takeaway: "Daridorexant = the shortest-acting, non-addictive orexin antagonist — full-night coverage with the least next-day hangover."
   },
 
   melatonin: {
-    hook: "The OTC circadian nudge: an MT1/MT2 hormone where the TIMING of the dose matters more than the amount — and it's remarkably safe.",
+    hook: "Not a knockout pill — a body-clock nudge. For circadian and jet-lag problems, timing beats dose; sold OTC in Canada as an NPN, not a drug.",
     steps: [
       {
-        title: "What it is",
-        teach: "Melatonin is the endogenous pineal hormone, acting as an agonist at MT1 (attenuates the wake/alerting signal → sleep onset) and MT2 (circadian phase-shifting) receptors. No GABA/benzo activity, no dependence.",
+        title: "The big picture",
+        teach: "Melatonin is the pineal hormone your brain already makes to signal 'night'. As a supplement it's not really a sedative — it doesn't knock you out, it nudges your internal clock. That framing matters: it shines for timing problems, not for garden-variety 'I can't sleep'."
+      },
+      {
+        title: "What it treats",
+        teach: "Its sweet spot is circadian rhythm disorders — delayed sleep-phase syndrome, jet lag, shift-work sleep disturbance — plus sleep onset in ASD/ADHD and adjunct roles in delirium prevention and REM sleep behaviour disorder.",
         check: {
-          q: "Melatonin acts at which receptors?",
-          options: ["MT1 and MT2", "GABA-A benzo site", "Orexin OX1/OX2"],
-          answer: "MT1 and MT2",
-          why: "Melatonin is an MT1/MT2 agonist."
+          q: "For which problem is melatonin best suited?",
+          options: ["Circadian rhythm disorders like jet lag", "Acute panic attacks", "Refractory seizures"],
+          answer: "Circadian rhythm disorders like jet lag",
+          why: "As a clock-setter, melatonin fits circadian/timing problems best."
         }
       },
       {
-        title: "Timing beats dose",
-        teach: "For circadian rhythm disorders, WHEN you take it (relative to the body clock) matters more than how much — low doses of 0.5–1 mg are used for phase-shifting. It's a gentle clock-nudger, not a knockout pill.",
+        title: "How you use it — timing is everything",
+        teach: "For circadian/phase-shifting, use a LOW dose — 0.5–1 mg — timed to the shift you want (e.g. early evening for delayed sleep phase). As a plain hypnotic, 2–5 mg at bedtime. The mantra: correct timing matters far more than a bigger dose.",
         check: {
-          q: "For a circadian rhythm disorder, what matters most?",
-          options: ["The timing of the dose", "Taking the highest possible dose", "Taking it with a fatty meal"],
-          answer: "The timing of the dose",
-          why: "Phase-shifting depends on timing relative to the body clock, not dose."
+          q: "For delayed sleep-phase disorder, what matters most?",
+          options: ["When you take it, more than how much", "Taking the highest possible dose", "Taking it with a fatty meal"],
+          answer: "When you take it, more than how much",
+          why: "Melatonin phase-shifts the clock — timing outweighs dose."
         }
       },
       {
-        title: "Canadian nuance",
-        teach: "In Canada melatonin is sold OTC as a Natural Health Product carrying an NPN (Natural Product Number), NOT a DIN. Watch one interaction: fluvoxamine (a potent CYP1A2 inhibitor) sharply raises melatonin levels.",
+        title: "What patients feel",
+        teach: "It's remarkably well tolerated — occasional daytime drowsiness, headache, dizziness, or vivid dreams, and a very wide safety margin with essentially no dependence. Reassure patients it's a gentle clock-setter, not a heavy sedative."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "The one interaction to flag: fluvoxamine. As a potent CYP1A2 inhibitor it dramatically raises melatonin levels — the same CYP1A2 pathway that makes fluvoxamine dangerous with ramelteon. So always ask about fluvoxamine.",
         check: {
-          q: "What regulatory number does OTC melatonin carry in Canada?",
-          options: ["An NPN (Natural Product Number)", "A DIN", "A controlled-substance schedule"],
-          answer: "An NPN (Natural Product Number)",
-          why: "As a Natural Health Product it has an NPN, not a DIN."
+          q: "Which drug markedly increases melatonin exposure via CYP1A2?",
+          options: ["Fluvoxamine", "Metformin", "Amoxicillin"],
+          answer: "Fluvoxamine",
+          why: "Fluvoxamine's CYP1A2 inhibition sharply raises melatonin levels."
         }
+      },
+      {
+        title: "A Canadian nuance",
+        teach: "Here's a distinctly Canadian point: melatonin is sold over-the-counter as a Natural Health Product carrying an NPN (Natural Product Number), NOT a prescription drug with a DIN. Steer patients toward a reputable NPN-labelled product for consistent quality."
       }
     ],
-    trap: "Melatonin (endogenous hormone, OTC/NPN) vs ramelteon (synthetic MT1/MT2 agonist, prescription, US-only).",
-    takeaway: "Melatonin = the OTC (NPN) melatonergic for circadian problems — timing over dose, extremely safe, no dependence."
+    trap: "Don't treat melatonin like a sedative — it's a clock-setter. For circadian disorders, get the timing right before reaching for a bigger dose.",
+    takeaway: "Melatonin = the OTC (NPN) body-clock nudge — best for circadian/jet-lag problems where timing beats dose; watch the fluvoxamine interaction."
   },
 
   ramelteon: {
-    hook: "The prescription melatonergic (US-only): an MT1/MT2 agonist for sleep onset, defined by one interaction — fluvoxamine.",
+    hook: "A prescription melatonin-receptor agonist for sleep onset — non-controlled, no abuse potential, but fluvoxamine is a hard contraindication.",
     steps: [
       {
-        title: "What it is",
-        teach: "Ramelteon is a selective, high-affinity melatonin MT1/MT2 receptor agonist — a pharmaceutical melatonergic that promotes sleep ONSET. It has no abuse potential and is NOT a controlled substance.",
+        title: "The big picture",
+        teach: "Ramelteon is a synthetic, pharmaceutical version of melatonin — a selective melatonin-receptor agonist. One thing to know up front: it's US-only and NOT marketed in Canada. We cover it mainly for awareness and to contrast with the OTC melatonin you can actually buy here."
+      },
+      {
+        title: "What it treats",
+        teach: "It's used for sleep-onset insomnia — trouble falling asleep — rather than staying asleep. Think of it as a targeted 'help me get to sleep' agent."
+      },
+      {
+        title: "How you use it",
+        teach: "The dose is a fixed 8 mg taken within 30 minutes of bedtime — no titration, that's the only dose. Avoid taking it with or right after a high-fat meal, which delays absorption."
+      },
+      {
+        title: "The safety selling point",
+        teach: "Its big advantage: no abuse potential. Unlike Z-drugs and benzodiazepines, ramelteon is NOT a controlled substance — a genuinely appealing feature for a hypnotic.",
         check: {
-          q: "Ramelteon's mechanism?",
-          options: ["MT1/MT2 melatonin agonist", "GABA-A benzo-site modulator", "Orexin antagonist"],
-          answer: "MT1/MT2 melatonin agonist",
-          why: "Ramelteon is a synthetic MT1/MT2 agonist."
+          q: "How does ramelteon differ from Z-drugs and benzodiazepines?",
+          options: ["It's not a controlled substance", "It's more addictive", "It requires triplicate prescriptions"],
+          answer: "It's not a controlled substance",
+          why: "With no abuse potential, ramelteon isn't scheduled like the benzo-site hypnotics."
         }
       },
       {
-        title: "The fluvoxamine trap",
-        teach: "Ramelteon is metabolised by CYP1A2. Fluvoxamine — a potent CYP1A2 inhibitor — raises ramelteon exposure enormously (~100-fold+) and is CONTRAINDICATED. This is the signature ramelteon interaction.",
+        title: "The must-not-miss",
+        teach: "The signature ramelteon fact: fluvoxamine is CONTRAINDICATED. As a potent CYP1A2 inhibitor, fluvoxamine raises ramelteon exposure enormously. This is the same CYP1A2 story you saw with melatonin — but here it's a hard 'do not combine'.",
         check: {
-          q: "Which drug is contraindicated with ramelteon (CYP1A2)?",
-          options: ["Fluvoxamine", "Grapefruit juice", "Rifampin"],
+          q: "Which drug must NOT be combined with ramelteon?",
+          options: ["Fluvoxamine", "Ibuprofen", "Loratadine"],
           answer: "Fluvoxamine",
-          why: "Fluvoxamine's potent CYP1A2 inhibition makes it contraindicated."
+          why: "Fluvoxamine's CYP1A2 inhibition raises ramelteon levels enormously — contraindicated."
         }
       },
       {
-        title: "Positioning",
-        teach: "Ramelteon is US-only (not marketed in Canada) — included for contrast with OTC melatonin. It's a fixed 8 mg dose with no titration, taken within 30 min of bedtime.",
-        check: {
-          q: "Is ramelteon a controlled substance?",
-          options: ["No — no abuse potential", "Yes — Schedule IV", "Yes — same as barbiturates"],
-          answer: "No — no abuse potential",
-          why: "Melatonergics like ramelteon aren't controlled substances."
-        }
+        title: "Chronic-use watch",
+        teach: "With long-term use, ramelteon can nudge endocrine hormones — raising prolactin and lowering testosterone — so with chronic use ask about menstrual changes, libido, or galactorrhea. It also carries the class caution about worsening depression or suicidal ideation."
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "It's a selective, high-affinity agonist at melatonin MT1/MT2 receptors — a pharmaceutical melatonergic. It promotes sleep onset with zero GABA or benzodiazepine activity, which is exactly why it isn't habit-forming."
       }
     ],
-    trap: "Ramelteon (Rx melatonergic, US-only, MT1/MT2) vs melatonin (OTC/NPN hormone) vs the DORAs (orexin antagonists).",
-    takeaway: "Ramelteon = the non-controlled prescription MT1/MT2 agonist for sleep onset — remember it's contraindicated with fluvoxamine (CYP1A2)."
+    trap: "Ramelteon's defining exam fact is the fluvoxamine (CYP1A2) contraindication — and remember it's US-only, unlike OTC melatonin.",
+    takeaway: "Ramelteon = a non-controlled MT1/MT2 agonist for sleep onset (US-only) — no abuse potential, but fluvoxamine is contraindicated."
   },
 
   phenobarbital: {
-    hook: "The barbiturate outlier: it prolongs GABA channel DURATION with no ceiling, induces everything, and kills in overdose.",
+    hook: "The dangerous outlier of the hypnotics: a barbiturate with no overdose ceiling, potent enzyme induction, and potentially fatal withdrawal.",
     steps: [
       {
-        title: "What it is",
-        teach: "Phenobarbital is a long-acting barbiturate — a positive modulator at a distinct GABA-A site that increases the DURATION of Cl- channel opening (contrast benzodiazepines, which increase channel-opening FREQUENCY). It's a Controlled Drug.",
+        title: "The big picture",
+        teach: "Phenobarbital is a long-acting barbiturate — and it's the dangerous outlier of the anxiolytic/hypnotic families. Everything the modern non-benzo sleep aids were designed to AVOID, phenobarbital has: a narrow therapeutic index, deadly overdoses, and severe withdrawal. Its calming/sedative use is now largely historical."
+      },
+      {
+        title: "What it treats",
+        teach: "Today its real jobs are neurological and detox: seizure disorders (including status epilepticus and neonatal seizures), and — off-label but protocolized — alcohol/sedative-hypnotic withdrawal and refractory benzodiazepine withdrawal.",
         check: {
-          q: "At GABA-A, barbiturates increase the ___ of Cl- channel opening.",
-          options: ["Duration", "Frequency", "Voltage threshold"],
-          answer: "Duration",
-          why: "Barbiturates prolong opening (duration); benzos increase frequency."
+          q: "What is a current, legitimate use of phenobarbital?",
+          options: ["Seizure disorders and protocolized withdrawal", "First-line for everyday insomnia", "PRN anxiety in the clinic"],
+          answer: "Seizure disorders and protocolized withdrawal",
+          why: "Its modern role is seizures and supervised withdrawal — not routine sedation."
         }
       },
       {
-        title: "No ceiling → lethal overdose",
-        teach: "At high concentrations phenobarbital opens the Cl- channel directly, independent of GABA → there is NO ceiling effect → profound CNS and respiratory depression. Its overdose lethality is HIGH — the sharp contrast to overdose-safe benzodiazepines.",
+        title: "When you'd reach for it",
+        teach: "You wouldn't pick phenobarbital for garden-variety anxiety or insomnia — the safer non-benzo options exist precisely to replace it. It's reserved for seizures or carefully protocolized withdrawal, under close monitoring.",
         check: {
-          q: "Why is phenobarbital overdose far more lethal than a benzodiazepine overdose?",
-          options: ["No ceiling effect → profound respiratory depression", "It causes fatal QT prolongation", "It blocks orexin receptors"],
-          answer: "No ceiling effect → profound respiratory depression",
-          why: "Direct GABA-independent channel opening removes the safety ceiling."
+          q: "Why is phenobarbital NOT a routine choice for insomnia?",
+          options: ["Narrow index, lethal overdose, dangerous withdrawal", "It's too weak to help", "It has no drug interactions"],
+          answer: "Narrow index, lethal overdose, dangerous withdrawal",
+          why: "Its danger profile is exactly why safer hypnotics replaced it."
         }
       },
       {
-        title: "Flumazenil won't help",
-        teach: "Phenobarbital is not a benzo-site drug, so flumazenil does NOT reverse it. Management is supportive: airway/ventilation, multi-dose activated charcoal, and urinary alkalinization.",
+        title: "How you use it",
+        teach: "Dosing is level-guided. Maintenance is roughly 1–3 mg/kg/day (often 60–200 mg/day in adults); status epilepticus loads at ~15–20 mg/kg IV. Its long half-life allows once-daily dosing, but the narrow therapeutic index means you titrate slowly to a target serum level (~65–172 µmol/L)."
+      },
+      {
+        title: "The no-ceiling danger",
+        teach: "Here's the lethal difference from benzos. At normal doses phenobarbital enhances GABA. But at HIGH doses it opens the chloride channel directly, independent of GABA — so there's NO ceiling effect, and overdose causes profound respiratory depression and death. And flumazenil does NOT reverse it (it's not a benzo-site drug).",
         check: {
-          q: "Does flumazenil reverse phenobarbital overdose?",
-          options: ["No — it's not a benzo-site drug", "Yes — same as benzos", "Only if given IV early"],
-          answer: "No — it's not a benzo-site drug",
-          why: "Flumazenil reverses benzo-site agents only, not barbiturates."
+          q: "Why is phenobarbital overdose more lethal than a benzodiazepine overdose?",
+          options: ["No ceiling effect — it opens the Cl- channel directly", "Flumazenil easily reverses it", "It can't cause respiratory depression"],
+          answer: "No ceiling effect — it opens the Cl- channel directly",
+          why: "Direct GABA-independent channel opening means no safety ceiling."
         }
       },
       {
-        title: "Potent enzyme inducer",
-        teach: "Phenobarbital is a potent, broad-spectrum CYP inducer (3A4, 2C, 1A2, UGT). It lowers levels of warfarin (INR falls), oral contraceptives (contraceptive FAILURE), corticosteroids and many others — a classic, high-yield interaction.",
+        title: "The must-not-miss interaction",
+        teach: "Phenobarbital is a potent, broad inducer of liver CYP enzymes — it speeds up the metabolism of many other drugs. It's the classic cause of oral-contraceptive failure and of falling warfarin levels (dropping INR). Always review every co-medication for induction interactions.",
         check: {
-          q: "A classic consequence of phenobarbital's enzyme induction is…",
-          options: ["Oral-contraceptive failure", "Serotonin syndrome", "Raised warfarin levels / bleeding"],
-          answer: "Oral-contraceptive failure",
-          why: "Induction lowers contraceptive levels, causing failure (and falling INR)."
+          q: "A patient on phenobarbital and warfarin — what happens to the INR?",
+          options: ["It falls (enzyme induction lowers warfarin levels)", "It rises dangerously high", "Phenobarbital doesn't affect warfarin"],
+          answer: "It falls (enzyme induction lowers warfarin levels)",
+          why: "CYP induction speeds warfarin metabolism, dropping levels and INR."
         }
       },
       {
-        title: "Dependence & withdrawal",
-        teach: "Phenobarbital causes tolerance and dependence, and its withdrawal (anxiety, tremor, seizures, delirium) can be FATAL — always taper. Its half-life is very long (~2–5 days).",
-        check: {
-          q: "How must phenobarbital be discontinued?",
-          options: ["Taper — abrupt stop risks fatal withdrawal", "Stop abruptly, it's safe", "Switch straight to alcohol"],
-          answer: "Taper — abrupt stop risks fatal withdrawal",
-          why: "Barbiturate withdrawal (seizures, delirium) can be fatal; always taper."
-        }
+        title: "The withdrawal trap",
+        teach: "Never stop phenobarbital suddenly. Like other sedative-hypnotics it causes physical dependence, and abrupt withdrawal can trigger seizures and delirium that are potentially fatal. Any taper must be slow and supervised — this is a counselling point to hammer home."
+      },
+      {
+        title: "Monitoring & mechanism",
+        teach: "Mechanistically it prolongs the DURATION of chloride-channel opening (benzos increase the FREQUENCY) — a neat contrast to file away. Monitor serum levels, sedation and respiratory status, a CBC (megaloblastic anemia from folate effects), and vitamin D/bone health with chronic use, since long-term phenobarbital can cause osteomalacia."
       }
     ],
-    trap: "Phenobarbital (barbiturate — enzyme INDUCER, GABA DURATION, overdose-lethal, flumazenil-resistant) vs a benzodiazepine (GABA FREQUENCY, overdose-safe, flumazenil-reversible).",
-    takeaway: "Phenobarbital = the dangerous barbiturate outlier: prolongs Cl- channel duration with no ceiling, a potent CYP inducer, lethal in overdose, and fatal to stop abruptly."
+    trap: "Phenobarbital is not a benzo: flumazenil won't reverse an overdose, there's no ceiling effect, and abrupt withdrawal can kill. Never confuse its danger profile with the safer non-benzo hypnotics.",
+    takeaway: "Phenobarbital = the barbiturate outlier — no overdose ceiling, potent CYP induction (OCP/warfarin failure), and potentially fatal withdrawal; reserved for seizures and protocolized detox."
   }
 };

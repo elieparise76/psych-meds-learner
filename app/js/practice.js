@@ -190,6 +190,7 @@
     var exercises = opts.exercises;
     var i = 0, correctCount = 0;
     PML.game.resetCombo();
+    if (PML.sfxOn()) PML.sfx.start();
     PML.store.get().stats.sessions = (PML.store.get().stats.sessions || 0) + 1;
 
     function finish() {

@@ -1,597 +1,740 @@
-// Benzodiazepine micro-lessons. Key = molecule id. Facts grounded in data/deck.json.
-// Class spine: GABA-A positive allosteric modulation; dependence/withdrawal (seizures on
-// abrupt stop); falls/cognition in the elderly (Beers); RESPIRATORY DEPRESSION + death with
-// opioids/alcohol (boxed warning); flumazenil reversal. Half-life class + the "LOT"
-// glucuronidation-only liver-safe trio (Lorazepam/Oxazepam/Temazepam).
+// Benzodiazepine micro-lessons (v2, clinical-first). Key = molecule id.
+// Facts grounded in data/deck.json — never invent doses/levels/warnings.
+// Class spine (woven in, not led with): short-term use only; DEPENDENCE/tolerance/
+// withdrawal (seizures on abrupt stop → taper); falls/cognition in the elderly (Beers);
+// deadly respiratory depression + death with opioids/alcohol (boxed warning); flumazenil
+// reversal. Practical half-life framing (anxiety vs sleep vs withdrawal) and the liver-safe
+// glucuronidation-only "LOT" trio (Lorazepam/Oxazepam/Temazepam). One brief mechanism step max.
 export default {
   lorazepam: {
-    hook: "The versatile, liver-safe workhorse: glucuronidated so it spares the sick liver, and IM/IV for status epilepticus.",
+    hook: "The versatile, liver-safe benzo you can push IM or IV — the go-to for status epilepticus, agitation, and alcohol withdrawal.",
     steps: [
       {
-        title: "What it is",
-        teach: "Lorazepam is a benzodiazepine — a positive allosteric modulator at GABA-A that increases the frequency of chloride-channel opening, giving sedation, anxiolysis, and anticonvulsant effect.",
-        check: {
-          q: "How do benzodiazepines act at GABA-A?",
-          options: ["Positive allosteric modulator (↑ Cl⁻ channel opening frequency)", "Directly open the channel as a GABA agonist", "Block glutamate NMDA receptors"],
-          answer: "Positive allosteric modulator (↑ Cl⁻ channel opening frequency)",
-          why: "Benzos don't open the channel alone — they potentiate GABA, raising opening frequency."
-        }
+        title: "The big picture",
+        teach: "Lorazepam is the benzodiazepine workhorse of the hospital. Most benzos are oral-only, but lorazepam is reliably absorbed IM and IV too — so it's the one you reach for when a patient can't or won't swallow a pill and you need calm fast."
       },
       {
-        title: "The LOT trio",
-        teach: "Lorazepam is glucuronidated (UGT) to an inactive metabolite — NO oxidative CYP step. With Oxazepam and Temazepam it forms the \"LOT\" trio: preserved in liver disease and preferred in the elderly.",
-        check: {
-          q: "Why is lorazepam preferred in hepatic impairment?",
-          options: ["Glucuronidation only — no CYP oxidation, no active metabolite", "It is renally cleared unchanged", "It has no sedative effect"],
-          answer: "Glucuronidation only — no CYP oxidation, no active metabolite",
-          why: "LOT agents skip the oxidative CYP step that fails in liver disease."
-        }
+        title: "What it treats",
+        teach: "On-label it covers anxiety, insomnia from anxiety, and pre-op sedation. Its real fame is off-label though: status epilepticus, acute agitation, alcohol withdrawal, the \"lorazepam challenge\" for catatonia, and chemo-related nausea."
       },
       {
-        title: "IM / IV / status",
-        teach: "Reliable IM and IV absorption makes lorazepam first-line for acute agitation and the IV benzo of choice for status epilepticus. It's also the \"lorazepam challenge\" agent in suspected catatonia.",
+        title: "When to reach for it",
+        teach: "Because it's dependable by IV, lorazepam is first-line for benzodiazepine-treated status epilepticus and a top pick for acute agitation.",
         check: {
-          q: "First-line IV benzodiazepine for status epilepticus?",
-          options: ["Lorazepam", "Oral diazepam", "Temazepam"],
+          q: "A patient is in status epilepticus with IV access. Which benzo is first-line?",
+          options: ["Lorazepam", "Oral temazepam", "Oral alprazolam"],
           answer: "Lorazepam",
-          why: "Reliable parenteral absorption plus anticonvulsant effect makes IV lorazepam the go-to."
+          why: "Reliable parenteral absorption plus an anticonvulsant effect makes IV lorazepam the go-to."
         }
       },
       {
-        title: "Deadly with opioids",
-        teach: "Boxed warning: combined with opioids (or alcohol) benzos cause profound sedation, respiratory depression, coma, and death. Flumazenil can reverse benzo sedation but is used cautiously (can precipitate seizures).",
+        title: "How you use it",
+        teach: "For anxiety, start low — about 0.5–1 mg PO two or three times a day, lowest dose for the shortest time. In an emergency it's 1–2 mg IV or IM, repeated per protocol. Its intermediate half-life (~10–20 h) means BID–TID dosing.",
+        check: {
+          q: "Why does lorazepam usually need BID–TID dosing rather than once daily?",
+          options: ["Its half-life is only intermediate (~10–20 h)", "It has no effect after the first dose", "It is excreted unchanged by the kidney"],
+          answer: "Its half-life is only intermediate (~10–20 h)",
+          why: "A shorter half-life than the long-acting benzos means it must be redosed through the day."
+        }
+      },
+      {
+        title: "The LOT liver tip",
+        teach: "Here's a clinical gem: lorazepam is cleared by glucuronidation only — no oxidative CYP step, no active metabolite. With Oxazepam and Temazepam it forms the liver-safe \"LOT\" trio, the benzos of choice in cirrhosis and in the elderly.",
+        check: {
+          q: "Which trio is preferred in liver disease because it skips oxidative metabolism?",
+          options: ["Lorazepam, Oxazepam, Temazepam (LOT)", "Diazepam, Clorazepate, Chlordiazepoxide", "Midazolam, Triazolam, Alprazolam"],
+          answer: "Lorazepam, Oxazepam, Temazepam (LOT)",
+          why: "Glucuronidation-only clearance with no active metabolite spares the failing liver."
+        }
+      },
+      {
+        title: "The must-not-miss",
+        teach: "This is the high-stakes one. Combined with opioids or alcohol, benzos cause profound sedation, respiratory depression, coma, and death — that's the boxed warning. Flumazenil can reverse benzo sedation but is used cautiously, as it can precipitate seizures.",
         check: {
           q: "Which combination carries the boxed warning for fatal respiratory depression?",
-          options: ["Benzodiazepine + opioid", "Benzodiazepine + SSRI", "Benzodiazepine + metformin"],
-          answer: "Benzodiazepine + opioid",
-          why: "Additive CNS/respiratory depression with opioids (and alcohol) can be lethal."
+          options: ["Lorazepam + an opioid or alcohol", "Lorazepam + an SSRI", "Lorazepam + food"],
+          answer: "Lorazepam + an opioid or alcohol",
+          why: "Additive CNS and respiratory depression with opioids or alcohol can be lethal."
         }
       },
       {
-        title: "Dependence & falls",
-        teach: "Regular use causes dependence; abrupt stop risks withdrawal SEIZURES, so taper. In the elderly it drives falls, fractures, and cognitive impairment — a Beers-list drug.",
-        check: {
-          q: "Why must you never stop a chronic benzodiazepine abruptly?",
-          options: ["Risk of withdrawal seizures", "Risk of hypertensive crisis", "Risk of agranulocytosis"],
-          answer: "Risk of withdrawal seizures",
-          why: "GABAergic dependence means abrupt cessation can trigger seizures — taper instead."
-        }
+        title: "Dependence & the elderly",
+        teach: "Regular use breeds tolerance and dependence, so stop abruptly and you risk withdrawal seizures — always taper. In older adults it drives falls, fractures, and confusion, which is why it sits on the Beers list. Short-term use is the whole game."
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Under the hood, lorazepam is a positive allosteric modulator at GABA-A: it doesn't open the chloride channel itself, it makes GABA open it more often — dialing up the brain's main \"brake\" for sedation, anxiolysis, and seizure control."
       }
     ],
-    takeaway: "Lorazepam = the glucuronidated (LOT) liver-safe workhorse, IM/IV for status and agitation — mind opioids, falls, and withdrawal seizures."
+    trap: "Lorazepam is glucuronidated (a LOT agent) — don't lump it with diazepam or chlordiazepoxide, which accumulate in the elderly and in liver disease.",
+    takeaway: "Lorazepam = the liver-safe, IM/IV workhorse — first-line for status epilepticus, agitation, and withdrawal, and a LOT agent for the elderly."
   },
 
   clonazepam: {
-    hook: "The long-acting, high-potency benzo for panic — and the classic cross-taper agent to get patients off alprazolam.",
+    hook: "The long-acting, high-potency benzo for panic and seizures — and the smooth agent you cross-taper people onto to escape alprazolam.",
     steps: [
       {
-        title: "Long & high-potency",
-        teach: "Clonazepam is a long-acting (~18–50 h), high-potency GABA-A positive allosteric modulator. The long half-life and BID dosing give steadier levels and less interdose rebound than alprazolam.",
+        title: "The big picture",
+        teach: "Clonazepam is a high-potency, long-acting benzo. That long half-life gives steadier blood levels and smoother coverage than short-acting agents, so patients feel fewer peaks and troughs across the day."
+      },
+      {
+        title: "What it treats",
+        teach: "On-label it's approved for panic disorder and for seizure disorders — absence, myoclonic, Lennox-Gastaut. Off-label it's used for anxiety, as an adjunct in acute mania, and for REM sleep behaviour disorder, restless legs, and akathisia."
+      },
+      {
+        title: "Its dual role",
+        teach: "Clonazepam is unusual: it's both an effective anxiolytic AND a genuine anticonvulsant, one of the few benzos formally used long-term in epilepsy.",
         check: {
-          q: "Clonazepam's half-life class?",
-          options: ["Long-acting (~18–50 h)", "Ultra-short (~1–3 h)", "No measurable half-life"],
-          answer: "Long-acting (~18–50 h)",
-          why: "It sits in the long-acting class, giving steady levels."
+          q: "What makes clonazepam stand out among the anxiolytic benzos?",
+          options: ["It's both an anxiolytic and an anticonvulsant used long-term for epilepsy", "It's the shortest-acting benzo", "It has no dependence risk"],
+          answer: "It's both an anxiolytic and an anticonvulsant used long-term for epilepsy",
+          why: "That dual role is exactly why it appears in both panic and seizure regimens."
         }
       },
       {
-        title: "Panic & cross-taper",
-        teach: "Its long, steady action makes it a mainstay for panic disorder and the preferred agent to cross-taper patients OFF short-acting benzos like alprazolam. It's also a genuine long-term anticonvulsant.",
+        title: "How you use it",
+        teach: "For panic, start around 0.25–0.5 mg PO twice daily and increase every few days; seizure dosing runs higher. Thanks to the long half-life (~18–50 h), once steady state is reached, BID dosing gives smooth levels with far less interdose rebound than alprazolam."
+      },
+      {
+        title: "The cross-taper pearl",
+        teach: "This is a favourite trick: to get someone off a difficult short-acting benzo like alprazolam, you can cross-taper them onto longer-acting clonazepam first, then taper that down slowly.",
         check: {
-          q: "Why is clonazepam used to cross-taper someone off alprazolam?",
-          options: ["Its long half-life smooths withdrawal", "It is a stimulant", "It blocks serotonin reuptake"],
-          answer: "Its long half-life smooths withdrawal",
-          why: "Switching a short-acting benzo to long-acting clonazepam reduces interdose rebound during taper."
+          q: "Why is clonazepam useful when discontinuing alprazolam?",
+          options: ["Its long half-life smooths the taper off a short-acting benzo", "It blocks alprazolam's receptor", "It has no cross-tolerance with alprazolam"],
+          answer: "Its long half-life smooths the taper off a short-acting benzo",
+          why: "Switching to a long-acting agent avoids the sharp interdose crashes that make short-benzo tapers fail."
         }
       },
       {
-        title: "Class safety",
-        teach: "Like every benzo: fatal respiratory depression with opioids/alcohol, dependence with withdrawal seizures on abrupt stop, and falls/cognitive impairment in the elderly (Beers).",
+        title: "The must-not-miss",
+        teach: "Same class red flags: with opioids or alcohol it can cause fatal respiratory depression (boxed warning), and after regular use, abrupt cessation risks withdrawal seizures — so always taper.",
         check: {
-          q: "Stopping chronic clonazepam abruptly risks…?",
-          options: ["Withdrawal seizures", "Rebound hypertension only", "Nothing — it self-tapers instantly"],
-          answer: "Withdrawal seizures",
-          why: "Benzodiazepine dependence means abrupt cessation can seize — taper."
+          q: "What must you never do with a patient on regular clonazepam?",
+          options: ["Stop it abruptly — withdrawal seizures can occur", "Take it with food", "Give it twice daily"],
+          answer: "Stop it abruptly — withdrawal seizures can occur",
+          why: "GABAergic dependence means sudden cessation can trigger seizures; taper instead."
         }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Like all benzos, clonazepam is a GABA-A positive allosteric modulator, boosting how often GABA opens the chloride channel. What sets it apart is high potency plus a long duration — hence smooth, steady effect."
       }
     ],
-    trap: "CLONAZEPAM (benzodiazepine) vs CLOZAPINE (atypical antipsychotic needing ANC monitoring) — sound-alike, utterly different drugs.",
-    takeaway: "Clonazepam = long-acting, high-potency benzo for panic and for cross-tapering off alprazolam — don't confuse it with clozapine."
+    trap: "Watch for behavioural changes and irritability, especially in children — clonazepam can paradoxically worsen mood and behaviour.",
+    takeaway: "Clonazepam = the long-acting, high-potency benzo for panic and epilepsy — steady BID dosing and the ideal bridge to taper someone off alprazolam."
   },
 
   diazepam: {
-    hook: "The lipophilic, fast-onset, LONG-tail benzo — self-tapers via desmethyldiazepam but accumulates dangerously in the elderly.",
+    hook: "Fast in, slow out: rapid lipophilic onset then a marathon nordiazepam tail — great for withdrawal and tapers, risky in the elderly.",
     steps: [
       {
-        title: "Fast in, slow out",
-        teach: "Diazepam is highly lipophilic → very rapid CNS onset, but it's oxidized to the ACTIVE metabolite desmethyldiazepam (nordiazepam, half-life up to ~200 h) → a long, self-tapering tail.",
+        title: "The big picture",
+        teach: "Diazepam is the grandfather benzo. It's very lipophilic, so it hits the brain fast, but it's metabolized to long-lived active metabolites that give it a very long, self-tapering tail."
+      },
+      {
+        title: "What it treats",
+        teach: "It's a genuine multitool: anxiety, skeletal muscle spasm, seizure disorders and status epilepticus (it even comes as a rectal and IV form), alcohol withdrawal, and procedural or pre-op sedation."
+      },
+      {
+        title: "The long tail",
+        teach: "Diazepam's active metabolite, desmethyldiazepam (nordiazepam), lasts up to ~200 h. That long tail means the drug self-tapers as it clears — handy for a smooth alcohol-withdrawal course or for weaning off shorter benzos.",
         check: {
-          q: "What gives diazepam its long duration and self-taper?",
-          options: ["The long-lived active metabolite desmethyldiazepam", "Glucuronidation to an inactive metabolite", "Renal excretion unchanged"],
-          answer: "The long-lived active metabolite desmethyldiazepam",
-          why: "Nordiazepam (up to ~200 h) prolongs and smooths its effect."
+          q: "Why does diazepam give a smooth, self-tapering course?",
+          options: ["Its active metabolite nordiazepam lasts up to ~200 h", "It's cleared within a couple of hours", "It has no active metabolites"],
+          answer: "Its active metabolite nordiazepam lasts up to ~200 h",
+          why: "The long-lived metabolite means levels fall gradually on their own as the drug clears."
         }
       },
       {
-        title: "Withdrawal & spasm uses",
-        teach: "The smooth long tail makes diazepam a classic for alcohol withdrawal, tapering off shorter benzos, muscle spasm, and acute seizures (rapid lipophilic onset).",
+        title: "When to reach for it",
+        teach: "Its fast onset suits acute muscle spasm and seizures, while the long tail suits a fixed-dose alcohol-withdrawal taper in a patient with a healthy liver.",
         check: {
-          q: "Which use suits diazepam's fast onset + long tail?",
-          options: ["Alcohol-withdrawal management", "First-line SSRI for depression", "Antipsychotic maintenance"],
-          answer: "Alcohol-withdrawal management",
-          why: "Rapid onset plus a self-tapering active metabolite fits withdrawal."
+          q: "A well-nourished patient with normal liver function needs a smooth alcohol-withdrawal taper. Why does diazepam fit?",
+          options: ["Its long metabolite tail lets levels fall gradually, self-tapering", "It has no anticonvulsant activity", "It must be given IV only"],
+          answer: "Its long metabolite tail lets levels fall gradually, self-tapering",
+          why: "Long-acting agents cushion withdrawal; but you'd avoid them if the liver were impaired."
         }
       },
       {
-        title: "Elderly accumulation",
-        teach: "The opposite of the LOT agents: active-metabolite accumulation causes oversedation and falls in the elderly and in hepatic disease. Beers-list — avoid; switch to lorazepam/oxazepam.",
+        title: "How you use it",
+        teach: "Oral dosing is roughly 2–10 mg two to four times a day depending on the indication; seizures and withdrawal use IV per protocol. Warn patients that drowsiness and effect build over days because of the accumulating metabolites."
+      },
+      {
+        title: "The elderly pitfall",
+        teach: "That accumulation is the catch. In older or hepatic patients diazepam piles up, causing oversedation and falls — the exact opposite of the LOT agents. In those patients you'd switch to lorazepam or oxazepam instead.",
         check: {
-          q: "Why avoid diazepam in the frail elderly?",
-          options: ["Active-metabolite accumulation → oversedation/falls", "It has no CNS effect in the elderly", "It is renally toxic"],
-          answer: "Active-metabolite accumulation → oversedation/falls",
-          why: "Long-lived nordiazepam builds up, driving sedation and falls."
+          q: "Why is diazepam a poor choice in a frail elderly patient?",
+          options: ["Its long-lived metabolites accumulate, causing oversedation and falls", "It has no active metabolite", "It can't be given orally"],
+          answer: "Its long-lived metabolites accumulate, causing oversedation and falls",
+          why: "Accumulation in the elderly and in liver disease is diazepam's signature hazard."
         }
       },
       {
-        title: "Class safety",
-        teach: "Fatal respiratory depression with opioids/alcohol (boxed warning); dependence with withdrawal seizures on abrupt stop; flumazenil reverses acute benzo sedation.",
+        title: "The must-not-miss",
+        teach: "The class boxed warning applies in full: with opioids or alcohol, diazepam can cause profound respiratory depression and death, and abrupt cessation after regular use risks withdrawal seizures.",
         check: {
-          q: "What reverses benzodiazepine sedation?",
-          options: ["Flumazenil", "Naloxone", "Physostigmine"],
-          answer: "Flumazenil",
-          why: "Flumazenil is the benzodiazepine antagonist (naloxone is for opioids)."
+          q: "Which pairing is most dangerous with diazepam?",
+          options: ["Opioids or alcohol — risk of fatal respiratory depression", "An SSRI", "A proton-pump inhibitor"],
+          answer: "Opioids or alcohol — risk of fatal respiratory depression",
+          why: "Additive CNS and respiratory depression is the lethal combination."
         }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Diazepam is a GABA-A positive allosteric modulator like the rest, but its extreme lipophilicity is the practical twist — it enters the brain very quickly, which is why the onset feels so fast."
       }
     ],
-    trap: "Diazepam vs lorazepam — diazepam accumulates via active metabolites; lorazepam is glucuronidated and liver-safe.",
-    takeaway: "Diazepam = fast-onset, long-tail (nordiazepam) benzo for withdrawal/spasm/seizures — but it accumulates in the elderly and liver disease."
+    trap: "That quick, pleasant onset is deceptive — the long metabolite tail accumulates, so diazepam is exactly the wrong benzo for the elderly or hepatic patient.",
+    takeaway: "Diazepam = fast-onset, long-tail benzo — excellent for muscle spasm, seizures, and withdrawal tapers, but it accumulates and is a poor pick in the elderly/liver disease."
   },
 
   alprazolam: {
-    hook: "Short half-life + high potency + fast onset = the benzo with the worst interdose rebound, dependence, and dangerous taper.",
+    hook: "Short, potent, and fast-hitting — which is exactly why it's the benzo most prone to interdose rebound, dependence, and a dangerous taper.",
     steps: [
       {
-        title: "The rebound trap",
-        teach: "Alprazolam is short-acting (~11–16 h), high-potency, and fast-onset — the combination most linked to interdose rebound anxiety, dependence, and a difficult, dangerous taper.",
+        title: "The big picture",
+        teach: "Alprazolam is short-acting, high-potency, and fast-onset. That combination feels great to patients — quick relief — but it's also precisely what makes it the most habit-forming and hardest-to-stop of the anxiolytic benzos."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for panic disorder and anxiety, and used short-term for generalized anxiety. In practice, though, benzos aren't first-line for these — SSRIs/SNRIs are — and alprazolam's profile makes it one you use cautiously and briefly."
+      },
+      {
+        title: "Why it's trouble",
+        teach: "Because it clears fast, levels dip between doses and patients feel interdose rebound anxiety — which tempts dose escalation. Short half-life plus high potency plus fast onset is the recipe for dependence and a difficult, dangerous withdrawal.",
         check: {
-          q: "Why is alprazolam the most dependence-prone anxiolytic benzo?",
-          options: ["Short half-life + high potency + fast onset", "It is long-acting and low-potency", "It has no CNS penetration"],
+          q: "Why is alprazolam especially linked to dependence and rebound?",
+          options: ["Short half-life + high potency + fast onset", "It's long-acting with a gentle onset", "It has no effect on GABA-A"],
           answer: "Short half-life + high potency + fast onset",
-          why: "Rapid peaks and troughs drive interdose rebound and reinforcement."
+          why: "Fast rise-and-fall levels drive interdose rebound and reinforce escalating use."
         }
       },
       {
-        title: "CYP3A4 substrate",
-        teach: "Alprazolam is metabolized by CYP3A4. Strong 3A4 inhibitors (azoles, protease inhibitors, clarithromycin, nefazodone) markedly raise levels and toxicity; inducers like carbamazepine lower them.",
+        title: "How you use it",
+        teach: "Start low — about 0.25–0.5 mg PO three times a day for the immediate-release form, lower in the elderly. The short half-life forces frequent dosing (an XR form blunts the peaks and troughs). The key counselling point: take exactly as prescribed and do not escalate."
+      },
+      {
+        title: "A CYP3A4 gotcha",
+        teach: "Alprazolam is a CYP3A4 substrate, so strong 3A4 inhibitors — azole antifungals, protease inhibitors, clarithromycin, even grapefruit-type effects — markedly raise its levels. Strong 3A4 inhibitors are actually contraindicated.",
         check: {
-          q: "Which enzyme metabolizes alprazolam?",
-          options: ["CYP3A4", "UGT glucuronidation only", "CYP2D6"],
-          answer: "CYP3A4",
-          why: "3A4 metabolism means many interactions — unlike the glucuronidated LOT agents."
+          q: "Which drug interaction most raises alprazolam levels?",
+          options: ["Strong CYP3A4 inhibitors (azoles, protease inhibitors)", "CYP3A4 inducers", "Antacids"],
+          answer: "Strong CYP3A4 inhibitors (azoles, protease inhibitors)",
+          why: "As a 3A4 substrate, alprazolam accumulates when that enzyme is blocked."
         }
       },
       {
-        title: "How to stop it",
-        teach: "Don't stop abruptly — withdrawal seizures. To discontinue, cross-taper to a longer-acting benzo (clonazepam) first for a smoother course.",
+        title: "Getting off it",
+        teach: "Because a direct taper off alprazolam is so rebound-prone, the classic move is to cross-taper onto a longer-acting benzo like clonazepam first, then taper slowly. Never stop abruptly — withdrawal seizures can occur.",
         check: {
-          q: "Preferred way to discontinue chronic alprazolam?",
-          options: ["Cross-taper to a longer-acting benzo (e.g., clonazepam)", "Stop it abruptly overnight", "Double the dose then stop"],
-          answer: "Cross-taper to a longer-acting benzo (e.g., clonazepam)",
-          why: "A longer-acting agent smooths the taper and reduces rebound/seizure risk."
+          q: "What's the safer strategy to discontinue chronic alprazolam?",
+          options: ["Cross-taper to longer-acting clonazepam, then taper slowly", "Stop it in one day", "Double the dose then stop"],
+          answer: "Cross-taper to longer-acting clonazepam, then taper slowly",
+          why: "Switching to a long-acting agent smooths the rebound that makes alprazolam tapers fail."
         }
       },
       {
-        title: "Class safety",
-        teach: "Boxed warning: profound respiratory depression, coma, and death with opioids or alcohol. Falls and cognitive impairment in the elderly (Beers).",
-        check: {
-          q: "Alprazolam plus which agent is a boxed-warning fatal combination?",
-          options: ["Opioids", "Beta-blockers", "Statins"],
-          answer: "Opioids",
-          why: "Additive respiratory depression with opioids can be lethal."
-        }
+        title: "The must-not-miss",
+        teach: "As with every benzo, the boxed warning is opioids and alcohol: profound sedation, respiratory depression, coma, and death. With alprazolam's potency and abuse potential, that risk is very real."
       }
     ],
-    trap: "Alprazolam vs lorazepam — alprazolam is CYP3A4, higher-potency, with worse rebound/dependence; lorazepam is glucuronidated, liver-safe, and IM/IV.",
-    takeaway: "Alprazolam = short, high-potency, CYP3A4 benzo with the worst rebound and dependence — taper via clonazepam, never abruptly."
+    trap: "Interdose rebound anxiety can masquerade as worsening disease, tempting you to keep raising the dose — recognize it as the drug wearing off, not the illness getting worse.",
+    takeaway: "Alprazolam = short, potent, fast-onset panic benzo — best relief but worst dependence and rebound; taper by cross-tapering to a long-acting agent, never abruptly."
   },
 
   oxazepam: {
-    hook: "A slow-onset, glucuronidated LOT agent — liver-safe and low-abuse, favoured for anxiety and alcohol withdrawal.",
+    hook: "The slow, gentle LOT agent: liver-safe, low abuse-appeal, and a workhorse for alcohol withdrawal when the liver is sick.",
     steps: [
       {
-        title: "A LOT agent",
-        teach: "Oxazepam is glucuronidated (UGT) only — no oxidative CYP step, no active metabolite. One of the LOT trio (Lorazepam/Oxazepam/Temazepam): liver- and elderly-preferred.",
+        title: "The big picture",
+        teach: "Oxazepam is a short-acting benzo with a notably slow onset. That gentle, unhurried rise makes it less reinforcing than fast hitters like alprazolam — and it's one of the liver-safe LOT trio."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for anxiety, anxiety associated with depression, and acute alcohol withdrawal, and is used off-label for insomnia. Its niche is withdrawal in patients whose liver isn't working well."
+      },
+      {
+        title: "The LOT liver tip",
+        teach: "Oxazepam is cleared purely by glucuronidation — no oxidative CYP step and no active metabolite. That's why it (with Lorazepam and Temazepam) is preferred in liver disease and the elderly, and why it shines for alcohol withdrawal when hepatic function is impaired.",
         check: {
-          q: "Oxazepam is a member of which liver-safe trio?",
-          options: ["The \"LOT\" agents (Lorazepam/Oxazepam/Temazepam)", "The tricyclics", "The Z-drugs"],
-          answer: "The \"LOT\" agents (Lorazepam/Oxazepam/Temazepam)",
-          why: "All three are glucuronidated with no active metabolite — safe in liver disease."
+          q: "Why is oxazepam a good withdrawal benzo in a patient with cirrhosis?",
+          options: ["Glucuronidation only — no oxidative step, no active metabolite", "It's renally cleared as an active drug", "It has the longest half-life of all benzos"],
+          answer: "Glucuronidation only — no oxidative step, no active metabolite",
+          why: "LOT agents bypass the oxidative metabolism that fails in liver disease."
         }
       },
       {
-        title: "Slow onset, low abuse",
-        teach: "Its slow onset gives low abuse-reinforcement relative to alprazolam/diazepam, and it's used for alcohol withdrawal when hepatic function is impaired. (It's itself an active metabolite of diazepam.)",
+        title: "Low abuse liability",
+        teach: "Its slow onset means it doesn't deliver the quick \"hit\" that drives misuse, so oxazepam has relatively low abuse potential compared with alprazolam or diazepam.",
         check: {
-          q: "Why is oxazepam relatively low in abuse liability?",
-          options: ["Slow onset of action", "It is not a GABA-A modulator", "It has an ultra-long half-life"],
-          answer: "Slow onset of action",
-          why: "A slow rise gives less reinforcing 'rush' than fast-onset benzos."
+          q: "Why does oxazepam have lower abuse potential than alprazolam?",
+          options: ["Its slow onset is less reinforcing", "It isn't a benzodiazepine", "It has no CNS effect"],
+          answer: "Its slow onset is less reinforcing",
+          why: "A gradual rise in effect gives less of the rapid reward that reinforces misuse."
         }
       },
       {
-        title: "Class safety",
-        teach: "Still a benzo: respiratory depression with opioids/alcohol (boxed warning), dependence with withdrawal seizures on abrupt stop, and falls in the elderly.",
-        check: {
-          q: "Abrupt cessation of chronic oxazepam can cause…?",
-          options: ["Withdrawal seizures", "Serotonin syndrome", "Neutropenia"],
-          answer: "Withdrawal seizures",
-          why: "Benzo dependence means abrupt stop can seize — taper."
-        }
+        title: "How you use it",
+        teach: "For anxiety it's about 10–15 mg three to four times a day; alcohol withdrawal uses higher divided doses. Because onset is gradual, counsel patients to take it on schedule rather than expecting an instant effect."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Class rules still apply: avoid combining with opioids or alcohol (fatal respiratory depression), and don't stop abruptly after regular use — taper to avoid withdrawal seizures. Falls remain a concern in the elderly."
       }
     ],
-    trap: "Oxazepam vs temazepam — both glucuronidated LOT agents; temazepam is marketed as a hypnotic, oxazepam as an anxiolytic/withdrawal agent.",
-    takeaway: "Oxazepam = slow-onset, glucuronidated LOT anxiolytic — liver-safe, low-abuse, useful in alcohol withdrawal with impaired liver."
+    trap: "Don't expect a fast anxiolytic \"hit\" — oxazepam's slow onset means it should be taken on a schedule, not PRN whenever anxiety spikes.",
+    takeaway: "Oxazepam = the slow-onset, liver-safe LOT benzo — low abuse appeal and the withdrawal agent of choice when the liver is impaired."
   },
 
   temazepam: {
-    hook: "The liver-safe benzo hypnotic: glucuronidated (a LOT agent), intermediate-acting for sleep maintenance with less carryover.",
+    hook: "The liver-safe sleep benzo: a LOT hypnotic for sleep maintenance, with less next-day hangover than the long-acting hypnotics.",
     steps: [
       {
-        title: "LOT hypnotic",
-        teach: "Temazepam is glucuronidated (UGT) only — no CYP, no active metabolite. It's the LOT-trio hypnotic: the sleep benzo of choice in liver disease and the elderly.",
+        title: "The big picture",
+        teach: "Temazepam is a benzodiazepine marketed specifically as a hypnotic — a sleep drug. And it's a member of the liver-safe LOT trio, so it's the go-to benzo hypnotic when the liver is a concern."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for short-term insomnia. Its intermediate half-life (~8–15 h) is aimed at sleep maintenance — helping people stay asleep — with only modest morning residue."
+      },
+      {
+        title: "The LOT hypnotic",
+        teach: "Like the other LOT agents, temazepam is glucuronidated with no active metabolite, so it accumulates far less than long-acting hypnotics like flurazepam or nitrazepam. That makes it the cleaner benzo hypnotic in the elderly.",
         check: {
-          q: "Why is temazepam the safer benzo hypnotic in liver disease?",
-          options: ["Glucuronidation only — no CYP, no active metabolite", "It is not sedating", "It is excreted unchanged by the lungs"],
-          answer: "Glucuronidation only — no CYP, no active metabolite",
-          why: "As a LOT agent it skips the failing oxidative step and doesn't accumulate."
+          q: "Why does temazepam accumulate less than flurazepam?",
+          options: ["Glucuronidation with no active metabolite", "It has a 250-hour metabolite", "It's an oxidatively metabolized prodrug"],
+          answer: "Glucuronidation with no active metabolite",
+          why: "No long-lived metabolite means less night-to-night buildup than the long-acting hypnotics."
         }
       },
       {
-        title: "Intermediate half-life",
-        teach: "Its intermediate half-life (~8–15 h) targets sleep MAINTENANCE with less accumulation than flurazepam or nitrazepam — less next-day hangover.",
+        title: "How you use it",
+        teach: "Typical dose is 15 mg at bedtime (7.5 mg in the elderly), up to 30 mg. Counsel patients to take it right before bed and to allow 7–8 hours for sleep, so they don't wake up groggy — lowest effective dose, shortest time."
+      },
+      {
+        title: "What patients feel",
+        teach: "Common effects are residual daytime drowsiness, dizziness, and anterograde amnesia. Like other hypnotics, it can trigger complex sleep behaviours — sleep-driving and the like — which patients should report.",
         check: {
-          q: "Temazepam is best suited for which sleep problem?",
-          options: ["Sleep maintenance", "Only sleep onset", "Daytime alertness"],
-          answer: "Sleep maintenance",
-          why: "Its intermediate duration covers the night without a long carryover tail."
+          q: "Which unusual effect should you warn a temazepam patient about?",
+          options: ["Complex sleep behaviours like sleep-driving", "Hypertensive crisis", "Agranulocytosis"],
+          answer: "Complex sleep behaviours like sleep-driving",
+          why: "Benzo hypnotics can cause amnestic sleep-related behaviours patients don't remember."
         }
       },
       {
-        title: "Hypnotic hazards",
-        teach: "Like other hypnotics it can cause complex sleep behaviours (sleep-driving) and anterograde amnesia; plus the class risks — respiratory depression with opioids/alcohol and falls in the elderly.",
+        title: "The must-not-miss",
+        teach: "Even as a sleep aid, the class dangers hold: don't combine with opioids or alcohol (respiratory depression), and after regular use expect dependence and rebound insomnia on stopping — plus falls in the elderly.",
         check: {
-          q: "Which is a recognised benzodiazepine-hypnotic adverse effect?",
-          options: ["Complex sleep behaviours (e.g., sleep-driving)", "Hypertensive crisis", "Agranulocytosis"],
-          answer: "Complex sleep behaviours (e.g., sleep-driving)",
-          why: "Sleep-driving and anterograde amnesia are classic hypnotic effects."
+          q: "What happens when a regular temazepam user stops it suddenly?",
+          options: ["Rebound insomnia and dependence symptoms", "Nothing — it's not habit-forming", "Immediate cure of insomnia"],
+          answer: "Rebound insomnia and dependence symptoms",
+          why: "Tolerance and dependence develop, so sleep can worsen transiently on abrupt cessation."
         }
       }
     ],
-    trap: "Temazepam vs triazolam — temazepam is intermediate/glucuronidated (liver-safe); triazolam is ultra-short/CYP3A4 with marked amnesia and rebound.",
-    takeaway: "Temazepam = the intermediate, glucuronidated LOT benzo hypnotic for sleep maintenance — liver-safe with less next-day carryover."
+    trap: "Temazepam is the LOT hypnotic — don't confuse it with flurazepam or nitrazepam, whose long metabolites accumulate and cause next-day hangover.",
+    takeaway: "Temazepam = the intermediate, liver-safe LOT hypnotic for sleep maintenance — less accumulation and hangover than the long-acting benzo sleep agents."
   },
 
   chlordiazepoxide: {
-    hook: "The original Librium alcohol-withdrawal benzo: long-acting via active metabolites for a smooth fixed-dose taper.",
+    hook: "Librium — the original long-acting benzo for a smooth alcohol-withdrawal taper, as long as the liver still works.",
     steps: [
       {
-        title: "Withdrawal taper agent",
-        teach: "Chlordiazepoxide is the classic long-acting alcohol-withdrawal benzo, giving a smooth fixed-dose taper in patients with normal liver function.",
+        title: "The big picture",
+        teach: "Chlordiazepoxide is a classic long-acting benzo, best known as the traditional agent for alcohol withdrawal. Its long-lived metabolites give a self-tapering effect that cushions the withdrawal course."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for anxiety, alcohol withdrawal, and pre-operative apprehension. In real-world practice, alcohol withdrawal is where you'll see it most."
+      },
+      {
+        title: "Why it suits withdrawal",
+        teach: "It's given either as a fixed-dose taper or symptom-triggered (dosed to a CIWA score), and its long active metabolites mean levels fall gradually — a smooth self-taper that keeps withdrawal controlled.",
         check: {
-          q: "What is chlordiazepoxide classically used for?",
-          options: ["Alcohol-withdrawal taper", "Status epilepticus IV push", "Procedural sedation"],
-          answer: "Alcohol-withdrawal taper",
-          why: "Its long, self-tapering action suits fixed-dose withdrawal protocols."
+          q: "What makes chlordiazepoxide well suited to alcohol-withdrawal tapers?",
+          options: ["Long active metabolites give a smooth, self-tapering course", "It has an ultra-short half-life", "It's only available IV"],
+          answer: "Long active metabolites give a smooth, self-tapering course",
+          why: "Gradually falling levels smooth the withdrawal course — provided the liver can clear it."
         }
       },
       {
-        title: "Active metabolites",
-        teach: "It's oxidized (CYP) to multiple long-lived ACTIVE metabolites, including desmethyldiazepam — extending its duration to the long class but causing accumulation.",
+        title: "How you use it",
+        teach: "Withdrawal dosing is roughly 50–100 mg PO, repeated per protocol and tapered over days (up to ~300 mg/day in supervised settings). Anxiety dosing is much lower. Warn patients that drowsiness can build over days."
+      },
+      {
+        title: "The accumulation pitfall",
+        teach: "The catch is those same long metabolites (including nordiazepam): they accumulate in the elderly and in liver disease, causing oversedation. In cirrhosis or a frail older patient, switch to a LOT agent like lorazepam or oxazepam instead.",
         check: {
-          q: "What extends chlordiazepoxide's duration of action?",
-          options: ["Long-lived active metabolites (e.g., desmethyldiazepam)", "Glucuronidation to inactive metabolite", "Rapid renal clearance"],
-          answer: "Long-lived active metabolites (e.g., desmethyldiazepam)",
-          why: "Oxidative metabolism yields active nordiazepam and others that accumulate."
+          q: "In a patient with cirrhosis needing withdrawal management, what's the better choice?",
+          options: ["Switch to a LOT agent (lorazepam or oxazepam)", "Increase the chlordiazepoxide dose", "Use chlordiazepoxide IV only"],
+          answer: "Switch to a LOT agent (lorazepam or oxazepam)",
+          why: "LOT agents avoid the metabolite accumulation that oversedates hepatic and elderly patients."
         }
       },
       {
-        title: "When to switch",
-        teach: "Because of accumulation, avoid it in cirrhosis and the frail elderly — switch withdrawal to a LOT agent (lorazepam/oxazepam) that is glucuronidated and liver-safe.",
+        title: "The must-not-miss",
+        teach: "The class boxed warning holds — opioids or alcohol plus chlordiazepoxide can cause fatal respiratory depression — and abrupt cessation after regular use risks withdrawal seizures, so taper.",
         check: {
-          q: "In cirrhosis, switch alcohol-withdrawal cover from chlordiazepoxide to…?",
-          options: ["Lorazepam or oxazepam (LOT agents)", "Diazepam", "Flurazepam"],
-          answer: "Lorazepam or oxazepam (LOT agents)",
-          why: "Glucuronidated LOT agents don't accumulate when the liver is impaired."
+          q: "Which risk applies when combining chlordiazepoxide with opioids?",
+          options: ["Profound sedation and respiratory depression", "Serotonin syndrome", "QT shortening"],
+          answer: "Profound sedation and respiratory depression",
+          why: "Additive CNS/respiratory depression with opioids or alcohol can be fatal."
         }
       }
     ],
-    trap: "Chlordiazepoxide vs clorazepate — both feed into desmethyldiazepam; chlordiazepoxide is the older Librium withdrawal agent.",
-    takeaway: "Chlordiazepoxide = the long-acting Librium withdrawal-taper benzo (normal liver) — accumulates, so switch to a LOT agent in cirrhosis/elderly."
+    trap: "Chlordiazepoxide is a long-acting, oxidatively metabolized benzo — the opposite of the LOT agents; it accumulates in the elderly and in liver disease.",
+    takeaway: "Chlordiazepoxide = the classic long-acting alcohol-withdrawal benzo for a smooth taper — but swap to a LOT agent in cirrhosis or the frail elderly."
   },
 
   midazolam: {
-    hook: "The ultra-short, water-soluble procedural-sedation benzo — IM/intranasal/buccal for seizures without IV access.",
+    hook: "The ultra-short procedural-sedation benzo: water-soluble, given IV/IM/intranasal/buccal — and it aborts seizures with no IV line.",
     steps: [
       {
-        title: "Procedural workhorse",
-        teach: "Midazolam is ultra-short-acting (~1.5–3 h) and water-soluble — the procedural-sedation and anesthesia-induction benzo. Its amnestic effect is used therapeutically.",
-        check: {
-          q: "What is midazolam's signature clinical niche?",
-          options: ["Procedural sedation", "Chronic anxiety maintenance", "Long-term epilepsy monotherapy"],
-          answer: "Procedural sedation",
-          why: "Ultra-short action plus amnesia fits short procedures."
-        }
+        title: "The big picture",
+        teach: "Midazolam is the ultra-short-acting, water-soluble benzo of the operating room and emergency department. Fast on, fast off — it's built for procedures, not for take-home prescriptions."
+      },
+      {
+        title: "What it treats",
+        teach: "Its jobs are procedural/conscious sedation, pre-op anxiolysis, induction and maintenance of anesthesia, and ICU sedation. Off-label it treats status epilepticus and is used in palliative sedation."
       },
       {
         title: "No IV? No problem",
-        teach: "IM, intranasal, and buccal routes let midazolam treat seizures when there's NO IV access — where IV lorazepam would be first-line if access existed.",
+        teach: "A standout feature: midazolam works reliably by IM, intranasal, and buccal routes too. That means you can abort a seizure in a patient without IV access — a huge practical advantage in the field or with a convulsing child.",
         check: {
-          q: "Benzodiazepine of choice for seizures when there is NO IV access?",
-          options: ["IM or intranasal midazolam", "Oral temazepam", "IV lorazepam"],
-          answer: "IM or intranasal midazolam",
-          why: "Its non-IV parenteral routes work when you can't get a line; IV lorazepam needs access."
+          q: "Why is midazolam valuable for seizures when there's no IV access?",
+          options: ["It's effective IM, intranasal, or buccal", "It only works orally", "It requires an arterial line"],
+          answer: "It's effective IM, intranasal, or buccal",
+          why: "Its flexible parenteral/mucosal routes let you treat seizures without a vein."
         }
       },
       {
-        title: "CYP3A4 & delayed emergence",
-        teach: "A CYP3A4 substrate — strong inhibitors prolong sedation. Its active metabolite 1-hydroxymidazolam accumulates in renal failure and long ICU infusions → delayed awakening.",
+        title: "How you use it",
+        teach: "For procedural sedation you titrate small IV increments (e.g., 0.5–2 mg) slowly to effect, watching the patient the whole time. There's no fixed ceiling — you dose to the clinical endpoint. Crucially, opioids potentiate it, so go slower when they're on board."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Midazolam's boxed warning is dose-related respiratory depression and apnea — it has killed patients when used outside monitored settings. Only give it where continuous monitoring and airway management are available; flumazenil can reverse it.",
         check: {
-          q: "Why can prolonged ICU midazolam cause delayed awakening in renal failure?",
-          options: ["Accumulation of active 1-hydroxymidazolam", "Irreversible SERT blockade", "Depletion of GABA stores"],
-          answer: "Accumulation of active 1-hydroxymidazolam",
-          why: "The renally-cleared active metabolite builds up when clearance fails."
+          q: "What's the non-negotiable safety requirement for giving IV midazolam?",
+          options: ["Continuous monitoring with airway/resuscitation capability", "An empty stomach only", "A normal ECG only"],
+          answer: "Continuous monitoring with airway/resuscitation capability",
+          why: "Respiratory depression and apnea demand monitoring and readiness to support the airway."
         }
       },
       {
-        title: "Monitor & reverse",
-        teach: "IV midazolam warning: respiratory depression and arrest — give only where airway management and monitoring (pulse oximetry, resuscitation) are available. Flumazenil reverses it; opioids compound the risk.",
+        title: "Expected amnesia",
+        teach: "Midazolam's amnesia is a feature, not a bug — patients usually won't remember the procedure. Counsel them not to drive or make important decisions for 24 hours and to arrange an escort home.",
         check: {
-          q: "What is the antidote to midazolam over-sedation?",
-          options: ["Flumazenil", "Naloxone", "Atropine"],
-          answer: "Flumazenil",
-          why: "Flumazenil antagonizes benzodiazepines (naloxone reverses opioids)."
+          q: "Why do you tell a midazolam patient to arrange a ride home?",
+          options: ["It causes amnesia and impairs function for ~24 h", "It permanently impairs memory", "It causes long-term blindness"],
+          answer: "It causes amnesia and impairs function for ~24 h",
+          why: "Expected sedation and amnesia make driving and decisions unsafe afterward."
         }
+      },
+      {
+        title: "A PK quirk",
+        teach: "Midazolam is a CYP3A4 substrate, so strong inhibitors prolong sedation. And its active metabolite, 1-hydroxymidazolam, is renally cleared — it accumulates in renal failure or after long infusions, causing delayed awakening."
       }
     ],
-    trap: "Midazolam vs lorazepam for status — IM/intranasal midazolam when there's no IV access; IV lorazepam when access exists.",
-    takeaway: "Midazolam = ultra-short, water-soluble procedural-sedation benzo with IM/IN/buccal routes — CYP3A4, monitor the airway, reverse with flumazenil."
+    trap: "Midazolam is not a take-home anxiolytic — it's a monitored, procedural drug; using it without airway backup is how patients get hurt.",
+    takeaway: "Midazolam = the ultra-short, water-soluble sedation benzo — flexible routes for seizures without IV, but strictly a monitored-setting drug because of apnea risk."
   },
 
   bromazepam: {
-    hook: "A Canada/Europe intermediate-acting anxiolytic benzo — behaves like a mid-range member of the class.",
+    hook: "A Canadian/European anxiolytic benzo with an intermediate half-life — a mid-range option that plays by all the class rules.",
     steps: [
       {
-        title: "Intermediate anxiolytic",
-        teach: "Bromazepam is an intermediate-half-life (~10–20 h) GABA-A positive allosteric modulator used for anxiety — available in Canada and Europe but not US-marketed.",
+        title: "The big picture",
+        teach: "Bromazepam is an intermediate-acting anxiolytic benzodiazepine available in Canada and Europe (it's not US-marketed). Think of it as a middle-of-the-road anxiolytic — nothing exotic, just a solid mid-range option."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for short-term anxiety and used off-label for insomnia associated with anxiety. Like all benzos here, it's for short-term use, not a long-term anxiety solution."
+      },
+      {
+        title: "How you use it",
+        teach: "Typical dosing is about 6–18 mg/day in divided doses, lower in the elderly. Its intermediate half-life (~10–20 h) means BID–TID dosing to keep levels steady.",
         check: {
-          q: "Bromazepam's half-life class?",
-          options: ["Intermediate (~10–20 h)", "Ultra-short (~1–3 h)", "Ultra-long (~200 h)"],
-          answer: "Intermediate (~10–20 h)",
-          why: "It sits in the intermediate anxiolytic range."
+          q: "Why is bromazepam usually dosed BID–TID?",
+          options: ["Its intermediate half-life (~10–20 h) needs redosing", "It has a 200-hour metabolite", "It's only given once a week"],
+          answer: "Its intermediate half-life (~10–20 h) needs redosing",
+          why: "An intermediate duration means the effect wears off through the day and must be topped up."
         }
       },
       {
-        title: "Oxidatively metabolized",
-        teach: "Unlike the glucuronidated LOT agents, bromazepam is oxidatively metabolized (CYP) — so hepatic impairment and CYP inhibitors can raise its levels.",
+        title: "What patients feel",
+        teach: "Expect the usual benzo effects — sedation, dizziness, ataxia, fatigue. It's an anxiolytic for the short term, and patients should be reminded it's not meant for open-ended use.",
         check: {
-          q: "How is bromazepam metabolized (vs the LOT agents)?",
-          options: ["Oxidatively via CYP", "Glucuronidation only", "Excreted unchanged in urine"],
-          answer: "Oxidatively via CYP",
-          why: "It relies on oxidative metabolism, unlike glucuronidated LOT benzos."
+          q: "How should bromazepam be positioned to patients?",
+          options: ["Short-term use with class benzo side effects", "A lifelong daily medication", "A stimulant with no sedation"],
+          answer: "Short-term use with class benzo side effects",
+          why: "Sedation, dizziness, and dependence risk make it a short-term agent."
         }
       },
       {
-        title: "Class rules apply",
-        teach: "As a standard benzo it carries the class risks: respiratory depression with opioids/alcohol, dependence with withdrawal seizures on abrupt stop, and falls/cognition problems in the elderly.",
+        title: "The must-not-miss",
+        teach: "All the class safety rules apply: avoid opioids and alcohol (fatal respiratory depression), taper rather than stopping abruptly (withdrawal seizures), and watch for falls in the elderly.",
         check: {
-          q: "What is the key hazard of stopping chronic bromazepam abruptly?",
-          options: ["Withdrawal seizures", "Rebound psychosis", "Bone-marrow suppression"],
-          answer: "Withdrawal seizures",
-          why: "Benzo dependence means abrupt cessation can seize — taper."
+          q: "What's the shared benzodiazepine danger that also applies to bromazepam?",
+          options: ["Fatal respiratory depression with opioids/alcohol", "Kidney stones", "Hair loss"],
+          answer: "Fatal respiratory depression with opioids/alcohol",
+          why: "Additive CNS/respiratory depression is a class-wide, potentially lethal risk."
         }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Like every benzo, bromazepam is a GABA-A positive allosteric modulator — it makes GABA open the chloride channel more often, turning up the brain's main inhibitory brake for its anxiolytic and sedative effect."
       }
     ],
-    trap: "Bromazepam vs lorazepam — both intermediate anxiolytics; lorazepam is glucuronidated and IM/IV-available, while bromazepam is oxidatively metabolized and Canada/Europe-only.",
-    takeaway: "Bromazepam = a Canada/Europe intermediate anxiolytic benzo — same GABA-A action and class cautions as its neighbours."
+    trap: "Bromazepam isn't sold in the US — if a patient mentions it, they've likely been prescribed it in Canada or Europe.",
+    takeaway: "Bromazepam = a Canadian/European intermediate-acting anxiolytic benzo — mid-range and unremarkable, with all the standard class cautions."
   },
 
   nitrazepam: {
-    hook: "A long-acting Canada/Europe hypnotic — potent sleep, but notable next-day hangover and falls.",
+    hook: "A long-acting hypnotic (Canada/Europe) that lingers into the next day — plus a seizure niche in myoclonic epilepsy and infantile spasms.",
     steps: [
       {
-        title: "Long-acting hypnotic",
-        teach: "Nitrazepam is a long-acting (~16–40 h) benzodiazepine hypnotic (Canada/Europe, not US). Its long duration causes next-day drowsiness (\"hangover\") and falls, especially in the elderly.",
+        title: "The big picture",
+        teach: "Nitrazepam is a long-acting benzodiazepine hypnotic used in Canada and Europe (not the US). Its length is the defining feature — and the problem — because it carries over into the next day."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for short-term insomnia and, unusually for a sleep benzo, for myoclonic seizures including infantile spasms as an adjunct."
+      },
+      {
+        title: "The hangover problem",
+        teach: "With a half-life around 16–40 h, nitrazepam produces next-day drowsiness — a true \"benzo hangover\" — and increases falls in the elderly from that carryover sedation.",
         check: {
-          q: "Why does nitrazepam cause next-day sedation?",
-          options: ["Its long half-life carries over into the day", "It has no CNS effect", "It is a stimulant metabolite"],
-          answer: "Its long half-life carries over into the day",
-          why: "Long-acting hypnotics leave residual sedation the next morning."
+          q: "What's the main downside of nitrazepam's long half-life?",
+          options: ["Next-day drowsiness and falls in the elderly", "It wears off before morning", "It has no sedative effect"],
+          answer: "Next-day drowsiness and falls in the elderly",
+          why: "A long half-life means sedation carries into the following day, raising fall risk."
         }
       },
       {
-        title: "Class safety",
-        teach: "Standard benzo hazards: respiratory depression with opioids/alcohol, dependence with rebound insomnia, and falls/next-day impairment in the elderly.",
+        title: "How you use it",
+        teach: "Typical dosing is 5 mg at bedtime (2.5 mg in the elderly), up to 10 mg, for short-term use. Warn patients about possible morning grogginess and caution around driving the next day.",
         check: {
-          q: "In the elderly, nitrazepam's long action most raises the risk of…?",
-          options: ["Falls / next-day impairment", "Hypertensive crisis", "Hyperthyroidism"],
-          answer: "Falls / next-day impairment",
-          why: "Carryover sedation drives falls in older patients."
+          q: "What should you counsel a nitrazepam patient about the morning after?",
+          options: ["Possible grogginess — use caution driving", "It causes early-morning highs", "It must be taken again at breakfast"],
+          answer: "Possible grogginess — use caution driving",
+          why: "Carryover sedation from its long half-life can impair next-day function."
         }
       },
       {
-        title: "Choose temazepam instead",
-        teach: "For a cleaner hypnotic in the elderly or hepatic patients, contrast nitrazepam with the intermediate, glucuronidated LOT agent temazepam, which accumulates less.",
-        check: {
-          q: "A less-accumulating benzo hypnotic alternative to nitrazepam?",
-          options: ["Temazepam (intermediate, glucuronidated)", "Flurazepam (very long metabolite)", "Diazepam (long active tail)"],
-          answer: "Temazepam (intermediate, glucuronidated)",
-          why: "Glucuronidated temazepam has no long active metabolite, so less carryover."
-        }
+        title: "The must-not-miss",
+        teach: "Class dangers apply: avoid opioids and alcohol (respiratory depression), expect dependence and rebound insomnia on stopping, and note bronchial hypersecretion in infants when it's used for seizures."
+      },
+      {
+        title: "Cleaner alternative",
+        teach: "For a sleep benzo with less baggage, contrast nitrazepam with temazepam — intermediate-acting, glucuronidated, no active metabolite — which accumulates far less in older patients."
       }
     ],
-    trap: "Nitrazepam vs temazepam — nitrazepam is long-acting (carryover); temazepam is intermediate/glucuronidated (liver-safe, less carryover).",
-    takeaway: "Nitrazepam = a long-acting Canada/Europe benzo hypnotic with notable next-day sedation and falls — contrast the cleaner LOT agent temazepam."
+    trap: "Nitrazepam's long half-life makes it a poor sleep choice for the elderly — reach for an intermediate, glucuronidated hypnotic like temazepam instead.",
+    takeaway: "Nitrazepam = a long-acting Canadian/European benzo hypnotic with next-day hangover and falls — plus a niche role in myoclonic seizures."
   },
 
   clobazam: {
-    hook: "The 1,5-benzodiazepine seizure adjunct: more anticonvulsant, less sedation — with a CYP2C19-cleared long-acting active metabolite.",
+    hook: "The 1,5-benzodiazepine that's more anticonvulsant than sedative — a key add-on for Lennox-Gastaut and refractory epilepsy.",
     steps: [
       {
-        title: "A 1,5-benzodiazepine",
-        teach: "Clobazam is a 1,5-benzodiazepine (vs the classic 1,4 structure), giving relatively MORE anticonvulsant/anxiolytic effect with comparatively LESS sedation.",
+        title: "The big picture",
+        teach: "Clobazam is the odd one out structurally — a 1,5-benzodiazepine rather than the classic 1,4 type. That small change gives it relatively more anticonvulsant and anxiolytic action with comparatively less sedation."
+      },
+      {
+        title: "What it treats",
+        teach: "Its home turf is epilepsy: it's approved as an adjunct, especially for Lennox-Gastaut syndrome, and used off-label for refractory focal and catamenial seizures. Some jurisdictions also approve it for anxiety."
+      },
+      {
+        title: "The 1,5 advantage",
+        teach: "The practical upshot of the 1,5 structure is that clobazam sedates less than classic benzos at anticonvulsant doses — useful when you need seizure control without flattening the patient.",
         check: {
-          q: "What distinguishes clobazam structurally from most benzos?",
-          options: ["It is a 1,5-benzodiazepine (less sedating, anticonvulsant-selective)", "It is not a GABA-A modulator", "It lacks a benzene ring"],
-          answer: "It is a 1,5-benzodiazepine (less sedating, anticonvulsant-selective)",
-          why: "The 1,5 structure shifts the profile toward anticonvulsant with less sedation."
+          q: "What's distinctive about clobazam as a 1,5-benzodiazepine?",
+          options: ["Anticonvulsant effect with comparatively less sedation", "It isn't a GABA-A modulator", "It has no anticonvulsant activity"],
+          answer: "Anticonvulsant effect with comparatively less sedation",
+          why: "The 1,5 structure shifts the profile toward anticonvulsant/anxiolytic over sedation."
         }
       },
       {
-        title: "Lennox-Gastaut niche",
-        teach: "Its key niche is as an ADJUNCT for Lennox-Gastaut syndrome and refractory epilepsy — one of the few benzos used routinely long-term for seizures.",
+        title: "How you use it",
+        teach: "Dosing is weight-based and gradual — often 5–10 mg/day to start, titrated over weeks. Its long-acting active metabolite lets you dose once or twice daily."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "The high-stakes clobazam-specific flag is rare but serious skin reactions — Stevens-Johnson syndrome and toxic epidermal necrolysis, most often early in therapy. Tell patients to report any rash promptly.",
         check: {
-          q: "Clobazam's flagship epilepsy indication?",
-          options: ["Adjunct for Lennox-Gastaut syndrome", "Monotherapy for absence seizures only", "Status epilepticus IV push"],
-          answer: "Adjunct for Lennox-Gastaut syndrome",
-          why: "It's a recognised LGS/refractory-epilepsy adjunct."
+          q: "Which reaction warrants urgent attention early in clobazam therapy?",
+          options: ["A new rash — risk of Stevens-Johnson/TEN", "Mild dry mouth", "Increased appetite"],
+          answer: "A new rash — risk of Stevens-Johnson/TEN",
+          why: "Serious cutaneous reactions can occur early; any rash needs prompt evaluation."
         }
       },
       {
-        title: "CYP2C19 metabolite",
-        teach: "Clobazam is metabolized (CYP3A4/2C19) to N-desmethylclobazam — a long-acting active metabolite CLEARED by CYP2C19. Poor metabolizers or 2C19 inhibitors (fluconazole, omeprazole) accumulate it.",
+        title: "Don't stop suddenly",
+        teach: "Clobazam still carries the class boxed warning with opioids and alcohol, and tolerance to its anticonvulsant effect can develop. Above all, don't stop it abruptly in an epilepsy patient — seizures can worsen.",
         check: {
-          q: "Which CYP polymorphism makes clobazam's active metabolite accumulate?",
-          options: ["CYP2C19 (poor metabolizers/inhibitors)", "CYP2D6 ultrarapid metabolizers", "CYP1A2 inducers"],
-          answer: "CYP2C19 (poor metabolizers/inhibitors)",
-          why: "N-desmethylclobazam is cleared by 2C19, so 2C19 blockage builds it up."
+          q: "Why must clobazam not be stopped abruptly in epilepsy?",
+          options: ["Seizures can worsen on withdrawal", "It causes rebound hypertension", "It triggers mania"],
+          answer: "Seizures can worsen on withdrawal",
+          why: "Abrupt cessation of an anticonvulsant benzo can precipitate breakthrough seizures."
         }
       },
       {
-        title: "Rare severe rash",
-        teach: "Watch for rare serious skin reactions (Stevens-Johnson/TEN). Plus the class risks: respiratory depression with opioids/alcohol and seizure exacerbation if stopped abruptly.",
-        check: {
-          q: "Which rare but serious reaction is flagged with clobazam?",
-          options: ["Stevens-Johnson syndrome / TEN", "Priapism", "Peripheral neuropathy"],
-          answer: "Stevens-Johnson syndrome / TEN",
-          why: "Severe cutaneous reactions are a recognised (rare) clobazam risk."
-        }
+        title: "A PK quirk",
+        teach: "Clobazam's active metabolite, N-desmethylclobazam, is long-acting and cleared by CYP2C19. So CYP2C19 poor metabolizers or patients on 2C19 inhibitors accumulate it — worth remembering when sedation seems excessive."
       }
     ],
-    trap: "Clobazam vs clonazepam — clobazam is a 1,5-benzodiazepine (LGS adjunct, less sedating, CYP2C19-cleared metabolite); clonazepam is a 1,4-benzodiazepine.",
-    takeaway: "Clobazam = the 1,5-benzodiazepine LGS/epilepsy adjunct — anticonvulsant-selective with a CYP2C19-dependent long-acting active metabolite."
+    trap: "Clobazam is a 1,5-benzodiazepine — don't assume it behaves exactly like classic 1,4 agents; it's more anticonvulsant-selective and less sedating.",
+    takeaway: "Clobazam = the less-sedating 1,5-benzodiazepine for Lennox-Gastaut and refractory epilepsy — watch for early serious rash and never stop it abruptly."
   },
 
   flurazepam: {
-    hook: "The classic \"accumulating hypnotic\": its ~250 h active metabolite piles up night after night into daytime sedation.",
+    hook: "The accumulating hypnotic: a very long active metabolite piles up night after night — the textbook \"benzo hangover\" in the elderly.",
     steps: [
       {
-        title: "The accumulating tail",
-        teach: "Flurazepam's parent is short, but its active metabolite N-desalkylflurazepam lasts up to ~250 h → cumulative next-day sedation that worsens over successive nights.",
+        title: "The big picture",
+        teach: "Flurazepam is a benzodiazepine hypnotic whose defining trait is accumulation. Its active metabolite, N-desalkylflurazepam, lasts an enormous 40–250 h, so sedation stacks up across successive nights."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for short-term insomnia. But its accumulation makes it a poor long-term or elderly sleep choice, so it's largely eclipsed by cleaner options today."
+      },
+      {
+        title: "The accumulation problem",
+        teach: "Because the metabolite builds each night, next-day drowsiness gets worse over the first several nights of use — driving falls in the elderly. It's the classic \"accumulating hypnotic.\"",
         check: {
-          q: "Why does flurazepam cause worsening daytime sedation over several nights?",
-          options: ["Its very long active metabolite accumulates", "It induces its own metabolism", "It is renally toxic"],
-          answer: "Its very long active metabolite accumulates",
-          why: "N-desalkylflurazepam (~250 h) builds up with repeated dosing."
+          q: "Why does flurazepam's grogginess worsen over successive nights?",
+          options: ["Its long metabolite (up to ~250 h) accumulates", "It's glucuronidated with no metabolite", "It's ultra-short acting"],
+          answer: "Its long metabolite (up to ~250 h) accumulates",
+          why: "A very long-lived active metabolite piles up night after night."
         }
       },
       {
-        title: "Falls & class safety",
-        teach: "Accumulation drives falls in the elderly (Beers). Standard benzo hazards apply: respiratory depression with opioids/alcohol and dependence/rebound insomnia.",
+        title: "How you use it",
+        teach: "Dosing is 15 mg at bedtime in the elderly, up to 30 mg, and short-term only. Warn patients that grogginess can build night after night and to use caution driving."
+      },
+      {
+        title: "The must-not-miss",
+        teach: "Class dangers apply: opioids and alcohol risk fatal respiratory depression, and expect dependence and rebound insomnia on stopping — layered on top of cumulative oversedation and falls.",
         check: {
-          q: "Flurazepam's accumulation most endangers which group?",
-          options: ["The elderly (falls)", "Young athletes", "Neonates only"],
-          answer: "The elderly (falls)",
-          why: "Cumulative next-day sedation raises fall risk in older patients."
+          q: "Beyond the class opioid/alcohol risk, what's flurazepam's signature hazard?",
+          options: ["Cumulative oversedation and falls from metabolite buildup", "Serotonin syndrome", "Photosensitivity"],
+          answer: "Cumulative oversedation and falls from metabolite buildup",
+          why: "The accumulating metabolite is what makes flurazepam distinctly risky in the elderly."
         }
       },
       {
-        title: "Pick temazepam instead",
-        teach: "For a cleaner hypnotic in the elderly or hepatic patients, choose temazepam — intermediate half-life, glucuronidated, no active metabolite — so it doesn't pile up like flurazepam.",
+        title: "Cleaner alternative",
+        teach: "For a benzo hypnotic without the buildup, contrast flurazepam with temazepam — intermediate-acting, glucuronidated, no active metabolite — a cleaner choice in the elderly or hepatic patient.",
         check: {
-          q: "Which hypnotic avoids flurazepam's accumulation problem?",
-          options: ["Temazepam (glucuronidated, no active metabolite)", "Diazepam (long active metabolite)", "Clorazepate (nordiazepam prodrug)"],
-          answer: "Temazepam (glucuronidated, no active metabolite)",
-          why: "As a LOT agent temazepam has no long active metabolite to accumulate."
+          q: "Which hypnotic accumulates less in the elderly than flurazepam?",
+          options: ["Temazepam", "Nitrazepam", "Diazepam"],
+          answer: "Temazepam",
+          why: "Temazepam is glucuronidated with no active metabolite, so it doesn't pile up."
         }
       }
     ],
-    trap: "Flurazepam vs temazepam — flurazepam accumulates (long active metabolite); temazepam does not (intermediate, glucuronidated LOT agent).",
-    takeaway: "Flurazepam = the accumulating benzo hypnotic (N-desalkylflurazepam ~250 h) → cumulative daytime sedation and falls — the opposite of temazepam."
+    trap: "Flurazepam is the opposite of the LOT hypnotic temazepam — its long metabolite accumulates, so it's a poor sleep choice for older adults.",
+    takeaway: "Flurazepam = the accumulating benzo hypnotic — its ~250-hour metabolite stacks up night after night, causing next-day hangover and falls in the elderly."
   },
 
   triazolam: {
-    hook: "The ultra-short sleep-onset hypnotic — minimal hangover, but marked amnesia, early rebound, and CYP3A4 contraindications.",
+    hook: "The ultra-short sleep-onset hypnotic: no next-day hangover, but prominent amnesia, early-morning rebound, and danger with CYP3A4 blockers.",
     steps: [
       {
-        title: "Ultra-short sleep-onset",
-        teach: "Triazolam is ultra-short-acting (~1.5–5.5 h) → little next-day hangover, but it's a sleep-ONSET agent only; it wears off too fast to maintain sleep, causing early-morning rebound.",
+        title: "The big picture",
+        teach: "Triazolam is an ultra-short-acting benzo hypnotic built for sleep onset. It's in and out fast — which spares patients a morning hangover but creates a different set of problems."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved only for short-term, sleep-onset insomnia — helping people fall asleep. Because it wears off so quickly, it does nothing for staying asleep."
+      },
+      {
+        title: "The onset-vs-rebound trade",
+        teach: "The trade-off is stark: its ultra-short half-life (~1.5–5.5 h) means minimal next-day sedation, but prominent anterograde amnesia and early-morning rebound insomnia and anxiety as it wears off.",
         check: {
-          q: "Triazolam is best for which sleep problem?",
-          options: ["Sleep onset (falling asleep)", "Sleep maintenance through the night", "Daytime somnolence"],
-          answer: "Sleep onset (falling asleep)",
-          why: "Ultra-short action helps initiation but wears off, so it can't maintain sleep."
+          q: "What's the downside of triazolam's ultra-short half-life?",
+          options: ["Prominent amnesia and early-morning rebound", "Severe next-day hangover", "It helps with sleep maintenance"],
+          answer: "Prominent amnesia and early-morning rebound",
+          why: "Rapid wear-off avoids hangover but drives amnesia and rebound before morning."
         }
       },
       {
-        title: "Amnesia & rebound",
-        teach: "It's the benzo most associated with prominent anterograde amnesia and early-morning rebound insomnia/anxiety, plus complex sleep behaviours (sleep-driving).",
+        title: "How you use it",
+        teach: "Dosing is small — 0.125–0.25 mg at bedtime, 0.125 mg in the elderly — taken immediately before sleep, and only when the patient can devote a full night to sleep. Short-term use only."
+      },
+      {
+        title: "A dangerous interaction",
+        teach: "Triazolam is a CYP3A4 substrate, and strong 3A4 inhibitors are contraindicated — azole antifungals, nefazodone, protease inhibitors, clarithromycin, even grapefruit juice — because they push its levels dangerously high.",
         check: {
-          q: "Which effect is most prominent with triazolam?",
-          options: ["Anterograde amnesia", "Weight gain", "Hyperprolactinemia"],
-          answer: "Anterograde amnesia",
-          why: "Marked anterograde amnesia is a signature triazolam adverse effect."
+          q: "Which combination is contraindicated with triazolam?",
+          options: ["Strong CYP3A4 inhibitors (azoles, protease inhibitors)", "A daily multivitamin", "Any beta-blocker"],
+          answer: "Strong CYP3A4 inhibitors (azoles, protease inhibitors)",
+          why: "As a 3A4 substrate, its levels spike dangerously when that enzyme is blocked."
         }
       },
       {
-        title: "CYP3A4 contraindications",
-        teach: "Extensively metabolized by CYP3A4 → strong inhibitors (ketoconazole, itraconazole, protease inhibitors, clarithromycin, nefazodone) and grapefruit are CONTRAINDICATED — they push levels to toxicity.",
+        title: "The must-not-miss",
+        teach: "The class boxed warning holds — opioids and alcohol risk fatal respiratory depression — and triazolam is especially prone to complex sleep behaviours like sleep-driving plus marked amnesia. Tell patients to report memory gaps.",
         check: {
-          q: "Which combination with triazolam is contraindicated?",
-          options: ["Strong CYP3A4 inhibitors (e.g., azoles, protease inhibitors, grapefruit)", "A high-fibre diet", "Vitamin C"],
-          answer: "Strong CYP3A4 inhibitors (e.g., azoles, protease inhibitors, grapefruit)",
-          why: "3A4 inhibition raises triazolam to toxic levels — a labelled contraindication."
+          q: "Which effect is especially prominent with triazolam?",
+          options: ["Anterograde amnesia and sleep-driving", "Weight gain", "Tremor at rest"],
+          answer: "Anterograde amnesia and sleep-driving",
+          why: "Its potency and rapid action make amnestic complex sleep behaviours notably common."
         }
       }
     ],
-    trap: "Triazolam vs temazepam — triazolam is ultra-short/CYP3A4 (amnesia, rebound, many interactions); temazepam is intermediate/glucuronidated (liver-safe, fewer interactions).",
-    takeaway: "Triazolam = the ultra-short, CYP3A4 sleep-onset hypnotic — little hangover but marked amnesia, rebound, and contraindicated strong-3A4/grapefruit combos."
+    trap: "Triazolam is a sleep-onset drug only — it won't keep anyone asleep, and pairing it with a strong CYP3A4 inhibitor is contraindicated.",
+    takeaway: "Triazolam = the ultra-short sleep-onset hypnotic — no hangover but marked amnesia and rebound, and strong CYP3A4 inhibitors are off-limits."
   },
 
   clorazepate: {
-    hook: "A benzodiazepine PRODRUG: acid in the stomach converts it to long-acting nordiazepam — behaves like diazepam.",
+    hook: "A gastric-acid-activated prodrug for nordiazepam — behaves just like long-acting diazepam, long tail and all.",
     steps: [
       {
-        title: "A gastric prodrug",
-        teach: "Clorazepate is a PRODRUG: gastric acid decarboxylates it to desmethyldiazepam (nordiazepam) before absorption. Antacids that reduce stomach acidity can blunt this conversion.",
+        title: "The big picture",
+        teach: "Clorazepate is unusual: it's a prodrug. In the acidic stomach it's converted to desmethyldiazepam (nordiazepam) — the same long-acting active metabolite shared by diazepam and chlordiazepoxide — so it effectively is a long-acting benzo."
+      },
+      {
+        title: "What it treats",
+        teach: "It's approved for anxiety, as an adjunct in partial seizures, and for alcohol withdrawal — a familiar long-acting benzo lineup."
+      },
+      {
+        title: "The prodrug quirk",
+        teach: "Because it needs gastric acid to activate, antacids can blunt its conversion. And since it becomes nordiazepam, it behaves clinically just like diazepam — long-acting, self-tapering.",
         check: {
-          q: "How is clorazepate activated?",
-          options: ["Gastric acid converts it to desmethyldiazepam (nordiazepam)", "Renal hydroxylation to an active form", "It is already fully active as given"],
-          answer: "Gastric acid converts it to desmethyldiazepam (nordiazepam)",
-          why: "It's decarboxylated pre-systemically in the acidic stomach to nordiazepam."
+          q: "Clorazepate is a prodrug for which active compound?",
+          options: ["Desmethyldiazepam (nordiazepam)", "Lorazepam glucuronide", "1-hydroxymidazolam"],
+          answer: "Desmethyldiazepam (nordiazepam)",
+          why: "Gastric acid converts clorazepate to nordiazepam, shared with diazepam and chlordiazepoxide."
         }
       },
       {
-        title: "Long-acting like diazepam",
-        teach: "Because its effect is really that of nordiazepam (up to ~100–200 h), clorazepate is long-acting and self-tapering — the same active metabolite shared by diazepam and chlordiazepoxide.",
+        title: "How you use it",
+        teach: "For anxiety it's about 7.5–15 mg PO two to three times a day, lower in the elderly, and can be consolidated to once daily at steady state. Warn patients that effects and drowsiness build over days."
+      },
+      {
+        title: "The elderly pitfall",
+        teach: "Because it's really nordiazepam, clorazepate accumulates in the elderly and in hepatic disease, causing oversedation and falls — so, like diazepam, avoid it in those patients and reach for a LOT agent instead.",
         check: {
-          q: "Clorazepate shares its long-acting active metabolite with…?",
-          options: ["Diazepam and chlordiazepoxide (desmethyldiazepam)", "Lorazepam and oxazepam", "Midazolam"],
-          answer: "Diazepam and chlordiazepoxide (desmethyldiazepam)",
-          why: "All three converge on long-lived nordiazepam."
+          q: "Why avoid clorazepate in a frail elderly patient?",
+          options: ["Its long-acting nordiazepam accumulates, causing oversedation", "It's cleared too fast to work", "It has no active form"],
+          answer: "Its long-acting nordiazepam accumulates, causing oversedation",
+          why: "Behaving like diazepam, it piles up in the elderly and in liver disease."
         }
       },
       {
-        title: "Elderly accumulation",
-        teach: "Like diazepam, the long active metabolite accumulates in the elderly and hepatic disease → oversedation and falls (Beers). Plus class risks: respiratory depression with opioids/alcohol and withdrawal seizures on abrupt stop.",
+        title: "The must-not-miss",
+        teach: "The class boxed warning applies — opioids or alcohol risk fatal respiratory depression — and abrupt cessation after regular use risks withdrawal seizures, so taper.",
         check: {
-          q: "Why avoid clorazepate in the frail elderly?",
-          options: ["Nordiazepam accumulation → oversedation/falls", "It causes hypertension", "It has no active metabolite"],
-          answer: "Nordiazepam accumulation → oversedation/falls",
-          why: "Its long-lived active metabolite builds up, driving sedation and falls."
+          q: "What must you do when discontinuing regular clorazepate?",
+          options: ["Taper to avoid withdrawal seizures", "Stop it in a single day", "Switch to alcohol"],
+          answer: "Taper to avoid withdrawal seizures",
+          why: "Like all benzos, dependence means abrupt cessation can precipitate seizures."
         }
       }
     ],
-    trap: "Clorazepate vs clonazepam — sound-alike, but clorazepate is a long-acting prodrug of nordiazepam; clonazepam is a distinct high-potency long-acting benzo.",
-    takeaway: "Clorazepate = an acid-activated benzo prodrug of long-acting nordiazepam — behaves like diazepam and accumulates in the elderly/liver disease."
+    trap: "Clorazepate needs stomach acid to activate — antacids can reduce its conversion to nordiazepam, so timing matters.",
+    takeaway: "Clorazepate = a gastric-acid-activated prodrug for nordiazepam — clinically a long-acting diazepam-like benzo that accumulates in the elderly and liver disease."
   }
 };

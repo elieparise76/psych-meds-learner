@@ -1,65 +1,91 @@
-# Lesson-authoring contract (READ THIS FIRST)
+# Lesson-authoring contract v2 (READ THIS FIRST — replaces the old one)
 
-You are authoring **Duolingo-style micro-lessons** for a set of psychiatric medications. When
-a resident "learns" a med, they do NOT just get a data dump — they get a short, substantive
-lesson that teaches the **3–5 most important, highest-yield things** about the drug, one at a
-time, each with a quick check-for-understanding. The full data card is shown separately at the
-end for reference. Your job: distil what actually matters.
+You are authoring **Duolingo-style micro-lessons** for psychiatric medications, narrated by a
+friendly study-buddy character called **Neuro**. A resident "learns" a med by walking through
+this lesson. Two big changes from before:
 
-## Grounding (important)
+1. **Clinical-first, NOT neuropharmacology-first.** The primary focus is *how this drug is used
+   clinically* — what it's for, when you'd reach for it, how you actually use it, what patients
+   feel, and what you must not miss. Mechanism / receptor profiles / detailed PK are **secondary
+   flavour**, mentioned only briefly and only when genuinely high-yield. Do **not** lead with,
+   or dwell on, receptor binding or pharmacokinetics.
+2. **Not every card is a question.** Lessons are a mix of **explain cards** (Neuro just teaching
+   something, no question — the learner reads/hears it and taps Continue) and **check cards**
+   (a teaching point followed by a quick question). Aim for roughly half-and-half.
 
-Read the built deck for your molecules and ground every fact in it:
+Lessons are **longer than before and go general → specific**: start with the big picture, end
+with the fine detail.
+
+## Grounding
+
+Ground every fact in the built deck (reuse its exact doses/levels/warnings — never invent):
 ```
 cd "/Users/elieparise/Documents/Projets/Alex - Psych meds"
-node -e "const d=require('./data/deck.json'); const c=d.find(x=>x.id==='sertraline'); console.log(JSON.stringify({generic:c.generic,class:c.class,subclass:c.subclass,moa:c.moa,halfLife:c.halfLife,metabolism:c.metabolism,startingDose:c.startingDose,maxDose:c.maxDose,therapeuticLevel:c.therapeuticLevel,boxedWarning:c.boxedWarning,seriousAE:c.seriousAE,syndromes:c.syndromes,majorDDI:c.majorDDI,pregnancy:c.pregnancy,commonSE:c.commonSE,pearls:c.pearls,confusables:c.confusables,examHooks:c.examHooks,canmatLineOfTherapy:c.canmatLineOfTherapy,classDifferentiators:c.classDifferentiators},null,1))"
+node -e "const d=require('./data/deck.json'); const c=d.find(x=>x.id==='sertraline'); console.log(JSON.stringify({generic:c.generic,class:c.class,subclass:c.subclass,approvedCanada:c.approvedCanada,offLabel:c.offLabel,canmatLineOfTherapy:c.canmatLineOfTherapy,startingDose:c.startingDose,titration:c.titration,maxDose:c.maxDose,frequencyTiming:c.frequencyTiming,commonSE:c.commonSE,seriousAE:c.seriousAE,syndromes:c.syndromes,boxedWarning:c.boxedWarning,contraindications:c.contraindications,baselineWorkup:c.baselineWorkup,ongoingMonitoring:c.ongoingMonitoring,pregnancy:c.pregnancy,counsellingPoints:c.counsellingPoints,pearls:c.pearls,classDifferentiators:c.classDifferentiators,moa:c.moa,therapeuticLevel:c.therapeuticLevel},null,1))"
 ```
-Do NOT invent new doses, levels, or warnings — reuse the deck's. Pedagogical framing and
-emphasis are yours; the underlying safety facts must come from the deck.
 
 ## Output format
 
-An ES module at the path you were given, e.g. `pipeline/lessons/ssri.js`:
+An ES module at your given path, e.g. `pipeline/lessons/ssri.js`:
 ```js
 export default {
   sertraline: {
-    hook: "The everyday SSRI you reach for first — and the safe one after a heart attack.",
+    hook: "The reliable, broad-spectrum first-line antidepressant — and the one you trust after a heart attack.",
     steps: [
-      {
-        title: "What it is",
-        teach: "Sertraline is an SSRI: it blocks serotonin reuptake (SERT) to raise synaptic 5-HT. First-line for depression and most anxiety disorders.",
-        check: { q: "Sertraline's main mechanism?", options: ["Blocks serotonin reuptake", "Blocks dopamine D2 receptors", "Inhibits MAO-A"], answer: "Blocks serotonin reuptake", why: "SSRIs block SERT." }
-      },
-      { title: "The signature win", teach: "…", check: { q:"…", options:[...], answer:"…", why:"…" } }
-      // 3–5 steps total
+      // EXPLAIN card (no `check`) — Neuro teaches; learner taps Continue.
+      { title: "The big picture",
+        teach: "Sertraline is one of the go-to first-line antidepressants. Think of it as a safe, well-tolerated all-rounder: it treats depression AND the widest range of anxiety disorders, with few drug interactions." },
+      // CHECK card — teach + a quick question.
+      { title: "What it treats",
+        teach: "It's approved for major depression, panic disorder, OCD, PTSD, social anxiety, and PMDD — broader anxiety coverage than most.",
+        check: { q: "A patient has depression plus panic attacks. Why is sertraline a tidy single choice?", options: ["It covers both depression and anxiety disorders", "It's a stimulant", "It has no serotonergic activity"], answer: "It covers both depression and anxiety disorders", why: "One drug, broad coverage — efficient and evidence-based." } },
+      // …6–9 steps total, general → specific…
     ],
-    trap: "Don't confuse it with sertindole (an antipsychotic).",  // optional, high-yield confusion
-    takeaway: "Sertraline = clean, broad anxiety coverage, cardiac-safe, low-interaction first-line SSRI."
+    trap: "Don't confuse sertraline (an SSRI) with sertindole (an antipsychotic).",
+    takeaway: "Sertraline = the broad, well-tolerated, low-interaction first-line SSRI — and the safe pick after an MI."
   },
-  // … one entry per molecule id you were given
+  // one entry per molecule id you were given
 };
 ```
 
+## The arc (adapt per drug; 6–9 steps, general → specific)
+
+Cover, roughly in this order — blending explain + check cards:
+1. **Big picture** (explain): what this drug *is* in one friendly framing, and the one thing
+   it's known for. Class in plain language.
+2. **What it treats** (explain or check): its real indications + where it sits in therapy
+   (first-line? reserved? niche?) — use CANMAT line-of-therapy where present.
+3. **When you'd reach for it** (check): a short clinical positioning scenario.
+4. **How you use it** (explain): the *practical* approach — start low / titrate / timing /
+   with food / any key administration quirk. Plain language, not a dose-memorization drill
+   (though reuse the deck's real numbers).
+5. **What patients feel** (explain or check): the common, day-to-day side effects and the key
+   counselling points (what you'd tell the patient).
+6. **The must-not-miss** (check): the single most important safety issue — boxed/serious
+   warning, dangerous interaction, monitoring, or overdose risk. This is the high-stakes card.
+7. **Monitoring** (explain, where relevant): what you'd check and how often (levels, bloodwork).
+8. **A touch of mechanism** (explain, brief): one memorable line on why it works — keep it
+   light, no receptor tables.
+9. **Trap / pearl** (check or explain): the classic confusion or the clinical pearl.
+
+Not every drug needs all nine — pick what matters. Complex drugs (clozapine, lithium, MAOIs,
+carbamazepine, lamotrigine) deserve the longer end (8–9 steps); simple ones 6.
+
 ## Rules
 
-- **Key = the molecule `id` exactly** (as given). One entry per molecule.
-- **`hook`**: one punchy sentence (≤130 chars) — why this drug matters / how to think about it.
-- **`steps`**: 3–5 ordered from MOST to least important. Each step:
-  - `title`: 2–4 words.
-  - `teach`: 1–2 sentences — the actual teaching point (the killer fact, the mechanism, the
-    signature toxicity, the monitoring, the niche). Concrete and high-yield.
-  - `check`: a quick MCQ that tests THAT step's point. `options` = 2–4 short strings, `answer`
-    must be exactly one of them, `why` = one-line explanation. The check must be answerable
-    from the `teach` (fair, not a trick).
-- **Cover the essentials**, tuned to the drug: mechanism/class, the ONE thing you must never
-  forget (boxed warning / lethal toxicity / therapeutic level / key monitoring), a
-  differentiator vs its neighbours, and a practical pearl. Complex drugs (clozapine, lithium,
-  MAOIs, carbamazepine, lamotrigine) deserve the full 5 steps; simple ones can use 3.
-- **`trap`** (optional): the classic look-alike/sound-alike or conceptual mistake.
-- **`takeaway`**: the single most important one-liner, shown at the end.
-- Tone: crisp, confident, a little fun — Duolingo for doctors. NOT a textbook paragraph.
-- This is a **learning aid, not prescribing** — no need to restate that, the app does.
+- **Key = the molecule `id` exactly.** One entry per molecule.
+- **`hook`** ≤140 chars — a punchy, clinical framing of why this drug matters.
+- **`steps`**: 6–9. Each has `title` (2–4 words) + `teach` (1–3 conversational sentences, in
+  Neuro's friendly teaching voice). `check` is **OPTIONAL** — include it on roughly half the
+  steps. When present: `{ q, options:[2–4 short strings], answer (exactly one option), why (one
+  line) }`, and the check must be answerable from that step's `teach` (fair, not a trick).
+- **Clinical > neuropharma.** At most ONE lightweight mechanism step; do not include receptor
+  profiles or detailed PK unless it's the single most important thing about the drug.
+- **`trap`** (optional) + **`takeaway`** (required, one line — the thing to remember).
+- Reuse the deck's real doses/levels/warnings; never invent. This is a learning aid, not
+  prescribing (the app says so; you don't need to repeat it).
+- Neuro's voice: warm, clear, a little fun — a smart senior resident explaining to a junior.
 
-When done, verify it imports cleanly:
-`cd "/Users/elieparise/Documents/Projets/Alex - Psych meds/pipeline" && node -e "import('./lessons/<file>').then(m=>console.log('OK', Object.keys(m.default).length, Object.keys(m.default).join(',')))"`
-Fix any error. Confirm each entry has hook, 3–5 steps (each with a valid check whose answer is
-in its options), and a takeaway. Return a one-line summary.
+Verify it imports and every check is well-formed:
+`cd "/Users/elieparise/Documents/Projets/Alex - Psych meds/pipeline" && node -e "import('./lessons/<file>').then(m=>{let bad=[];for(const[id,l]of Object.entries(m.default)){if(!l.hook||!l.takeaway||!Array.isArray(l.steps)||l.steps.length<6)bad.push(id+':shape');l.steps.forEach((s,i)=>{if(s.check&&(!s.check.options||s.check.options.indexOf(s.check.answer)<0))bad.push(id+':step'+i)})}console.log('OK',Object.keys(m.default).length,'lessons; issues:',bad.length?bad.join(','):'none')})"`
+Return a one-line summary (lesson count, avg steps, that checks are ~half and all valid).

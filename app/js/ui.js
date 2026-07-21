@@ -46,6 +46,7 @@
     U.qsa('button', navEl).forEach(function (b) { var on = b.dataset.view === view; b.classList.toggle('active', on); if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   }
   function go(view, params) {
+    if (view !== current.view) playSfx('nav');
     current.view = view; current.flash = null;
     setActiveNav(view);
     U.clear(main);
@@ -75,8 +76,8 @@
     }
     if (ev.masteryUp) { toast('🏅 ' + cap(ev.masteryUp) + ' mastery!', 'win'); playSfx('badge'); }
     (ev.achievements || []).forEach(function (a) { toast(a.emoji + ' ' + a.title, 'win'); playSfx('badge'); window.PMLConfetti && PMLConfetti.burst({ count: 60 }); });
-    (ev.quests || []).forEach(function (q) { toast('✅ Quest: ' + q.text + ' (+' + q.reward + ' XP)', 'win'); playSfx('goal'); });
-    if (ev.goal && ev.goal.justMet) { window.PMLConfetti && PMLConfetti.burst({ count: 150 }); playSfx('goal'); toast('🔥 Daily goal complete — streak ' + ev.goal.streak + '!', 'win'); }
+    (ev.quests || []).forEach(function (q) { toast('✅ Quest: ' + q.text + ' (+' + q.reward + ' XP)', 'win'); playSfx('quest'); });
+    if (ev.goal && ev.goal.justMet) { window.PMLConfetti && PMLConfetti.burst({ count: 150 }); playSfx('streak'); toast('🔥 Daily goal complete — streak ' + ev.goal.streak + '!', 'win'); }
   }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
@@ -91,6 +92,7 @@
   // ---------- modal ----------
   function modal(node, opts) {
     opts = opts || {};
+    playSfx('open');
     var prevFocus = document.activeElement;
     var back = ce('div', { class: 'modal-back', onclick: function (e) { if (e.target === back) close(); } });
     var box = ce('div', { class: 'modal pop', role: 'dialog', 'aria-modal': 'true', 'aria-label': opts.label || 'Dialog', tabindex: '-1' });
@@ -347,6 +349,12 @@
       if (PML.flashcard && current.flash) PML.flashcard.key(e);
       if (PML.practice && PML.practice.key) PML.practice.key(e);
     });
+    // tactile tap sound on interactive elements (answer buttons + nav have their own sounds)
+    document.addEventListener('click', function (e) {
+      if (!sfxOn() || !e.target.closest) return;
+      var t = e.target.closest('.btn, .dex-card, .chip.wikilink, .avatar-choice, .match-item, .word-tile, .modal-close, .quest');
+      if (t && !t.classList.contains('opt')) PML.sfx.tap();
+    }, true);
 
     refreshHud();
     go('home');

@@ -1,327 +1,665 @@
-// First-generation (typical) antipsychotics — Duolingo-style micro-lessons.
-// Class theme: potent D2 blockade drives antipsychotic effect PLUS the class toxicities —
-// EPS (dystonia / akathisia / parkinsonism / tardive dyskinesia), hyperprolactinemia, NMS, QT.
-// HIGH-potency (haloperidol, fluphenazine, pimozide, trifluoperazine) = more EPS, less sedation;
-// LOW-potency (chlorpromazine, methotrimeprazine) = more sedation / anticholinergic / orthostasis.
-// Every fact is grounded in data/deck.json for these molecule ids.
+// First-generation (typical) antipsychotics — Duolingo-style micro-lessons (v2, clinical-first).
+// Class story: potent D2 blockade quiets psychosis but drives the class toxicities —
+// EPS (dystonia / akathisia / parkinsonism / tardive dyskinesia), NMS, hyperprolactinemia, QT.
+// The practical framing is POTENCY: high-potency (haloperidol, fluphenazine, trifluoperazine,
+// pimozide) = more EPS, less sedation; low-potency (chlorpromazine, methotrimeprazine) =
+// more sedation / anticholinergic / orthostasis, comparatively less EPS.
+// All carry the elderly-dementia mortality caution. Every fact grounded in data/deck.json.
 
 export default {
   haloperidol: {
-    hook: "The prototype high-potency FGA: maximal EPS, minimal sedation — and an IV form that puts you on telemetry.",
+    hook: "The prototype high-potency FGA: the go-to for acute agitation and delirium — and an IV form that puts you on telemetry.",
     steps: [
       {
-        title: "What it is",
-        teach: "Haloperidol is a high-potency butyrophenone and a potent D2 antagonist: mesolimbic blockade is antipsychotic, nigrostriatal blockade causes EPS, tuberoinfundibular blockade raises prolactin.",
-        check: { q: "Haloperidol's core mechanism?", options: ["Potent D2 receptor antagonism", "Serotonin reuptake blockade", "MAO inhibition"], answer: "Potent D2 receptor antagonism", why: "It is a potent post-synaptic D2 blocker across dopamine pathways." }
+        title: "The big picture",
+        teach: "Haloperidol is THE benchmark first-generation antipsychotic. It's high-potency, meaning it hits dopamine hard: powerful antipsychotic effect, very little sedation or anticholinergic baggage — but the most movement side effects of the class."
       },
       {
-        title: "High-potency signature",
-        teach: "Very high D2 affinity with minimal H1/M1 blockade means little sedation or anticholinergic effect — so extrapyramidal symptoms dominate the side-effect picture.",
-        check: { q: "Why does haloperidol cause lots of EPS but little sedation?", options: ["High D2, low H1/M1 affinity", "Low D2, high H1/M1 affinity", "It blocks only serotonin"], answer: "High D2, low H1/M1 affinity", why: "The clean off-target profile lets EPS predominate." }
+        title: "What it treats",
+        teach: "Beyond schizophrenia, it's a hospital workhorse for acute agitation (2–5 mg IM) and the drug most people reach for in delirium. It's fast, predictable, and comes in oral, IM, IV, and a long-acting depot."
       },
       {
-        title: "Acute dystonia",
-        teach: "Hours after IM haloperidol a young patient can develop torticollis or an oculogyric crisis — acute dystonia. Treat with IM benztropine or diphenhydramine.",
-        check: { q: "Oculogyric crisis after IM haloperidol — treatment?", options: ["IM benztropine or diphenhydramine", "IV beta-blocker", "Oral SSRI"], answer: "IM benztropine or diphenhydramine", why: "Anticholinergics rapidly reverse acute dystonia." }
+        title: "Reaching for it",
+        teach: "Picture a delirious, agitated patient on the ward at 3 a.m. Haloperidol's minimal sedation and blood-pressure effects make it easier to dose than a heavily sedating agent.",
+        check: {
+          q: "Why is haloperidol often preferred for agitation in a medically frail, delirious patient?",
+          options: ["Little sedation or orthostatic hypotension", "It has no EPS risk", "It lowers seizure threshold the most"],
+          answer: "Little sedation or orthostatic hypotension",
+          why: "High-potency = clean autonomic profile, so it's easier to titrate in fragile patients."
+        }
       },
       {
-        title: "IV = QT risk",
-        teach: "IV haloperidol carries dose-dependent QT prolongation and torsades risk — the highest-risk route — so QT/ECG monitoring is mandatory and many hospitals restrict IV use.",
-        check: { q: "Which haloperidol route most demands ECG monitoring for QT?", options: ["Intravenous", "Oral tablet", "None — QT is not a concern"], answer: "Intravenous", why: "IV haloperidol has the greatest torsades risk." }
+        title: "How you use it",
+        teach: "Start low — 0.5–5 mg PO (just 0.25–0.5 mg in the elderly) — and titrate to response, keeping the dose minimal to spare EPS. The decanoate depot is given deep IM every 4 weeks at roughly 10–20× the oral daily dose; overlap oral until levels build."
       },
       {
-        title: "Decanoate depot",
-        teach: "Haloperidol decanoate is a long-acting injectable given roughly every 4 weeks — a workhorse for non-adherence; overlap oral dosing until steady state.",
-        check: { q: "Typical haloperidol decanoate dosing interval?", options: ["About every 4 weeks", "Every day", "Every 6 months"], answer: "About every 4 weeks", why: "The decanoate LAI is dosed roughly monthly." }
+        title: "What patients feel",
+        teach: "The dominant complaints are movement-related: akathisia (an inner restlessness), acute dystonia, and drug-induced parkinsonism. Long term, watch for tardive dyskinesia. Hyperprolactinemia can cause galactorrhea or amenorrhea.",
+        check: {
+          q: "A young man on haloperidol paces constantly and can't sit still. Most likely cause?",
+          options: ["Akathisia", "Tardive dyskinesia", "Cholestatic jaundice"],
+          answer: "Akathisia",
+          why: "Akathisia is a drug-induced restlessness — a classic, distressing high-potency EPS."
+        }
+      },
+      {
+        title: "The IV catch",
+        teach: "Intravenous haloperidol prolongs the QT interval and can trigger torsades — so ECG monitoring is mandatory and many hospitals restrict IV use. Check potassium and magnesium first.",
+        check: {
+          q: "What must you monitor when giving haloperidol IV?",
+          options: ["ECG for QT prolongation", "Liver enzymes only", "Nothing extra is needed"],
+          answer: "ECG for QT prolongation",
+          why: "IV haloperidol carries a real torsades risk — QT surveillance is non-negotiable."
+        }
+      },
+      {
+        title: "Elderly caution",
+        teach: "Like all antipsychotics, it carries a boxed warning: elderly patients with dementia-related psychosis have an increased risk of death (mostly cardiovascular or infectious). Use is off-label there and must be justified."
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: haloperidol is a butyrophenone that potently blocks post-synaptic D2 receptors. Mesolimbic blockade calms psychosis; nigrostriatal blockade causes EPS; tuberoinfundibular blockade raises prolactin."
       }
     ],
-    trap: "Haloperidol vs droperidol — droperidol is the short-acting butyrophenone cousin for agitation/antiemesis with the prominent QT warning.",
-    takeaway: "Haloperidol = the high-potency FGA benchmark: most EPS, least sedation, IV form is the QT worry, decanoate LAI for adherence."
+    trap: "Don't confuse haloperidol (high-potency, IM/depot workhorse) with the sedating low-potency chlorpromazine — same class, opposite side-effect flavour.",
+    takeaway: "Haloperidol = the high-potency FGA benchmark: excellent for agitation and delirium, EPS-heavy, minimal sedation, and IV use demands QT monitoring."
   },
 
   chlorpromazine: {
-    hook: "The prototype low-potency FGA: sedating, hypotensive, anticholinergic — and the one that turns skin blue-grey in the sun.",
+    hook: "The original antipsychotic and the low-potency prototype: heavy on sedation, orthostasis and anticholinergic effects, lighter on EPS.",
     steps: [
       {
-        title: "What it is",
-        teach: "Chlorpromazine is a low-potency aliphatic phenothiazine — a D2 antagonist with broad off-target blockade of H1, M1, α1 and 5-HT2 receptors.",
-        check: { q: "Chlorpromazine's receptor profile?", options: ["D2 plus broad H1/M1/α1 blockade", "Selective D2 only", "Pure serotonin agonist"], answer: "D2 plus broad H1/M1/α1 blockade", why: "The wide off-target blockade defines the low-potency profile." }
+        title: "The big picture",
+        teach: "Chlorpromazine was the first true antipsychotic and it's the low-potency benchmark. It blocks dopamine less avidly but hits many other receptors — so its signature is sedation, low blood pressure and dry-mouth-type effects rather than stiffness."
       },
       {
-        title: "Low-potency signature",
-        teach: "Strong H1 (sedation), M1 (anticholinergic) and α1 (orthostatic hypotension) blockade dominate — while EPS are comparatively LESS than with high-potency agents.",
-        check: { q: "Compared to haloperidol, chlorpromazine causes…", options: ["More sedation/orthostasis, less EPS", "More EPS, less sedation", "Identical side effects"], answer: "More sedation/orthostasis, less EPS", why: "Low-potency agents trade EPS for autonomic/sedating effects." }
+        title: "What it treats",
+        teach: "Its main role is schizophrenia and acute psychosis, and its sedating punch is sometimes useful for very agitated patients. Historically it was also used for intractable hiccups and nausea."
       },
       {
-        title: "Photosensitivity",
-        teach: "Photosensitivity is classic — counsel sun protection; long-term high doses can cause blue-grey skin discoloration and lens/corneal deposits.",
-        check: { q: "Classic dermatologic effect of chlorpromazine?", options: ["Photosensitivity / blue-grey skin", "Vitiligo", "Acne fulminans"], answer: "Photosensitivity / blue-grey skin", why: "Sun sensitivity and blue-grey pigmentation are signature." }
+        title: "How you use it",
+        teach: "Start around 25–50 mg (often TID) and increase gradually — the dose range is wide, up to ~800–1000 mg/day in resistant cases. Because it's so sedating, load the larger portion at bedtime."
       },
       {
-        title: "Distinctive hazards",
-        teach: "Watch for cholestatic jaundice, a lowered seizure threshold and (rarely) agranulocytosis — distinctive phenothiazine dangers.",
-        check: { q: "Which is a distinctive chlorpromazine hazard?", options: ["Cholestatic jaundice", "Pulmonary fibrosis", "Osteoporosis"], answer: "Cholestatic jaundice", why: "Cholestatic jaundice and a lowered seizure threshold are phenothiazine hazards." }
+        title: "What patients feel",
+        teach: "Expect marked drowsiness, orthostatic dizziness, and anticholinergic effects (dry mouth, constipation, blurred vision, urinary retention). Counsel patients to rise slowly and warn them the sedation is strongest early.",
+        check: {
+          q: "Compared with haloperidol, what dominates chlorpromazine's side-effect profile?",
+          options: ["Sedation, orthostasis and anticholinergic effects", "Severe EPS with little sedation", "QT is its only concern"],
+          answer: "Sedation, orthostasis and anticholinergic effects",
+          why: "Low-potency agents trade EPS for autonomic and sedating burden."
+        }
+      },
+      {
+        title: "The sun rule",
+        teach: "Photosensitivity is classic — patients burn easily, so counsel sunscreen and protective clothing. Long-term high-dose use can also cause blue-grey skin discoloration and lens or corneal deposits.",
+        check: {
+          q: "What lifestyle counselling is classic for chlorpromazine?",
+          options: ["Use sun protection", "Avoid all dairy", "Take it on an empty stomach only"],
+          answer: "Use sun protection",
+          why: "Phenothiazine photosensitivity makes sunburn and skin discoloration a real risk."
+        }
+      },
+      {
+        title: "Don't miss",
+        teach: "Beyond the shared NMS and tardive dyskinesia risks, chlorpromazine has distinctive hazards: cholestatic jaundice, a lowered seizure threshold, agranulocytosis, and QT prolongation.",
+        check: {
+          q: "Which is a distinctive serious risk with chlorpromazine?",
+          options: ["Cholestatic jaundice", "It cannot cause NMS", "It has no effect on seizure threshold"],
+          answer: "Cholestatic jaundice",
+          why: "Cholestatic jaundice and a lowered seizure threshold are classic phenothiazine hazards."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's an aliphatic phenothiazine that blocks D2 but also H1, muscarinic, alpha-1 and 5-HT2 receptors — that broad off-target blockade explains the sedation, orthostasis and dry-mouth profile."
       }
     ],
-    trap: "Chlorpromazine (low-potency, sedating) vs trifluoperazine/fluphenazine (high-potency piperazine phenothiazines, EPS-heavy) — same family, opposite profiles.",
-    takeaway: "Chlorpromazine = the low-potency FGA benchmark: sedating, hypotensive, anticholinergic, photosensitizing, less EPS but more autonomic burden."
+    trap: "Same phenothiazine family as trifluoperazine, but opposite behaviour: chlorpromazine is low-potency and sedating, trifluoperazine is high-potency and EPS-heavy — potency, not chemistry, predicts the side effects.",
+    takeaway: "Chlorpromazine = the low-potency FGA prototype: sedating, hypotensive, anticholinergic and photosensitizing, with less EPS but more autonomic and hepatic risk."
   },
 
   loxapine: {
-    hook: "Mid-potency FGA with a party trick: an inhaled form for acute agitation — just mind the bronchospasm.",
+    hook: "A mid-potency FGA with a party trick: an inhaled form that aborts acute agitation in minutes — if the lungs cooperate.",
     steps: [
       {
-        title: "What it is",
-        teach: "Loxapine is a mid-potency dibenzoxazepine (structurally related to clozapine): a D2 antagonist with 5-HT2A blockade and intermediate sedation/anticholinergic burden.",
-        check: { q: "Where does loxapine sit on the potency spectrum?", options: ["Mid-potency (between low and high)", "The most potent FGA", "It is an SGA"], answer: "Mid-potency (between low and high)", why: "It carries intermediate sedation and EPS burden." }
+        title: "The big picture",
+        teach: "Loxapine sits in the middle of the potency spectrum, so it shares the usual FGA profile. But the reason it stands out is its unique INHALED formulation for rapidly calming acute agitation."
       },
       {
-        title: "Inhaled form",
-        teach: "Its exam angle is the INHALED formulation — a single 10 mg dose for rapid control of acute agitation, given only in a supervised clinical setting.",
-        check: { q: "What is loxapine's distinctive route for acute agitation?", options: ["Inhaled single dose", "Transdermal patch", "Rectal suppository"], answer: "Inhaled single dose", why: "Inhaled loxapine gives fast, single-dose agitation control." }
+        title: "What it treats",
+        teach: "Oral loxapine treats schizophrenia (10 mg BID, up to ~250 mg/day). The inhaled version is a single 10 mg dose used only in a monitored healthcare setting for acute agitation in schizophrenia or bipolar disorder."
       },
       {
-        title: "Bronchospasm caveat",
-        teach: "Inhaled loxapine can cause bronchospasm — it is contraindicated in asthma/COPD, and a rescue bronchodilator must be available.",
-        check: { q: "Key contraindication for INHALED loxapine?", options: ["Asthma/COPD (bronchospasm)", "Renal failure", "Hypertension"], answer: "Asthma/COPD (bronchospasm)", why: "Bronchospasm risk rules out reactive airway disease." }
+        title: "The lung caveat",
+        teach: "Inhaled loxapine can trigger bronchospasm, so it's contraindicated in asthma or COPD, and a rescue bronchodilator must be on hand. Watch the patient for wheeze or chest tightness after the dose.",
+        check: {
+          q: "Before giving inhaled loxapine, what must you screen for and have ready?",
+          options: ["Airway disease; a rescue bronchodilator", "Renal function; IV fluids", "Nothing — it's fully inhaled and safe"],
+          answer: "Airway disease; a rescue bronchodilator",
+          why: "Bronchospasm risk makes asthma/COPD a contraindication and a bronchodilator mandatory."
+        }
+      },
+      {
+        title: "One and done",
+        teach: "The inhaled dose is a one-time, in-clinic treatment — not something a patient takes home or repeats freely (max one 10 mg dose per 24 h). It's a bridge to calm, not maintenance therapy.",
+        check: {
+          q: "How is inhaled loxapine used?",
+          options: ["A single in-clinic dose for acute agitation", "Three times daily at home", "As a monthly depot"],
+          answer: "A single in-clinic dose for acute agitation",
+          why: "It's a one-time monitored dose, capped at one per 24 hours."
+        }
+      },
+      {
+        title: "What patients feel",
+        teach: "Like other FGAs, expect sedation, dizziness and EPS (akathisia, dystonia, parkinsonism). The inhaled route adds throat irritation and an unpleasant taste. Long-term oral use carries the usual tardive dyskinesia and NMS risks."
+      },
+      {
+        title: "A family secret",
+        teach: "One line of mechanism: loxapine is a dibenzoxazepine, structurally related to clozapine, blocking D2 and 5-HT2A. Fun fact — its metabolite amoxapine is itself marketed as an antidepressant.",
+        check: {
+          q: "Loxapine is a dibenzoxazepine structurally related to which antipsychotic?",
+          options: ["Clozapine", "Haloperidol", "Lithium"],
+          answer: "Clozapine",
+          why: "Loxapine shares the dibenzoxazepine chemistry with clozapine."
+        }
       }
     ],
-    trap: "Loxapine (FGA dibenzoxazepine) vs clozapine (SGA dibenzodiazepine, agranulocytosis) — similar skeleton, very different class and risk.",
-    takeaway: "Loxapine = mid-potency FGA whose signature is the inhaled formulation for rapid agitation control, with a bronchospasm contraindication."
+    trap: "The exam angle isn't oral loxapine — it's the INHALED form and its bronchospasm contraindication in asthma/COPD.",
+    takeaway: "Loxapine = a mid-potency FGA whose signature is an inhaled single-dose treatment for acute agitation, gated by bronchospasm risk."
   },
 
   perphenazine: {
-    hook: "The CATIE first-generation antipsychotic that quietly matched the newer SGAs — and challenged 'newer = better.'",
+    hook: "The mid-potency phenothiazine that held its own against the newer drugs in the CATIE trial — cheap, balanced, and quietly effective.",
     steps: [
       {
-        title: "What it is",
-        teach: "Perphenazine is a mid-potency piperazine phenothiazine and D2 antagonist — sitting between chlorpromazine and haloperidol with a balanced side-effect profile.",
-        check: { q: "Perphenazine's potency class?", options: ["Mid-potency phenothiazine", "Low-potency, very sedating", "A butyrophenone"], answer: "Mid-potency phenothiazine", why: "It has moderate EPS and moderate autonomic effects." }
+        title: "The big picture",
+        teach: "Perphenazine is a mid-potency phenothiazine — it sits between chlorpromazine and haloperidol, with moderate EPS and moderate sedation. No extreme in either direction.",
+        check: {
+          q: "Where does perphenazine sit on the potency spectrum?",
+          options: ["Mid-potency, between chlorpromazine and haloperidol", "The most sedating of all FGAs", "Higher potency than haloperidol"],
+          answer: "Mid-potency, between chlorpromazine and haloperidol",
+          why: "It's the balanced middle child — moderate EPS, moderate sedation."
+        }
       },
       {
-        title: "The CATIE benchmark",
-        teach: "In the CATIE trial this mid-potency FGA was roughly as effective as several SGAs and highly cost-effective — challenging the assumption that newer means better.",
-        check: { q: "Why is perphenazine famous in trial history?", options: ["It matched SGAs in CATIE", "It was the first clozapine", "It cured tardive dyskinesia"], answer: "It matched SGAs in CATIE", why: "CATIE showed comparable effectiveness and cost-effectiveness." }
+        title: "What it treats",
+        teach: "Its main job is schizophrenia, usual dosing around 12–24 mg/day. Its balanced profile made it the FGA chosen to represent the whole 'older drug' camp in a landmark comparison trial."
       },
       {
-        title: "CYP2D6 metabolism",
-        teach: "Perphenazine is metabolized mainly by CYP2D6 — inhibitors like paroxetine, fluoxetine or bupropion raise its levels.",
-        check: { q: "Which enzyme mainly clears perphenazine?", options: ["CYP2D6", "CYP1A2", "It is renally cleared unchanged"], answer: "CYP2D6", why: "2D6 inhibitors raise perphenazine levels." }
+        title: "The CATIE lesson",
+        teach: "In the CATIE trial, mid-potency perphenazine performed roughly as well as several second-generation antipsychotics and was far more cost-effective — a reminder that newer doesn't automatically mean better.",
+        check: {
+          q: "What did CATIE teach about perphenazine?",
+          options: ["It was about as effective as SGAs and cost-effective", "It was clearly inferior to every SGA", "It has no antipsychotic effect"],
+          answer: "It was about as effective as SGAs and cost-effective",
+          why: "CATIE showed this older, cheaper FGA held its own against newer agents."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Start at 4–8 mg BID–TID and titrate to response, up to a max of ~64 mg/day. The effect on psychosis builds over weeks, so counsel patience."
+      },
+      {
+        title: "What patients feel",
+        teach: "Being mid-potency, it gives a balanced mix: moderate EPS, moderate sedation, mild orthostasis, and mild anticholinergic effects. Hyperprolactinemia and the usual NMS/tardive dyskinesia risks still apply.",
+        check: {
+          q: "How would you describe perphenazine's side-effect profile?",
+          options: ["Balanced — moderate EPS and moderate sedation", "Pure EPS, zero sedation", "Only autonomic effects, no EPS"],
+          answer: "Balanced — moderate EPS and moderate sedation",
+          why: "Mid-potency means it splits the difference between the extremes of the class."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a piperazine phenothiazine that antagonizes D2. Practically, it's metabolized by CYP2D6, so 2D6 inhibitors (like fluoxetine or bupropion) can raise its levels."
       }
     ],
-    trap: "Perphenazine is combined with amitriptyline in older fixed-dose products — don't mistake that combo for monotherapy.",
-    takeaway: "Perphenazine = the balanced mid-potency phenothiazine and CATIE FGA benchmark; CYP2D6-metabolized."
+    trap: "Don't dismiss FGAs as obsolete — CATIE showed perphenazine roughly matched newer agents. Cost and side effects, not just era, drive the choice.",
+    takeaway: "Perphenazine = the balanced mid-potency phenothiazine and the CATIE benchmark that showed older FGAs remain effective and cost-effective."
   },
 
   fluphenazine: {
-    hook: "The phenothiazine that behaves like haloperidol — EPS-heavy, low-sedation, with a shorter-interval decanoate depot.",
+    hook: "A high-potency phenothiazine defined by its depot: a shorter-interval long-acting injection for patients who can't take daily pills.",
     steps: [
       {
-        title: "What it is",
-        teach: "Fluphenazine is a high-potency piperazine phenothiazine and potent D2 antagonist; low H1/M1 blockade means little sedation and an EPS-predominant profile like haloperidol.",
-        check: { q: "Fluphenazine's side-effect profile most resembles…", options: ["Haloperidol (EPS-heavy, low sedation)", "Chlorpromazine (sedating, hypotensive)", "An SSRI"], answer: "Haloperidol (EPS-heavy, low sedation)", why: "High potency with low H1/M1 makes EPS dominate." }
+        title: "The big picture",
+        teach: "Fluphenazine is a high-potency phenothiazine — think haloperidol-like: lots of EPS, little sedation or anticholinergic effect. Its standout feature is a long-acting injectable for maintenance."
       },
       {
-        title: "Decanoate interval",
-        teach: "Fluphenazine decanoate is a long-acting injectable dosed every 2–3 weeks — a shorter interval than haloperidol decanoate's roughly 4 weeks.",
-        check: { q: "How does fluphenazine decanoate's interval compare to haloperidol decanoate?", options: ["Shorter (q2–3 wk vs q4 wk)", "Longer (q8 wk)", "Identical"], answer: "Shorter (q2–3 wk vs q4 wk)", why: "Fluphenazine decanoate is dosed roughly every 2–3 weeks." }
+        title: "What it treats",
+        teach: "Its job is schizophrenia, especially long-term maintenance. Oral dosing is 2.5–10 mg/day in divided doses, but the decanoate depot is where it earns its keep."
       },
       {
-        title: "Dose to limit EPS",
-        teach: "Because EPS scale with dose, use the lowest effective dose — its blockade is potent and sedation won't blunt the extrapyramidal effects.",
-        check: { q: "Best strategy to limit fluphenazine's EPS?", options: ["Lowest effective dose", "Add an anticholinergic to every patient", "Maximize the dose"], answer: "Lowest effective dose", why: "EPS are dose-dependent, so minimize the dose." }
+        title: "The depot advantage",
+        teach: "The fluphenazine decanoate depot is given deep IM every 2–3 weeks — a notably shorter interval than haloperidol decanoate's 4 weeks. It's a common choice when non-adherence keeps derailing recovery.",
+        check: {
+          q: "Why choose a long-acting fluphenazine depot?",
+          options: ["Steady levels despite poor pill adherence", "It eliminates all EPS", "It works instantly, within minutes"],
+          answer: "Steady levels despite poor pill adherence",
+          why: "Depots deliver reliable drug levels for patients who struggle to take daily pills."
+        }
+      },
+      {
+        title: "What patients feel",
+        teach: "As a high-potency agent, EPS dominate: akathisia, acute dystonia, parkinsonism, and restlessness or insomnia. Sedation is minimal. Hyperprolactinemia and long-term tardive dyskinesia round out the picture.",
+        check: {
+          q: "A patient on fluphenazine develops a sudden painful neck spasm and eyes rolling upward. What is this?",
+          options: ["Acute dystonia", "Photosensitivity", "Cholestatic jaundice"],
+          answer: "Acute dystonia",
+          why: "Acute dystonia — a sudden sustained muscle contraction — is a classic high-potency reaction."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Keep the oral dose at the lowest effective level to limit EPS. When switching to depot, attend every scheduled injection — the whole point is steady levels — and never stop abruptly.",
+        check: {
+          q: "How often is the fluphenazine decanoate depot typically given?",
+          options: ["Every 2–3 weeks", "Every 12 hours", "Once a year"],
+          answer: "Every 2–3 weeks",
+          why: "Fluphenazine decanoate runs every 2–3 weeks — shorter than haloperidol's 4."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: fluphenazine is a piperazine phenothiazine, the high-potency branch of that family, and a potent D2 antagonist — which is exactly why EPS are prominent."
       }
     ],
-    trap: "Fluphenazine (high-potency antipsychotic) vs fluoxetine and fluvoxamine (SSRIs) — all 'flu-', different classes.",
-    takeaway: "Fluphenazine = high-potency phenothiazine, EPS-heavy and low-sedation, with a shorter-interval (q2–3 wk) decanoate depot."
+    trap: "Both haloperidol and fluphenazine come as decanoate depots — but haloperidol's is every 4 weeks and fluphenazine's every 2–3 weeks.",
+    takeaway: "Fluphenazine = a high-potency, EPS-heavy phenothiazine whose shorter-interval decanoate depot makes it a maintenance workhorse for non-adherence."
   },
 
   zuclopenthixol: {
-    hook: "The Canadian thioxanthene with three esters — including Acuphase, one shot covering ~2–3 days of acute psychosis.",
+    hook: "A Canadian thioxanthene with three faces — oral, a short-acting acute injection (Acuphase), and a maintenance depot.",
     steps: [
       {
-        title: "What it is",
-        teach: "Zuclopenthixol is a thioxanthene (Canada/Europe; not marketed in the US) that antagonizes D1 and D2 receptors; α1/H1 blockade makes it somewhat sedating for a higher-potency agent.",
-        check: { q: "Zuclopenthixol belongs to which chemical class?", options: ["Thioxanthene", "Butyrophenone", "Dibenzodiazepine"], answer: "Thioxanthene", why: "It is a D1/D2-blocking thioxanthene." }
+        title: "The big picture",
+        teach: "Zuclopenthixol is a thioxanthene antipsychotic used in Canada and Europe (not the US). What makes it special is that it comes in THREE distinct forms for three different jobs."
       },
       {
-        title: "Acuphase (acetate)",
-        teach: "The acetate ester (Acuphase) is a short-acting IM that covers about 72 hours of acute disturbance — bridging management, NOT a maintenance depot.",
-        check: { q: "What is zuclopenthixol acetate (Acuphase) used for?", options: ["Short-term acute agitation (~2–3 days)", "Lifelong maintenance", "Oral daily dosing"], answer: "Short-term acute agitation (~2–3 days)", why: "Acuphase bridges an acute episode, not maintenance." }
+        title: "The three forms",
+        teach: "There's oral (dihydrochloride) for day-to-day dosing; the ACETATE, called Acuphase, a short-acting IM shot whose effect lasts about 72 hours for acute disturbance; and the DECANOATE depot, deep IM every 2–4 weeks for maintenance.",
+        check: {
+          q: "Which zuclopenthixol form is used for a few days of acute behavioural control?",
+          options: ["Acetate (Acuphase)", "Decanoate depot", "Oral dihydrochloride"],
+          answer: "Acetate (Acuphase)",
+          why: "The acetate ester (Acuphase) gives ~72 hours of cover for acute disturbance."
+        }
       },
       {
-        title: "Three forms",
-        teach: "Know the trio: oral tablets, acetate (Acuphase, acute), and decanoate depot (maintenance, roughly every 2–4 weeks).",
-        check: { q: "Which zuclopenthixol form is the maintenance depot?", options: ["Decanoate", "Acetate (Acuphase)", "Oral tablet"], answer: "Decanoate", why: "The decanoate ester is the long-acting maintenance depot." }
+        title: "Acuphase pitfall",
+        teach: "Acuphase is for ACUTE management only — a single injection bridges roughly 2–3 days while other treatment is arranged. It is NOT a long-acting maintenance depot, and confusing the two is a real prescribing error.",
+        check: {
+          q: "True or false: Acuphase is a monthly maintenance depot.",
+          options: ["False — it's a short-acting acute injection", "True — it lasts about a month", "True — it's the oral form"],
+          answer: "False — it's a short-acting acute injection",
+          why: "Acuphase covers ~72 hours; the DECANOATE is the maintenance depot."
+        }
+      },
+      {
+        title: "What patients feel",
+        teach: "Zuclopenthixol brings the usual EPS (akathisia, dystonia, parkinsonism) plus somewhat more sedation, orthostasis and dry mouth than a pure high-potency agent, thanks to some alpha-1 and H1 blockade. NMS and tardive dyskinesia risks apply.",
+        check: {
+          q: "Why is zuclopenthixol somewhat more sedating than pure high-potency agents?",
+          options: ["Added alpha-1 and H1 blockade", "It doesn't touch dopamine", "It has no EPS at all"],
+          answer: "Added alpha-1 and H1 blockade",
+          why: "Alpha-1/H1 blockade adds sedation and orthostasis on top of the EPS."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Oral is roughly 10–50 mg/day; the acetate is 50–150 mg per acute episode, repeated no more often than every 2–3 days. For maintenance, transition to the decanoate depot and attend scheduled injections."
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a thioxanthene that blocks both D1 and D2 receptors — the D2 antagonism drives the antipsychotic effect and the shared class toxicities."
       }
     ],
-    trap: "Zuclopenthixol ACETATE (Acuphase, short-acting) vs DECANOATE (maintenance depot) — same molecule, opposite purposes.",
-    takeaway: "Zuclopenthixol = Canadian thioxanthene with a unique short-acting acetate (Acuphase) for acute psychosis plus oral and decanoate depot forms."
+    trap: "Acuphase (acetate, ~72 h) versus the decanoate depot (q2–4 weeks) — same molecule, completely different roles. Never use Acuphase for maintenance.",
+    takeaway: "Zuclopenthixol = a Canadian thioxanthene with three esters; the exam point is Acuphase (short-acting acute) versus the decanoate maintenance depot."
   },
 
   flupenthixol: {
-    hook: "Zuclopenthixol's Canadian sibling — oral plus depot, with a low-dose activating/antidepressant quirk.",
+    hook: "The other Canadian thioxanthene: oral plus a depot — and a quirky low dose that can act like an antidepressant.",
     steps: [
       {
-        title: "What it is",
-        teach: "Flupenthixol is a Canadian thioxanthene (Canada/Europe; not in the US) that antagonizes D1 and D2 receptors, available as an oral form and a decanoate depot dosed every 2–3 weeks.",
-        check: { q: "Flupenthixol is available in Canada as…", options: ["Oral plus decanoate depot", "Inhaled only", "IV infusion only"], answer: "Oral plus decanoate depot", why: "It comes as an oral form and a maintenance decanoate depot." }
+        title: "The big picture",
+        teach: "Flupenthixol is a thioxanthene used in Canada and Europe, and the sibling of zuclopenthixol. It comes as an oral form and a decanoate depot — but no Acuphase."
       },
       {
-        title: "Low-dose quirk",
-        teach: "Distinctively, LOW-dose flupenthixol can be activating and mildly antidepressant, whereas higher doses are antipsychotic.",
-        check: { q: "What is unusual about LOW-dose flupenthixol?", options: ["Activating / mildly antidepressant", "Deeply sedating", "It becomes an SSRI"], answer: "Activating / mildly antidepressant", why: "Low doses are described as activating/antidepressant." }
+        title: "What it treats",
+        teach: "Its main use is schizophrenia. Curiously, LOW-dose flupenthixol can be activating and mildly antidepressant, while higher doses (a few mg/day, up to ~12) do the antipsychotic work.",
+        check: {
+          q: "What's distinctive about low-dose flupenthixol?",
+          options: ["It can be activating / mildly antidepressant", "It's purely sedating", "It only works as a depot"],
+          answer: "It can be activating / mildly antidepressant",
+          why: "The dose-dependent flip — activating low, antipsychotic high — is its signature quirk."
+        }
       },
       {
-        title: "vs zuclopenthixol",
-        teach: "Only its sibling zuclopenthixol adds the short-acting Acuphase acetate; flupenthixol is oral plus depot only.",
-        check: { q: "Which sibling has the short-acting Acuphase form?", options: ["Zuclopenthixol", "Flupenthixol", "Both equally"], answer: "Zuclopenthixol", why: "Flupenthixol lacks the acetate; only zuclopenthixol has Acuphase." }
+        title: "How you use it",
+        teach: "Oral dosing runs from ~1 mg/day (low, activating) up to a few mg for psychosis; keep it low to limit EPS. The decanoate depot is given deep IM every 2–3 weeks (up to ~4) for maintenance."
+      },
+      {
+        title: "What patients feel",
+        teach: "Expect EPS (akathisia, dystonia, parkinsonism) and, at low doses, restlessness or activation and insomnia. Sedation is mild. The usual NMS, tardive dyskinesia and hyperprolactinemia risks apply.",
+        check: {
+          q: "A patient on low-dose flupenthixol complains of feeling wired and can't sleep. This fits which of its known effects?",
+          options: ["Activation / restlessness at low doses", "Profound sedation", "Cholestatic jaundice"],
+          answer: "Activation / restlessness at low doses",
+          why: "Low-dose flupenthixol is activating, which can drive restlessness and insomnia."
+        }
+      },
+      {
+        title: "Sibling check",
+        teach: "Remember the pairing: zuclopenthixol adds the short-acting Acuphase, whereas flupenthixol is oral plus depot only. Both are D1/D2-blocking thioxanthenes.",
+        check: {
+          q: "Which thioxanthene has the short-acting acute Acuphase injection?",
+          options: ["Zuclopenthixol", "Flupenthixol", "Neither — both are depot-only"],
+          answer: "Zuclopenthixol",
+          why: "Only zuclopenthixol offers the acetate Acuphase; flupenthixol is oral plus depot."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: flupenthixol is a thioxanthene that blocks both D1 and D2 receptors — the D2 antagonism drives the antipsychotic effect and the shared class toxicities."
       }
     ],
-    trap: "Flupenthixol vs zuclopenthixol — both Canadian thioxanthene depots; only zuclopenthixol has the short-acting acetate (Acuphase).",
-    takeaway: "Flupenthixol = Canadian thioxanthene (oral + decanoate depot) with a low-dose activating/antidepressant quirk; no acetate form."
+    trap: "Flupenthixol vs zuclopenthixol — both Canadian thioxanthene depots, but only zuclopenthixol has the acute-use Acuphase.",
+    takeaway: "Flupenthixol = a Canadian thioxanthene (oral + decanoate depot) with a dose-dependent quirk: activating/antidepressant low, antipsychotic high."
   },
 
   pimozide: {
-    hook: "The QT champion of the FGAs — a Tourette-niche drug where the ECG, not the symptom, sets the dose.",
+    hook: "The QT champion of the FGAs: a niche Tourette drug hemmed in by ECG monitoring and a long list of dangerous interactions.",
     steps: [
       {
-        title: "What it is",
-        teach: "Pimozide is a diphenylbutylpiperidine — a potent, selective D2 antagonist that also blocks cardiac calcium channels, driving QT prolongation.",
-        check: { q: "Besides D2 blockade, what does pimozide do to the heart?", options: ["Blocks cardiac calcium channels → QT prolongation", "Speeds AV conduction", "Nothing cardiac"], answer: "Blocks cardiac calcium channels → QT prolongation", why: "Cardiac calcium-channel blockade drives its QT risk." }
+        title: "The big picture",
+        teach: "Pimozide is a diphenylbutylpiperidine antipsychotic notorious for one thing above all: it prolongs the QT interval more than its peers. That cardiac signal shapes everything about how it's used."
       },
       {
-        title: "QT / torsades",
-        teach: "Its defining feature is marked, dose-dependent QT prolongation with torsades and reported sudden death — dosing is ECG-driven with slow titration.",
-        check: { q: "What guides pimozide dose titration?", options: ["ECG / QT surveillance", "Body temperature", "Serum sodium"], answer: "ECG / QT surveillance", why: "Dose-dependent QT risk makes ECG monitoring mandatory." }
+        title: "What it treats",
+        teach: "Its niche is Tourette syndrome that hasn't responded to other agents. It's not a first-choice psychosis drug — the QT risk keeps it in reserve.",
+        check: {
+          q: "What is pimozide's main clinical niche?",
+          options: ["Refractory Tourette syndrome", "First-line depression", "Acute agitation in the ER"],
+          answer: "Refractory Tourette syndrome",
+          why: "Pimozide is reserved for Tourette's when other agents fail."
+        }
       },
       {
-        title: "CYP3A4 traps",
-        teach: "CYP3A4-dependent metabolism makes macrolides (clarithromycin/erythromycin), azole antifungals, protease inhibitors and grapefruit juice CONTRAINDICATED — they raise levels and QT.",
-        check: { q: "Which is contraindicated with pimozide?", options: ["Clarithromycin (CYP3A4 inhibitor)", "Acetaminophen", "Normal saline"], answer: "Clarithromycin (CYP3A4 inhibitor)", why: "Strong CYP3A4 inhibitors raise pimozide levels and QT risk." }
+        title: "How you use it",
+        teach: "Start low — 1–2 mg/day, often at bedtime — and increase slowly every few days, up to ~10 mg/day, with an ECG before and during each increase. Its long half-life allows once-daily dosing."
       },
       {
-        title: "Tourette niche",
-        teach: "Its main indication is Tourette syndrome refractory to other agents — a narrow niche, not a first-line antipsychotic.",
-        check: { q: "Pimozide's niche indication?", options: ["Refractory Tourette syndrome", "First-line depression", "Insomnia"], answer: "Refractory Tourette syndrome", why: "It is reserved for Tourette's when other agents fail." }
+        title: "The QT rule",
+        teach: "Dose-dependent QT prolongation with torsades (and reported sudden death) is the headline risk, so ECG monitoring is mandatory and you must correct low potassium or magnesium. It's contraindicated with congenital long QT or other QT-prolonging drugs.",
+        check: {
+          q: "What monitoring is mandatory throughout pimozide treatment?",
+          options: ["Serial ECGs", "Weekly liver ultrasounds", "Daily prolactin levels"],
+          answer: "Serial ECGs",
+          why: "Its dose-dependent QT/torsades risk makes ECG surveillance essential."
+        }
+      },
+      {
+        title: "Interaction trap",
+        teach: "Pimozide is metabolized by CYP3A4, so macrolide antibiotics, azole antifungals, protease inhibitors and grapefruit juice are CONTRAINDICATED — they raise its levels and push the QT higher.",
+        check: {
+          q: "Which should a patient on pimozide avoid?",
+          options: ["Grapefruit juice and azole antifungals", "Leafy green vegetables", "Ordinary tap water"],
+          answer: "Grapefruit juice and azole antifungals",
+          why: "CYP3A4 inhibitors raise pimozide levels and dangerously worsen QT prolongation."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: pimozide is a potent, selective D2 antagonist that also blocks cardiac calcium channels — which is precisely why it prolongs the QT interval."
       }
     ],
-    trap: "Pimozide vs primidone (an anticonvulsant) — similar names, unrelated drugs.",
-    takeaway: "Pimozide = the highest-QT FGA with the most restrictive CYP3A4 interaction list; ECG-driven dosing and a refractory-Tourette niche."
+    trap: "Pimozide's danger isn't EPS — it's the QT interval and its CYP3A4 interactions. Treat any new antibiotic or antifungal as a red flag.",
+    takeaway: "Pimozide = the high-QT, CYP3A4-sensitive FGA reserved for refractory Tourette's, requiring serial ECGs and a strict interaction watch."
   },
 
   methotrimeprazine: {
-    hook: "The Canadian low-potency phenothiazine that pulls triple duty in palliative care: sedation, analgesia and antiemesis.",
+    hook: "A low-potency Canadian phenothiazine that pulls triple duty in palliative care: deeply sedating, analgesic, and antiemetic.",
     steps: [
       {
-        title: "What it is",
-        teach: "Methotrimeprazine (levomepromazine) is a low-potency phenothiazine: a D2 antagonist with broad H1/M1/α1/5-HT2 blockade plus intrinsic analgesic and antiemetic activity.",
-        check: { q: "What is unusual about methotrimeprazine among antipsychotics?", options: ["It has intrinsic analgesic + antiemetic activity", "It is a selective D2 blocker", "It is a stimulant"], answer: "It has intrinsic analgesic + antiemetic activity", why: "Genuine analgesia and antiemesis extend its use beyond psychosis." }
+        title: "The big picture",
+        teach: "Methotrimeprazine (also called levomepromazine) is a low-potency phenothiazine. Its defining feature isn't psychosis control — it's a rare combination of heavy sedation with genuine pain-relieving and anti-nausea properties."
       },
       {
-        title: "Palliative workhorse",
-        teach: "It is a palliative-care workhorse — often given subcutaneously for terminal agitation, intractable nausea and pain.",
-        check: { q: "Where does methotrimeprazine shine clinically?", options: ["Palliative care (agitation, nausea, pain)", "Acute mania first-line", "ADHD"], answer: "Palliative care (agitation, nausea, pain)", why: "Its combined sedation/analgesia/antiemesis suits palliative use." }
+        title: "What it treats",
+        teach: "It's a palliative-care workhorse: given for terminal agitation, intractable nausea and pain, often subcutaneously. That three-in-one action makes it valuable at the end of life.",
+        check: {
+          q: "In what setting does methotrimeprazine shine?",
+          options: ["Palliative care — agitation, nausea, and pain", "First-line schizophrenia in young adults", "Acute mania as monotherapy"],
+          answer: "Palliative care — agitation, nausea, and pain",
+          why: "Its combined sedative, antiemetic and analgesic action fits end-of-life symptom control."
+        }
       },
       {
-        title: "Dose-limiting effects",
-        teach: "Marked orthostatic hypotension and profound sedation are dose-limiting; EPS are comparatively mild because it is low-potency.",
-        check: { q: "Main dose-limiting effects of methotrimeprazine?", options: ["Orthostatic hypotension and sedation", "Severe EPS", "Agranulocytosis in everyone"], answer: "Orthostatic hypotension and sedation", why: "Low-potency profile means autonomic/sedating effects limit dosing." }
+        title: "How you use it",
+        teach: "In palliative care it's used at low doses (e.g., 6.25–12.5 mg) for nausea or agitation, often at bedtime or by continuous subcutaneous infusion. Titrate to symptom control while watching for oversedation and low blood pressure."
+      },
+      {
+        title: "What patients feel",
+        teach: "Profound sedation and marked orthostatic hypotension are the dose-limiting effects — patients feel very drowsy and can faint on standing. Anticholinergic effects and weight gain also occur.",
+        check: {
+          q: "What are the dose-limiting effects of methotrimeprazine?",
+          options: ["Profound sedation and marked orthostatic hypotension", "Severe EPS and rigidity", "Insomnia and agitation"],
+          answer: "Profound sedation and marked orthostatic hypotension",
+          why: "As a low-potency agent, sedation and orthostasis dominate over EPS."
+        }
+      },
+      {
+        title: "Potency framing",
+        teach: "Because it's low-potency, EPS are comparatively mild — the trade-off is all that sedation and orthostasis. NMS, tardive dyskinesia and QT prolongation remain possible, and rarely agranulocytosis.",
+        check: {
+          q: "Being low-potency, how prominent are methotrimeprazine's EPS?",
+          options: ["Comparatively mild", "The most severe of any FGA", "Absent entirely"],
+          answer: "Comparatively mild",
+          why: "Low-potency agents have milder EPS but heavier sedation and orthostasis."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a low-potency phenothiazine blocking D2 plus broad H1, muscarinic, alpha-1 and 5-HT2 receptors, with intrinsic analgesic and antiemetic activity — hence its palliative versatility."
       }
     ],
-    trap: "Methotrimeprazine (levomepromazine, a phenothiazine) vs methotrexate — sound-alike, entirely different drugs.",
-    takeaway: "Methotrimeprazine = Canadian low-potency phenothiazine prized in palliative care for combined sedation, analgesia and antiemesis; heavy orthostasis, mild EPS."
+    trap: "Don't think 'antipsychotic' first — methotrimeprazine's real-world role is palliative sedation, nausea and pain, where its heavy sedation is a feature, not a bug.",
+    takeaway: "Methotrimeprazine = a low-potency phenothiazine unique for combined sedative, analgesic and antiemetic use in palliative care; heavy on sedation and orthostasis, light on EPS."
   },
 
   trifluoperazine: {
-    hook: "The phenothiazine that behaves like haloperidol — proof that potency, not chemistry, predicts side effects.",
+    hook: "The phenothiazine that behaves like haloperidol: high-potency, EPS-heavy, and barely sedating.",
     steps: [
       {
-        title: "What it is",
-        teach: "Trifluoperazine is a high-potency piperazine phenothiazine and potent D2 antagonist; low H1/M1 blockade makes it EPS-predominant with little sedation.",
-        check: { q: "Trifluoperazine's potency and profile?", options: ["High-potency, EPS-predominant", "Low-potency, sedating", "Non-dopaminergic"], answer: "High-potency, EPS-predominant", why: "High D2 with low H1/M1 gives an EPS-heavy, low-sedation profile." }
+        title: "The big picture",
+        teach: "Trifluoperazine is a high-potency piperazine phenothiazine. Even though it's chemically a phenothiazine like chlorpromazine, its potency means it acts like haloperidol: lots of EPS, minimal sedation and anticholinergic effect.",
+        check: {
+          q: "In its side-effect behaviour, trifluoperazine most resembles which drug?",
+          options: ["Haloperidol", "Chlorpromazine", "Clozapine"],
+          answer: "Haloperidol",
+          why: "As a high-potency agent it's EPS-heavy and barely sedating — haloperidol-like."
+        }
       },
       {
-        title: "Potency vs chemistry",
-        teach: "It shares the phenothiazine family with chlorpromazine yet has the opposite profile — potency, not chemical class, predicts the side-effect pattern.",
-        check: { q: "Same phenothiazine family, opposite profiles — what explains the difference?", options: ["Potency (high vs low)", "Route of administration", "Molecular weight"], answer: "Potency (high vs low)", why: "High- vs low-potency, not chemistry, sets EPS vs sedation." }
+        title: "What it treats",
+        teach: "Its main use is schizophrenia, usual dosing around 15–20 mg/day. An older, low-dose use for severe anxiety exists but is now uncommon."
       },
       {
-        title: "Clinical fit",
-        teach: "Its EPS-heavy, minimal-sedation profile resembles haloperidol and fluphenazine; older low-dose use for severe anxiety is now uncommon.",
-        check: { q: "Trifluoperazine's side-effect profile most resembles…", options: ["Haloperidol / fluphenazine", "Chlorpromazine", "A benzodiazepine"], answer: "Haloperidol / fluphenazine", why: "As a high-potency agent it mirrors haloperidol and fluphenazine." }
+        title: "Potency over chemistry",
+        teach: "Here's the key teaching point: chlorpromazine and trifluoperazine are BOTH phenothiazines, yet one is sedating (low-potency) and one is EPS-heavy (high-potency). It's the potency, not the chemical family, that predicts the side-effect pattern.",
+        check: {
+          q: "Trifluoperazine and chlorpromazine are both phenothiazines. Why do their side effects differ so much?",
+          options: ["Potency differs — high vs low", "One isn't really an antipsychotic", "Only one blocks dopamine"],
+          answer: "Potency differs — high vs low",
+          why: "Potency predicts the profile: high-potency = EPS, low-potency = sedation/autonomic."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Start at 2–5 mg PO BID and titrate to response, up to a max of ~40 mg/day. The antipsychotic effect builds over weeks, and it shouldn't be stopped abruptly."
+      },
+      {
+        title: "What patients feel",
+        teach: "Being high-potency, EPS lead the way: akathisia, dystonia, parkinsonism, plus restlessness or insomnia and hyperprolactinemia. Sedation and orthostasis are mild. NMS and tardive dyskinesia risks apply.",
+        check: {
+          q: "What dominates trifluoperazine's side-effect profile?",
+          options: ["EPS, with little sedation", "Heavy sedation and orthostasis", "Photosensitivity above all"],
+          answer: "EPS, with little sedation",
+          why: "High-potency agents are EPS-predominant with minimal sedation."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a piperazine phenothiazine and a potent D2 antagonist — the same high-affinity dopamine blockade that makes haloperidol so EPS-prone."
       }
     ],
-    trap: "Trifluoperazine (high-potency, EPS-heavy) vs chlorpromazine (low-potency, sedating) — same phenothiazine class, opposite side-effect profiles.",
-    takeaway: "Trifluoperazine = the high-potency phenothiazine that behaves like haloperidol: EPS-predominant, minimal sedation."
+    trap: "Same family as chlorpromazine, opposite behaviour: trifluoperazine is the 'phenothiazine that acts like haloperidol.'",
+    takeaway: "Trifluoperazine = a high-potency piperazine phenothiazine: EPS-predominant, barely sedating — proof that potency, not chemistry, predicts the profile."
   },
 
   prochlorperazine: {
-    hook: "'Just an antiemetic' — until a single dose gives a young woman an oculogyric crisis.",
+    hook: "The 'antiemetic' that's secretly a dopamine-blocking antipsychotic — and can throw a young patient into acute dystonia from a single dose.",
     steps: [
       {
-        title: "What it is",
-        teach: "Prochlorperazine is a piperazine phenothiazine used mainly as an ANTIEMETIC / anti-vertigo agent, blocking D2 at the chemoreceptor trigger zone more than treating psychosis.",
-        check: { q: "Prochlorperazine's main clinical use?", options: ["Antiemetic / anti-vertigo", "Maintenance antipsychotic", "Antidepressant"], answer: "Antiemetic / anti-vertigo", why: "It is primarily a dopamine-blocking antiemetic." }
+        title: "The big picture",
+        teach: "Prochlorperazine is a phenothiazine, but you'll almost always meet it as an ANTIEMETIC and anti-vertigo drug rather than an antipsychotic. Under the hood, though, it's still blocking dopamine."
       },
       {
-        title: "Acute dystonia",
-        teach: "Acute dystonia can occur even after a single antiemetic dose — classically in young women — and is treated with an anticholinergic (benztropine) or diphenhydramine.",
-        check: { q: "Neck spasm and eye-rolling after IV prochlorperazine — treatment?", options: ["Benztropine or diphenhydramine", "IV fluids alone", "A beta-blocker"], answer: "Benztropine or diphenhydramine", why: "Anticholinergics reverse acute dystonia." }
+        title: "What it treats",
+        teach: "Its everyday role is nausea, vomiting and vertigo — 5–10 mg PO TID–QID, or IM, with a suppository option too. Antipsychotic dosing exists but is largely historical.",
+        check: {
+          q: "What is prochlorperazine mainly used for in practice?",
+          options: ["Nausea, vomiting and vertigo", "First-line schizophrenia", "Long-term depot maintenance"],
+          answer: "Nausea, vomiting and vertigo",
+          why: "It's used chiefly as an antiemetic/anti-vertigo agent, not for psychosis."
+        }
       },
       {
-        title: "Antiemetics have EPS too",
-        teach: "It is a reminder that dopamine-blocking antiemetics (also metoclopramide) carry EPS and tardive-dyskinesia risk despite the 'just an antiemetic' framing.",
-        check: { q: "Which other antiemetic shares this EPS/TD risk?", options: ["Metoclopramide", "Ondansetron", "Loperamide"], answer: "Metoclopramide", why: "Metoclopramide is another dopamine-blocking antiemetic with EPS/TD risk." }
+        title: "The dystonia trap",
+        teach: "Because it blocks dopamine, an acute dystonic reaction can strike even after a single antiemetic dose — classically in young women, with sudden spasms of the neck, eyes (oculogyric crisis) or tongue. Treat it with an anticholinergic like benztropine, or diphenhydramine.",
+        check: {
+          q: "A young woman gets sudden neck spasm and eyes rolling up after one antiemetic dose of prochlorperazine. Best treatment?",
+          options: ["Benztropine or diphenhydramine", "IV potassium", "A second dose of prochlorperazine"],
+          answer: "Benztropine or diphenhydramine",
+          why: "Acute dystonia responds fast to an anticholinergic or diphenhydramine."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Use it short-term at the lowest effective antiemetic dose (typically ≤40 mg/day). Warn patients about drowsiness and dizziness, and to seek care for any sudden muscle spasms."
+      },
+      {
+        title: "The bigger reminder",
+        teach: "Prochlorperazine is the poster child for a key rule: dopamine-blocking antiemetics (this and metoclopramide) carry real EPS and tardive dyskinesia risk. 'Just an antiemetic' can still cause movement disorders.",
+        check: {
+          q: "What broader lesson does prochlorperazine teach?",
+          options: ["Antiemetic dopamine blockers carry EPS/TD risk", "Antiemetics never cause EPS", "It has no dopamine activity"],
+          answer: "Antiemetic dopamine blockers carry EPS/TD risk",
+          why: "Dopamine-blocking antiemetics like prochlorperazine and metoclopramide share the EPS/TD hazard."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a piperazine phenothiazine that antagonizes D2 in the chemoreceptor trigger zone — that's what makes it a potent antiemetic, and also what causes the EPS."
       }
     ],
-    trap: "Prochlorperazine (antiemetic phenothiazine) vs chlorpromazine (antipsychotic) vs perphenazine — easily confused '-perazine/-promazine' names.",
-    takeaway: "Prochlorperazine = a dopamine-blocking phenothiazine used mainly for nausea/vertigo; the catch is acute dystonia from even a single dose."
+    trap: "Don't file prochlorperazine under 'harmless antiemetic' — it's a dopamine blocker that can cause acute dystonia and, with prolonged use, tardive dyskinesia.",
+    takeaway: "Prochlorperazine = a phenothiazine used mainly for nausea and vertigo; the must-not-miss is acute dystonia from even a single antiemetic dose."
   },
 
   pipotiazine: {
-    hook: "The Canadian FGA depot with the odd ester out — a palmitate, not a decanoate, dosed about monthly.",
+    hook: "A Canadian phenothiazine that exists essentially for one job: a monthly palmitate depot for maintenance.",
     steps: [
       {
-        title: "What it is",
-        teach: "Pipotiazine (pipotiazine palmitate) is a Canada-specific piperidine phenothiazine and D2 antagonist used essentially only as a maintenance long-acting injectable.",
-        check: { q: "How is pipotiazine used?", options: ["As a maintenance depot injectable", "As an inhaled agent", "As a daily oral first-line drug"], answer: "As a maintenance depot injectable", why: "It exists essentially only as a maintenance LAI." }
+        title: "The big picture",
+        teach: "Pipotiazine (Piportil L4) is a Canada-specific phenothiazine, and it's used almost exclusively as a long-acting injectable. There's no everyday oral role — it's a maintenance depot, full stop."
       },
       {
-        title: "Palmitate LAI",
-        teach: "It is the palmitate-ester depot (Piportil L4) dosed roughly every 4 weeks — the ester that distinguishes it from the more common decanoate depots.",
-        check: { q: "Which ester makes pipotiazine unusual among FGA depots?", options: ["Palmitate (vs decanoate)", "Acetate", "Enanthate"], answer: "Palmitate (vs decanoate)", why: "Most FGA depots are decanoates; pipotiazine is a palmitate." }
+        title: "What it treats",
+        teach: "Its purpose is maintenance treatment of schizophrenia in patients who benefit from a depot. Deep IM dosing is roughly every 4 weeks — a convenient monthly rhythm.",
+        check: {
+          q: "How is pipotiazine used?",
+          options: ["A roughly monthly maintenance depot", "A short-acting acute injection", "An oral daily tablet"],
+          answer: "A roughly monthly maintenance depot",
+          why: "Pipotiazine is essentially a q4-week palmitate LAI for maintenance."
+        }
       },
       {
-        title: "Depot-only caution",
-        teach: "Because depot effects can't be quickly withdrawn, establish tolerability first before committing to the long-acting injectable.",
-        check: { q: "Why establish tolerability before a pipotiazine depot?", options: ["Depot effects can't be quickly reversed", "It is inhaled", "It has no side effects"], answer: "Depot effects can't be quickly reversed", why: "Long-acting release means adverse effects persist." }
+        title: "Naming the esters",
+        teach: "Depot antipsychotics use different chemical esters to slow release. Most FGA depots are DECANOATES (haloperidol, fluphenazine, zuclopenthixol, flupenthixol), but pipotiazine is a PALMITATE — a handy distinguishing detail.",
+        check: {
+          q: "Which ester does pipotiazine use?",
+          options: ["Palmitate", "Decanoate", "Acetate"],
+          answer: "Palmitate",
+          why: "Pipotiazine is the palmitate depot, unlike the decanoate esters of the others."
+        }
+      },
+      {
+        title: "How you use it",
+        teach: "Start with a small test dose (e.g., ~25–50 mg IM) and titrate the dose and interval to response, commonly up to ~200 mg per injection. Establish tolerability first — depot effects persist for weeks and can't be quickly withdrawn."
+      },
+      {
+        title: "What patients feel",
+        teach: "As a phenothiazine depot it brings the usual EPS (akathisia, dystonia, parkinsonism), some sedation, hyperprolactinemia and orthostasis, plus injection-site reactions. NMS and tardive dyskinesia risks apply. Attending every scheduled injection is the whole point."
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: it's a piperidine phenothiazine and a D2 antagonist, esterified as a palmitate so a single deep IM injection releases drug slowly over about a month."
       }
     ],
-    trap: "Pipotiazine PALMITATE vs the DECANOATE depots (haloperidol/fluphenazine/thioxanthenes) — different ester, similar monthly-ish depot concept.",
-    takeaway: "Pipotiazine = Canadian phenothiazine notable as a palmitate-ester LAI dosed about every 4 weeks (the ester exception among FGA depots)."
+    trap: "The depot esters: decanoate (haloperidol, fluphenazine, the thioxanthenes) versus pipotiazine PALMITATE — a favourite distinguishing detail.",
+    takeaway: "Pipotiazine = a Canadian phenothiazine used essentially only as a roughly monthly palmitate maintenance depot; confirm tolerability before committing."
   },
 
   droperidol: {
-    hook: "Haloperidol's short-acting cousin — fast for agitation and PONV, but a torsades warning even at antiemetic doses.",
+    hook: "Haloperidol's fast, short-acting butyrophenone cousin — great for agitation and PONV, but shadowed by a QT/torsades warning.",
     steps: [
       {
-        title: "What it is",
-        teach: "Droperidol is a butyrophenone (haloperidol's short-acting cousin, half-life ~2 h) and potent D2 antagonist used for acute agitation and as an antiemetic for postoperative nausea/vomiting.",
-        check: { q: "Droperidol is chemically most like…", options: ["Haloperidol (butyrophenone)", "Chlorpromazine (phenothiazine)", "Clozapine (SGA)"], answer: "Haloperidol (butyrophenone)", why: "It is a butyrophenone — haloperidol's short-acting cousin." }
+        title: "The big picture",
+        teach: "Droperidol is a butyrophenone — essentially haloperidol's short-acting cousin. It works fast, wears off quickly (half-life ~2 h), and is given by injection in monitored settings."
       },
       {
-        title: "QT / torsades warning",
-        teach: "It carries a boxed warning for QT prolongation and torsades — reported even at low antiemetic doses and sometimes fatal — so obtain a baseline ECG and correct potassium/magnesium.",
-        check: { q: "Droperidol's boxed-warning safety concern?", options: ["QT prolongation / torsades", "Agranulocytosis", "Hepatic failure"], answer: "QT prolongation / torsades", why: "Its boxed warning is QT prolongation and torsades, even at low doses." }
+        title: "What it treats",
+        teach: "Two main jobs: rapid control of acute agitation (2.5–5 mg IM/IV) and, at much lower doses (0.625–1.25 mg IV), a potent antiemetic for postoperative nausea and vomiting (PONV).",
+        check: {
+          q: "At low doses (0.625–1.25 mg IV), droperidol is used for what?",
+          options: ["Postoperative nausea and vomiting", "Long-term maintenance of psychosis", "Lowering cholesterol"],
+          answer: "Postoperative nausea and vomiting",
+          why: "Low-dose droperidol is a potent antiemetic for PONV."
+        }
       },
       {
-        title: "Short half-life",
-        teach: "A short ~2 hour half-life makes droperidol useful for rapid, titratable control of agitation or nausea.",
-        check: { q: "What does droperidol's ~2 h half-life allow?", options: ["Rapid, titratable control", "Once-monthly dosing", "Slow depot release"], answer: "Rapid, titratable control", why: "The short half-life supports fast, adjustable dosing." }
+        title: "How you use it",
+        teach: "Give it IM or IV and titrate with small additional doses to effect, keeping the total minimal. Its short half-life makes it easy to titrate for rapid, controllable calming."
+      },
+      {
+        title: "The QT warning",
+        teach: "Droperidol carries a boxed warning: QT prolongation and torsades — reported even at low antiemetic doses and sometimes fatal. A 12-lead ECG is recommended before use, and you should correct potassium and magnesium.",
+        check: {
+          q: "What is the headline safety concern with droperidol, even at antiemetic doses?",
+          options: ["QT prolongation / torsades", "Cholestatic jaundice", "Photosensitivity"],
+          answer: "QT prolongation / torsades",
+          why: "A boxed warning covers QT/torsades reported even at low antiemetic doses."
+        }
+      },
+      {
+        title: "What patients feel",
+        teach: "Expect sedation, hypotension, dizziness, and EPS such as akathisia and acute dystonia. Because use is short-term, tardive dyskinesia is uncommon — but NMS remains possible.",
+        check: {
+          q: "Besides QT effects, what should you watch for shortly after droperidol?",
+          options: ["Sedation, hypotension and acute dystonia", "New-onset diabetes", "Blue-grey skin discoloration"],
+          answer: "Sedation, hypotension and acute dystonia",
+          why: "Short-term autonomic effects and acute dystonia/akathisia are the common issues."
+        }
+      },
+      {
+        title: "Why it works",
+        teach: "One line of mechanism: droperidol is a butyrophenone and potent D2 antagonist, like haloperidol — the dopamine blockade drives both the antipsychotic/antiemetic effect and the EPS."
       }
     ],
-    trap: "Droperidol vs haloperidol — same butyrophenone family; droperidol is the short-acting agitation/antiemetic agent with the QT warning.",
-    takeaway: "Droperidol = short-acting butyrophenone for agitation and PONV; QT prolongation/torsades (even at low doses) is the dominant caution."
+    trap: "Droperidol vs haloperidol — same butyrophenone family, but droperidol is shorter-acting and carries the more prominent QT/torsades boxed warning.",
+    takeaway: "Droperidol = a fast, short-acting butyrophenone for acute agitation and PONV, dominated by a QT-prolongation/torsades boxed warning."
   }
 };

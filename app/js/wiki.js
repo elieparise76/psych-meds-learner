@@ -99,63 +99,103 @@
     return frag;
   }
 
-  // ---------- Wiki hub ----------
-  var tab = 'meds';
+  // ---------- Wiki hub (clean, browse-first landing) ----------
   function view(root) {
     stack = [];
     var wrap = ce('div', { class: 'view stack' });
-    wrap.appendChild(ce('div', { class: 'pagehead' }, [ce('div', {}, [ce('h1', {}, ['Wiki']), ce('p', { class: 'muted' }, ['The interlinked reference — every med and the conditions they treat. Tap any linked term to jump.'])])]));
+    wrap.appendChild(ce('div', { class: 'pagehead' }, [ce('div', {}, [ce('h1', {}, ['Wiki']), ce('p', { class: 'muted' }, ['Every medication and the conditions they treat — all cross-linked. Search, or browse below.'])])]));
 
-    var search = ce('input', { placeholder: '🔍 Search meds & conditions…', oninput: function () { runSearch(this.value); } });
+    var search = ce('input', { class: 'wiki-search', placeholder: '🔍 Search medications & conditions…', oninput: function () { runSearch(this.value); } });
     wrap.appendChild(ce('div', { class: 'card pad-sm' }, [search]));
-
-    var tabbar = ce('div', { class: 'nav', style: { padding: 0 } });
-    [['meds', 'Medications'], ['conditions', 'Conditions'], ['syndromes', 'Syndromes & toxicities']].forEach(function (t) {
-      tabbar.appendChild(ce('button', { class: tab === t[0] ? 'active' : '', onclick: function () { tab = t[0]; render(); } }, [t[1]]));
-    });
-    wrap.appendChild(tabbar);
-
-    var host = ce('div');
     var searchHost = ce('div');
     wrap.appendChild(searchHost);
-    wrap.appendChild(host);
+    var body = ce('div', { class: 'stack' });
+    wrap.appendChild(body);
+
+    // Medications — one calm tile per class
+    body.appendChild(sectionHead('Medications by class', function () { openFullDex(); }, 'Full list & filters →'));
+    var classGrid = ce('div', { class: 'wiki-tiles' });
+    PML.deck.classes().forEach(function (cls) {
+      var meds = PML.deck.byClass(cls);
+      var learned = meds.filter(function (m) { return PML.store.get().cards[m.id].learned; }).length;
+      classGrid.appendChild(tile(cls, meds.length + ' meds · ' + learned + ' learned', 'var(--c-' + PML.deck.classKey(cls) + ')', function () { classMedsPage(cls); }));
+    });
+    body.appendChild(classGrid);
+
+    // Conditions
+    body.appendChild(sectionHead('Conditions'));
+    var condGrid = ce('div', { class: 'wiki-tiles' });
+    disorders.filter(function (d) { return d.category !== 'Syndrome'; }).forEach(function (d) { condGrid.appendChild(condTile(d)); });
+    body.appendChild(condGrid);
+
+    // Syndromes & toxicities
+    var syn = disorders.filter(function (d) { return d.category === 'Syndrome'; });
+    if (syn.length) {
+      body.appendChild(sectionHead('Syndromes & toxicities'));
+      var synGrid = ce('div', { class: 'wiki-tiles' });
+      syn.forEach(function (d) { synGrid.appendChild(condTile(d)); });
+      body.appendChild(synGrid);
+    }
     root.appendChild(wrap);
 
-    function render() {
-      U.qsa('button', tabbar).forEach(function (b, i) { b.classList.toggle('active', ['meds', 'conditions', 'syndromes'][i] === tab); });
-      U.clear(host);
-      if (tab === 'meds') { PML.catalog.view(host); }
-      else { renderDisorders(host, tab === 'syndromes'); }
-    }
     function runSearch(q) {
       U.clear(searchHost);
       q = (q || '').toLowerCase().trim();
-      if (!q) { host.style.display = ''; return; }
-      host.style.display = 'none';
+      body.style.display = q ? 'none' : '';
+      if (!q) return;
       var meds = PML.deck.search(q).slice(0, 12);
       var ds = disorders.filter(function (d) { return (d.name + ' ' + (d.aka || []).join(' ') + ' ' + (d.category || '')).toLowerCase().indexOf(q) >= 0; });
       var res = ce('div', { class: 'stack', style: { marginTop: 'var(--sp-3)' } });
-      if (ds.length) { res.appendChild(ce('h3', {}, ['Conditions'])); var g1 = ce('div', { class: 'dex-grid' }); ds.forEach(function (d) { g1.appendChild(disorderCard(d)); }); res.appendChild(g1); }
-      if (meds.length) { res.appendChild(ce('h3', {}, ['Medications'])); var g2 = ce('div', { class: 'dex-grid' }); meds.forEach(function (m) { g2.appendChild(medMiniCard(m)); }); res.appendChild(g2); }
+      if (ds.length) { res.appendChild(ce('h3', {}, ['Conditions'])); var g1 = ce('div', { class: 'wiki-tiles' }); ds.forEach(function (d) { g1.appendChild(condTile(d)); }); res.appendChild(g1); }
+      if (meds.length) { res.appendChild(ce('h3', {}, ['Medications'])); var g2 = ce('div', { class: 'dex-grid' }); meds.forEach(function (m) { g2.appendChild(medCard(m)); }); res.appendChild(g2); }
       if (!ds.length && !meds.length) res.appendChild(ce('p', { class: 'muted' }, ['Nothing matches “' + q + '”.']));
       searchHost.appendChild(res);
     }
-    render();
   }
 
-  function renderDisorders(host, syndromesOnly) {
-    var cats = syndromesOnly ? ['Syndrome'] : ['Mood', 'Anxiety', 'Psychotic', 'Neurocognitive', 'Substance', 'Other'];
-    var any = false;
-    cats.forEach(function (cat) {
-      var list = disorders.filter(function (d) { return (d.category || 'Other') === cat; });
-      if (!list.length) return;
-      any = true;
-      host.appendChild(ce('h3', { style: { marginTop: 'var(--sp-4)' } }, [cat]));
+  function sectionHead(title, onAction, actionLabel) {
+    return ce('div', { class: 'row spread', style: { marginTop: 'var(--sp-4)', alignItems: 'baseline' } }, [
+      ce('h3', { style: { margin: 0 } }, [title]),
+      onAction ? ce('button', { class: 'btn sm ghost', onclick: onAction }, [actionLabel || 'More']) : null,
+    ]);
+  }
+  function tile(title, sub, hue, onclick) {
+    var t = ce('div', { class: 'wiki-tile', style: { '--hue': hue }, tabindex: '0', role: 'button', onclick: onclick });
+    t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onclick(); } });
+    t.appendChild(ce('span', { class: 'wiki-tile-dot', style: { background: hue } }));
+    t.appendChild(ce('div', {}, [ce('div', { class: 'wiki-tile-title' }, [title]), ce('div', { class: 'wiki-tile-sub' }, [sub])]));
+    return t;
+  }
+  function condTile(d) {
+    return tile(d.name, (d.meds || []).length + ' meds', catHue(d.category), function () { disorderPage(d.id); });
+  }
+
+  // full-dex behind a click (the power-user filterable list)
+  function openFullDex() { pushEntry(function () { var m = document.getElementById('main'); U.clear(m); if (stack.length > 1) m.appendChild(ce('button', { class: 'btn sm ghost', style: { marginBottom: 'var(--sp-3)' }, onclick: function () { stack.pop(); stack.pop(); view(m); } }, ['← Back'])); PML.catalog.view(m); }); }
+
+  // a class's meds as cards (with tier/learned), back-stackable
+  function classMedsPage(cls) {
+    pushEntry(function () {
+      var page = ce('div', { class: 'view stack' });
+      page.appendChild(ce('h1', {}, [cls]));
       var grid = ce('div', { class: 'dex-grid' });
-      list.forEach(function (d) { grid.appendChild(disorderCard(d)); });
-      host.appendChild(grid);
+      PML.deck.byClass(cls).forEach(function (m) { grid.appendChild(medCard(m)); });
+      page.appendChild(grid);
+      mount(page);
     });
-    if (!any) host.appendChild(ce('p', { class: 'muted' }, [syndromesOnly ? 'Syndrome pages load with the generated content.' : 'Condition pages load with the generated content.']));
+  }
+
+  function medCard(m) {
+    var c = PML.store.get().cards[m.id];
+    var key = PML.deck.classKey(m.class);
+    var tierCol = { bronze: 'var(--tier-bronze)', silver: 'var(--tier-silver)', gold: 'var(--tier-gold)', burnished: 'var(--tier-burnished)' }[c.mastery] || 'var(--surface-3)';
+    var card = ce('div', { class: 'dex-card' + (c.learned ? '' : ' locked'), style: { '--dexhue': 'var(--c-' + key + ')' }, tabindex: '0', role: 'button', onclick: function () { medPage(m.id); } });
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); medPage(m.id); } });
+    card.appendChild(ce('span', { class: 'tier-dot', style: { background: tierCol, boxShadow: c.mastery !== 'none' ? '0 0 8px ' + tierCol : 'none' } }));
+    card.appendChild(ce('div', { class: 'gen', style: { fontSize: '.98rem' } }, [m.generic]));
+    card.appendChild(ce('div', { class: 'sub' }, [m.subclass || m.class]));
+    card.appendChild(ce('span', { class: 'chip', style: { marginTop: '6px', fontSize: '.62rem', color: c.learned ? tierCol : 'var(--text-muted)' } }, [c.learned ? (c.mastery === 'none' ? 'learned' : c.mastery) : 'not learned']));
+    return card;
   }
 
   function catHue(cat) { return ({ Mood: 'var(--c-Antidepressant)', Anxiety: 'var(--c-Anxiolytic)', Psychotic: 'var(--c-Antipsychotic)', Neurocognitive: 'var(--c-Dementia)', Substance: 'var(--c-Substance)', Syndrome: 'var(--coral)', Other: 'var(--sky)' })[cat] || 'var(--sky)'; }

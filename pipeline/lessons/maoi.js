@@ -1,32 +1,44 @@
 export default {
   phenelzine: {
-    hook: "The sedating, anxiolytic hydrazine MAOI — potent for atypical/anxious depression, lethal if you forget the diet.",
+    hook: "One of the original antidepressants — a reserved, irreversible MAOI whose whole life is the tyramine diet and deadly interactions.",
     steps: [
       {
-        title: "What it is",
-        teach: "Phenelzine irreversibly and non-selectively blocks MAO-A and MAO-B, raising NE, 5-HT and dopamine. Because the block is irreversible, the effect (and the food/drug rules) persist ~2 weeks until new enzyme is made — the short plasma half-life is irrelevant.",
+        title: "The big picture",
+        teach: "Phenelzine is one of the original antidepressants — an MAOI. These days you almost never start one, but you must know the family: they're potent, demanding drugs kept in reserve. Think of phenelzine as the sedating, anxiolytic member."
+      },
+      {
+        title: "Its place today",
+        teach: "MAOIs live at the back of the shelf — reserved for treatment-resistant depression and classic atypical depression (mood that lifts with good news, oversleeping, overeating, leaden heavy limbs, rejection sensitivity). They're off first-line purely because the diet and interactions are so demanding."
+      },
+      {
+        title: "When you'd reach for it",
+        teach: "Picture someone who has failed several first- and second-line antidepressants and has atypical features. That's the classic MAOI moment — phenelzine has a real evidence base for atypical/anxious depression when the safer drugs have let you down.",
         check: {
-          q: "Why do phenelzine's dietary rules last ~2 weeks after the last dose?",
-          options: ["It has a 2-week half-life", "Inhibition is irreversible — MAO must be resynthesized", "It accumulates in fat"],
-          answer: "Inhibition is irreversible — MAO must be resynthesized",
-          why: "The drug clears fast, but enzyme activity only returns as new MAO is synthesized (~2 weeks)."
+          q: "Which patient is the best fit for phenelzine?",
+          options: ["Atypical depression after several failed first-line drugs", "A newly diagnosed, untreated depression", "A patient already taking an SSRI"],
+          answer: "Atypical depression after several failed first-line drugs",
+          why: "MAOIs are reserved for treatment-resistant and atypical depression — not first-line, and never alongside an SSRI."
         }
       },
       {
-        title: "Lethal #1: tyramine crisis",
-        teach: "With gut MAO-A knocked out, dietary tyramine is absorbed intact and dumps stored noradrenaline → hypertensive crisis (classic occipital headache + severe hypertension). A strict low-tyramine diet is mandatory: no aged cheese, cured/smoked meats, or tap/draught beer.",
+        title: "The tyramine diet",
+        teach: "Here's the thing that dominates MAOI life: the low-tyramine diet. With gut MAO knocked out, tyramine in food is absorbed intact and dumps stored noradrenaline, causing a hypertensive crisis. So no aged cheese, cured or smoked meats, fermented soy, tap (draught) beer or Marmite — and a sudden pounding headache means get to the ER."
+      },
+      {
+        title: "Spot the danger food",
+        teach: "The worst offenders are aged and fermented: mature cheddar, salami and other cured meats, sauerkraut, soy sauce, draught beer. Fresh, simply-cooked food is fine. When in doubt: fresh is safe, aged is dangerous.",
         check: {
-          q: "Which food can trigger a hypertensive crisis on phenelzine?",
-          options: ["Aged cheddar", "White rice", "Fresh apple"],
-          answer: "Aged cheddar",
-          why: "Aged cheese is tyramine-rich; tyramine → noradrenaline surge → hypertensive crisis."
+          q: "Which snack is unsafe on phenelzine?",
+          options: ["A mature cheddar and salami board", "A fresh chicken salad", "Steamed rice and vegetables"],
+          answer: "A mature cheddar and salami board",
+          why: "Aged cheese and cured meats are tyramine-rich and can trigger a hypertensive crisis."
         }
       },
       {
-        title: "Lethal #2: serotonin syndrome",
-        teach: "Combining phenelzine with any serotonergic — SSRIs/SNRIs/TCAs, tramadol, meperidine, linezolid, dextromethorphan, triptans, St John's wort — can cause serotonin syndrome. Sympathomimetics (pseudoephedrine, amphetamines) instead drive a hypertensive crisis.",
+        title: "The other killer",
+        teach: "The second danger is serotonin syndrome. Phenelzine must never be combined with other serotonergics — SSRIs/SNRIs, TCAs, tramadol, meperidine, dextromethorphan, linezolid, triptans or St John's wort. Decongestants and stimulants (pseudoephedrine, amphetamines) instead drive a hypertensive crisis. Basically: check every new medicine first.",
         check: {
-          q: "Adding which drug to phenelzine most risks serotonin syndrome?",
+          q: "Which addition to phenelzine most risks serotonin syndrome?",
           options: ["Tramadol", "Acetaminophen", "Amoxicillin"],
           answer: "Tramadol",
           why: "Tramadol is serotonergic; with an MAOI it can precipitate serotonin syndrome."
@@ -34,55 +46,71 @@ export default {
       },
       {
         title: "The washout rule",
-        teach: "Because the block is irreversible, allow a 14-day washout when switching between an MAOI and most serotonergics — but wait 5 weeks after stopping fluoxetine, whose long-lived metabolite norfluoxetine lingers.",
+        teach: "Because phenelzine blocks the enzyme irreversibly, its effect — and all these restrictions — persist about 2 weeks after the last dose, until the body makes fresh MAO. So allow a 14-day washout when switching to or from most serotonergics, and a full 5 weeks after stopping fluoxetine, whose long-lived metabolite lingers.",
         check: {
           q: "How long after stopping fluoxetine before starting phenelzine?",
           options: ["5 weeks", "14 days", "48 hours"],
           answer: "5 weeks",
-          why: "Fluoxetine/norfluoxetine's long half-life needs ~5 weeks; the usual MAOI washout is 14 days."
+          why: "Fluoxetine's long-lived metabolite needs ~5 weeks; the usual MAOI washout is 14 days."
         }
       },
       {
-        title: "Hydrazine quirks",
-        teach: "As a hydrazine, phenelzine can deplete pyridoxine (B6) → peripheral neuropathy, and carries hepatotoxicity risk. Versus tranylcypromine it is the more sedating/anxiolytic one, with more weight gain.",
+        title: "What patients feel",
+        teach: "Day to day, expect orthostatic hypotension (rise slowly), weight gain, sedation, insomnia and sexual dysfunction. As a hydrazine, phenelzine can also deplete vitamin B6, causing peripheral neuropathy, and carries a hepatotoxicity risk — so ask about tingling feet and keep an eye on the liver.",
         check: {
-          q: "Peripheral neuropathy on phenelzine points to deficiency of which vitamin?",
-          options: ["Pyridoxine (B6)", "Vitamin C", "Vitamin D"],
-          answer: "Pyridoxine (B6)",
-          why: "Hydrazine MAOIs deplete B6, causing peripheral neuropathy."
+          q: "Peripheral neuropathy on phenelzine suggests a deficiency of…",
+          options: ["Vitamin B6 (pyridoxine)", "Vitamin C", "Vitamin D"],
+          answer: "Vitamin B6 (pyridoxine)",
+          why: "Hydrazine MAOIs like phenelzine deplete pyridoxine, causing neuropathy."
         }
+      },
+      {
+        title: "A touch of mechanism",
+        teach: "Mechanistically it's simple: phenelzine irreversibly blocks both MAO-A and MAO-B, so more noradrenaline, serotonin and dopamine hang around. That single irreversible, non-selective action is the root of everything — the diet, the interactions and the long washout."
       }
     ],
-    trap: "Phenelzine (MAOI) vs phenytoin (anticonvulsant) vs phentermine (a sympathomimetic — dangerous WITH an MAOI).",
-    takeaway: "Phenelzine = irreversible hydrazine MAOI: strict tyramine diet, no serotonergics, 14-day (5-week post-fluoxetine) washout, plus B6-depletion neuropathy and hepatotoxicity."
+    trap: "Don't confuse phenelzine (MAOI) with phenytoin (an anticonvulsant) or phentermine (a sympathomimetic — dangerous WITH an MAOI).",
+    takeaway: "Phenelzine = a reserved, irreversible hydrazine MAOI for atypical/treatment-resistant depression: its life is the strict tyramine diet, the no-serotonergics rule and a 14-day (5-week post-fluoxetine) washout."
   },
 
   tranylcypromine: {
-    hook: "The activating, amphetamine-like irreversible MAOI — same deadly diet as phenelzine, but it wakes you up instead of sedating.",
+    hook: "The activating, amphetamine-like MAOI — same deadly tyramine diet as phenelzine, but it wakes patients up instead of sedating them.",
     steps: [
       {
-        title: "What it is",
-        teach: "Tranylcypromine irreversibly and non-selectively inhibits MAO-A and MAO-B, but its amphetamine-like structure makes it activating/mildly stimulant. Like all irreversible MAOIs the effect lasts ~1–2 weeks after stopping.",
+        title: "The big picture",
+        teach: "Tranylcypromine is phenelzine's activating cousin. It's an irreversible MAOI too, but its amphetamine-like structure makes it energising rather than sedating — so patients tend to feel switched on, sometimes to the point of insomnia."
+      },
+      {
+        title: "Its place today",
+        teach: "Like all MAOIs it's reserved — a treatment-resistant depression option, also used in atypical depression, once safer first- and second-line drugs have failed. You reach for it for its potency and accept the demanding rules that come with it."
+      },
+      {
+        title: "The activating one",
+        teach: "Because it's stimulating, dose it earlier in the day or it will cause insomnia. Versus phenelzine it tends to cause less weight gain but more insomnia and agitation, and its amphetamine-like structure carries some dependence potential.",
         check: {
-          q: "How does tranylcypromine differ in feel from phenelzine?",
-          options: ["More activating/stimulant", "More sedating", "No CNS effect"],
-          answer: "More activating/stimulant",
-          why: "Its amphetamine-like structure makes it the activating MAOI (insomnia)."
+          q: "When should tranylcypromine be dosed?",
+          options: ["Earlier in the day", "At bedtime", "Timing doesn't matter"],
+          answer: "Earlier in the day",
+          why: "It's activating — daytime dosing limits insomnia."
         }
       },
       {
-        title: "Lethal #1: tyramine crisis",
-        teach: "The strict low-tyramine diet is identical to phenelzine's: aged cheese, cured/smoked meats and tap/draught beer can trigger a hypertensive crisis (occipital headache + severe hypertension) because gut MAO-A is blocked.",
+        title: "The tyramine diet",
+        teach: "The headline safety issue is identical to phenelzine's: a strict low-tyramine diet. No aged cheese, cured or smoked meats, fermented soy, or tap (draught) beer — any of these can trigger a hypertensive crisis, warned by a sudden pounding headache."
+      },
+      {
+        title: "Spot the danger drink",
+        teach: "Aged and fermented foods are the danger; the classic catch is draught (tap) beer, which is far more tyramine-rich than bottled. A throbbing occipital headache with soaring blood pressure is a hypertensive crisis — an emergency.",
         check: {
-          q: "Which drink is off-limits to avoid a hypertensive crisis?",
+          q: "Which drink is off-limits on tranylcypromine?",
           options: ["Draught (tap) beer", "Bottled water", "Fresh orange juice"],
           answer: "Draught (tap) beer",
           why: "Tap/draught beer is tyramine-rich and can precipitate a hypertensive crisis."
         }
       },
       {
-        title: "Lethal #2: serotonin syndrome",
-        teach: "As with every MAOI, serotonergics — SSRIs/SNRIs/TCAs, tramadol, meperidine, linezolid, dextromethorphan, triptans, St John's wort — are contraindicated because of serotonin syndrome.",
+        title: "The other killer",
+        teach: "Just like every MAOI, serotonergics are off-limits — SSRIs/SNRIs, TCAs, tramadol, meperidine, dextromethorphan, linezolid, triptans — because of serotonin syndrome. Decongestants and stimulants push blood pressure up instead. Screen every new drug.",
         check: {
           q: "Which combination risks serotonin syndrome?",
           options: ["Tranylcypromine + an SSRI", "Tranylcypromine + a statin", "Tranylcypromine + a laxative"],
@@ -92,142 +120,158 @@ export default {
       },
       {
         title: "The washout rule",
-        teach: "Being irreversible, it needs a 14-day washout when switching to/from most serotonergics — and 5 weeks after stopping fluoxetine because of its long-lived metabolite.",
+        teach: "It's irreversible, so its effects linger about 2 weeks until new enzyme is made. Allow a 14-day washout when switching to or from most serotonergics — but 5 weeks after stopping fluoxetine, because of its long-lasting metabolite.",
         check: {
-          q: "Standard washout between an SSRI (not fluoxetine) and an MAOI?",
+          q: "Standard washout between a non-fluoxetine SSRI and an MAOI?",
           options: ["14 days", "24 hours", "6 months"],
           answer: "14 days",
           why: "Two weeks clears most serotonergics; fluoxetine specifically needs ~5 weeks."
         }
       },
       {
-        title: "The activating one",
-        teach: "Insomnia is common — dose in the morning. Versus phenelzine it causes less weight gain but more insomnia, and its amphetamine-like structure carries some dependence/abuse potential.",
-        check: {
-          q: "When should tranylcypromine be dosed to limit insomnia?",
-          options: ["In the morning", "At bedtime", "Timing is irrelevant"],
-          answer: "In the morning",
-          why: "Because it is activating, morning dosing reduces insomnia."
-        }
+        title: "A touch of mechanism",
+        teach: "One mechanism line: tranylcypromine irreversibly and non-selectively inhibits MAO-A and MAO-B, and its amphetamine-like shape adds a mild stimulant kick. Same enzyme block as phenelzine, opposite bedside feel."
       }
     ],
-    trap: "Tranylcypromine (MAOI) vs trimipramine (a TCA) — look-alike names, different classes.",
-    takeaway: "Tranylcypromine = the activating amphetamine-like irreversible MAOI: same strict tyramine diet, same serotonergic contraindications and 14-day (5-week post-fluoxetine) washout, but dose it in the morning."
+    trap: "Don't confuse tranylcypromine (an MAOI) with trimipramine (a TCA) — look-alike names, very different drugs.",
+    takeaway: "Tranylcypromine = the activating, amphetamine-like irreversible MAOI: same strict tyramine diet and no-serotonergics rule as phenelzine, same 14-day (5-week post-fluoxetine) washout, but dose it in the morning."
   },
 
   moclobemide: {
-    hook: "The reversible, MAO-A–selective Canadian MAOI (RIMA) — tyramine just displaces it, so no strict diet and a short washout.",
+    hook: "The gentle, reversible Canadian MAOI (RIMA) — tyramine just displaces it, so no strict diet and a short washout.",
     steps: [
       {
-        title: "What it is",
-        teach: "Moclobemide is a RIMA — a Reversible Inhibitor of MAO-A. It selectively and reversibly inhibits MAO-A, raising 5-HT, NE and dopamine. It's available in Canada (Manerix) but not marketed in the US — a favourite distinguishing point.",
+        title: "The big picture",
+        teach: "Moclobemide is the friendly face of the MAOI family — a reversible one. In Canada it's sold as Manerix; it isn't marketed in the US, which makes it a favourite Royal-College distinguishing point. It's far easier to live with than phenelzine or tranylcypromine."
+      },
+      {
+        title: "Its place today",
+        teach: "It's a genuine option for major depression — second-line by CANMAT — and is approved in Canada for social anxiety disorder too. Because it's better tolerated and much safer around food, you'll actually see it used, unlike the irreversible MAOIs.",
         check: {
-          q: "What does RIMA stand for?",
-          options: ["Reversible Inhibitor of MAO-A", "Rapid Irreversible MAO Antagonist", "Renal Inhibitor of MAO-A"],
-          answer: "Reversible Inhibitor of MAO-A",
-          why: "Moclobemide reversibly and selectively inhibits MAO-A."
+          q: "Where does moclobemide sit for major depression?",
+          options: ["A second-line option", "Strict first-line for everyone", "Never used for depression"],
+          answer: "A second-line option",
+          why: "CANMAT places moclobemide as a second-line antidepressant."
         }
       },
       {
         title: "Why no strict diet",
-        teach: "Because the block is reversible, a tyramine load can outcompete moclobemide and displace it from MAO-A, restoring tyramine breakdown. So there is NO strict low-tyramine diet and the hypertensive risk is far lower (only huge tyramine loads or overdose).",
+        teach: "Here's the RIMA magic: because it binds MAO-A reversibly, a big tyramine load can simply outcompete and displace it, so the enzyme still clears tyramine. That means NO strict low-tyramine diet and a far lower hypertensive risk — crises really only happen with huge tyramine loads or overdose.",
         check: {
-          q: "Why does moclobemide largely avoid the tyramine 'cheese reaction'?",
-          options: ["Tyramine reversibly displaces it from MAO-A", "It blocks tyramine absorption", "It has no effect on MAO"],
+          q: "Why does moclobemide avoid the classic 'cheese reaction'?",
+          options: ["Tyramine reversibly displaces it from MAO-A", "It blocks tyramine absorption in the gut", "It doesn't affect MAO at all"],
           answer: "Tyramine reversibly displaces it from MAO-A",
-          why: "Reversible binding lets tyramine outcompete the drug, so MAO-A still clears tyramine."
+          why: "Reversible binding lets tyramine outcompete the drug, so MAO-A still breaks tyramine down."
         }
       },
       {
-        title: "Serotonin risk unchanged",
-        teach: "Reversibility lowers the tyramine danger but NOT the serotonin danger. Moclobemide is still contraindicated with SSRIs/SNRIs, tramadol, meperidine, dextromethorphan and other serotonergics — serotonin syndrome remains the main hazard.",
+        title: "The catch",
+        teach: "Reversibility fixes the tyramine problem, NOT the serotonin one. Moclobemide is still contraindicated with SSRIs/SNRIs, tramadol, meperidine and dextromethorphan — serotonin syndrome remains the real danger. Its gentle reputation is only about food, not about serotonergic drugs.",
         check: {
-          q: "Compared with irreversible MAOIs, moclobemide's serotonin syndrome risk is…",
+          q: "Compared with irreversible MAOIs, moclobemide's serotonin-syndrome risk is…",
           options: ["Unchanged — still contraindicated with serotonergics", "Eliminated", "Only relevant in overdose"],
           answer: "Unchanged — still contraindicated with serotonergics",
-          why: "The RIMA advantage is about tyramine, not serotonin; serotonergic combinations remain dangerous."
+          why: "The RIMA advantage is about tyramine, not serotonin; serotonergic combos stay dangerous."
         }
       },
       {
-        title: "Short washout",
-        teach: "Its short half-life (~1–3 h) plus reversibility mean a much shorter washout when stopping moclobemide than with irreversible MAOIs. But when switching FROM a serotonergic you still honour the incoming drug's washout — 14 days, or 5 weeks after fluoxetine.",
+        title: "A shorter washout",
+        teach: "Its short half-life plus reversibility mean stopping moclobemide clears quickly — a much shorter washout than the 2 weeks needed after an irreversible MAOI. But when you switch FROM a serotonergic INTO moclobemide, you still honour the incoming drug's washout: 14 days, or 5 weeks after fluoxetine."
+      },
+      {
+        title: "How you use it",
+        teach: "Give it after meals, usually 300 mg/day split BID, up to 600 mg/day. It's cleared by CYP2C19, so if a strong 2C19 inhibitor such as cimetidine is on board, halve the dose to stop levels piling up."
+      },
+      {
+        title: "What to counsel",
+        teach: "Reassure patients there's no strict diet — but common sense still applies: don't binge on a huge plate of aged cheese in one sitting. And make sure they tell any new prescriber they're on moclobemide, because the serotonergic interactions still bite.",
         check: {
-          q: "Before starting moclobemide after fluoxetine, you should wait…",
-          options: ["5 weeks", "24 hours", "No wait needed"],
-          answer: "5 weeks",
-          why: "Fluoxetine's long half-life demands ~5 weeks regardless of moclobemide's own quick clearance."
+          q: "What food advice fits moclobemide?",
+          options: ["No strict diet, but avoid huge tyramine loads at once", "The same strict diet as phenelzine", "Avoid all protein"],
+          answer: "No strict diet, but avoid huge tyramine loads at once",
+          why: "Reversibility removes the strict diet, but very large single tyramine loads can still cause trouble."
         }
       },
       {
-        title: "Practical dosing",
-        teach: "Take moclobemide after meals. It's metabolised largely by CYP2C19; a 2C19 inhibitor such as cimetidine raises levels, so halve the dose.",
-        check: {
-          q: "Adding cimetidine to moclobemide means you should…",
-          options: ["Halve the moclobemide dose", "Double the dose", "Stop food entirely"],
-          answer: "Halve the moclobemide dose",
-          why: "Cimetidine inhibits CYP2C19 and raises moclobemide levels — reduce the dose."
-        }
+        title: "A touch of mechanism",
+        teach: "In one line: RIMA = Reversible Inhibitor of MAO-A. Selective for MAO-A and reversible — that single design choice is why the diet relaxes while the serotonin cautions stay put."
       }
     ],
-    trap: "Moclobemide (reversible, MAO-A selective, minimal diet, Canada-only) vs phenelzine/tranylcypromine (irreversible, strict tyramine diet).",
-    takeaway: "Moclobemide = reversible MAO-A–selective RIMA (Canadian): no strict tyramine diet and short washout, BUT serotonin-syndrome contraindications are unchanged."
+    trap: "Moclobemide (reversible, MAO-A–selective, minimal diet, Canada) vs phenelzine/tranylcypromine (irreversible, strict tyramine diet).",
+    takeaway: "Moclobemide = the reversible MAO-A–selective RIMA (Canadian, second-line): no strict tyramine diet and a short washout — but the serotonin-syndrome contraindications are exactly the same as any MAOI."
   },
 
   selegiline: {
-    hook: "The MAO-B–selective MAOI — the low-dose patch skips the diet entirely, but selectivity vanishes as the dose climbs.",
+    hook: "The MAO-B–selective MAOI — the low-dose patch skips the diet, but the tyramine risk returns as the dose climbs.",
     steps: [
       {
-        title: "What it is",
-        teach: "At LOW dose selegiline irreversibly and selectively inhibits MAO-B (raising dopamine — hence its Parkinson's use). At high or oral antidepressant doses it loses selectivity and also inhibits MAO-A, bringing back the tyramine and serotonin risks.",
-        check: {
-          q: "At low dose, selegiline is selective for which enzyme?",
-          options: ["MAO-B", "MAO-A", "COMT"],
-          answer: "MAO-B",
-          why: "Low-dose selegiline is MAO-B selective; selectivity is lost at higher doses."
-        }
+        title: "The big picture",
+        teach: "Selegiline is the odd one out: at low dose it selectively blocks MAO-B. In Canada you'll meet it as an ORAL drug for Parkinson's (added to levodopa). As an antidepressant it's the transdermal patch, Emsam — US-approved and worth knowing about even though it isn't marketed here."
+      },
+      {
+        title: "Its two lives",
+        teach: "So it leads a double life. Low-dose oral selegiline raises dopamine and helps Parkinson's. The patch, at antidepressant doses, delivers enough drug to treat depression — and the interesting part is what the patch route does to the famous MAOI diet."
       },
       {
         title: "The patch trick",
-        teach: "The transdermal 6 mg/24 h patch bypasses first-pass gut MAO-A, so at that dose no dietary restriction is needed — a classic exam point. Higher patch strengths (9–12 mg/24 h) reinstate the low-tyramine diet.",
+        teach: "The classic exam point: the 6 mg/24 h patch bypasses first-pass gut MAO-A, so at that dose gut MAO-A still clears dietary tyramine — meaning NO dietary restriction is needed. Delivering the same drug through skin instead of gut is what buys the free diet.",
         check: {
           q: "Why does the 6 mg/24 h selegiline patch need no tyramine diet?",
           options: ["It bypasses first-pass gut MAO-A", "It contains no active drug", "It blocks tyramine in the skin"],
           answer: "It bypasses first-pass gut MAO-A",
-          why: "Transdermal delivery spares gut MAO-A, so dietary tyramine is still cleared at the low dose."
+          why: "Transdermal delivery spares gut MAO-A, so dietary tyramine is still broken down at the low dose."
         }
       },
       {
-        title: "Diet returns at higher dose",
-        teach: "The tyramine/hypertensive risk is dose-dependent: at higher patch or oral antidepressant doses MAO-A is inhibited, so aged cheese, cured meats and tap beer can again trigger a hypertensive crisis.",
+        title: "Diet returns",
+        teach: "But that free pass is dose-dependent. Push the patch to 9 or 12 mg/24 h — or use higher oral doses — and MAO-A gets inhibited too, so the low-tyramine diet comes right back. Aged cheese, cured meats and tap beer are dangerous again.",
         check: {
-          q: "The tyramine hypertensive risk with selegiline is best described as…",
-          options: ["Dose-dependent — returns at higher doses", "Absent at every dose", "Fixed and unavoidable"],
-          answer: "Dose-dependent — returns at higher doses",
+          q: "The tyramine risk with selegiline is best described as…",
+          options: ["Dose-dependent — it returns at higher doses", "Absent at every dose", "Fixed and unavoidable"],
+          answer: "Dose-dependent — it returns at higher doses",
           why: "Low dose spares MAO-A (no diet); higher doses inhibit MAO-A and reinstate the risk."
         }
       },
       {
-        title: "Serotonin risk at ANY dose",
-        teach: "Unlike the dose-dependent tyramine risk, serotonin-syndrome contraindications apply at ANY dose or route: no SSRIs/SNRIs, tramadol, meperidine, linezolid or dextromethorphan. Still observe the 14-day washout — 5 weeks after fluoxetine.",
+        title: "A touch of mechanism",
+        teach: "The mechanism in a line: selegiline is MAO-B–selective at low dose (raising dopamine), but selectivity is lost as the dose rises, when it also inhibits MAO-A. That sliding selectivity explains the whole dose-dependent tyramine story."
+      },
+      {
+        title: "Serotonin at any dose",
+        teach: "Here's the crucial asymmetry: the tyramine risk is dose-dependent, but the serotonin-syndrome risk is NOT. At any dose or route — even the low-dose patch — you must avoid SSRIs/SNRIs, tramadol, meperidine and dextromethorphan, and still observe the 14-day washout (5 weeks after fluoxetine).",
         check: {
-          q: "Selegiline's serotonin syndrome risk applies at which doses?",
-          options: ["Any dose or route", "Only the highest oral dose", "Only the patch"],
-          answer: "Any dose or route",
-          why: "Serotonergic contraindications are not dose-sparing — they apply even to the low-dose patch."
+          q: "Selegiline's serotonin-syndrome risk applies at which doses?",
+          options: ["Any dose or route, including the low-dose patch", "Only the highest oral dose", "Only the patch"],
+          answer: "Any dose or route, including the low-dose patch",
+          why: "Unlike tyramine, the serotonergic contraindications are not dose-sparing."
         }
       },
       {
         title: "Amphetamine metabolites",
-        teach: "Selegiline is metabolised to l-amphetamine and l-methamphetamine, which can cause insomnia and activation. Contrast rasagiline — also MAO-B selective but without amphetamine metabolites.",
+        teach: "Selegiline is broken down into l-amphetamine and l-methamphetamine, which can cause insomnia and activation — so dose oral forms earlier in the day. It's also why a routine urine drug screen can flag amphetamines.",
         check: {
-          q: "Which MAO-B inhibitor yields amphetamine metabolites?",
+          q: "Why might selegiline cause insomnia and flag a urine drug screen?",
+          options: ["It forms amphetamine metabolites", "It contains caffeine", "It blocks all dopamine"],
+          answer: "It forms amphetamine metabolites",
+          why: "Selegiline metabolises to l-amphetamine/l-methamphetamine — activating, and detectable on screens."
+        }
+      },
+      {
+        title: "Using the patch",
+        teach: "Practical patch care: apply to clean, dry, intact skin, rotate the site each day, and never cut the patch. The commonest nuisance is a mild application-site skin reaction rather than anything dramatic."
+      },
+      {
+        title: "The look-alike",
+        teach: "One last distinction: rasagiline is also MAO-B–selective but does NOT form amphetamine metabolites — so if a question hinges on amphetamine by-products, it's selegiline, not rasagiline.",
+        check: {
+          q: "Which MAO-B inhibitor produces amphetamine metabolites?",
           options: ["Selegiline", "Rasagiline", "Moclobemide"],
           answer: "Selegiline",
           why: "Selegiline forms l-amphetamine/l-methamphetamine; rasagiline does not."
         }
       }
     ],
-    trap: "Selegiline (MAO-B selective, patch for depression, amphetamine metabolites) vs rasagiline (MAO-B, no amphetamine metabolites) vs phenelzine (non-selective, strict diet).",
-    takeaway: "Selegiline = MAO-B–selective MAOI: the 6 mg/24 h patch spares first-pass MAO-A so no diet, but higher doses reinstate the tyramine risk while serotonin-syndrome contraindications and the washout apply at any dose."
+    trap: "Selegiline (MAO-B–selective, patch for depression, amphetamine metabolites) vs rasagiline (MAO-B, no amphetamine metabolites) vs phenelzine (non-selective, strict diet).",
+    takeaway: "Selegiline = the MAO-B–selective MAOI: the 6 mg/24 h patch spares first-pass gut MAO-A so no diet, but higher doses reinstate the tyramine risk — while the serotonin-syndrome rules and washout apply at every dose."
   }
 };
