@@ -46,7 +46,7 @@
         ce('button', { class: 'btn primary lg', onclick: function () { opts.onComplete && opts.onComplete({ reviewed: reviewed }); } }, ['Continue']),
       ]);
       container.appendChild(summaryCard);
-      if (mode === 'review') { PML.daily.markReviewsCleared(); }
+      if (mode === 'review') { var g = PML.daily.markReviewsCleared(); if (g && g.justMet) PML.ui.celebrate({ goal: g }, { anchor: summaryCard }); }
       PML.ui && PML.ui.refreshHud && PML.ui.refreshHud();
     }
 

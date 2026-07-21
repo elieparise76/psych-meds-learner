@@ -60,26 +60,130 @@
   }
 
   // ---------- celebrations ----------
+  // Two weights: a full-screen BLOCK "moment" (streak/level milestones — dim backdrop, count-up,
+  // Continue button, queued) and a lightweight non-blocking FLASH (mid-practice level-ups).
   function celebrate(ev, opts) {
     opts = opts || {};
     if (!ev) return;
     refreshHud();
     if (ev.correct === false) return;
-    var anchor = opts.anchor;
-    if (ev.leveled) {
-      window.PMLConfetti && PMLConfetti.burst({ count: 130 });
-      playSfx('levelup');
-      toast('⭐ Level ' + (ev.level || (ev.xp && ev.xp.to)) + '!', 'win');
-    } else if (opts.big) {
-      window.PMLConfetti && (anchor ? PMLConfetti.fromElement(anchor) : PMLConfetti.burst());
-      playSfx('goal');
-    }
+    var milestone = !!(opts.big || (ev.goal && ev.goal.justMet));
+
+    // smaller wins → toasts (mastery, achievements, quests)
     if (ev.masteryUp) { toast('🏅 ' + cap(ev.masteryUp) + ' mastery!', 'win'); playSfx('badge'); }
     (ev.achievements || []).forEach(function (a) { toast(a.emoji + ' ' + a.title, 'win'); playSfx('badge'); window.PMLConfetti && PMLConfetti.burst({ count: 60 }); });
     (ev.quests || []).forEach(function (q) { toast('✅ Quest: ' + q.text + ' (+' + q.reward + ' XP)', 'win'); playSfx('quest'); });
-    if (ev.goal && ev.goal.justMet) { window.PMLConfetti && PMLConfetti.burst({ count: 150 }); playSfx('streak'); toast('🔥 Daily goal complete — streak ' + ev.goal.streak + '!', 'win'); }
+
+    // big center-screen moments
+    if (ev.goal && ev.goal.justMet) {
+      var to = ev.goal.streak;
+      var from = ev.goal.prev != null ? ev.goal.prev : Math.max(0, to - 1);
+      enqueueMoment({ kind: 'streak', from: from, to: to });
+    }
+    if (ev.leveled) {
+      var lvl = ev.level || (ev.xp && ev.xp.to);
+      if (milestone) enqueueMoment({ kind: 'level', level: lvl });
+      else flashMoment({ kind: 'level', level: lvl });
+    } else if (opts.big && !(ev.goal && ev.goal.justMet)) {
+      // finished a lesson, but the daily streak already advanced earlier and no level-up:
+      // still give a little pop so completing always feels rewarded.
+      window.PMLConfetti && (opts.anchor ? PMLConfetti.fromElement(opts.anchor) : PMLConfetti.burst());
+      playSfx('goal');
+    }
   }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  // ---------- big-moment engine ----------
+  var celebQ = [], celebBusy = false;
+  function celebActive() { return !!document.querySelector('.celeb-overlay.block'); }
+  function reduceMotion() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+  function enqueueMoment(cfg) { celebQ.push(cfg); if (!celebBusy) runNextMoment(); }
+  function runNextMoment() {
+    if (!celebQ.length) { celebBusy = false; return; }
+    celebBusy = true;
+    showBlockMoment(celebQ.shift(), runNextMoment);
+  }
+
+  function celebSpec(cfg) {
+    if (cfg.kind === 'streak') {
+      var to = cfg.to, from = cfg.from != null ? cfg.from : Math.max(0, to - 1);
+      return {
+        glyph: '🔥', glyphClass: 'flame', glow: 'flame', numFrom: from, numTo: to,
+        title: to <= 1 ? 'Streak started!' : to + '-day streak!',
+        sub: to <= 1 ? 'You learned today — come back tomorrow to keep the flame alive.' : 'That’s ' + to + ' days in a row. Don’t break the chain!',
+        sound: 'streakup',
+      };
+    }
+    if (cfg.kind === 'level') {
+      return { glyph: '⭐', glyphClass: 'star', glow: '', numFrom: cfg.level, numTo: cfg.level, title: 'Level ' + cfg.level + '!', sub: 'You levelled up — new mastery within reach.', sound: 'levelup' };
+    }
+    return { glyph: cfg.glyph || '🎉', title: cfg.title || 'Nice!', sub: cfg.sub || '', sound: cfg.sound || 'goal', numFrom: cfg.num, numTo: cfg.num };
+  }
+
+  function buildCelebCard(cfg, flash) {
+    var spec = celebSpec(cfg);
+    var glyphWrap = ce('div', { class: 'celeb-glyphwrap' });
+    if (!flash) glyphWrap.appendChild(ce('div', { class: 'celeb-rays' }));
+    glyphWrap.appendChild(ce('div', { class: 'celeb-glow ' + (spec.glow || '') }));
+    glyphWrap.appendChild(ce('div', { class: 'celeb-glyph ' + (spec.glyphClass || '') }, [spec.glyph]));
+    var kids = [glyphWrap];
+    var numEl = null;
+    if (spec.numTo != null) { numEl = ce('div', { class: 'celeb-num' }, [String(spec.numFrom != null ? spec.numFrom : spec.numTo)]); kids.push(numEl); }
+    kids.push(ce('div', { class: 'celeb-title' }, [spec.title]));
+    if (!flash && spec.sub) kids.push(ce('div', { class: 'celeb-sub' }, [spec.sub]));
+    return { card: ce('div', { class: 'celeb-card' }, kids), numEl: numEl, spec: spec };
+  }
+
+  function animateCount(el, from, to) {
+    from = from || 0; to = to || 0;
+    if (reduceMotion() || from === to) { el.textContent = String(to); if (from !== to) tickPop(el); return; }
+    var dur = Math.min(1100, 340 + Math.abs(to - from) * 170);
+    var t0 = null, last = from;
+    el.textContent = String(from);
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(from + (to - from) * eased);
+      if (val !== last) { last = val; el.textContent = String(val); tickPop(el); if (sfxOn() && PML.sfx.poptick) PML.sfx.poptick(); }
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = String(to);
+    }
+    requestAnimationFrame(frame);
+  }
+  function tickPop(el) { el.classList.remove('tickpop'); void el.offsetWidth; el.classList.add('tickpop'); }
+
+  function showBlockMoment(cfg, done) {
+    var built = buildCelebCard(cfg, false);
+    var overlay = ce('div', { class: 'celeb-overlay block', role: 'dialog', 'aria-modal': 'true', 'aria-label': built.spec.title });
+    var cta = ce('button', { class: 'btn primary lg celeb-cta', onclick: function () { close(); } }, ['Continue']);
+    built.card.appendChild(cta);
+    overlay.appendChild(built.card);
+    document.body.appendChild(overlay);
+    playSfx(built.spec.sound);
+    window.PMLConfetti && PMLConfetti.burst({ count: 150 });
+    if (built.numEl && built.spec.numTo != null) setTimeout(function () { animateCount(built.numEl, built.spec.numFrom, built.spec.numTo); }, 380);
+    var closed = false, timer = setTimeout(function () { close(); }, 4600);
+    setTimeout(function () { cta.focus(); }, 30);
+    function onKey(e) { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); } }
+    document.addEventListener('keydown', onKey, true);
+    function close() {
+      if (closed) return; closed = true;
+      clearTimeout(timer); document.removeEventListener('keydown', onKey, true);
+      overlay.style.transition = 'opacity .28s var(--ease)'; overlay.style.opacity = '0';
+      setTimeout(function () { overlay.remove(); if (done) done(); }, 280);
+    }
+  }
+
+  function flashMoment(cfg) {
+    var built = buildCelebCard(cfg, true);
+    var overlay = ce('div', { class: 'celeb-overlay flash' }, [built.card]);
+    document.body.appendChild(overlay);
+    playSfx(built.spec.sound);
+    window.PMLConfetti && PMLConfetti.burst({ count: 70 });
+    if (built.numEl && built.spec.numTo != null) setTimeout(function () { animateCount(built.numEl, built.spec.numFrom, built.spec.numTo); }, 180);
+    setTimeout(function () { overlay.remove(); }, 1650);
+  }
 
   // ---------- toast ----------
   function toast(msg, type) {
@@ -371,6 +475,7 @@
   PML.ui = {
     init: init, go: go, refreshHud: refreshHud, celebrate: celebrate, toast: toast, modal: modal,
     currentFlash: function () { return current.flash; }, openDetail: openDetail, startLearn: startLearn,
+    moment: enqueueMoment, celebActive: celebActive,
   };
   PML.sfxOn = sfxOn;
 })();

@@ -45,7 +45,7 @@
     if (!pool.length) return [];
     var exercises = [];
     var lastType = null, lastMed = null, guard = 0;
-    while (exercises.length < n && guard < n * 12) {
+    while (exercises.length < n && guard < n * 25 + 40) {
       guard++;
       // occasional standalone cross-med bank vignette for variety (not when drilling one med)
       if (!opts.medId && lastType !== 'vignette' && Math.random() < 0.16) {
@@ -80,7 +80,7 @@
         var correct = opt === ex.answer;
         U.qsa('.opt', list).forEach(function (x) { x.disabled = true; if (x.dataset.opt === ex.answer) x.classList.add('correct'); });
         if (!correct) b.classList.add('wrong');
-        onAnswer(correct);
+        onAnswer(correct, opt);
       });
       list.appendChild(b);
     });
@@ -102,7 +102,7 @@
       if (done) return; if (!input.value.trim()) return; done = true;
       input.disabled = true; btn.disabled = true;
       var correct = U.answerMatches(input.value, ex.accept, 0.78);
-      onAnswer(correct);
+      onAnswer(correct, input.value.trim());
     }
     btn.addEventListener('click', submit);
     input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
@@ -163,7 +163,7 @@
       if (done) return; done = true; btn.disabled = true;
       var got = U.qsa('.word-tile', answer).map(function (x) { return x.textContent; }).join(' ');
       var correct = U.normalize(got) === U.normalize(ex.answerSeq.join(' '));
-      onAnswer(correct);
+      onAnswer(correct, got);
     });
     node.appendChild(ce('div', { class: 'muted', style: { fontSize: '.78rem' } }, ['Tap tiles to build the answer:']));
     node.appendChild(answer); node.appendChild(bank); node.appendChild(btn);
@@ -183,74 +183,220 @@
     return renderChoice(ex, onAnswer);
   }
 
+  // ---------------- shared feedback / review helpers ----------------
+  // The explanatory tail (answer, explanation, wiki interlinks, source) — reused by the live
+  // feedback panel and the read-only "review a past question" panel.
+  function feedbackDetails(ex, correct, skipAnswer) {
+    var out = [];
+    if (!skipAnswer && !correct && ex.answerDisplay) out.push(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answerDisplay]));
+    else if (!skipAnswer && !correct && ex.answer && !ex.answerDisplay) out.push(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answer]));
+    if (ex.explanation) {
+      var expl = ce('p', { class: 'muted', style: { margin: '6px 0 0', fontSize: '.9rem' } });
+      expl.appendChild(PML.wiki && PML.wiki.linkify ? PML.wiki.linkify(ex.explanation) : document.createTextNode(ex.explanation));
+      out.push(expl);
+    }
+    if (PML.wiki && (ex.disorder || (ex.meds && ex.meds.length))) {
+      var rel = ce('div', { class: 'row wrap', style: { gap: '6px', marginTop: '8px', alignItems: 'center' } }, [ce('span', { class: 'dim', style: { fontSize: '.72rem' } }, ['📖 Wiki:'])]);
+      if (ex.disorder) { var hit = PML.wiki.resolveName(ex.disorder); if (hit) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.open(hit); } }, [ex.disorder])); }
+      (ex.meds || []).slice(0, 5).forEach(function (mid) { var m = PML.deck.get(mid); if (m) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.medPage(mid); } }, [m.generic])); });
+      if (rel.childNodes.length > 1) out.push(rel);
+    }
+    if (ex.source && ex.source.name) {
+      var src = ex.source.url ? ce('a', { class: 'src-link', href: ex.source.url, target: '_blank', rel: 'noopener' }, ['Source: ' + ex.source.name]) : ce('span', { class: 'src-link' }, ['Source: ' + ex.source.name]);
+      out.push(ce('div', { style: { marginTop: '6px' } }, [src]));
+    }
+    return out;
+  }
+
+  // Read-only depiction of what was asked and how the user answered.
+  function reviewAnswerBlock(ex, r) {
+    var wrap = ce('div', { class: 'stack', style: { marginTop: 'var(--sp-3)' } });
+    if (ex.type === 'mcq' || ex.type === 'vignette' || ex.type === 'confusable') {
+      var list = ce('div', { class: 'opt-list' });
+      (ex.options || []).forEach(function (opt) {
+        var cls = 'opt';
+        if (opt === ex.answer) cls += ' correct';
+        else if (r.pick != null && opt === r.pick) cls += ' wrong';
+        list.appendChild(ce('div', { class: cls }, [ce('span', { text: opt })]));
+      });
+      wrap.appendChild(list);
+    } else if (ex.type === 'matching') {
+      var pl = ce('div', {});
+      (ex.pairs || []).forEach(function (p) { pl.appendChild(ce('div', { class: 'review-pair' }, [ce('b', {}, [p.l]), ' → ', p.r])); });
+      wrap.appendChild(pl);
+    } else {
+      var corr = ex.answerDisplay || ex.answer || (ex.accept && ex.accept[0]) || '';
+      if (r.pick != null && String(r.pick).trim() !== '') wrap.appendChild(ce('div', { class: 'review-line' }, [ce('span', { class: 'muted' }, ['Your answer: ']), ce('b', { class: r.correct ? 'ok-text' : 'no-text' }, [String(r.pick)])]));
+      if (corr) wrap.appendChild(ce('div', { class: 'review-line' }, [ce('span', { class: 'muted' }, ['Correct: ']), ce('b', {}, [corr])]));
+      if (ex.clozeText) wrap.appendChild(ce('div', { class: 'card pad-sm', style: { fontStyle: 'italic', marginTop: '6px' } }, [ex.clozeText.replace('_____', '“' + (corr || '____') + '”')]));
+    }
+    return wrap;
+  }
+
+  // A full read-only review card for one already-answered question.
+  function renderReview(r, backLabel, onBack) {
+    var ex = r.ex;
+    var card = ce('div', { class: 'card pad view' });
+    card.appendChild(ce('div', { class: 'row spread', style: { alignItems: 'center' } }, [
+      ce('div', { class: 'q-type-label' }, [typeLabel(ex)]),
+      ce('span', { class: 'chip ' + (r.correct ? 'ok-chip' : 'no-chip') }, [r.correct ? '✓ You got it' : '✗ Missed']),
+    ]));
+    card.appendChild(ce('div', { class: 'q-stem' }, [ex.stem]));
+    card.appendChild(reviewAnswerBlock(ex, r));
+    var det = ce('div', { class: 'feedback ' + (r.correct ? 'ok' : 'no'), style: { marginTop: 'var(--sp-4)' } });
+    feedbackDetails(ex, r.correct, true).forEach(function (n) { det.appendChild(n); });
+    if (!det.childNodes.length) det = null;
+    if (det) card.appendChild(det);
+    if (backLabel) card.appendChild(ce('button', { class: 'btn primary block', style: { marginTop: 'var(--sp-3)' }, onclick: onBack }, [backLabel]));
+    return card;
+  }
+
   // ---------------- session runner ----------------
-  var active = null; // { exNode, ...} for keyboard
+  var active = null; // { exNode, answered, next, reviewing } for keyboard
 
   function runSession(root, opts) {
     var exercises = opts.exercises;
-    var i = 0, correctCount = 0;
+    var total = exercises.length;
+    var i = 0, correctCount = 0, viewing = null;
+    var results = new Array(total);   // results[k] = { ex, correct, pick }
+    var liveCard = null, liveActive = null;
     PML.game.resetCombo();
     if (PML.sfxOn()) PML.sfx.start();
     PML.store.get().stats.sessions = (PML.store.get().stats.sessions || 0) + 1;
 
+    // ----- layout scaffold: left progress grid + main question column -----
+    var grid = ce('div', { class: 'qgrid' });
+    var sideCount = ce('span', { class: 'qgrid-count' }, ['0/' + total]);
+    var aside = ce('aside', { class: 'practice-side' }, [
+      ce('div', { class: 'practice-side-head' }, [ce('b', {}, ['Progress']), sideCount]),
+      grid,
+      ce('div', { class: 'qgrid-legend' }, [legendItem('ok', 'right'), legendItem('no', 'wrong'), legendItem('current', 'now')]),
+      ce('p', { class: 'dim qgrid-hint' }, ['Tap a finished question to review it.']),
+    ]);
+    var posLabel = ce('span', { class: 'muted' }, ['1 / ' + total]);
+    var comboBadge = ce('span', { class: 'chip combo-badge' }, ['⚡ ' + PML.game.comboState().count]);
+    var headRow = ce('div', { class: 'row spread', style: { marginBottom: '10px' } }, [posLabel, comboBadge]);
+    var mainSlot = ce('div');
+    var mainSection = ce('section', { class: 'practice-main' }, [headRow, mainSlot]);
+    root.appendChild(ce('div', { class: 'practice-layout view' }, [aside, mainSection]));
+
+    var cells = [];
+    for (var k = 0; k < total; k++) {
+      (function (k) {
+        var c = ce('button', { class: 'qcell', type: 'button', 'aria-label': 'Question ' + (k + 1), onclick: function () { onCell(k); } }, [String(k + 1)]);
+        cells.push(c); grid.appendChild(c);
+      })(k);
+    }
+    updateGrid();
+
+    function legendItem(cls, label) { return ce('span', { class: 'qgrid-legend-item' }, [ce('i', { class: 'qcell mini ' + cls }), label]); }
+    function answeredCount() { var n = 0; for (var k = 0; k < total; k++) if (results[k]) n++; return n; }
+
+    function updateGrid() {
+      for (var k = 0; k < total; k++) {
+        var c = cells[k], r = results[k];
+        c.className = 'qcell';
+        c.classList.add(r ? (r.correct ? 'ok' : 'no') : 'pending');
+        if (k === i && viewing === null) c.classList.add('current');
+        if (viewing === k) c.classList.add('reviewing');
+        c.disabled = !r && k !== i;   // only answered cells (or the live one) are actionable
+      }
+      sideCount.textContent = answeredCount() + '/' + total;
+    }
+
+    function onCell(k) {
+      if (!results[k] && k !== i) return;                    // unreached question — ignore
+      if (k === i) { if (viewing !== null) exitReview(); return; }  // clicking the live one returns to it
+      enterReview(k);
+    }
+    function enterReview(k) {
+      viewing = k;
+      U.clear(mainSlot);
+      mainSlot.appendChild(renderReview(results[k], '← Back to question ' + (i + 1), exitReview));
+      posLabel.textContent = 'Reviewing ' + (k + 1) + ' / ' + total;
+      active = { reviewing: true };
+      updateGrid();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function exitReview() {
+      viewing = null;
+      U.clear(mainSlot);
+      mainSlot.appendChild(liveCard);
+      posLabel.textContent = (i + 1) + ' / ' + total;
+      active = liveActive;
+      updateGrid();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
     function finish() {
       active = null;
-      var acc = exercises.length ? Math.round(correctCount / exercises.length * 100) : 0;
+      var acc = total ? Math.round(correctCount / total * 100) : 0;
       U.clear(root);
+      var recap = ce('div', { class: 'qgrid recap' });
+      for (var k = 0; k < total; k++) {
+        (function (k) {
+          var r = results[k];
+          var c = ce('button', { class: 'qcell ' + (r ? (r.correct ? 'ok' : 'no') : 'pending'), type: 'button', 'aria-label': 'Review question ' + (k + 1), onclick: function () { if (r) openReviewModal(r); } }, [String(k + 1)]);
+          recap.appendChild(c);
+        })(k);
+      }
       root.appendChild(ce('div', { class: 'card pad center view stack' }, [
         ce('div', { style: { fontSize: '3rem' } }, [acc >= 80 ? '🎉' : acc >= 50 ? '👍' : '💪']),
         ce('h2', {}, ['Session complete']),
         ce('div', { class: 'stat-tiles' }, [
-          bigTile(correctCount + '/' + exercises.length, 'correct'),
+          bigTile(correctCount + '/' + total, 'correct'),
           bigTile(acc + '%', 'accuracy'),
           bigTile(PML.game.comboState().best, 'best combo'),
         ]),
+        ce('div', { class: 'muted', style: { fontSize: '.82rem' } }, ['Tap any question to review it:']),
+        recap,
         ce('div', { class: 'row', style: { justifyContent: 'center', gap: '8px' } }, [
           ce('button', { class: 'btn primary lg', onclick: function () { opts.onDone && opts.onDone({ again: true }); } }, ['Practice again']),
           ce('button', { class: 'btn lg ghost', onclick: function () { opts.onDone && opts.onDone({}); } }, ['Done']),
         ]),
       ]));
+      // reward a strong session with a big center-screen moment
+      if (total >= 4 && acc >= 80 && PML.ui.moment) {
+        PML.ui.moment({ kind: 'generic', glyph: acc === 100 ? '🏆' : '🎯', title: acc === 100 ? 'Perfect session!' : 'Great session!', sub: correctCount + ' / ' + total + ' correct — ' + acc + '% accuracy.', sound: 'fanfare' });
+      }
       PML.ui.refreshHud();
     }
+    function openReviewModal(r) {
+      var dlg; var node = renderReview(r, 'Close', function () { dlg && dlg.close(); });
+      dlg = PML.ui.modal(node, { label: 'Question review' });
+    }
 
-    function render() {
-      if (i >= exercises.length) return finish();
+    function renderLive() {
+      if (i >= total) return finish();
       var ex = exercises[i];
-      U.clear(root);
-
-      var dots = ce('div', { class: 'q-progress' });
-      exercises.forEach(function (_, k) { dots.appendChild(ce('i', { class: k < i ? 'done' : (k === i ? 'cur' : '') })); });
-
-      var comboBadge = ce('span', { class: 'chip combo-badge' }, ['⚡ ' + PML.game.comboState().count]);
-      var head = ce('div', { class: 'row spread', style: { marginBottom: '4px' } }, [
-        ce('span', { class: 'muted', text: (i + 1) + ' / ' + exercises.length }), comboBadge,
-      ]);
+      posLabel.textContent = (i + 1) + ' / ' + total;
+      comboBadge.textContent = '⚡ ' + PML.game.comboState().count;
 
       var card = ce('div', { class: 'card pad view' });
+      liveCard = card;
       var answered = false;
+      var fbSlot = ce('div');
       var exNode = renderExercise(ex, onAnswer);
       card.appendChild(exNode);
-      var fbSlot = ce('div');
       card.appendChild(fbSlot);
 
-      function onAnswer(correct) {
+      function onAnswer(correct, pick) {
         if (answered) return; answered = true;
+        results[i] = { ex: ex, correct: correct, pick: pick != null ? pick : null };
         var cardRec = PML.store.card(ex.medId); cardRec.lastPracticed = U.todayKey();
         var res = PML.game.recordAnswer(ex.medId, ex.type, correct, ex.tags);
         if (correct) correctCount++;
-        // quests
         PML.game.noteQuest('answer', 1);
         if (ex.type === 'vignette') PML.game.noteQuest('vignette', 1);
         var med = PML.deck.get(ex.medId);
         if (med) PML.game.noteQuest('classAnswer', 1, { cls: med.class });
         if (res.combo >= 5) PML.game.noteQuest('combo', res.combo);
-        // combo badge bump
         comboBadge.textContent = '⚡ ' + res.combo;
         comboBadge.classList.add('bump'); setTimeout(function () { comboBadge.classList.remove('bump'); }, 220);
-        // sound + celebration
         if (PML.sfxOn()) { correct ? (res.combo >= 3 ? PML.sfx.combo(res.combo) : PML.sfx.correct()) : PML.sfx.wrong(); }
         if (correct && window.PMLConfetti && res.combo && res.combo % 5 === 0) PMLConfetti.burst({ count: 50 });
         PML.ui.celebrate(res, {});
+        updateGrid();
         renderFeedback(correct, res);
         PML.ui.refreshHud();
       }
@@ -261,38 +407,23 @@
           ce('h4', { style: { margin: 0 } }, [correct ? '✓ Correct' : '✗ Not quite']),
           ce('span', { class: 'combo-flash' }, ['+' + res.xp + ' XP' + (res.combo > 1 ? '  ×' + res.combo + ' combo' : '')]),
         ]));
-        if (!correct && ex.answerDisplay) fb.appendChild(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answerDisplay]));
-        if (!correct && ex.answer && !ex.answerDisplay) fb.appendChild(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answer]));
-        if (ex.explanation) {
-          var expl = ce('p', { class: 'muted', style: { margin: '6px 0 0', fontSize: '.9rem' } });
-          expl.appendChild(PML.wiki && PML.wiki.linkify ? PML.wiki.linkify(ex.explanation) : document.createTextNode(ex.explanation));
-          fb.appendChild(expl);
-        }
-        // Wiki interlinks (disorder + referenced meds)
-        if (PML.wiki && (ex.disorder || (ex.meds && ex.meds.length))) {
-          var rel = ce('div', { class: 'row wrap', style: { gap: '6px', marginTop: '8px', alignItems: 'center' } }, [ce('span', { class: 'dim', style: { fontSize: '.72rem' } }, ['📖 Wiki:'])]);
-          if (ex.disorder) { var hit = PML.wiki.resolveName(ex.disorder); if (hit) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.open(hit); } }, [ex.disorder])); }
-          (ex.meds || []).slice(0, 5).forEach(function (mid) { var m = PML.deck.get(mid); if (m) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.medPage(mid); } }, [m.generic])); });
-          if (rel.childNodes.length > 1) fb.appendChild(rel);
-        }
-        if (ex.source && ex.source.name) {
-          var src = ex.source.url ? ce('a', { class: 'src-link', href: ex.source.url, target: '_blank', rel: 'noopener' }, ['Source: ' + ex.source.name]) : ce('span', { class: 'src-link' }, ['Source: ' + ex.source.name]);
-          fb.appendChild(ce('div', { style: { marginTop: '6px' } }, [src]));
-        }
-        var next = ce('button', { class: 'btn primary block', style: { marginTop: 'var(--sp-3)' } }, [i + 1 >= exercises.length ? 'See results' : 'Continue →']);
-        next.addEventListener('click', function () { i++; render(); });
+        feedbackDetails(ex, correct, false).forEach(function (n) { fb.appendChild(n); });
+        var next = ce('button', { class: 'btn primary block', style: { marginTop: 'var(--sp-3)' } }, [i + 1 >= total ? 'See results' : 'Continue →']);
+        next.addEventListener('click', function () { i++; renderLive(); window.scrollTo({ top: 0, behavior: 'auto' }); });
         fb.appendChild(next);
         fbSlot.appendChild(fb);
-        active.next = function () { next.click(); };
+        liveActive.next = function () { next.click(); };
         next.focus();
       }
 
-      root.appendChild(ce('div', { class: 'practice-wrap' }, [dots, head, card]));
-      active = { exNode: exNode, answered: function () { return answered; }, next: null };
+      liveActive = { exNode: exNode, answered: function () { return answered; }, next: null, reviewing: false };
+      active = liveActive;
+      U.clear(mainSlot); mainSlot.appendChild(card);
+      updateGrid();
       if (exNode._focus) exNode._focus();
     }
 
-    render();
+    renderLive();
   }
 
   function bigTile(big, label) { return ce('div', { class: 'tile' }, [ce('b', { text: String(big) }), ce('span', { text: label })]); }
@@ -306,11 +437,18 @@
     wrap.appendChild(ce('div', { class: 'pagehead' }, [ce('div', {}, [ce('h1', {}, ['Practice']), ce('p', { class: 'muted' }, ['An adaptive mix — weighted toward what you get wrong. ' + learned + ' meds learned so far.'])])]));
 
     var classSel = ce('select', {}, [ce('option', { value: '', text: 'All learned meds' })].concat(PML.deck.classes().map(function (c) { return ce('option', { value: c, text: c }); })));
-    var lenSel = ce('select', {}, ['8', '12', '20'].map(function (n) { return ce('option', { value: n, text: n + ' questions', selected: n === '12' ? 'selected' : null }); }));
+    var countInput = ce('input', { type: 'number', min: '1', max: '100', value: '12', step: '1', class: 'qcount-input', 'aria-label': 'Number of questions (1–100)', inputmode: 'numeric' });
+    function clampCount() { var v = Math.round(+countInput.value || 0); if (v < 1) v = 1; if (v > 100) v = 100; countInput.value = v; return v; }
+    countInput.addEventListener('change', clampCount);
+    countInput.addEventListener('blur', clampCount);
+    var presets = ce('div', { class: 'qcount-presets' }, [5, 10, 20, 50, 100].map(function (n) {
+      return ce('button', { class: 'btn sm ghost', type: 'button', onclick: function () { countInput.value = n; } }, [String(n)]);
+    }));
 
     wrap.appendChild(ce('div', { class: 'card pad stack' }, [
-      ce('div', { class: 'filters' }, [ce('span', { class: 'muted' }, ['Focus:']), classSel, lenSel]),
-      ce('button', { class: 'btn primary lg block', onclick: function () { start(root, { classFilter: classSel.value || null, n: +lenSel.value }); } }, ['▶ Start practice']),
+      ce('div', { class: 'filters' }, [ce('span', { class: 'muted' }, ['Focus:']), classSel]),
+      ce('div', { class: 'qcount-row' }, [ce('span', { class: 'muted' }, ['Questions:']), countInput, ce('span', { class: 'dim', style: { fontSize: '.72rem' } }, ['(1–100)']), presets]),
+      ce('button', { class: 'btn primary lg block', onclick: function () { start(root, { classFilter: classSel.value || null, n: clampCount() }); } }, ['▶ Start practice']),
       learned < 1 ? ce('p', { class: 'muted', style: { fontSize: '.85rem' } }, ['Tip: learn a med from Home first — practice draws from what you have learned (and everything, until you have a few).']) : null,
     ]));
     root.appendChild(wrap);
@@ -318,13 +456,15 @@
 
   function start(root, opts) {
     U.clear(root);
-    var exercises = buildSession(opts.n || 12, { classFilter: opts.classFilter, medId: opts.medId });
+    var n = Math.max(1, Math.min(100, opts.n || 12));
+    var exercises = buildSession(n, { classFilter: opts.classFilter, medId: opts.medId });
     if (!exercises.length) { root.appendChild(ce('div', { class: 'card pad center' }, [ce('p', {}, ['Could not build a session. Learn a few meds first.']), ce('button', { class: 'btn', onclick: function () { PML.ui.go('home'); } }, ['Home'])])); return; }
     runSession(root, { exercises: exercises, onDone: function (r) { if (r && r.again) start(root, opts); else PML.ui.go('home'); } });
   }
 
   function key(e) {
-    if (!active || !active.exNode) return;
+    if (PML.ui.celebActive && PML.ui.celebActive()) return;   // a blocking celebration owns the keyboard
+    if (!active || active.reviewing || !active.exNode) return;
     if (active.answered && active.answered()) { if ((e.key === 'Enter' || e.key === ' ') && active.next) { e.preventDefault(); active.next(); } return; }
     var n = active.exNode;
     if (n._choose && /^[1-9]$/.test(e.key)) { e.preventDefault(); n._choose(+e.key - 1); }

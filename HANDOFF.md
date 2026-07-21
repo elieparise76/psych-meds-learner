@@ -26,8 +26,9 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
 - **Lessons (v2, clinical-first)**: 120 per-med Duolingo lessons — general→specific, ~7 cards
   each, ~half "Neuro explains" cards + ~half quick checks. Mechanism is de-emphasized (one brief
   step). `data/lessons.js` → `window.LESSONS`.
-- **Vignettes**: 86 cross-med board-style cases across 26 disorders, each referencing meds + a
-  disorder (for wiki interlinking). `data/vignettes.js` → `window.VIGNETTES`.
+- **Vignettes**: 118 cross-med board-style cases across 26 disorders, each referencing meds + a
+  disorder (for wiki interlinking). `data/vignettes.js` → `window.VIGNETTES`. Regenerating/expanding
+  this bank is safe for existing users — see "Regenerating vignettes safely" below.
 - **Wiki**: interlinked reference — rich med pages + 27 disorder/syndrome pages (original prose,
   DSM-5 criteria NOT copied; CANMAT-aligned treatment linking to meds). Calm search-first hub
   (class tiles / condition tiles / syndrome tiles; "Full list & filters" opens the dex).
@@ -38,9 +39,23 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   types — mcq, type-the-answer, matching, reverse, cloze, confusables, vignettes; tap-to-build
   was removed), **Cram** (timed), **Compare v2** (pick any 2–4 meds → aligned clinical versus
   table).
+- **Practice UX (Round 4)**: the setup lets you pick **any question count 1–100** (free number
+  input + 5/10/20/50/100 preset chips). During a session a **left progress grid** shows one cell
+  per question, colour-coded live by outcome (mint = right, coral = wrong, honey ring = current);
+  **tapping any finished cell opens a read-only review** of that question (options with your pick
+  vs. the correct answer, explanation, wiki links) with a "← Back to question N" button that
+  restores the live question untouched. The results screen adds a **recap grid** (tap a cell →
+  review modal). All in `practice.js`; styles under "Practice: progress grid layout" in `app.css`.
 - **Progression / game feel**: XP, levels, streak (no streak-freeze — removed), per-med mastery
-  tiers, class mastery map, achievements, session combo, daily quests, confetti/toast
-  celebrations, 17 synthesized sound effects wired throughout (on by default), dark + light.
+  tiers, class mastery map, achievements, session combo, daily quests, and **big center-screen
+  celebration "moments"** (Round 4): finishing the day's learning / clearing reviews fires a
+  full-screen streak card with a glowing flame and the streak number **counting up** (0→1, etc.),
+  confetti and a `streakup` fanfare; level-ups mid-practice pop a lightweight non-blocking *flash*;
+  a strong Practice session (≥80%, ≥4 Qs) gets its own moment. The engine is `PML.ui.moment` /
+  `celebrate` in `ui.js` (queued block moments + flash), keyframes under "big center-screen
+  celebration" in `animations.css`, sounds `streakup`/`fanfare`/`poptick` in `vendor/sfx.js`. Plus
+  the pre-existing confetti/toast layer, now 20 synthesized sound effects (on by default), dark +
+  light, all `prefers-reduced-motion`-aware (count-up + rays degrade to a static number).
 - **Profile**: first-run name + one of 8 hand-drawn SVG animal avatars (in `profile.js`); shown
   in the header; reset re-runs it.
 - **Tutorial**: guided walkthrough with an animated SVG mascot **Neuro** (text; optional voice —
@@ -95,8 +110,9 @@ Authored (subagent-generated) source content lives in:
   `pipeline/authored/_CONTRACT.md`.
 - `pipeline/lessons/*.js` (14 files) — per-class lessons → `data/lessons.js`. Contract (v2):
   `pipeline/lessons/_CONTRACT.md`.
-- `pipeline/vignettes/*.js` (4 files) — cross-med vignettes → `data/vignettes.js`. Contract:
-  `pipeline/vignettes/_CONTRACT.md`.
+- `pipeline/vignettes/*.js` (6 files) — cross-med vignettes → `data/vignettes.js`. Contract:
+  `pipeline/vignettes/_CONTRACT.md`. (`anxiety_spectrum.js` + `special_populations_interactions.js`
+  were the Round-4 additions.)
 - `pipeline/disorders/*.js` (5 files) — disorder pages → `data/disorders.js`. Contract:
   `pipeline/disorders/_CONTRACT.md`.
 - `pipeline/tutorial-script.js` — the single source of truth for tutorial steps → `data/tutorial.js`.
@@ -105,6 +121,33 @@ Authored (subagent-generated) source content lives in:
 fan out one general-purpose subagent per class file (they overwrite `pipeline/<kind>/<file>.js`,
 grounded in `data/deck.json`), then run `node build-content.js`. This is how all lessons/vignettes/
 disorders were made. Safety rule: safety-critical facts must be grounded in the deck, never invented.
+
+### Regenerating vignettes safely (users keep their progress)
+
+Adding/regenerating vignettes never touches user progress — **content and state are fully
+decoupled**:
+- Vignettes are *content*: `data/vignettes.js` assigns `window.VIGNETTES`, loaded fresh by a
+  `<script>` tag each launch. Practice reads them live (`exercises.js` → `window.VIGNETTES`).
+- Progress is *state*: everything per-user lives in `localStorage['pml.state.v1']` (streak, XP,
+  learned meds, SRS schedule, profile). **No vignette id is ever stored there** — vignettes are
+  picked fresh per session, and the only vignette-related stat (`stats.vignetteAces`) is a plain
+  counter, not keyed by id. So you can add, remove, or renumber vignettes with zero risk of
+  orphaning or wiping state.
+
+The loop to add more:
+1. Drop a new file in `pipeline/vignettes/` (e.g. `pipeline/vignettes/mynew.js`) following
+   `_CONTRACT.md`, grounded in `data/deck.json` (or hand a subagent that prompt — the established
+   pattern). Ids must be unique; each `answer` must be one of exactly 4 real deck `generic` names.
+2. `cd pipeline && node build-content.js` — merges every `pipeline/vignettes/*.js`, de-dupes by id,
+   **drops malformed entries**, and rewrites `data/vignettes.js`. It prints the new count and warns
+   on unknown med-id refs.
+3. Reload the app (hard-reload / bump the dev port to bust the `<script>` cache). New vignettes
+   appear in Practice immediately; the resident's streak/XP/learned meds are exactly as they were.
+
+The same decoupling holds for regenerating the whole deck (`node run.js`): `store.initDeck` appends
+any newly added meds to the seeded order and creates fresh card records **without** clobbering
+existing ones. The one true reset is Settings → Reset (or `localStorage.clear()`); use
+Settings → Export/Import to move a resident's progress between devices/origins.
 
 ## Voice narration (ElevenLabs) — optional, offline
 

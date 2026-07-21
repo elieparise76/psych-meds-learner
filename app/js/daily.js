@@ -59,16 +59,16 @@
   function checkGoal() {
     var p = PML.store.get().progress;
     var goalMet = (p.newToday >= (PML.store.get().settings.dailyGoal || 1)) || p.reviewsClearedToday;
-    var justMet = false;
+    var justMet = false, prev = p.streak || 0;
     if (goalMet && p.lastGoalDay !== U.todayKey()) {
       // continuity already ensured by store.rollover (freezes/reset). Advance streak.
-      p.streak = (p.streak || 0) + 1;
+      p.streak = prev + 1;
       p.longestStreak = Math.max(p.longestStreak || 0, p.streak);
       p.lastGoalDay = U.todayKey();
       justMet = true;
       PML.store.save();
     }
-    return { met: goalMet, justMet: justMet, streak: p.streak };
+    return { met: goalMet, justMet: justMet, streak: p.streak, prev: prev };
   }
 
   function todayStatus() {

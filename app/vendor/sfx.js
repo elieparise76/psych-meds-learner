@@ -54,6 +54,16 @@
     goal: function () { seq([440, 554, 659, 880], 0.16, 'sine', 0.14, 0.07); },
     badge: function () { tone(784, 0.13, 'triangle', 0.14); tone(1175, 0.2, 'triangle', 0.12, 0.1); },
     quest: function () { seq([659, 880], 0.12, 'triangle', 0.13, 0.06); },
+    // big center-screen celebrations
+    poptick: function () { tone(720, 0.05, 'sine', 0.08, 0, 940); },          // a single count-up tick
+    streakup: function () {                                                    // igniting streak fanfare
+      seq([523, 659, 784, 1047, 1319], 0.15, 'triangle', 0.14, 0.075);
+      tone(1568, 0.55, 'sine', 0.09, 0.42);
+    },
+    fanfare: function () {                                                     // big win (deck milestone)
+      seq([523, 659, 784], 0.14, 'triangle', 0.14, 0.06);
+      seq([1047, 1319, 1568], 0.32, 'sine', 0.12, 0.3);
+    },
   };
   window.PMLSfx = api;
 })();
