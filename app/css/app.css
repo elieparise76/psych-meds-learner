@@ -320,6 +320,8 @@ button { font-family: inherit; }
 /* ---------- Tutorial ---------- */
 /* lighter dim so the page Neuro is describing stays visible as the tour navigates to it */
 .tutorial-overlay { position: fixed; inset: 0; z-index: 450; background: color-mix(in srgb, var(--overlay) 56%, transparent); backdrop-filter: blur(1.5px); display: grid; align-items: end; justify-items: center; padding: var(--sp-4); }
+/* the opening "welcome" step: a clean intro screen — solid background, nothing behind, card centred */
+.tutorial-overlay.intro { background: radial-gradient(900px 500px at 50% -10%, var(--card-glow), transparent 60%), linear-gradient(160deg, var(--bg-grad-a), var(--bg-grad-b)); backdrop-filter: none; align-items: center; }
 .tutorial-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-xl); box-shadow: var(--shadow); padding: var(--sp-5); max-width: 560px; width: 100%; margin-bottom: 6vh; }
 .tut-mascot { flex: 0 0 auto; }
 .neuro { display: block; }

@@ -476,7 +476,7 @@
   PML.ui = {
     init: init, go: go, refreshHud: refreshHud, celebrate: celebrate, toast: toast, modal: modal,
     currentFlash: function () { return current.flash; }, openDetail: openDetail, startLearn: startLearn,
-    moment: enqueueMoment, celebActive: celebActive,
+    moment: enqueueMoment, celebActive: celebActive, currentView: function () { return current.view; },
   };
   PML.sfxOn = sfxOn;
 })();

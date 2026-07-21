@@ -97,15 +97,23 @@
     // through the lightened overlay). compare-cram visits Compare, then flips to Cram after 5s. ----
     var navTimer = null;
     function clearNav() { clearTimeout(navTimer); navTimer = null; }
-    function goView(view) { if (view && PML.ui && PML.ui.go) { highlight(view); PML.ui.go(view); } }
+    function setIntro(on) { overlay.classList.toggle('intro', !!on); }
+    function goView(view) {
+      if (!view) return;
+      highlight(view);   // pulse the nav tab (cheap; never re-renders the page)
+      // only actually switch pages when the target differs — avoids a jarring re-render/flash
+      if (PML.ui.go && PML.ui.currentView && PML.ui.currentView() !== view) PML.ui.go(view);
+    }
     function navigateFor(step) {
       clearNav();
+      if (step.id === 'welcome') { setIntro(true); clearHighlight(); return; }  // clean intro — no page behind
+      setIntro(false);
       if (step.id === 'compare-cram') {
         goView('compare');
         navTimer = setTimeout(function () { goView('cram'); }, 5000);
         return;
       }
-      // steps with a nav target go straight there; general steps (welcome/safety/go) rest on Home
+      // steps with a nav target go straight there; general steps (safety/go) rest on Home
       goView(step.highlight || 'home');
     }
 
