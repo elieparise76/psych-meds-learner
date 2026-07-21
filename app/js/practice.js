@@ -8,12 +8,33 @@
   var ce = U.ce;
 
   // ---------------- adaptive selection ----------------
+  // Practice only ever drills meds the user has actually learned — never a preview of the deck.
+  function learnedMeds() {
+    var cards = PML.store.get().cards;
+    return PML.deck.all().filter(function (m) { return cards[m.id] && cards[m.id].learned; });
+  }
   function candidatePool(opts) {
-    var all = PML.deck.all();
-    var learned = all.filter(function (m) { return PML.store.get().cards[m.id].learned; });
-    var base = (opts && opts.classFilter) ? all.filter(function (m) { return m.class === opts.classFilter; }) : (learned.length >= 4 ? learned : all);
-    if (opts && opts.classFilter) { var lf = base.filter(function (m) { return PML.store.get().cards[m.id].learned; }); if (lf.length >= 4) base = lf; }
-    return base;
+    opts = opts || {};
+    if (opts.medId) { var m = PML.deck.get(opts.medId); return m ? [m] : []; }   // explicit "drill this med"
+    var learned = learnedMeds();
+    return opts.classFilter ? learned.filter(function (m) { return m.class === opts.classFilter; }) : learned;
+  }
+  // Ids the exercise generators may quiz: the pool, plus everything else already learned so
+  // cross-med formats (matching, confusables, bank vignettes) still have somewhere to draw from.
+  function scopeIds(opts) {
+    var ids = {};
+    learnedMeds().forEach(function (m) { ids[m.id] = 1; });
+    candidatePool(opts).forEach(function (m) { ids[m.id] = 1; });
+    return Object.keys(ids);
+  }
+
+  // How deep a session the learned material can actually support. With three meds under your belt
+  // there is no honest 50-question set, so the cap scales with the pool instead of pretending.
+  var PER_MED = 5;
+  var HARD_CAP = 100;
+  function maxQuestions(opts) {
+    var n = candidatePool(opts).length;
+    return n ? Math.max(3, Math.min(HARD_CAP, n * PER_MED)) : 0;
   }
 
   function medWeight(m) {
@@ -43,24 +64,28 @@
     opts = opts || {};
     var pool = candidatePool(opts);
     if (!pool.length) return [];
+    n = Math.max(1, Math.min(n || 12, maxQuestions(opts)));
     var exercises = [];
-    var lastType = null, lastMed = null, guard = 0;
-    while (exercises.length < n && guard < n * 25 + 40) {
-      guard++;
-      // occasional standalone cross-med bank vignette for variety (not when drilling one med)
-      if (!opts.medId && lastType !== 'vignette' && Math.random() < 0.16) {
-        var bv = PML.exercises.bankVignette();
-        if (bv) { exercises.push(bv); lastType = 'vignette'; lastMed = null; continue; }
+    PML.exercises.setScope(scopeIds(opts));
+    try {
+      var lastType = null, lastMed = null, guard = 0;
+      while (exercises.length < n && guard < n * 25 + 40) {
+        guard++;
+        // occasional standalone cross-med bank vignette for variety (not when drilling one med)
+        if (!opts.medId && lastType !== 'vignette' && Math.random() < 0.16) {
+          var bv = PML.exercises.bankVignette();
+          if (bv) { exercises.push(bv); lastType = 'vignette'; lastMed = null; continue; }
+        }
+        var med = opts.medId ? PML.deck.get(opts.medId) : weightedPick(pool, medWeight);
+        if (med === lastMed && pool.length > 2) continue;
+        var type = typeFor(med, lastType);
+        var ex = PML.exercises.generate(type, med, lastType);
+        if (!ex) continue;
+        if (ex.type === lastType && exercises.length) continue; // never same format twice in a row
+        exercises.push(ex);
+        lastType = ex.type; lastMed = med;
       }
-      var med = opts.medId ? PML.deck.get(opts.medId) : weightedPick(pool, medWeight);
-      if (med === lastMed && pool.length > 2) continue;
-      var type = typeFor(med, lastType);
-      var ex = PML.exercises.generate(type, med, lastType);
-      if (!ex) continue;
-      if (ex.type === lastType && exercises.length) continue; // never same format twice in a row
-      exercises.push(ex);
-      lastType = ex.type; lastMed = med;
-    }
+    } finally { PML.exercises.setScope(null); }
     return exercises;
   }
 
@@ -429,36 +454,73 @@
   function bigTile(big, label) { return ce('div', { class: 'tile' }, [ce('b', { text: String(big) }), ce('span', { text: label })]); }
 
   // ---------------- setup view ----------------
+  function nothingLearnedCard(msg) {
+    return ce('div', { class: 'card pad center stack' }, [
+      ce('div', { style: { fontSize: '3rem' } }, ['🌱']),
+      ce('h2', {}, ['Nothing to practice yet']),
+      ce('p', { class: 'muted' }, [msg || 'Practice only drills meds you have already learned. Learn your first one and it will show up here.']),
+      ce('button', { class: 'btn primary lg', onclick: function () { PML.ui.go('home'); } }, ['Learn a med →']),
+    ]);
+  }
+
   function view(root, params) {
     params = params || {};
     if (params.start) return start(root, params);
-    var learned = PML.deck.all().filter(function (m) { return PML.store.get().cards[m.id].learned; }).length;
+    var learned = learnedMeds();
     var wrap = ce('div', { class: 'view stack' });
-    wrap.appendChild(ce('div', { class: 'pagehead' }, [ce('div', {}, [ce('h1', {}, ['Practice']), ce('p', { class: 'muted' }, ['An adaptive mix — weighted toward what you get wrong. ' + learned + ' meds learned so far.'])])]));
+    wrap.appendChild(ce('div', { class: 'pagehead' }, [ce('div', {}, [
+      ce('h1', {}, ['Practice']),
+      ce('p', { class: 'muted' }, ['An adaptive mix drawn only from the ' + learned.length + ' med' + (learned.length === 1 ? '' : 's') + ' you have learned — weighted toward what you get wrong.']),
+    ])]));
 
-    var classSel = ce('select', {}, [ce('option', { value: '', text: 'All learned meds' })].concat(PML.deck.classes().map(function (c) { return ce('option', { value: c, text: c }); })));
-    var countInput = ce('input', { type: 'number', min: '1', max: '100', value: '12', step: '1', class: 'qcount-input', 'aria-label': 'Number of questions (1–100)', inputmode: 'numeric' });
-    function clampCount() { var v = Math.round(+countInput.value || 0); if (v < 1) v = 1; if (v > 100) v = 100; countInput.value = v; return v; }
+    if (!learned.length) { wrap.appendChild(nothingLearnedCard()); root.appendChild(wrap); return; }
+
+    var counts = {};
+    learned.forEach(function (m) { counts[m.class] = (counts[m.class] || 0) + 1; });
+    var classSel = ce('select', {}, [ce('option', { value: '', text: 'All learned meds (' + learned.length + ')' })].concat(
+      PML.deck.classes().filter(function (c) { return counts[c]; }).map(function (c) { return ce('option', { value: c, text: c + ' (' + counts[c] + ')' }); })
+    ));
+    var countInput = ce('input', { type: 'number', min: '1', value: '12', step: '1', class: 'qcount-input', 'aria-label': 'Number of questions', inputmode: 'numeric' });
+    var capNote = ce('span', { class: 'dim', style: { fontSize: '.72rem' } });
+    var presets = ce('div', { class: 'qcount-presets' });
+    var poolNote = ce('p', { class: 'muted', style: { fontSize: '.85rem' } });
+    var cap = 0;
+
+    function clampCount() { var v = Math.round(+countInput.value || 0); if (v < 1) v = 1; if (v > cap) v = cap; countInput.value = v; return v; }
+    function syncCap() {
+      var opts = { classFilter: classSel.value || null };
+      var n = candidatePool(opts).length;
+      cap = maxQuestions(opts);
+      countInput.max = String(cap);
+      capNote.textContent = '(1–' + cap + ')';
+      poolNote.textContent = n + ' med' + (n === 1 ? '' : 's') + ' learned' + (classSel.value ? ' in ' + classSel.value : '') +
+        ' → up to ' + cap + ' question' + (cap === 1 ? '' : 's') + '. Learn more to unlock longer sessions.';
+      U.clear(presets);
+      [5, 10, 20, 50, 100].filter(function (x) { return x < cap; }).concat([cap]).forEach(function (x) {
+        presets.appendChild(ce('button', { class: 'btn sm ghost', type: 'button', onclick: function () { countInput.value = x; clampCount(); } }, [String(x)]));
+      });
+      clampCount();
+    }
+    classSel.addEventListener('change', syncCap);
     countInput.addEventListener('change', clampCount);
     countInput.addEventListener('blur', clampCount);
-    var presets = ce('div', { class: 'qcount-presets' }, [5, 10, 20, 50, 100].map(function (n) {
-      return ce('button', { class: 'btn sm ghost', type: 'button', onclick: function () { countInput.value = n; } }, [String(n)]);
-    }));
 
     wrap.appendChild(ce('div', { class: 'card pad stack' }, [
       ce('div', { class: 'filters' }, [ce('span', { class: 'muted' }, ['Focus:']), classSel]),
-      ce('div', { class: 'qcount-row' }, [ce('span', { class: 'muted' }, ['Questions:']), countInput, ce('span', { class: 'dim', style: { fontSize: '.72rem' } }, ['(1–100)']), presets]),
+      ce('div', { class: 'qcount-row' }, [ce('span', { class: 'muted' }, ['Questions:']), countInput, capNote, presets]),
+      poolNote,
       ce('button', { class: 'btn primary lg block', onclick: function () { start(root, { classFilter: classSel.value || null, n: clampCount() }); } }, ['▶ Start practice']),
-      learned < 1 ? ce('p', { class: 'muted', style: { fontSize: '.85rem' } }, ['Tip: learn a med from Home first — practice draws from what you have learned (and everything, until you have a few).']) : null,
     ]));
+    syncCap();
     root.appendChild(wrap);
   }
 
   function start(root, opts) {
     U.clear(root);
-    var n = Math.max(1, Math.min(100, opts.n || 12));
-    var exercises = buildSession(n, { classFilter: opts.classFilter, medId: opts.medId });
-    if (!exercises.length) { root.appendChild(ce('div', { class: 'card pad center' }, [ce('p', {}, ['Could not build a session. Learn a few meds first.']), ce('button', { class: 'btn', onclick: function () { PML.ui.go('home'); } }, ['Home'])])); return; }
+    var cap = maxQuestions(opts);
+    if (!cap) { root.appendChild(nothingLearnedCard(opts.classFilter ? 'You have not learned any ' + opts.classFilter + ' yet.' : null)); return; }
+    var exercises = buildSession(Math.min(cap, opts.n || 12), { classFilter: opts.classFilter, medId: opts.medId });
+    if (!exercises.length) { root.appendChild(ce('div', { class: 'card pad center' }, [ce('p', {}, ['Could not build a session from what you have learned so far. Learn a few more meds first.']), ce('button', { class: 'btn', onclick: function () { PML.ui.go('home'); } }, ['Home'])])); return; }
     runSession(root, { exercises: exercises, onDone: function (r) { if (r && r.again) start(root, opts); else PML.ui.go('home'); } });
   }
 
@@ -471,5 +533,5 @@
     else if (n._submit && e.key === 'Enter') { e.preventDefault(); n._submit(); }
   }
 
-  PML.practice = { view: view, buildSession: buildSession, runSession: runSession, renderExercise: renderExercise, key: key };
+  PML.practice = { view: view, buildSession: buildSession, runSession: runSession, renderExercise: renderExercise, key: key, learnedMeds: learnedMeds, candidatePool: candidatePool, maxQuestions: maxQuestions };
 })();

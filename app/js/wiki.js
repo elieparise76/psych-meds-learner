@@ -237,7 +237,7 @@
       // actions
       page.appendChild(ce('div', { class: 'row wrap' }, [
         c.learned ? null : ce('button', { class: 'btn primary', onclick: function () { PML.ui.startLearn([id]); } }, ['✨ Learn this']),
-        ce('button', { class: 'btn', onclick: function () { PML.ui.go('practice', { start: true, medId: id, n: 8 }); } }, ['🎮 Drill this med']),
+        c.learned ? ce('button', { class: 'btn', onclick: function () { PML.ui.go('practice', { start: true, medId: id, n: 8 }); } }, ['🎮 Drill this med']) : null,
       ]));
 
       // treats

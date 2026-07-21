@@ -16,6 +16,26 @@
   function shuffle(a) { return U.sample(a, a.length); }
   function labelOf(m) { return m.generic; }
 
+  // ---- scope: which meds may be TESTED ----
+  // Practice sets this to the learned meds before building a session, so exercises that quiz more
+  // than one drug at a time (matching, confusables, cross-med vignettes) never reach for material
+  // the user has not met yet. null = whole deck. Distractors are deliberately NOT scoped: a wrong
+  // option only has to be a plausible name, and unfamiliar ones make elimination honest.
+  var scope = null;
+  function setScope(ids) {
+    scope = null;
+    if (ids && ids.length) { scope = {}; ids.forEach(function (i) { scope[i] = 1; }); }
+  }
+  function inScope(id) { return !scope || scope[id] === 1; }
+  function scopedPool() { return scope ? pool().filter(function (m) { return scope[m.id] === 1; }) : pool(); }
+  // a vignette is fair game only if every deck med it leans on is in scope
+  function vignetteInScope(v) {
+    if (!scope) return true;
+    var ms = v.meds || [];
+    for (var i = 0; i < ms.length; i++) { if (PML.deck.get(ms[i]) && !inScope(ms[i])) return false; }
+    return true;
+  }
+
   function tagsFor(med, text) {
     var t = [];
     var s = (text || '') + ' ' + (med.syndromes || []).join(' ') + ' ' + (med.seriousAE || []).join(' ');
@@ -156,7 +176,7 @@
       { key: 'syn', label: 'key warning', get: function (m) { return first(m.syndromes) || first(m.seriousAE); } },
     ];
     var f = U.pick(featureFns);
-    var group = pool().filter(function (m) { return has(f.get(m)); });
+    var group = scopedPool().filter(function (m) { return has(f.get(m)); });   // every row is quizzed, so scope them all
     if (group.length < 4) return null;
     var sameClass = group.filter(function (m) { return m.class === med.class; });
     var chosen = (sameClass.length >= 4 ? U.sample(sameClass, 4) : U.sample(group, 4));
@@ -178,8 +198,11 @@
     ['clomipramine', 'clonidine', 'Which is the TCA used for OCD?'],
   ];
   function confusable(med) {
-    var pair = CONFUSE_PAIRS.filter(function (p) { return p[0] === med.id || p[1] === med.id; });
-    var p = pair.length ? U.pick(pair) : U.pick(CONFUSE_PAIRS);
+    // both halves are being tested, so both must be in scope
+    var avail = CONFUSE_PAIRS.filter(function (p) { return inScope(p[0]) && inScope(p[1]); });
+    if (!avail.length) return null;
+    var pair = avail.filter(function (p) { return p[0] === med.id || p[1] === med.id; });
+    var p = pair.length ? U.pick(pair) : U.pick(avail);
     var a = PML.deck.get(p[0]), b = PML.deck.get(p[1]);
     var aName = a ? a.generic : U.titleCase(p[0]);
     var bName = b ? b.generic : U.titleCase(p[1]);
@@ -189,14 +212,14 @@
   // ============ Vignette (bank + per-med) ============
   function vignette(med) {
     var poolV = [];
-    (window.VIGNETTES || []).forEach(function (v) { if ((v.meds || []).indexOf(med.id) >= 0 && Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0) poolV.push({ stem: v.stem, options: v.options, answer: v.answer, explanation: v.explanation, source: v.source, meds: v.meds, disorder: v.disorder, tags: v.tags || [] }); });
+    (window.VIGNETTES || []).forEach(function (v) { if ((v.meds || []).indexOf(med.id) >= 0 && Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0 && vignetteInScope(v)) poolV.push({ stem: v.stem, options: v.options, answer: v.answer, explanation: v.explanation, source: v.source, meds: v.meds, disorder: v.disorder, tags: v.tags || [] }); });
     (med.vignettes || []).forEach(function (v) { if (v && v.options && v.answer) poolV.push({ stem: v.stem, options: v.options, answer: v.answer, explanation: v.explanation, source: v.source, meds: [med.id], disorder: null, tags: tagsFor(med, v.stem) }); });
     if (!poolV.length) return null;
     var v = U.pick(poolV);
     return { type: 'vignette', medId: med.id, subtype: v.disorder ? 'case · ' + v.disorder : 'clinical case', stem: v.stem, options: shuffle(v.options.slice()), answer: v.answer, explanation: v.explanation || '', source: v.source || srcFor(med, 'seriousAE'), meds: v.meds || [med.id], disorder: v.disorder || null, tags: v.tags && v.tags.length ? v.tags : tagsFor(med, v.stem) };
   }
   function bankVignette() {
-    var bank = (window.VIGNETTES || []).filter(function (v) { return Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0; });
+    var bank = (window.VIGNETTES || []).filter(function (v) { return Array.isArray(v.options) && v.options.indexOf(v.answer) >= 0 && vignetteInScope(v); });
     if (!bank.length) return null;
     var v = U.pick(bank);
     var med = (v.meds || []).map(function (id) { return PML.deck.get(id); }).filter(Boolean)[0];
@@ -215,5 +238,5 @@
     return null;
   }
 
-  PML.exercises = { TYPES: TYPES, generate: generate, GEN: GEN, bankVignette: bankVignette };
+  PML.exercises = { TYPES: TYPES, generate: generate, GEN: GEN, bankVignette: bankVignette, setScope: setScope };
 })();

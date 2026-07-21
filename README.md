@@ -19,11 +19,12 @@ theme; guided by **Neuro**, a gleefully over-confident study buddy.
   provenance and a `lastVerified` date.
 - A **Duolingo-style study loop**: a new med each day in a fixed, seeded order, each taught as
   a short **lesson** (a hook, 3–5 teach-then-check steps, a "watch out" trap, and a takeaway,
-  then the full reference card) — learning is earned, not just displayed. SM-2 spaced
-  repetition for review; an adaptive **Practice** engine with many exercise types
-  (type-the-answer, matching, tap-to-build, MCQ, reverse recall, cloze, confusables,
+  then the full reference card) — learning is earned, not just displayed. Each explanation and
+  the check on it sit on **separate pages**, and you can walk back through any page you have
+  already finished. SM-2 spaced repetition for review; an adaptive **Practice** engine with many
+  exercise types (type-the-answer, matching, MCQ, reverse recall, cloze, confusables,
   board-style vignettes — including a bank of cross-med cases) weighted toward what you get
-  wrong.
+  wrong, and drawn **only from meds you have already learned**.
 - A **Wiki**: an interlinked reference of every med *and* the psychiatric conditions/syndromes
   they treat — cross-linked both ways, clickable from questions, with a per-med stats/"dex"
   view. Disorder pages are original educational summaries (DSM-5 criteria are copyrighted, so

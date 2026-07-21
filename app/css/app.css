@@ -369,6 +369,19 @@ button { font-family: inherit; }
 .lesson-says .tut-bubble { flex: 1; }
 .lesson-says.trap .tut-bubble { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 8%, var(--surface-2)); }
 .lesson-says.trap .tut-bubble::before { background: color-mix(in srgb, var(--coral) 8%, var(--surface-2)); border-color: var(--coral); }
+
+/* step bar — one segment per lesson page; finished pages are clickable */
+.lesson-steps { display: flex; gap: 4px; margin-bottom: var(--sp-4); }
+.lesson-step { flex: 1; min-width: 0; height: 18px; padding: 0; border: 0; background: none; cursor: default; display: block; }
+.lesson-step::after { content: ""; display: block; height: 6px; margin-top: 6px; border-radius: var(--r-pill); background: var(--surface-3); transition: background .15s ease; }
+.lesson-step.done::after { background: var(--mint); }
+.lesson-step.miss::after { background: var(--coral); }
+.lesson-step.cur::after { background: var(--honey); }
+.lesson-step.nav { cursor: pointer; }
+.lesson-step.nav:hover::after { background: var(--honey-deep); }
+.lesson-step:focus-visible { outline: 2px solid var(--honey); outline-offset: 1px; border-radius: 4px; }
+.lesson-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); margin-top: var(--sp-3); }
+.lesson-nav .lesson-pos { font-size: .75rem; }
 .wikilink { color: var(--sky); border-bottom: 1px dashed color-mix(in srgb, var(--sky) 50%, transparent); cursor: pointer; }
 .wikilink:hover { color: var(--honey); border-bottom-color: var(--honey); }
 

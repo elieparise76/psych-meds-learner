@@ -32,7 +32,9 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   source-grounded, rest flagged. `data/deck.js` → `window.MEDS`.
 - **Lessons (v2, clinical-first)**: 120 per-med Duolingo lessons — general→specific, ~7 cards
   each, ~half "Neuro explains" cards + ~half quick checks. Mechanism is de-emphasized (one brief
-  step). `data/lessons.js` → `window.LESSONS`.
+  step). `data/lessons.js` → `window.LESSONS`. The player (Round 6) puts **teaching and its check
+  on separate pages** (11–18 pages per med) with a clickable step bar + Back/Next over everything
+  already completed; see `lesson.js` and "Lesson" in [ARCHITECTURE.md](ARCHITECTURE.md).
 - **Vignettes**: 118 cross-med board-style cases across 26 disorders, each referencing meds + a
   disorder (for wiki interlinking). `data/vignettes.js` → `window.VIGNETTES`. Regenerating/expanding
   this bank is safe for existing users — see "Regenerating vignettes safely" below.
@@ -46,8 +48,15 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   types — mcq, type-the-answer, matching, reverse, cloze, confusables, vignettes; tap-to-build
   was removed), **Cram** (timed), **Compare v2** (pick any 2–4 meds → aligned clinical versus
   table).
-- **Practice UX (Round 4)**: the setup lets you pick **any question count 1–100** (free number
-  input + 5/10/20/50/100 preset chips). During a session a **left progress grid** shows one cell
+- **Practice scope (Round 6)**: Practice and Cram draw **only from meds already learned** — no
+  previewing the deck. The setup's Focus list shows only classes you have learned in (with counts),
+  and the question count is capped at `PML.practice.maxQuestions()` = `min(100, learnedMeds × 5)`,
+  which the number input, the preset chips and Cram's length list all follow. Exercises that quiz
+  several drugs at once (matching, confusables, cross-med vignettes) are fenced by
+  `PML.exercises.setScope(ids)`; distractors deliberately are not. Zero learned meds → a "Nothing to
+  practice yet" card instead of a session, and "🎮 Drill this med" only appears on learned meds.
+- **Practice UX (Round 4)**: the setup lets you pick **any question count** up to that cap (free
+  number input + preset chips). During a session a **left progress grid** shows one cell
   per question, colour-coded live by outcome (mint = right, coral = wrong, honey ring = current);
   **tapping any finished cell opens a read-only review** of that question (options with your pick
   vs. the correct answer, explanation, wiki links) with a "← Back to question N" button that

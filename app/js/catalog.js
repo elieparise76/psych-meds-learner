@@ -119,7 +119,7 @@
     // actions
     box.appendChild(ce('div', { class: 'row wrap' }, [
       c.learned ? null : ce('button', { class: 'btn primary', onclick: function () { dlg.close(); PML.ui.startLearn([id]); } }, ['✨ Learn this']),
-      ce('button', { class: 'btn', onclick: function () { dlg.close(); PML.ui.go('practice', { start: true, medId: id, n: 8 }); } }, ['🎮 Drill this med']),
+      c.learned ? ce('button', { class: 'btn', onclick: function () { dlg.close(); PML.ui.go('practice', { start: true, medId: id, n: 8 }); } }, ['🎮 Drill this med']) : null,
       c.learned ? ce('button', { class: 'btn ghost', onclick: function () { dlg.close(); studyOne(id); } }, ['🔁 Flip card']) : null,
     ]));
 

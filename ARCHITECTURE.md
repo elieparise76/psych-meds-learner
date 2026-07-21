@@ -125,12 +125,22 @@ never scold (Duolingo's whole trick).
 
 - **Lesson** (`lesson.js`, learning a *new* med) — a short Duolingo-style lesson: a hook, then
   3–5 "teach a point → check it" steps, a trap, and a takeaway, then the full reference card.
+  **One idea per page:** Neuro's explanation and the check on that explanation are separate pages,
+  so the teaching is never on screen while you answer. A step bar plus Back/Next let you re-walk
+  any page you have already finished (answers stay locked to what you picked); pages ahead of your
+  furthest point stay locked, and a check must be answered before it unlocks the next page.
   "Learned" is earned here (marks SRS + XP + streak). Content is generated per med
   (`data/lessons.js` = `window.LESSONS`, authored in `pipeline/lessons/`, grounded in the deck).
 - **Flashcard** (`flashcard.js`, *review*) — a plain flip card: prompt → reveal facts (3D flip)
   → self-rate (Again/Hard/Good/Easy), feeding the SRS. The clean, fast review surface.
 - **Practice** (`practice.js`) — Duolingo-style adaptive mix of exercise types (below),
   including a bank of cross-med board vignettes (`data/vignettes.js` = `window.VIGNETTES`).
+  **Drills learned meds only.** `candidatePool()` returns learned cards (never the whole deck),
+  and `PML.exercises.setScope(ids)` fences the generators that quiz more than one drug at a time
+  (matching, confusables, cross-med vignettes) to those same ids — distractors stay unscoped,
+  since a wrong option only has to be a plausible name. Session length is capped at
+  `maxQuestions()` = `min(100, learnedInScope × 5)`, so a 3-med pool cannot pretend to be a
+  50-question set; the setup view, the preset chips and Cram all read that cap.
 - **Wiki** (`wiki.js`) — the interlinked reference: rich med pages (the "dex" + per-med +
   per-exercise stats + full data + sources) and disorder/syndrome pages
   (`data/disorders.js` = `window.DISORDERS`; original summaries, CANMAT-aligned treatment).
