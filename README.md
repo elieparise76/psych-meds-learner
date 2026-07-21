@@ -14,12 +14,18 @@ day**, spaced-repetition review, streaks, XP, and a genuinely game-like feel.
   therapeutic levels, monitoring) are extracted from real sources — Health Canada's Drug
   Product Database, product monographs, openFDA, DailyMed — and every card carries its
   provenance and a `lastVerified` date.
-- A **Duolingo-style study loop**: a new med each day in a fixed, seeded order; SM-2 spaced
-  repetition; a simple Flashcard surface and an adaptive **Practice** engine with many
-  exercise types (type-the-answer, matching, tap-to-build, MCQ, reverse recall, cloze,
-  confusables, board-style vignettes) weighted toward what you get wrong.
-- A full **Catalog** — a "dex" of psych meds — with per-med and per-exercise stats,
-  mastery tiers, and filters.
+- A **Duolingo-style study loop**: a new med each day in a fixed, seeded order, each taught as
+  a short **lesson** (a hook, 3–5 teach-then-check steps, a "watch out" trap, and a takeaway,
+  then the full reference card) — learning is earned, not just displayed. SM-2 spaced
+  repetition for review; an adaptive **Practice** engine with many exercise types
+  (type-the-answer, matching, tap-to-build, MCQ, reverse recall, cloze, confusables,
+  board-style vignettes — including a bank of cross-med cases) weighted toward what you get
+  wrong.
+- A **Wiki**: an interlinked reference of every med *and* the psychiatric conditions/syndromes
+  they treat — cross-linked both ways, clickable from questions, with a per-med stats/"dex"
+  view. Disorder pages are original educational summaries (DSM-5 criteria are copyrighted, so
+  paraphrased) with CANMAT-aligned treatment.
+- A **profile** (name + one of 8 hand-drawn animal avatars), mastery tiers, and filters.
 - A **progression layer**: XP, levels, a streak (with streak-freeze so a post-call missed
   day doesn't wipe a 40-day streak), per-med mastery tiers, a class mastery map,
   achievements, a session combo multiplier, and daily quests.
@@ -52,8 +58,13 @@ with a light theme. _(Add your own `app/docs/screenshot.png` to populate the ima
 index.html            The app — open this. Loads the deck + app scripts via <script> tags.
 app/                  App logic (CSS + classic-script JS modules) and vendored libs.
 data/deck.js          The generated deck: assigns window.MEDS = [...]. The app never mutates it.
+data/lessons.js       Generated per-med micro-lessons: window.LESSONS.
+data/vignettes.js     Generated cross-med board vignettes: window.VIGNETTES.
+data/disorders.js     Generated disorder/syndrome wiki pages: window.DISORDERS.
 data/PROVENANCE.md    Coverage summary + which fields fell back to model authorship.
 pipeline/             The reproducible data-generation pipeline (re-runnable as drugs change).
+                      Sub-authoring lives in pipeline/{authored,lessons,vignettes,disorders}/;
+                      `node run.js` builds the deck, `node build-content.js` builds the rest.
 CLAUDE.md             Working agreement for anyone (incl. Claude) building on this repo.
 ARCHITECTURE.md       App structure, the SRS, the daily engine, the adaptive Practice engine.
 DATA_SOURCES.md       Every data source, what each contributes, and licensing notes.

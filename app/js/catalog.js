@@ -78,8 +78,10 @@
     return s;
   }
 
-  // ---------- detail modal ----------
+  // ---------- detail ----------
   function detail(id) {
+    // Prefer the full interlinked Wiki page when available; fall back to the modal.
+    if (PML.wiki && PML.wiki.medPage) return PML.wiki.medPage(id);
     var m = PML.deck.get(id);
     var c = PML.store.get().cards[id];
     var box = ce('div', { class: 'stack' });

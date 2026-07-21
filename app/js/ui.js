@@ -12,7 +12,7 @@
 
   var NAV = [
     ['home', 'Home', '🏠'], ['practice', 'Practice', '🎮'], ['review', 'Review', '🔁'],
-    ['catalog', 'Catalog', '📖'], ['compare', 'Compare', '⚖️'], ['cram', 'Cram', '⏱️'],
+    ['wiki', 'Wiki', '📖'], ['compare', 'Compare', '⚖️'], ['cram', 'Cram', '⏱️'],
     ['progress', 'Progress', '🏅'],
   ];
 
@@ -241,7 +241,7 @@
     run();
   }
 
-  function openDetail(id) { if (PML.catalog && PML.catalog.detail) PML.catalog.detail(id); }
+  function openDetail(id) { if (PML.wiki && PML.wiki.medPage) PML.wiki.medPage(id); else if (PML.catalog && PML.catalog.detail) PML.catalog.detail(id); }
 
   // ---------- settings ----------
   function settings() {
@@ -306,7 +306,8 @@
     home: home,
     review: review,
     practice: function (root, p) { PML.practice ? PML.practice.view(root, p) : placeholder(root, 'practice'); },
-    catalog: function (root, p) { PML.catalog ? PML.catalog.view(root, p) : placeholder(root, 'catalog'); },
+    wiki: function (root, p) { PML.wiki ? PML.wiki.view(root, p) : placeholder(root, 'wiki'); },
+    catalog: function (root, p) { PML.wiki ? PML.wiki.view(root, p) : (PML.catalog ? PML.catalog.view(root, p) : placeholder(root, 'catalog')); },
     compare: function (root, p) { PML.compare ? PML.compare.view(root, p) : placeholder(root, 'compare'); },
     cram: function (root, p) { PML.cram ? PML.cram.view(root, p) : placeholder(root, 'cram'); },
     progress: function (root, p) { PML.progress ? PML.progress.view(root, p) : placeholder(root, 'progress'); },

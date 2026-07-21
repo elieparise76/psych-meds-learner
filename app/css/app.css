@@ -243,6 +243,14 @@ button { font-family: inherit; }
   font-weight: 700; box-shadow: var(--shadow); font-size: .9rem; }
 .toast.win { background: linear-gradient(135deg, var(--honey), var(--honey-deep)); color: var(--accent-contrast); border: 0; }
 
+/* ---------- Wiki ---------- */
+.wiki-page { max-width: 820px; margin: 0 auto; }
+.wiki-page h1 { line-height: 1.1; }
+.wiki-page .fact-group p { line-height: 1.55; }
+.wiki-page ul { line-height: 1.55; }
+.chip.wikilink { color: var(--sky); }
+.chip.wikilink:hover { color: var(--accent-contrast); background: var(--honey); border-color: transparent !important; }
+
 /* ---------- Lesson ---------- */
 .lesson-wrap { max-width: 640px; margin: 0 auto; }
 .lesson-hook { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--honey); line-height: 1.4; margin: var(--sp-2) 0; }

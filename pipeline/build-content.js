@@ -42,10 +42,22 @@ const clean = vignettes.filter((v) => {
 await writeFile(join(DATA, 'vignettes.js'), banner('vignettes.js') + `window.VIGNETTES = ${JSON.stringify(clean)};\n`);
 console.log(`vignettes.js: ${clean.length} vignettes (dropped ${vignettes.length - clean.length})`);
 
+// ---- disorders ----
+const disorders = await mergeDir('disorders', 'array');
+const dSeen = new Set();
+const dClean = disorders.filter((d) => d && d.id && !dSeen.has(d.id) && dSeen.add(d.id));
+await writeFile(join(DATA, 'disorders.js'), banner('disorders.js') + `window.DISORDERS = ${JSON.stringify(dClean)};\n`);
+console.log(`disorders.js: ${dClean.length} pages`);
+
 // quick validity: vignette answers in options, meds ids exist
 const deck = JSON.parse(await readFile(join(DATA, 'deck.json'), 'utf8'));
 const deckIds = new Set(deck.map((c) => c.id));
+const dIds = new Set(dClean.map((d) => d.id));
+const badDMeds = dClean.flatMap((d) => (d.meds || []).filter((id) => !deckIds.has(id)).map((id) => d.id + '→' + id));
+if (badDMeds.length) console.log(`  WARN disorder→med refs invalid: ${badDMeds.join(', ')}`);
+const badRel = dClean.flatMap((d) => (d.related || []).filter((id) => !dIds.has(id)).map((id) => d.id + '→' + id));
+if (badRel.length) console.log(`  WARN disorder→related refs invalid: ${badRel.join(', ')}`);
 const badMeds = clean.filter((v) => (v.meds || []).some((id) => !deckIds.has(id)));
 if (badMeds.length) console.log(`  WARN: ${badMeds.length} vignettes reference unknown med ids (first: ${badMeds[0].id} → ${badMeds[0].meds})`);
-const disorders = [...new Set(clean.map((v) => v.disorder).filter(Boolean))].sort();
-console.log(`  disorders covered (${disorders.length}): ${disorders.join(', ')}`);
+const vigDisorders = [...new Set(clean.map((v) => v.disorder).filter(Boolean))].sort();
+console.log(`  vignette disorders covered (${vigDisorders.length}): ${vigDisorders.join(', ')}`);

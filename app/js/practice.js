@@ -262,7 +262,18 @@
         ]));
         if (!correct && ex.answerDisplay) fb.appendChild(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answerDisplay]));
         if (!correct && ex.answer && !ex.answerDisplay) fb.appendChild(ce('p', { style: { margin: '6px 0 0' } }, [ce('b', {}, ['Answer: ']), ex.answer]));
-        if (ex.explanation) fb.appendChild(ce('p', { class: 'muted', style: { margin: '6px 0 0', fontSize: '.9rem' } }, [ex.explanation]));
+        if (ex.explanation) {
+          var expl = ce('p', { class: 'muted', style: { margin: '6px 0 0', fontSize: '.9rem' } });
+          expl.appendChild(PML.wiki && PML.wiki.linkify ? PML.wiki.linkify(ex.explanation) : document.createTextNode(ex.explanation));
+          fb.appendChild(expl);
+        }
+        // Wiki interlinks (disorder + referenced meds)
+        if (PML.wiki && (ex.disorder || (ex.meds && ex.meds.length))) {
+          var rel = ce('div', { class: 'row wrap', style: { gap: '6px', marginTop: '8px', alignItems: 'center' } }, [ce('span', { class: 'dim', style: { fontSize: '.72rem' } }, ['📖 Wiki:'])]);
+          if (ex.disorder) { var hit = PML.wiki.resolveName(ex.disorder); if (hit) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.open(hit); } }, [ex.disorder])); }
+          (ex.meds || []).slice(0, 5).forEach(function (mid) { var m = PML.deck.get(mid); if (m) rel.appendChild(ce('button', { class: 'chip wikilink', style: { cursor: 'pointer' }, onclick: function () { PML.wiki.medPage(mid); } }, [m.generic])); });
+          if (rel.childNodes.length > 1) fb.appendChild(rel);
+        }
         if (ex.source && ex.source.name) {
           var src = ex.source.url ? ce('a', { class: 'src-link', href: ex.source.url, target: '_blank', rel: 'noopener' }, ['Source: ' + ex.source.name]) : ce('span', { class: 'src-link' }, ['Source: ' + ex.source.name]);
           fb.appendChild(ce('div', { style: { marginTop: '6px' } }, [src]));

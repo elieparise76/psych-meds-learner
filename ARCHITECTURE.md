@@ -123,17 +123,25 @@ never scold (Duolingo's whole trick).
 
 ## Study surfaces
 
-Three distinct surfaces (see the build spec §10):
+- **Lesson** (`lesson.js`, learning a *new* med) — a short Duolingo-style lesson: a hook, then
+  3–5 "teach a point → check it" steps, a trap, and a takeaway, then the full reference card.
+  "Learned" is earned here (marks SRS + XP + streak). Content is generated per med
+  (`data/lessons.js` = `window.LESSONS`, authored in `pipeline/lessons/`, grounded in the deck).
+- **Flashcard** (`flashcard.js`, *review*) — a plain flip card: prompt → reveal facts (3D flip)
+  → self-rate (Again/Hard/Good/Easy), feeding the SRS. The clean, fast review surface.
+- **Practice** (`practice.js`) — Duolingo-style adaptive mix of exercise types (below),
+  including a bank of cross-med board vignettes (`data/vignettes.js` = `window.VIGNETTES`).
+- **Wiki** (`wiki.js`) — the interlinked reference: rich med pages (the "dex" + per-med +
+  per-exercise stats + full data + sources) and disorder/syndrome pages
+  (`data/disorders.js` = `window.DISORDERS`; original summaries, CANMAT-aligned treatment).
+  Meds ↔ disorders are cross-linked both ways; `linkify()` turns med/condition names in prose
+  and in vignette explanations into clickable jumps.
 
-1. **Flashcard** — a plain flip card: front prompt → reveal structured facts → 3D flip →
-   self-rate (Again/Hard/Good/Easy), which feeds the SRS. No games layered on top; the clean,
-   fast review surface.
-2. **Practice** — Duolingo-style adaptive mix of exercise types (below).
-3. **Catalog** — the browsable "dex" with per-med + per-exercise stats, mastery tiers, and
-   filters; doubles as the reference browser and the progress ledger.
+Plus **Class compare** (side-by-side within a class, sortable) and **Cram** (rapid timed pass,
+bonus XP).
 
-Plus **Class compare** (side-by-side within a class, sortable by half-life, receptor profile,
-SE burden) and **Cram** (rapid timed pass over a class or the whole deck, bonus XP).
+Content for lessons/vignettes/disorders is authored in `pipeline/{lessons,vignettes,disorders}/`
+and merged into the `data/*.js` browser files by `pipeline/build-content.js`.
 
 ## Practice exercise types
 

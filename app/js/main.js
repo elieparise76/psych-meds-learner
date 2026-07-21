@@ -12,6 +12,7 @@
     PML.sfx = window.PMLSfx || { enabled: false };
     PML.confetti = window.PMLConfetti || null;
     PML.deck.init();
+    if (PML.wiki && PML.wiki.initIndex) PML.wiki.initIndex();
     PML.store.load();
     PML.store.initDeck(PML.deck.all());
     PML.store.rollover();
