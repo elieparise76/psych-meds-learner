@@ -26,7 +26,8 @@
     '<circle cx="49" cy="62" r="4.6" fill="#241436"/><circle cx="71" cy="62" r="4.6" fill="#241436"/>' +
     '<circle cx="50.6" cy="60.4" r="1.6" fill="#fff"/><circle cx="72.6" cy="60.4" r="1.6" fill="#fff"/>' +
     '</g>' +
-    '<path d="M50 80 Q60 90 70 80" stroke="#241436" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<path class="neuro-smile" d="M50 80 Q60 90 70 80" stroke="#241436" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<ellipse class="neuro-mouth" cx="60" cy="82" rx="7" ry="2.6" fill="#3a1d5c"/>' +
     '</g>';
 
   function mascot(size) {
@@ -65,7 +66,9 @@
     var card = ce('div', { class: 'tutorial-card pop', role: 'dialog', 'aria-label': 'Tutorial', 'aria-live': 'polite' });
     var bubbleText = ce('div', { class: 'tut-bubble-text' });
     var dots = ce('div', { class: 'q-progress', style: { margin: '0 0 4px' } });
-    var mascotWrap = ce('div', { class: 'tut-mascot' }, [mascot(84)]);
+    var neuroSvg = mascot(84);
+    var mascotWrap = ce('div', { class: 'tut-mascot' }, [neuroSvg]);
+    function setTalking(on) { if (neuroSvg) neuroSvg.classList.toggle('neuro-talking', !!on); }
     var bubble = ce('div', { class: 'tut-bubble' }, [ce('div', { class: 'tut-name' }, ['Neuro']), bubbleText]);
     var backBtn = ce('button', { class: 'btn sm ghost', onclick: prev }, ['← Back']);
     var nextBtn = ce('button', { class: 'btn primary', onclick: next }, ['Next →']);
@@ -90,6 +93,22 @@
       if (btn) btn.classList.add('tut-pulse');
     }
 
+    // ---- live navigation: as Neuro describes a section, take the user to it (the page shows
+    // through the lightened overlay). compare-cram visits Compare, then flips to Cram after 5s. ----
+    var navTimer = null;
+    function clearNav() { clearTimeout(navTimer); navTimer = null; }
+    function goView(view) { if (view && PML.ui && PML.ui.go) { highlight(view); PML.ui.go(view); } }
+    function navigateFor(step) {
+      clearNav();
+      if (step.id === 'compare-cram') {
+        goView('compare');
+        navTimer = setTimeout(function () { goView('cram'); }, 5000);
+        return;
+      }
+      // steps with a nav target go straight there; general steps (welcome/safety/go) rest on Home
+      goView(step.highlight || 'home');
+    }
+
     // ---- advance-gate: you cannot press Next until Neuro finishes speaking. With no audio
     // (clip missing or narration off) a short reading-time elapses instead, so you're never
     // trapped — but you still can't blitz through. Combined with no Skip, the tour is mandatory. ----
@@ -111,15 +130,19 @@
       clearGate();
       resolved = false;
       setGate(true);
+      setTalking(false);
       function ungate() { if (resolved) return; resolved = true; clearGate(); setGate(false); }
       var voiceOn = PML.store.get().settings.voice !== false;
       var fallback = Math.min(6500, Math.max(2200, (step.text || '').length * 34)); // reading-time floor
       var pl = voiceOn ? playStep(step.id) : (stopAudio(), null);
       if (pl && pl.audio) {
         var a = pl.audio;
+        a.addEventListener('playing', function () { setTalking(true); });  // mouth moves while speaking
+        a.addEventListener('pause', function () { setTalking(false); });
+        a.addEventListener('ended', function () { setTalking(false); });
         a.addEventListener('ended', ungate);
-        a.addEventListener('error', function () { gateTimer = setTimeout(ungate, fallback); }); // missing clip
-        if (pl.promise) pl.promise.catch(function () { gateTimer = setTimeout(ungate, fallback); }); // autoplay blocked
+        a.addEventListener('error', function () { setTalking(false); gateTimer = setTimeout(ungate, fallback); }); // missing clip
+        if (pl.promise) pl.promise.catch(function () { setTalking(false); gateTimer = setTimeout(ungate, fallback); }); // autoplay blocked
         safetyTimer = setTimeout(ungate, 90000); // never trap the user if 'ended' somehow never fires
       } else {
         gateTimer = setTimeout(ungate, fallback);
@@ -132,7 +155,7 @@
       list.forEach(function (_, k) { dots.appendChild(ce('i', { class: k < i ? 'done' : (k === i ? 'cur' : '') })); });
       bubbleText.textContent = s.text;
       backBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
-      highlight(s.highlight);
+      navigateFor(s);
       beginStepGate(s);
     }
     function next() { if (nextBtn.disabled) return; if (i < list.length - 1) { i++; render(); } else finish(); }
@@ -143,7 +166,7 @@
       else if ((e.key === 'ArrowRight' || e.key === 'Enter') && !nextBtn.disabled) { e.preventDefault(); next(); }
     }
     function finish() {
-      clearGate(); stopAudio(); clearHighlight();
+      clearGate(); clearNav(); stopAudio(); setTalking(false); clearHighlight();
       document.removeEventListener('keydown', onKey);
       overlay.remove();
       PML.store.get().settings.tutorialSeen = true; PML.store.save();

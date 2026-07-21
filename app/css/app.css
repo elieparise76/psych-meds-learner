@@ -318,12 +318,18 @@ button { font-family: inherit; }
 @media (max-width: 460px) { .celeb-card { padding: var(--sp-5) var(--sp-4) var(--sp-4); } .celeb-glyph { font-size: 3.8rem; } .celeb-num { font-size: 2.8rem; } }
 
 /* ---------- Tutorial ---------- */
-.tutorial-overlay { position: fixed; inset: 0; z-index: 450; background: var(--overlay); backdrop-filter: blur(2px); display: grid; align-items: end; justify-items: center; padding: var(--sp-4); }
+/* lighter dim so the page Neuro is describing stays visible as the tour navigates to it */
+.tutorial-overlay { position: fixed; inset: 0; z-index: 450; background: color-mix(in srgb, var(--overlay) 56%, transparent); backdrop-filter: blur(1.5px); display: grid; align-items: end; justify-items: center; padding: var(--sp-4); }
 .tutorial-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-xl); box-shadow: var(--shadow); padding: var(--sp-5); max-width: 560px; width: 100%; margin-bottom: 6vh; }
 .tut-mascot { flex: 0 0 auto; }
 .neuro { display: block; }
 .neuro-bob { animation: neuro-bob 3s ease-in-out infinite; transform-origin: 60px 66px; }
 .neuro-eyes { animation: neuro-blink 4.5s ease-in-out infinite; transform-origin: 60px 60px; transform-box: fill-box; }
+/* talking mouth — hidden until Neuro's audio is actually playing */
+.neuro-mouth { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.neuro-talking .neuro-smile { opacity: 0; }
+.neuro-talking .neuro-mouth { opacity: 1; animation: neuro-talk .24s ease-in-out infinite alternate; }
+.neuro-talking .neuro-bob { animation-duration: 1.1s; }
 .tut-bubble { position: relative; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-3) var(--sp-4); flex: 1; }
 .tut-bubble::before { content: ""; position: absolute; left: -8px; top: 22px; width: 14px; height: 14px; background: var(--surface-2); border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); transform: rotate(45deg); }
 .tut-name { font-family: var(--font-display); font-weight: 700; color: var(--grape); font-size: .82rem; margin-bottom: 2px; }

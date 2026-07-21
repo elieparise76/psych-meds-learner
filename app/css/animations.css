@@ -15,6 +15,7 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes neuro-bob { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-5px) rotate(1deg)} }
 @keyframes neuro-blink { 0%,92%,100%{transform:scaleY(1)} 96%{transform:scaleY(.1)} }
+@keyframes neuro-talk { 0%{transform:scaleY(.32)} 100%{transform:scaleY(1.85)} }
 @keyframes tut-pulse { 0%,100%{box-shadow:0 0 0 0 var(--honey)} 50%{box-shadow:0 0 0 6px transparent} }
 
 /* big center-screen celebration */
@@ -61,6 +62,9 @@
   .confetti-host { display: none !important; }
   .spinner { animation: spin 1s linear infinite !important; } /* keep the loader legible */
   .neuro-bob, .neuro-eyes { animation: none !important; }
+  /* no talking wiggle under reduced motion — keep the calm static smile */
+  .neuro-mouth { animation: none !important; opacity: 0 !important; }
+  .neuro-talking .neuro-smile { opacity: 1 !important; }
   /* celebrations: keep them, but static — glyph/number appear without motion */
   .celeb-rays { display: none !important; }
   .celeb-glow { animation: none !important; opacity: .6 !important; }

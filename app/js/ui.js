@@ -432,7 +432,7 @@
       ce('div', { class: 'topbar-inner' }, [
         ce('button', { class: 'brand', onclick: function () { go('home'); } }, [
           ce('span', { class: 'logo' }, ['ψ']),
-          ce('span', {}, [ce('span', {}, ['Titrate']), ce('br'), ce('small', {}, ['psychopharm, perfected'])]),
+          ce('span', {}, ['Titrate']),
         ]),
         hudEl = ce('div', { class: 'hud' }),
         ce('button', { class: 'btn sm ghost', 'aria-label': 'Replay tutorial', title: 'Replay the tour', onclick: function () { if (PML.tutorial) PML.tutorial.replay(); } }, ['?']),
