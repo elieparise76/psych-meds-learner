@@ -35,7 +35,7 @@ app/
     adaptive.js           Accuracy-weighted item selection for Practice (see below).
     exercises.js          Generators for each Practice exercise type from the schema.
     practice.js           Practice session orchestration (mix, combo, XP).
-    flashcard.js          The plain flip-card surface.
+    flashcard.js          Review = per-fact recall question set; flip card kept for learn fallback.
     catalog.js            The "dex": browse, filter, per-med + per-exercise stats.
     compare.js            Class compare (side-by-side sortable table).
     cram.js               Timed rapid pass over a class or the whole deck.
@@ -73,15 +73,19 @@ same-origin policy treats each local file as a unique opaque origin). Classic
 ## Spaced repetition — SM-2 lite
 
 Per card we store `easeFactor` (EF, init **2.5**), `interval` (days, init 0),
-`repetitions` (init 0), and `dueDate`. A review presents four buttons mapping to a quality
-score `q`:
+`repetitions` (init 0), and `dueDate`. A review scores each card on a quality
+value `q`:
 
-| Button | q |
-|--------|---|
-| Again  | 2 |
-| Hard   | 3 |
-| Good   | 4 |
-| Easy   | 5 |
+| Quality | q |
+|---------|---|
+| Again   | 2 |
+| Hard    | 3 |
+| Good    | 4 |
+| Easy    | 5 |
+
+The learner never picks `q` directly. **Review is a question set** (see the Flashcard surface
+below): each due med becomes several per-fact recall questions, and the fraction the learner marks
+"Got it" maps to `q` — all → 5, ≥80% → 4, ≥50% → 3, else 2.
 
 On review:
 
@@ -131,8 +135,16 @@ never scold (Duolingo's whole trick).
   furthest point stay locked, and a check must be answered before it unlocks the next page.
   "Learned" is earned here (marks SRS + XP + streak). Content is generated per med
   (`data/lessons.js` = `window.LESSONS`, authored in `pipeline/lessons/`, grounded in the deck).
-- **Flashcard** (`flashcard.js`, *review*) — a plain flip card: prompt → reveal facts (3D flip)
-  → self-rate (Again/Hard/Good/Easy), feeding the SRS. The clean, fast review surface.
+- **Flashcard** (`flashcard.js`, *review*) — active-recall **question set** over the due card.
+  Each due med is split into one recall question per populated **non-identity** fact (mechanism,
+  PK, indications, dosing, safety, monitoring, interactions, populations, pearls — never
+  brands / DINs / formulations / controlled status), sampled breadth-first across those groups by
+  clinical priority and capped at 7 per med. For each: recall → **Reveal answer** (the sourced
+  field value, provenance and "show source text" reused from `render.js`) → self-rate **Got it /
+  Missed**. The per-med "Got it" fraction becomes one SM-2 quality (see SRS table). Same SRS
+  footprint as before (schedules the card + awards XP); it does **not** feed Practice's per-med
+  accuracy. The original prompt→flip→"Learn this" card remains for `mode:'learn'`, the fallback
+  when a med has no authored lesson.
 - **Practice** (`practice.js`) — Duolingo-style adaptive mix of exercise types (below),
   including a bank of cross-med board vignettes (`data/vignettes.js` = `window.VIGNETTES`).
   **Drills learned meds only.** `candidatePool()` returns learned cards (never the whole deck),
@@ -169,7 +181,23 @@ Each is auto-generatable from the schema, so any drug can drive any exercise:
 - **Board-style vignettes** — Royal College / FRCPC-flavoured cases, multiple per drug, each
   with an explanation and the cited source for the tested fact.
 
-A session never shows the same format twice in a row.
+A session never shows the same format twice in a row, and **never repeats the same question** —
+`buildSession` keeps a signature set (`exSig`) so each generated exercise is unique within the run;
+if the (scoped) material runs out it returns a shorter set rather than duplicating.
+
+### Topic (category) selection
+
+Every generated exercise carries a `category` — one of the render.js fact groups
+(`mechanism`, `pk`, `indications`, `dosing`, `safety`, `monitoring`, `interactions`, `populations`,
+`pedagogical`) plus a synthetic `vignette` for the cross-med case bank. The Practice setup exposes
+these as toggle chips ("Include topics", all on by default); the selection is passed to
+`buildSession`, which calls `PML.exercises.setCategoryScope(cats)`. Each generator gates on
+`catAllowed(category)` and returns null when its category is excluded, so a scoped session only
+surfaces the chosen kinds of question. The broad-coverage engine is **cloze**, which can blank a
+salient token from any populated field — it's what keeps the thinner categories (interactions,
+populations, PK) drillable in isolation. The bare "class of drug" items are treated as core, not a
+fact group, so they only appear in the unscoped full mix. When every topic is selected the scope is
+cleared (identical to the pre-existing behaviour).
 
 ## Adaptive Practice engine
 

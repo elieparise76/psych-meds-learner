@@ -44,7 +44,9 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   Med↔disorder cross-links both ways; `linkify()` makes med/condition names clickable in prose
   and vignette explanations. `data/disorders.js` → `window.DISORDERS`.
 - **Study loop**: seeded one-new-med-a-day daily engine (manual pick counts toward streak),
-  SM-2 lite spaced review (Flashcard surface), adaptive **Practice** (clinical-first, 7 exercise
+  SM-2 lite spaced **Review** — now a per-fact active-recall **question set** (each due med is
+  quizzed on its populated non-identity facts one at a time: recall → reveal sourced answer →
+  Got it / Missed; the score maps to the SM-2 quality), adaptive **Practice** (clinical-first, 7 exercise
   types — mcq, type-the-answer, matching, reverse, cloze, confusables, vignettes; tap-to-build
   was removed), **Cram** (timed), **Compare v2** (pick any 2–4 meds → aligned clinical versus
   table).
@@ -55,6 +57,14 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   several drugs at once (matching, confusables, cross-med vignettes) are fenced by
   `PML.exercises.setScope(ids)`; distractors deliberately are not. Zero learned meds → a "Nothing to
   practice yet" card instead of a session, and "🎮 Drill this med" only appears on learned meds.
+- **Practice topics + no-repeat (latest)**: the setup adds an **"Include topics"** chip row
+  (Mechanism, PK, Indications, Dosing, Safety, Monitoring, Interactions, Populations, Pearls,
+  Clinical vignettes — all on by default). Each exercise is tagged with a `category`; the selection
+  is fenced by `PML.exercises.setCategoryScope(cats)` (parallel to the med `setScope`), so a scoped
+  session only surfaces the chosen kinds of question. **cloze** is the broad-coverage generator that
+  keeps thin categories (interactions/populations/PK) drillable alone. Also: a session **never
+  repeats the same question** — `buildSession` de-dupes by an `exSig` signature and returns a shorter
+  set if unique material runs out. See ARCHITECTURE.md "Topic (category) selection".
 - **Practice UX (Round 4)**: the setup lets you pick **any question count** up to that cap (free
   number input + preset chips). During a session a **left progress grid** shows one cell
   per question, colour-coded live by outcome (mint = right, coral = wrong, honey ring = current);
@@ -103,7 +113,8 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
 accessor + `primaryBrand`) · `store` (localStorage state, day/week rollover, streak, export/import)
 · `srs` (SM-2 lite) · `game` (XP/levels/combo/mastery/achievements/quests) · `daily` (seeded daily
 engine + streak/goal) · `render` (shared fact groups + provenance badges + source text) · `profile`
-(first-run + 8 SVG avatars) · `flashcard` (review flip + self-rate) · `lesson` (v2 learning flow —
+(first-run + 8 SVG avatars) · `flashcard` (Review = per-fact recall question set → SM-2; flip card
+kept for the learn fallback) · `lesson` (v2 learning flow —
 Neuro explain+check) · `exercises` (clinical-first exercise generators) · `practice` (adaptive
 session runner + all exercise renderers) · `catalog` (the filterable "dex" grid; `detail` delegates
 to `wiki.medPage`) · `wiki` (hub + med pages + disorder pages + linkify + reverse index) · `compare`

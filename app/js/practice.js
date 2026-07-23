@@ -60,32 +60,54 @@
     });
   }
 
+  // A stable signature for an exercise, used to guarantee no question repeats within a session.
+  // Matching stems are generic ("Match each drug to its class"), so key those on their pair set;
+  // everything else on type + med + subtype + stem + answer.
+  function exSig(ex) {
+    if (ex.type === 'matching') return 'matching|' + (ex.pairs || []).map(function (p) { return p.id; }).sort().join(',');
+    return ex.type + '|' + (ex.medId || '') + '|' + (ex.subtype || '') + '|' + U.normalize(ex.stem || '') + '|' + U.normalize(String(ex.answer || ex.answerDisplay || ''));
+  }
+
   function buildSession(n, opts) {
     opts = opts || {};
     var pool = candidatePool(opts);
     if (!pool.length) return [];
     n = Math.max(1, Math.min(n || 12, maxQuestions(opts)));
-    var exercises = [];
+    var cats = opts.categories && opts.categories.length ? opts.categories : null;
+    var exercises = [], seen = {};
     PML.exercises.setScope(scopeIds(opts));
+    PML.exercises.setCategoryScope(cats);
     try {
-      var lastType = null, lastMed = null, guard = 0;
-      while (exercises.length < n && guard < n * 25 + 40) {
+      var lastType = null, lastMed = null, guard = 0, stale = 0;
+      var vignettesOk = !cats || cats.indexOf('vignette') >= 0;
+      // `stale` counts consecutive dead-ends (null / duplicate / same-format skip). When it climbs we
+      // relax the variety guards so a narrow scope (e.g. vignettes-only) can still fill instead of
+      // deadlocking; if the unique material truly runs out we simply return a shorter set.
+      while (exercises.length < n && guard < n * 40 + 80) {
         guard++;
+        var relax = stale >= 3;
+        var ex = null;
         // occasional standalone cross-med bank vignette for variety (not when drilling one med)
-        if (!opts.medId && lastType !== 'vignette' && Math.random() < 0.16) {
-          var bv = PML.exercises.bankVignette();
-          if (bv) { exercises.push(bv); lastType = 'vignette'; lastMed = null; continue; }
+        if (!opts.medId && vignettesOk && lastType !== 'vignette' && Math.random() < 0.16) {
+          ex = PML.exercises.bankVignette();
         }
-        var med = opts.medId ? PML.deck.get(opts.medId) : weightedPick(pool, medWeight);
-        if (med === lastMed && pool.length > 2) continue;
-        var type = typeFor(med, lastType);
-        var ex = PML.exercises.generate(type, med, lastType);
-        if (!ex) continue;
-        if (ex.type === lastType && exercises.length) continue; // never same format twice in a row
+        if (!ex) {
+          var med = opts.medId ? PML.deck.get(opts.medId) : weightedPick(pool, medWeight);
+          if (!opts.medId && med === lastMed && pool.length > 2 && !relax) { stale++; continue; }
+          var type = typeFor(med, relax ? null : lastType);
+          ex = PML.exercises.generate(type, med, relax ? null : lastType);
+          if (ex) { ex._med = med; }
+        }
+        if (!ex) { stale++; continue; }
+        var sig = exSig(ex);
+        if (seen[sig]) { stale++; continue; }                            // no repeated questions
+        if (ex.type === lastType && exercises.length && !relax) { stale++; continue; } // prefer variety unless stuck
+        seen[sig] = 1;
+        var m = ex._med; delete ex._med;
         exercises.push(ex);
-        lastType = ex.type; lastMed = med;
+        lastType = ex.type; lastMed = m || (ex.medId ? PML.deck.get(ex.medId) : null); stale = 0;
       }
-    } finally { PML.exercises.setScope(null); }
+    } finally { PML.exercises.setScope(null); PML.exercises.setCategoryScope(null); }
     return exercises;
   }
 
@@ -486,6 +508,28 @@
     var poolNote = ce('p', { class: 'muted', style: { fontSize: '.85rem' } });
     var cap = 0;
 
+    // ----- topic (category) selection: which kinds of info to drill -----
+    var CATS = PML.exercises.CATEGORIES;
+    var catOn = {}; CATS.forEach(function (c) { catOn[c.key] = true; });   // all on by default
+    var catChips = ce('div', { class: 'cat-chips' });
+    function renderCatChips() {
+      U.clear(catChips);
+      CATS.forEach(function (c) {
+        var chip = ce('button', { class: 'cat-chip' + (catOn[c.key] ? ' on' : ''), type: 'button', 'aria-pressed': catOn[c.key] ? 'true' : 'false', onclick: function () {
+          catOn[c.key] = !catOn[c.key];
+          if (!Object.keys(catOn).some(function (k) { return catOn[k]; })) catOn[c.key] = true; // keep ≥1 selected
+          renderCatChips();
+        } }, [c.label]);
+        catChips.appendChild(chip);
+      });
+    }
+    renderCatChips();
+    function selectedCats() {
+      var on = CATS.filter(function (c) { return catOn[c.key]; }).map(function (c) { return c.key; });
+      return (on.length === CATS.length) ? null : on;   // all selected → null (full mix, incl. class items)
+    }
+    var catAll = ce('button', { class: 'btn sm ghost', type: 'button', onclick: function () { CATS.forEach(function (c) { catOn[c.key] = true; }); renderCatChips(); } }, ['All']);
+
     function clampCount() { var v = Math.round(+countInput.value || 0); if (v < 1) v = 1; if (v > cap) v = cap; countInput.value = v; return v; }
     function syncCap() {
       var opts = { classFilter: classSel.value || null };
@@ -507,9 +551,14 @@
 
     wrap.appendChild(ce('div', { class: 'card pad stack' }, [
       ce('div', { class: 'filters' }, [ce('span', { class: 'muted' }, ['Focus:']), classSel]),
+      ce('div', { class: 'topic-row' }, [
+        ce('div', { class: 'row spread', style: { alignItems: 'baseline' } }, [ce('span', { class: 'muted' }, ['Include topics:']), catAll]),
+        catChips,
+        ce('p', { class: 'dim', style: { fontSize: '.72rem' } }, ['Tap to include/exclude the kinds of information you want quizzed. All on = the full adaptive mix.']),
+      ]),
       ce('div', { class: 'qcount-row' }, [ce('span', { class: 'muted' }, ['Questions:']), countInput, capNote, presets]),
       poolNote,
-      ce('button', { class: 'btn primary lg block', onclick: function () { start(root, { classFilter: classSel.value || null, n: clampCount() }); } }, ['▶ Start practice']),
+      ce('button', { class: 'btn primary lg block', onclick: function () { start(root, { classFilter: classSel.value || null, n: clampCount(), categories: selectedCats() }); } }, ['▶ Start practice']),
     ]));
     syncCap();
     root.appendChild(wrap);
@@ -519,8 +568,14 @@
     U.clear(root);
     var cap = maxQuestions(opts);
     if (!cap) { root.appendChild(nothingLearnedCard(opts.classFilter ? 'You have not learned any ' + opts.classFilter + ' yet.' : null)); return; }
-    var exercises = buildSession(Math.min(cap, opts.n || 12), { classFilter: opts.classFilter, medId: opts.medId });
-    if (!exercises.length) { root.appendChild(ce('div', { class: 'card pad center' }, [ce('p', {}, ['Could not build a session from what you have learned so far. Learn a few more meds first.']), ce('button', { class: 'btn', onclick: function () { PML.ui.go('home'); } }, ['Home'])])); return; }
+    var exercises = buildSession(Math.min(cap, opts.n || 12), { classFilter: opts.classFilter, medId: opts.medId, categories: opts.categories });
+    if (!exercises.length) {
+      root.appendChild(ce('div', { class: 'card pad center stack' }, [
+        ce('p', {}, [opts.categories && opts.categories.length ? 'No questions could be built from the topics you selected for what you have learned so far. Try selecting more topics or learning a few more meds.' : 'Could not build a session from what you have learned so far. Learn a few more meds first.']),
+        ce('button', { class: 'btn', onclick: function () { PML.ui.go('practice'); } }, ['Back to setup']),
+      ]));
+      return;
+    }
     runSession(root, { exercises: exercises, onDone: function (r) { if (r && r.again) start(root, opts); else PML.ui.go('home'); } });
   }
 
