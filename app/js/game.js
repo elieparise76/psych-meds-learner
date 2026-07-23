@@ -27,13 +27,19 @@
   function comboState() { return combo; }
 
   // ---------- add XP ----------
-  function addXp(amount) {
+  // XP pacing: progression is deliberately slowed. Every gain is scaled by a global rate (half),
+  // and Practice + Review ("drill") gains are scaled down further. Pass kind='drill' from those
+  // paths; everything else uses the base rate.
+  var XP_MULT = { base: 0.5, drill: 0.3 };
+  function xpRate(kind) { return (kind && XP_MULT[kind] != null) ? XP_MULT[kind] : XP_MULT.base; }
+  function addXp(amount, kind) {
+    var scaled = Math.max(0, Math.round((amount || 0) * xpRate(kind)));
     var p = PML.store.get().progress;
     var before = levelInfo(p.xp).level;
-    p.xp += amount; p.weekXp += amount; p.xpToday += amount;
+    p.xp += scaled; p.weekXp += scaled; p.xpToday += scaled;
     var after = levelInfo(p.xp).level;
     PML.store.save();
-    return { xp: amount, leveled: after > before, from: before, to: after };
+    return { xp: scaled, leveled: after > before, from: before, to: after };
   }
 
   // ---------- mastery tiers ----------
@@ -79,7 +85,7 @@
     c.mastery = computeMastery(c);
     var masteryUp = tierRank(c.mastery) > tierRank(beforeTier) ? c.mastery : null;
 
-    var xpEv = addXp(Math.round(exerciseXp(exType, correct) * comboMult()));
+    var xpEv = addXp(Math.round(exerciseXp(exType, correct) * comboMult()), 'drill');
     var newAch = checkAchievements();
     PML.store.save();
     return { correct: correct, xp: xpEv.xp, leveled: xpEv.leveled, level: xpEv.to, combo: combo.count, masteryUp: masteryUp, achievements: newAch };

@@ -1,0 +1,369 @@
+[
+ {
+  "id": "gad",
+  "name": "Generalized anxiety disorder",
+  "aka": [
+   "gad",
+   "generalized anxiety",
+   "generalised anxiety disorder",
+   "chronic anxiety",
+   "worry disorder"
+  ],
+  "category": "Anxiety"
+ },
+ {
+  "id": "panic",
+  "name": "Panic disorder",
+  "aka": [
+   "panic",
+   "panic disorder",
+   "panic attacks",
+   "recurrent panic",
+   "panic disorder with agoraphobia"
+  ],
+  "category": "Anxiety"
+ },
+ {
+  "id": "social-anxiety",
+  "name": "Social anxiety disorder",
+  "aka": [
+   "social anxiety",
+   "social anxiety disorder",
+   "social phobia",
+   "sad",
+   "performance anxiety",
+   "stage fright"
+  ],
+  "category": "Anxiety"
+ },
+ {
+  "id": "ocd",
+  "name": "Obsessive-compulsive disorder",
+  "aka": [
+   "ocd",
+   "obsessive-compulsive disorder",
+   "obsessions and compulsions",
+   "obsessive compulsive"
+  ],
+  "category": "Anxiety"
+ },
+ {
+  "id": "ptsd",
+  "name": "Post-traumatic stress disorder",
+  "aka": [
+   "ptsd",
+   "post-traumatic stress disorder",
+   "posttraumatic stress disorder",
+   "post traumatic stress",
+   "trauma disorder",
+   "combat stress"
+  ],
+  "category": "Anxiety"
+ },
+ {
+  "id": "mdd",
+  "name": "Major depressive disorder",
+  "aka": [
+   "mdd",
+   "depression",
+   "major depression",
+   "unipolar depression",
+   "clinical depression",
+   "major depressive episode"
+  ],
+  "category": "Mood"
+ },
+ {
+  "id": "bipolar",
+  "name": "Bipolar disorder",
+  "aka": [
+   "bipolar disorder",
+   "bipolar i disorder",
+   "bipolar ii disorder",
+   "bipolar i",
+   "bipolar ii",
+   "mania",
+   "hypomania",
+   "manic depression",
+   "manic-depressive illness"
+  ],
+  "category": "Mood"
+ },
+ {
+  "id": "perinatal",
+  "name": "Perinatal mood & anxiety disorders",
+  "aka": [
+   "perinatal mood and anxiety disorders",
+   "postpartum depression",
+   "ppd",
+   "postnatal depression",
+   "peripartum depression",
+   "antenatal depression",
+   "perinatal depression",
+   "postpartum anxiety",
+   "maternal mental illness"
+  ],
+  "category": "Mood"
+ },
+ {
+  "id": "schizophrenia",
+  "name": "Schizophrenia",
+  "aka": [
+   "schizophrenia",
+   "schizophrenic disorder",
+   "psychosis",
+   "psychotic disorder",
+   "chronic psychosis"
+  ],
+  "category": "Psychotic"
+ },
+ {
+  "id": "pd-psychosis",
+  "name": "Parkinson disease psychosis",
+  "aka": [
+   "parkinson disease psychosis",
+   "parkinson's psychosis",
+   "pd psychosis",
+   "pdp",
+   "psychosis in parkinson disease",
+   "dopaminergic psychosis"
+  ],
+  "category": "Psychotic"
+ },
+ {
+  "id": "delirium",
+  "name": "Delirium",
+  "aka": [
+   "delirium",
+   "acute confusional state",
+   "acute confusion",
+   "encephalopathy",
+   "acute brain failure",
+   "icu delirium"
+  ],
+  "category": "Neurocognitive"
+ },
+ {
+  "id": "dementia",
+  "name": "Major neurocognitive disorder (dementia)",
+  "aka": [
+   "dementia",
+   "major neurocognitive disorder",
+   "alzheimer",
+   "alzheimer's disease",
+   "alzheimer disease",
+   "neurocognitive disorder",
+   "bpsd"
+  ],
+  "category": "Neurocognitive"
+ },
+ {
+  "id": "agitation",
+  "name": "Acute agitation (behavioural emergency)",
+  "aka": [
+   "acute agitation",
+   "agitation",
+   "behavioural emergency",
+   "behavioral emergency",
+   "psychomotor agitation",
+   "acute behavioural disturbance",
+   "rapid tranquillisation"
+  ],
+  "category": "Other"
+ },
+ {
+  "id": "aud",
+  "name": "Alcohol use disorder",
+  "aka": [
+   "aud",
+   "alcohol use disorder",
+   "alcohol dependence",
+   "alcoholism",
+   "alcohol abuse",
+   "alcohol withdrawal",
+   "delirium tremens",
+   "dts",
+   "wernicke",
+   "wernicke-korsakoff"
+  ],
+  "category": "Substance"
+ },
+ {
+  "id": "oud",
+  "name": "Opioid use disorder",
+  "aka": [
+   "oud",
+   "opioid use disorder",
+   "opioid dependence",
+   "opioid addiction",
+   "opiate use disorder",
+   "opioid withdrawal",
+   "opioid agonist therapy",
+   "oat",
+   "opioid overdose"
+  ],
+  "category": "Substance"
+ },
+ {
+  "id": "tud",
+  "name": "Tobacco use disorder",
+  "aka": [
+   "tud",
+   "tobacco use disorder",
+   "nicotine dependence",
+   "nicotine use disorder",
+   "smoking cessation",
+   "tobacco dependence",
+   "quit smoking"
+  ],
+  "category": "Substance"
+ },
+ {
+  "id": "adhd",
+  "name": "Attention-deficit/hyperactivity disorder",
+  "aka": [
+   "adhd",
+   "attention deficit hyperactivity disorder",
+   "attention-deficit/hyperactivity disorder",
+   "add",
+   "attention deficit disorder",
+   "hyperactivity"
+  ],
+  "category": "Other"
+ },
+ {
+  "id": "insomnia",
+  "name": "Insomnia disorder",
+  "aka": [
+   "insomnia",
+   "insomnia disorder",
+   "chronic insomnia",
+   "sleeplessness",
+   "difficulty sleeping",
+   "sleep-onset insomnia",
+   "sleep-maintenance insomnia"
+  ],
+  "category": "Other"
+ },
+ {
+  "id": "serotonin-syndrome",
+  "name": "Serotonin syndrome",
+  "aka": [
+   "serotonin syndrome",
+   "serotonin toxicity",
+   "serotonergic toxicity",
+   "5-ht syndrome",
+   "ssri toxicity",
+   "is this serotonin syndrome",
+   "serotonin toxidrome"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "nms",
+  "name": "Neuroleptic malignant syndrome",
+  "aka": [
+   "nms",
+   "neuroleptic malignant syndrome",
+   "antipsychotic malignant syndrome",
+   "neuroleptic malignant",
+   "is this nms"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "eps",
+  "name": "Extrapyramidal symptoms",
+  "aka": [
+   "eps",
+   "extrapyramidal symptoms",
+   "extrapyramidal side effects",
+   "drug-induced movement disorder",
+   "acute dystonia",
+   "dystonic reaction",
+   "akathisia",
+   "drug-induced parkinsonism"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "tardive-dyskinesia",
+  "name": "Tardive dyskinesia",
+  "aka": [
+   "tardive dyskinesia",
+   "td",
+   "tardive syndrome",
+   "tardive dystonia",
+   "orofacial dyskinesia",
+   "tardive"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "anticholinergic-toxicity",
+  "name": "Anticholinergic toxicity",
+  "aka": [
+   "anticholinergic toxicity",
+   "anticholinergic toxidrome",
+   "anticholinergic syndrome",
+   "anticholinergic delirium",
+   "anticholinergic burden",
+   "antimuscarinic toxicity"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "lithium-toxicity",
+  "name": "Lithium toxicity",
+  "aka": [
+   "lithium toxicity",
+   "lithium poisoning",
+   "lithium overdose",
+   "lithium level",
+   "high lithium level"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "metabolic-syndrome",
+  "name": "Antipsychotic metabolic syndrome",
+  "aka": [
+   "metabolic syndrome",
+   "antipsychotic metabolic syndrome",
+   "antipsychotic weight gain",
+   "metabolic side effects",
+   "antipsychotic-induced diabetes",
+   "dyslipidemia from antipsychotics"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "discontinuation-syndrome",
+  "name": "Antidepressant discontinuation syndrome",
+  "aka": [
+   "discontinuation syndrome",
+   "antidepressant discontinuation syndrome",
+   "antidepressant withdrawal",
+   "ssri discontinuation",
+   "ssri withdrawal",
+   "snri discontinuation",
+   "brain zaps",
+   "finish syndrome"
+  ],
+  "category": "Syndrome"
+ },
+ {
+  "id": "tyramine-crisis",
+  "name": "Tyramine (hypertensive) crisis",
+  "aka": [
+   "tyramine crisis",
+   "tyramine reaction",
+   "hypertensive crisis",
+   "maoi hypertensive crisis",
+   "cheese reaction",
+   "maoi tyramine crisis",
+   "maoi diet"
+  ],
+  "category": "Syndrome"
+ }
+]

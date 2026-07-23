@@ -393,6 +393,62 @@ button { font-family: inherit; }
 .wikilink { color: var(--sky); border-bottom: 1px dashed color-mix(in srgb, var(--sky) 50%, transparent); cursor: pointer; }
 .wikilink:hover { color: var(--honey); border-bottom-color: var(--honey); }
 
+/* ---------- Clinical hover-glossary ---------- */
+/* A flagged term reads as normal prose but carries a light dotted underline. Terms that also have
+   a Wiki page get a subtly stronger tint to hint "there's more here". */
+.gloss-term {
+  text-decoration: underline dotted;
+  text-decoration-thickness: from-font;
+  text-decoration-color: color-mix(in srgb, var(--honey) 42%, transparent);
+  text-underline-offset: 2px;
+  cursor: help;
+  border-radius: 2px;
+  transition: background var(--dur-fast) var(--ease), text-decoration-color var(--dur-fast) var(--ease);
+}
+.gloss-term.has-wiki { text-decoration-color: color-mix(in srgb, var(--honey) 62%, transparent); }
+.gloss-term:hover,
+.gloss-term:focus-visible {
+  background: color-mix(in srgb, var(--honey) 12%, transparent);
+  text-decoration-color: var(--honey);
+  outline: none;
+}
+.gloss-term:focus-visible { box-shadow: 0 0 0 2px color-mix(in srgb, var(--honey) 45%, transparent); }
+
+.gloss-tip {
+  position: fixed; left: 0; top: 0; z-index: 420; max-width: min(320px, calc(100vw - 24px));
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  box-shadow: var(--shadow); padding: 10px 12px;
+  font-family: var(--font-body); font-size: var(--fs-sm); line-height: 1.4;
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  transition: opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease), visibility var(--dur-fast);
+  pointer-events: none;
+}
+.gloss-tip.show { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+.gloss-tip-def { color: var(--text); }
+.gloss-tip.has-more .gloss-tip-def { margin-bottom: 8px; }
+.gloss-tip-more {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer;
+  background: color-mix(in srgb, var(--honey) 10%, transparent);
+  color: var(--honey-deep); font-weight: 700; font-size: var(--fs-xs);
+  border: 1px solid color-mix(in srgb, var(--honey) 30%, transparent);
+  border-radius: var(--r-pill); padding: 4px 10px; font-family: var(--font-body);
+}
+.gloss-tip-more:hover { background: var(--honey); color: var(--accent-contrast); border-color: transparent; }
+.gloss-tip::after {
+  content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -6px; width: 12px; height: 12px; background: var(--surface);
+  border-right: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong);
+  rotate: 45deg;
+}
+.gloss-tip.below::after { bottom: auto; top: -6px; rotate: 225deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gloss-term { transition: none; }
+  .gloss-tip { transition: opacity var(--dur-fast) linear, visibility var(--dur-fast); transform: none; }
+  .gloss-tip.show { transform: none; }
+}
+
 /* ---------- Profile ---------- */
 .avatar { display: inline-grid; place-items: center; border-radius: 50%; overflow: hidden; flex: 0 0 auto; }
 .profile-setup { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; padding: var(--sp-4);

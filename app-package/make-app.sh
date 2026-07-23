@@ -43,9 +43,9 @@ echo "==> Bundle web assets (only what index.html loads at runtime)"
 cp "$REPO/index.html" "$APP/Contents/Resources/web/"
 cp -R "$REPO/app"     "$APP/Contents/Resources/web/"
 mkdir -p "$APP/Contents/Resources/web/data"
-for f in deck.js lessons.js vignettes.js disorders.js tutorial.js; do
-  cp "$REPO/data/$f" "$APP/Contents/Resources/web/data/"
-done
+# Every data/*.js that index.html loads (deck, lessons, vignettes, disorders, tutorial,
+# curriculum, reviews, glossary). The large data/deck.json is intentionally NOT bundled.
+cp "$REPO"/data/*.js "$APP/Contents/Resources/web/data/"
 rm -rf "$APP/Contents/Resources/web/app/docs"    # screenshots aren't needed inside the app
 
 echo "==> Strip Finder metadata (else codesign refuses)"

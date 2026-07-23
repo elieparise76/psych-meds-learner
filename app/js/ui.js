@@ -366,6 +366,7 @@
     }
     box.appendChild(row('Sound effects', toggleEl(s.settings.sound, function (v) { s.settings.sound = v; PML.sfx.enabled = v; if (v) PML.sfx.correct(); PML.store.save(); })));
     box.appendChild(row('Tutorial narration (voice)', toggleEl(s.settings.voice !== false, function (v) { s.settings.voice = v; PML.store.save(); })));
+    box.appendChild(row('Underline clinical terms', toggleEl(s.settings.glossary !== false, function (v) { s.settings.glossary = v; PML.store.save(); go(current.view); })));
     box.appendChild(ce('div', { class: 'row spread' }, [ce('span', {}, ['Guided tour']), ce('button', { class: 'btn sm', onclick: function () { U.qsa('.modal-back').forEach(function (x) { x.remove(); }); if (PML.tutorial) PML.tutorial.replay(); } }, ['▶ Replay tour'])]));
     box.appendChild(row('Daily goal (new/day)', selectEl(['1', '2', '3', '5'], String(s.settings.dailyGoal), function (v) { s.settings.dailyGoal = +v; PML.store.save(); })));
     box.appendChild(row('Weekly XP goal', selectEl(['140', '210', '350', '500'], String(s.settings.weeklyXpGoal), function (v) { s.settings.weeklyXpGoal = +v; PML.store.save(); })));

@@ -17,6 +17,7 @@
     PML.store.initDeck(PML.deck.all());
     PML.store.rollover();
     PML.ui.init();
+    if (PML.glossary && PML.glossary.init) PML.glossary.init();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

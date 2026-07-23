@@ -1,0 +1,1024 @@
+[
+  {
+    "term": "adhd",
+    "aliases": ["adhd", "attention-deficit/hyperactivity disorder", "attention deficit hyperactivity disorder"],
+    "def": "Neurodevelopmental disorder of inattention, hyperactivity, and impulsivity impairing function; stimulants are first-line and most effective.",
+    "wikiId": "adhd",
+    "category": "disorder"
+  },
+  {
+    "term": "panic attack",
+    "aliases": ["panic attack", "panic attacks", "panic disorder", "unexpected panic"],
+    "def": "A sudden surge of intense fear peaking within minutes, with palpitations, shortness of breath, chest tightness, and a sense of doom.",
+    "wikiId": "panic",
+    "category": "disorder"
+  },
+  {
+    "term": "generalized anxiety disorder",
+    "aliases": ["generalized anxiety disorder", "generalized anxiety", "gad"],
+    "def": "Chronic, excessive, hard-to-control worry across many areas, with restlessness, fatigue, poor concentration, and muscle tension.",
+    "wikiId": "gad",
+    "category": "disorder"
+  },
+  {
+    "term": "social anxiety disorder",
+    "aliases": ["social anxiety disorder", "social anxiety", "social phobia", "performance anxiety"],
+    "def": "Marked, persistent fear of scrutiny in social or performance situations, leading to avoidance and distress.",
+    "wikiId": "social-anxiety",
+    "category": "disorder"
+  },
+  {
+    "term": "obsessive-compulsive disorder",
+    "aliases": ["obsessive-compulsive disorder", "ocd", "obsessions", "compulsions"],
+    "def": "Intrusive, unwanted obsessions plus repetitive compulsions done to reduce distress; first-line treatment is SSRIs and ERP.",
+    "wikiId": "ocd",
+    "category": "disorder"
+  },
+  {
+    "term": "ptsd",
+    "aliases": ["ptsd", "post-traumatic stress disorder", "posttraumatic stress"],
+    "def": "Persistent re-experiencing, avoidance, hyperarousal, and negative mood after a traumatic event.",
+    "wikiId": "ptsd",
+    "category": "disorder"
+  },
+  {
+    "term": "major depression",
+    "aliases": ["major depression", "major depressive disorder", "major depressive episode", "depression", "mdd"],
+    "def": "Two-plus weeks of low mood or anhedonia with changes in sleep, appetite, energy, concentration, and feelings of worthlessness or guilt.",
+    "wikiId": "mdd",
+    "category": "disorder"
+  },
+  {
+    "term": "bipolar disorder",
+    "aliases": ["bipolar disorder", "bipolar i", "bipolar ii", "manic depression"],
+    "def": "Mood disorder alternating depression with mania or hypomania; managed with mood stabilizers and antimanic agents, not antidepressants alone.",
+    "wikiId": "bipolar",
+    "category": "disorder"
+  },
+  {
+    "term": "mania",
+    "aliases": ["mania", "manic episode", "manic", "acute mania"],
+    "def": "A sustained elevated or irritable, high-energy state with reduced sleep need, rapid speech and thought, grandiosity, and risky behaviour.",
+    "wikiId": "bipolar",
+    "category": "symptom"
+  },
+  {
+    "term": "hypomania",
+    "aliases": ["hypomania", "hypomanias", "hypomanic"],
+    "def": "A milder high than mania — elevated, energised mood with reduced sleep need, without marked impairment or psychosis.",
+    "wikiId": "bipolar",
+    "category": "symptom"
+  },
+  {
+    "term": "psychosis",
+    "aliases": ["psychosis", "psychotic", "psychotic symptoms"],
+    "def": "Loss of contact with reality — hallucinations, delusions, or disorganised thinking.",
+    "wikiId": "schizophrenia",
+    "category": "symptom"
+  },
+  {
+    "term": "schizophrenia",
+    "aliases": ["schizophrenia", "schizophrenic"],
+    "def": "Chronic psychotic illness spanning positive (hallucinations, delusions), negative, and cognitive symptom domains; treated with antipsychotics.",
+    "wikiId": "schizophrenia",
+    "category": "disorder"
+  },
+  {
+    "term": "parkinson disease psychosis",
+    "aliases": ["parkinson disease psychosis", "parkinson's psychosis", "pd psychosis"],
+    "def": "Hallucinations and delusions in Parkinson disease; treated with low-dose clozapine or pimavanserin without worsening motor symptoms.",
+    "wikiId": "pd-psychosis",
+    "category": "disorder"
+  },
+  {
+    "term": "delirium",
+    "aliases": ["delirium", "acute confusional state", "hyperactive delirium"],
+    "def": "Acute, fluctuating disturbance of attention and awareness from a medical cause; often reversible once the trigger is treated.",
+    "wikiId": "delirium",
+    "category": "disorder"
+  },
+  {
+    "term": "dementia",
+    "aliases": ["dementia", "major neurocognitive disorder", "alzheimer", "alzheimer disease"],
+    "def": "Acquired, usually progressive decline in memory and other cognitive domains severe enough to impair everyday independence.",
+    "wikiId": "dementia",
+    "category": "disorder"
+  },
+  {
+    "term": "bpsd",
+    "aliases": ["bpsd", "behavioural and psychological symptoms of dementia"],
+    "def": "Behavioural and psychological symptoms of dementia — agitation, psychosis, mood and sleep disturbance — that drive caregiver burden.",
+    "wikiId": "dementia",
+    "category": "symptom"
+  },
+  {
+    "term": "acute agitation",
+    "aliases": ["acute agitation", "agitation", "psychomotor agitation", "combative"],
+    "def": "A state of motor restlessness, heightened arousal, and potential aggression needing rapid calming.",
+    "wikiId": "agitation",
+    "category": "symptom"
+  },
+  {
+    "term": "alcohol use disorder",
+    "aliases": ["alcohol use disorder", "aud", "alcohol dependence", "alcoholism"],
+    "def": "Problematic alcohol use with craving, loss of control, tolerance, and withdrawal on stopping.",
+    "wikiId": "aud",
+    "category": "disorder"
+  },
+  {
+    "term": "alcohol withdrawal",
+    "aliases": ["alcohol withdrawal", "delirium tremens", "dts"],
+    "def": "Autonomic hyperactivity, tremor, anxiety, and seizures on stopping heavy alcohol; the severe form, delirium tremens, is life-threatening.",
+    "wikiId": "aud",
+    "category": "syndrome"
+  },
+  {
+    "term": "opioid use disorder",
+    "aliases": ["opioid use disorder", "oud", "opioid dependence", "opioid addiction"],
+    "def": "Compulsive opioid use with tolerance, withdrawal, and craving; treated first-line with opioid agonist therapy.",
+    "wikiId": "oud",
+    "category": "disorder"
+  },
+  {
+    "term": "opioid overdose",
+    "aliases": ["opioid overdose", "opioid toxicity", "opioid intoxication"],
+    "def": "Opioid toxicity causing unresponsiveness, slow or absent breathing, and pinpoint pupils; reversed with naloxone.",
+    "wikiId": "oud",
+    "category": "syndrome"
+  },
+  {
+    "term": "opioid withdrawal",
+    "aliases": ["opioid withdrawal", "opiate withdrawal"],
+    "def": "Uncomfortable but rarely dangerous syndrome — anxiety, sweating, GI upset, myalgia, dilated pupils — on stopping opioids.",
+    "wikiId": "oud",
+    "category": "syndrome"
+  },
+  {
+    "term": "tobacco use disorder",
+    "aliases": ["tobacco use disorder", "nicotine dependence", "smoking cessation", "quit smoking"],
+    "def": "Nicotine dependence with craving and withdrawal; varenicline is the single most effective cessation agent.",
+    "wikiId": "tud",
+    "category": "disorder"
+  },
+  {
+    "term": "insomnia",
+    "aliases": ["insomnia", "sleeplessness", "sleep-onset insomnia", "sleep-maintenance insomnia"],
+    "def": "Difficulty falling or staying asleep with daytime impairment despite adequate opportunity to sleep.",
+    "wikiId": "insomnia",
+    "category": "disorder"
+  },
+  {
+    "term": "postpartum depression",
+    "aliases": ["postpartum depression", "perinatal depression", "peripartum depression", "postnatal depression"],
+    "def": "A depressive episode arising during pregnancy or after delivery; neurosteroids brexanolone and zuranolone are specific treatments.",
+    "wikiId": "perinatal",
+    "category": "disorder"
+  },
+  {
+    "term": "postpartum psychosis",
+    "aliases": ["postpartum psychosis"],
+    "def": "A psychiatric emergency days after delivery — rapid-onset confusion, mood lability, and delusions, often bipolar-spectrum, with risk to mother or infant.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "catatonia",
+    "aliases": ["catatonia", "catatonic"],
+    "def": "A psychomotor syndrome of immobility, mutism, posturing, or excitement; responds to benzodiazepines and ECT.",
+    "wikiId": null,
+    "category": "syndrome"
+  },
+  {
+    "term": "tourette syndrome",
+    "aliases": ["tourette syndrome", "tourette's", "tourette"],
+    "def": "A childhood-onset neurodevelopmental disorder with chronic motor and vocal tics.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "agoraphobia",
+    "aliases": ["agoraphobia", "agoraphobic"],
+    "def": "Fear and avoidance of situations where escape is hard or help unavailable — crowds, transit, or being alone.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "status epilepticus",
+    "aliases": ["status epilepticus"],
+    "def": "A prolonged or repeated seizure without recovery between — a neurological emergency; IV or IM benzodiazepines are first-line.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "bulimia nervosa",
+    "aliases": ["bulimia nervosa", "bulimia"],
+    "def": "An eating disorder of binge eating with compensatory purging; bupropion is contraindicated because of seizure risk.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "enuresis",
+    "aliases": ["enuresis", "nocturnal enuresis", "bedwetting"],
+    "def": "Involuntary bedwetting; nocturnal enuresis in children is a classic imipramine indication.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "neuropathic pain",
+    "aliases": ["neuropathic pain", "peripheral neuropathy", "diabetic peripheral neuropathy"],
+    "def": "Burning, shooting, or tingling pain from nerve damage; treated with duloxetine, TCAs, and gabapentinoids.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "narcolepsy",
+    "aliases": ["narcolepsy"],
+    "def": "A chronic disorder of excessive daytime sleepiness and sleep attacks; modafinil promotes wakefulness.",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "pandas",
+    "aliases": ["pandas", "pans"],
+    "def": "Sudden-onset OCD or tics in a child following streptococcal infection (PANDAS/PANS).",
+    "wikiId": null,
+    "category": "disorder"
+  },
+  {
+    "term": "serotonin syndrome",
+    "aliases": ["serotonin syndrome", "serotonin toxicity", "serotonergic toxicity"],
+    "def": "Excess serotonergic activity causing agitation, clonus, hyperreflexia, hyperthermia, and autonomic instability — often from drug combinations.",
+    "wikiId": "serotonin-syndrome",
+    "category": "syndrome"
+  },
+  {
+    "term": "neuroleptic malignant syndrome",
+    "aliases": ["neuroleptic malignant syndrome", "nms"],
+    "def": "Rare reaction to dopamine blockers: high fever, lead-pipe rigidity, altered consciousness, autonomic instability, and markedly raised CK.",
+    "wikiId": "nms",
+    "category": "syndrome"
+  },
+  {
+    "term": "extrapyramidal symptoms",
+    "aliases": ["extrapyramidal symptoms", "extrapyramidal side effects", "eps"],
+    "def": "Drug-induced movement effects from dopamine blockade — acute dystonia, akathisia, and parkinsonism.",
+    "wikiId": "eps",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "akathisia",
+    "aliases": ["akathisia", "akathisic"],
+    "def": "A distressing inner restlessness with an urge to move; a common antipsychotic effect treated first-line with propranolol.",
+    "wikiId": "eps",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "acute dystonia",
+    "aliases": ["acute dystonia", "dystonia", "dystonic reaction", "acute dystonic reaction"],
+    "def": "Sudden sustained muscle spasm of the neck, jaw, tongue, or eyes soon after a dopamine blocker; treat with benztropine or diphenhydramine.",
+    "wikiId": "eps",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "oculogyric crisis",
+    "aliases": ["oculogyric crisis"],
+    "def": "A dystonic reaction with sustained upward or lateral deviation of the eyes.",
+    "wikiId": "eps",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "drug-induced parkinsonism",
+    "aliases": ["drug-induced parkinsonism", "parkinsonism", "parkinsonian"],
+    "def": "Antipsychotic-induced tremor, rigidity, and bradykinesia mimicking Parkinson disease, caused by dopamine blockade.",
+    "wikiId": "eps",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "tardive dyskinesia",
+    "aliases": ["tardive dyskinesia", "td", "orofacial dyskinesia"],
+    "def": "Late-onset, often irreversible involuntary movements (classically lip-smacking, tongue, grimacing) after prolonged dopamine blockade.",
+    "wikiId": "tardive-dyskinesia",
+    "category": "adverse-effect"
+  },
+  {
+    "term": "anticholinergic toxicity",
+    "aliases": ["anticholinergic toxicity", "anticholinergic burden", "anticholinergic toxidrome", "antimuscarinic toxicity"],
+    "def": "Antimuscarinic excess: dry mouth, blurred vision, constipation, urinary retention, flushed dry skin, hyperthermia, and confusion.",
+    "wikiId": "anticholinergic-toxicity",
+    "category": "syndrome"
+  },
+  {
+    "term": "tyramine crisis",
+    "aliases": ["tyramine crisis", "tyramine reaction", "hypertensive crisis", "cheese reaction"],
+    "def": "A dangerous blood-pressure surge when tyramine-rich foods are eaten on an irreversible MAOI — the 'cheese reaction'.",
+    "wikiId": "tyramine-crisis",
+    "category": "syndrome"
+  },
+  {
+    "term": "lithium toxicity",
+    "aliases": ["lithium toxicity", "lithium poisoning", "lithium overdose"],
+    "def": "Rising lithium levels causing coarse tremor, ataxia, slurred speech, vomiting, confusion, and seizures; a medical emergency.",
+    "wikiId": "lithium-toxicity",
+    "category": "syndrome"
+  },
+  {
+    "term": "metabolic syndrome",
+    "aliases": ["metabolic syndrome", "metabolic side effects"],
+    "def": "Antipsychotic-associated weight gain, dyslipidemia, and impaired glucose that raise cardiovascular and diabetes risk.",
+    "wikiId": "metabolic-syndrome",
+    "category": "syndrome"
+  },
+  {
+    "term": "discontinuation syndrome",
+    "aliases": ["discontinuation syndrome", "antidepressant withdrawal", "brain zaps"],
+    "def": "Flu-like malaise, dizziness, and electric-shock 'brain zaps' after abruptly stopping a short-half-life antidepressant.",
+    "wikiId": "discontinuation-syndrome",
+    "category": "syndrome"
+  },
+  {
+    "term": "anhedonia",
+    "aliases": ["anhedonia", "anhedonic"],
+    "def": "Loss of the ability to feel pleasure or interest in normally enjoyable activities — a core depressive symptom.",
+    "wikiId": null,
+    "category": "symptom"
+  },
+  {
+    "term": "grandiosity",
+    "aliases": ["grandiosity", "grandiose"],
+    "def": "Inflated self-esteem or belief in special powers or importance — a core manic symptom.",
+    "wikiId": null,
+    "category": "symptom"
+  },
+  {
+    "term": "diaphoresis",
+    "aliases": ["diaphoresis", "diaphoretic"],
+    "def": "Profuse sweating; a feature of serotonin syndrome, withdrawal, and stimulant toxicity (helps distinguish from anticholinergic dry skin).",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "mydriasis",
+    "aliases": ["mydriasis", "dilated pupils", "mydriatic"],
+    "def": "Pupillary dilation; seen in serotonergic and anticholinergic toxicity and stimulant intoxication.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "miosis",
+    "aliases": ["miosis", "pinpoint pupils", "miotic"],
+    "def": "Pupillary constriction ('pinpoint pupils') — a hallmark of opioid toxicity.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "hyperreflexia",
+    "aliases": ["hyperreflexia"],
+    "def": "Exaggerated deep-tendon reflexes; a key feature of serotonin syndrome, contrasting with the hyporeflexia of NMS.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "clonus",
+    "aliases": ["clonus", "inducible clonus"],
+    "def": "Rhythmic involuntary muscle jerks on sudden stretch; a defining sign of serotonin toxicity.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "rigidity",
+    "aliases": ["rigidity", "lead-pipe rigidity"],
+    "def": "Increased muscle tone; uniform 'lead-pipe' rigidity is a hallmark of neuroleptic malignant syndrome.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "tremor",
+    "aliases": ["tremor", "coarse tremor"],
+    "def": "Rhythmic involuntary shaking; a fine tremor is common on lithium and valproate, and a coarse tremor flags lithium toxicity.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "ataxia",
+    "aliases": ["ataxia", "ataxic"],
+    "def": "Impaired coordination and unsteady gait; a sign of lithium toxicity and anticonvulsant excess.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "dysarthria",
+    "aliases": ["dysarthria", "slurred speech"],
+    "def": "Slurred, poorly articulated speech; seen in lithium toxicity and sedative intoxication.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "orthostatic hypotension",
+    "aliases": ["orthostatic hypotension", "orthostasis", "postural hypotension"],
+    "def": "A drop in blood pressure on standing causing dizziness or faintness, often from alpha-1 blockade.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "hyperprolactinemia",
+    "aliases": ["hyperprolactinemia", "raised prolactin", "prolactin"],
+    "def": "Elevated prolactin from dopamine blockade, causing breast milk, missed periods, and sexual dysfunction.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "priapism",
+    "aliases": ["priapism"],
+    "def": "A prolonged, often painful erection unrelated to arousal; a urologic emergency classically linked to trazodone via alpha-1 blockade.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "qt prolongation",
+    "aliases": ["qt prolongation", "qtc prolongation", "prolonged qt", "qt interval"],
+    "def": "Lengthening of the ECG QT interval that raises the risk of the ventricular arrhythmia torsades de pointes.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "torsades de pointes",
+    "aliases": ["torsades de pointes", "torsades", "torsade"],
+    "def": "A polymorphic ventricular tachycardia triggered by QT prolongation; can be fatal.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "agranulocytosis",
+    "aliases": ["agranulocytosis"],
+    "def": "A severe, dangerous fall in neutrophils leaving the body prone to infection; a clozapine and carbamazepine risk.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "aplastic anemia",
+    "aliases": ["aplastic anemia", "aplastic anaemia"],
+    "def": "Bone-marrow failure producing low red cells, white cells, and platelets; a rare carbamazepine risk.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "neutropenia",
+    "aliases": ["neutropenia", "low neutrophils"],
+    "def": "A low neutrophil count raising infection risk; monitored closely with clozapine.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "hyponatremia",
+    "aliases": ["hyponatremia", "hyponatraemia", "low sodium"],
+    "def": "Low blood sodium that can cause confusion and seizures; linked to carbamazepine, oxcarbazepine, and SSRIs.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "siadh",
+    "aliases": ["siadh", "syndrome of inappropriate antidiuretic hormone"],
+    "def": "Excess antidiuretic hormone causing water retention and dilutional hyponatremia; a cause of drug-induced low sodium.",
+    "wikiId": null,
+    "category": "syndrome"
+  },
+  {
+    "term": "myocarditis",
+    "aliases": ["myocarditis"],
+    "def": "Inflammation of the heart muscle; an early clozapine risk (weeks 1-8) with tachycardia, chest pain, fever, and rising troponin.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "rhabdomyolysis",
+    "aliases": ["rhabdomyolysis"],
+    "def": "Breakdown of muscle releasing myoglobin that can injure the kidneys; a complication of NMS.",
+    "wikiId": null,
+    "category": "syndrome"
+  },
+  {
+    "term": "stevens-johnson syndrome",
+    "aliases": ["stevens-johnson syndrome", "sjs", "sjs/ten", "toxic epidermal necrolysis", "ten"],
+    "def": "A severe, blistering drug reaction of skin and mucous membranes; linked to lamotrigine and carbamazepine.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "dress",
+    "aliases": ["dress"],
+    "def": "Drug reaction with eosinophilia and systemic symptoms — rash, fever, and internal organ involvement.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "angioedema",
+    "aliases": ["angioedema"],
+    "def": "Deep tissue swelling of the lips, tongue, or airway that can be life-threatening.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "livedo reticularis",
+    "aliases": ["livedo reticularis"],
+    "def": "A mottled, net-like purplish skin discoloration; a signature effect of amantadine.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "hyperammonemic encephalopathy",
+    "aliases": ["hyperammonemic encephalopathy"],
+    "def": "Confusion and lethargy from high blood ammonia; a valproate complication that can occur even at normal drug levels.",
+    "wikiId": null,
+    "category": "syndrome"
+  },
+  {
+    "term": "rebound hypertension",
+    "aliases": ["rebound hypertension"],
+    "def": "A surge in blood pressure after abruptly stopping an alpha-2 agonist such as clonidine; taper to prevent it.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "first-dose phenomenon",
+    "aliases": ["first-dose phenomenon", "first-dose hypotension"],
+    "def": "Marked drop in blood pressure after the first dose of an alpha-1 blocker like prazosin; start low and dose at bedtime.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "sexual dysfunction",
+    "aliases": ["sexual dysfunction", "anorgasmia", "sexual side effects"],
+    "def": "Impaired desire, arousal, or orgasm; a common SSRI and SNRI effect that bupropion and mirtazapine largely spare.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "amnesia",
+    "aliases": ["amnesia", "amnestic", "anterograde amnesia"],
+    "def": "Memory loss; benzodiazepine hypnotics can cause anterograde amnesia for events while the drug is active.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "respiratory depression",
+    "aliases": ["respiratory depression"],
+    "def": "Slowed, shallow breathing that can be fatal; risk rises sharply when opioids combine with benzodiazepines or alcohol.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "nephrogenic diabetes insipidus",
+    "aliases": ["nephrogenic diabetes insipidus", "diabetes insipidus"],
+    "def": "Kidney resistance to antidiuretic hormone causing large volumes of dilute urine and thirst; a chronic lithium effect.",
+    "wikiId": null,
+    "category": "adverse-effect"
+  },
+  {
+    "term": "chorea",
+    "aliases": ["chorea", "choreoathetoid", "choreoathetoid movements"],
+    "def": "Irregular, flowing involuntary movements; VMAT2 inhibitors treat chorea in Huntington disease and tardive dyskinesia.",
+    "wikiId": null,
+    "category": "sign"
+  },
+  {
+    "term": "seizure threshold",
+    "aliases": ["seizure threshold", "lowers the seizure threshold"],
+    "def": "The brain's susceptibility to seizures; drugs like bupropion, clozapine, and TCAs lower it, raising seizure risk.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "half-life",
+    "aliases": ["half-life", "half life"],
+    "def": "The time for a drug's blood level to fall by half; short half-lives worsen withdrawal, long ones cause accumulation.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "titration",
+    "aliases": ["titration", "titrate", "titrating", "re-titrate"],
+    "def": "Gradually adjusting a dose up or down to balance therapeutic effect against tolerability.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "prodrug",
+    "aliases": ["prodrug"],
+    "def": "An inactive compound the body converts into the active drug (e.g., lisdexamfetamine, clorazepate).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "active metabolite",
+    "aliases": ["active metabolite", "active metabolites"],
+    "def": "A breakdown product of a drug that is itself pharmacologically active and can prolong or add to its effects.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "first-pass metabolism",
+    "aliases": ["first-pass metabolism", "first pass metabolism"],
+    "def": "Extensive breakdown of an oral drug by gut and liver before it reaches the circulation, lowering bioavailability.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "cyp2d6",
+    "aliases": ["cyp2d6", "2d6"],
+    "def": "A liver enzyme metabolizing many psychotropics; inhibitors like fluoxetine, paroxetine, and bupropion raise substrate levels.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "cyp3a4",
+    "aliases": ["cyp3a4", "3a4"],
+    "def": "A major liver and gut enzyme metabolizing many drugs; inducers cut levels, including reducing oral-contraceptive efficacy.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "cyp1a2",
+    "aliases": ["cyp1a2", "1a2"],
+    "def": "A liver enzyme; inhibition (fluvoxamine) or induction (smoking) markedly changes levels of substrates like clozapine and olanzapine.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "cyp2c19",
+    "aliases": ["cyp2c19", "2c19"],
+    "def": "A liver enzyme metabolizing citalopram and moclobemide; poor metabolizers or inhibitors push levels up.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "steady state",
+    "aliases": ["steady state"],
+    "def": "The point where drug intake equals elimination and blood levels plateau, usually reached after about five half-lives.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "therapeutic index",
+    "aliases": ["therapeutic index", "narrow therapeutic index", "narrow index"],
+    "def": "The margin between an effective dose and a toxic one; a narrow index (lithium) means small changes matter.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "washout",
+    "aliases": ["washout"],
+    "def": "A drug-free interval before starting an interacting agent — e.g., 14 days around an MAOI, up to 5 weeks after fluoxetine.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "loading dose",
+    "aliases": ["loading dose", "loaded", "loading"],
+    "def": "A large initial dose that reaches therapeutic levels quickly, as with valproate loaded for acute mania.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "trough level",
+    "aliases": ["trough level", "trough", "therapeutic drug level"],
+    "def": "A drug level drawn just before the next dose (its lowest point); used to monitor lithium and other narrow-index drugs.",
+    "wikiId": null,
+    "category": "lab"
+  },
+  {
+    "term": "partial agonist",
+    "aliases": ["partial agonist"],
+    "def": "A drug that partly activates a receptor — calming excess signalling while providing some when it is low (e.g., aripiprazole, buprenorphine).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "positive allosteric modulator",
+    "aliases": ["positive allosteric modulator", "allosteric modulator"],
+    "def": "A drug that binds a receptor away from its main site to boost the response to its natural signal, as benzodiazepines do at GABA-A.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "enzyme inducer",
+    "aliases": ["enzyme inducer", "enzyme induction", "cyp induction"],
+    "def": "A drug that speeds up a metabolic enzyme, lowering levels of drugs it clears (e.g., carbamazepine induces CYP3A4).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "enzyme inhibitor",
+    "aliases": ["enzyme inhibitor", "enzyme inhibition", "cyp inhibitor"],
+    "def": "A drug that blocks a metabolic enzyme, raising levels of drugs it clears — a common source of interactions.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "autoinduction",
+    "aliases": ["autoinduction", "autoinducer", "autoinduces"],
+    "def": "When a drug speeds up its own metabolism over the first weeks, so its level falls and must be rechecked (carbamazepine).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "poor metabolizer",
+    "aliases": ["poor metabolizer", "poor metaboliser", "poor metabolizers"],
+    "def": "Someone whose genetic enzyme variant clears a drug slowly, so standard doses produce higher-than-expected levels.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "long-acting injectable",
+    "aliases": ["long-acting injectable", "lai", "depot", "decanoate"],
+    "def": "A depot antipsychotic injected every 2 weeks to 3 months to maintain steady levels and support adherence.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "ceiling effect",
+    "aliases": ["ceiling effect", "no ceiling effect"],
+    "def": "A dose above which more drug adds no extra effect; partial agonists like buprenorphine have one, barbiturates do not.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "inverse agonist",
+    "aliases": ["inverse agonist"],
+    "def": "A drug that binds a receptor and drives the opposite of an agonist's effect, lowering baseline activity (e.g., pimavanserin at 5-HT2A).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "boxed warning",
+    "aliases": ["boxed warning", "black box warning", "class boxed warning"],
+    "def": "The strongest safety warning on a drug label, flagging serious or life-threatening risks.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "linear kinetics",
+    "aliases": ["linear kinetics"],
+    "def": "Predictable dosing where blood levels rise in proportion to the dose (e.g., pregabalin), unlike gabapentin's saturable absorption.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "glucuronidation",
+    "aliases": ["glucuronidation", "glucuronidated"],
+    "def": "A liver conjugation pathway with no CYP step that clears the 'LOT' benzos, so it is preserved in liver disease.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "enantiomer",
+    "aliases": ["enantiomer", "s-enantiomer", "r-enantiomer", "d-enantiomer"],
+    "def": "One of two mirror-image forms of a molecule; the purified active form may be sold alone (e.g., escitalopram from citalopram).",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "cross-taper",
+    "aliases": ["cross-taper", "cross taper", "cross-tapering"],
+    "def": "Gradually lowering one drug while raising its replacement to switch agents safely.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "gaba-a receptor",
+    "aliases": ["gaba-a", "gaba-a receptor", "gaba a"],
+    "def": "The brain's main inhibitory receptor — a chloride channel that benzodiazepines and barbiturates enhance to calm neural activity.",
+    "wikiId": null,
+    "category": "pharmacology"
+  },
+  {
+    "term": "vmat2 inhibitor",
+    "aliases": ["vmat2 inhibitor", "vmat2"],
+    "def": "A drug that depletes presynaptic dopamine by blocking its vesicular transporter; treats tardive dyskinesia and chorea.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "nmda antagonist",
+    "aliases": ["nmda antagonist", "nmda blocker", "nmda receptor antagonist"],
+    "def": "A drug that blocks the glutamate NMDA receptor; memantine uses this for dementia, amantadine for parkinsonism.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "cholinesterase inhibitor",
+    "aliases": ["cholinesterase inhibitor", "acetylcholinesterase inhibitor", "ache inhibitor"],
+    "def": "A drug that blocks acetylcholine breakdown to boost cholinergic signalling; used symptomatically in Alzheimer dementia.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "neurosteroid",
+    "aliases": ["neurosteroid", "neurosteroids"],
+    "def": "A steroid that modulates brain receptors; GABA-A neurosteroids brexanolone and zuranolone treat postpartum depression.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "ssri",
+    "aliases": ["ssri", "ssris", "selective serotonin reuptake inhibitor"],
+    "def": "Selective serotonin reuptake inhibitor — first-line antidepressants for depression and anxiety with a favourable safety profile.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "snri",
+    "aliases": ["snri", "snris", "serotonin-norepinephrine reuptake inhibitor"],
+    "def": "Serotonin-norepinephrine reuptake inhibitor (e.g., venlafaxine, duloxetine); treats depression, anxiety, and some pain.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "maoi",
+    "aliases": ["maoi", "maois", "monoamine oxidase inhibitor"],
+    "def": "Monoamine oxidase inhibitor — a potent but interaction-prone antidepressant class needing a tyramine diet and drug washouts.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "tricyclic antidepressant",
+    "aliases": ["tricyclic antidepressant", "tca", "tcas", "tricyclic"],
+    "def": "An older antidepressant class that is effective but anticholinergic and cardiotoxic in overdose via sodium-channel blockade.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "ndri",
+    "aliases": ["ndri"],
+    "def": "Norepinephrine-dopamine reuptake inhibitor (bupropion) — activating and sparing of weight and sexual side effects.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "nassa",
+    "aliases": ["nassa"],
+    "def": "Noradrenergic and specific serotonergic antidepressant (mirtazapine) — sedating and appetite-stimulating.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "benzodiazepine",
+    "aliases": ["benzodiazepine", "benzodiazepines", "benzo", "benzos"],
+    "def": "GABA-A enhancers used for anxiety, insomnia, seizures, and withdrawal; effective but habit-forming with tolerance.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "z-drug",
+    "aliases": ["z-drug", "z-drugs"],
+    "def": "Non-benzodiazepine hypnotics (zopiclone, zolpidem) acting at the benzo GABA-A site, used short-term for insomnia.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "barbiturate",
+    "aliases": ["barbiturate", "barbiturates"],
+    "def": "An older sedative that prolongs GABA-A channel opening with no ceiling effect — dangerous and lethal in overdose (e.g., phenobarbital).",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "first-generation antipsychotic",
+    "aliases": ["first-generation antipsychotic", "fga", "fgas", "typical antipsychotic"],
+    "def": "Typical antipsychotic — a potent dopamine D2 blocker with prominent EPS risk (e.g., haloperidol).",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "second-generation antipsychotic",
+    "aliases": ["second-generation antipsychotic", "sga", "sgas", "atypical antipsychotic"],
+    "def": "Atypical antipsychotic — blocks D2 and 5-HT2A with generally less EPS but more metabolic risk.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "phenothiazine",
+    "aliases": ["phenothiazine", "phenothiazines"],
+    "def": "A typical antipsychotic class (e.g., chlorpromazine, fluphenazine) where potency drives the EPS-versus-sedation trade-off.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "butyrophenone",
+    "aliases": ["butyrophenone", "butyrophenones"],
+    "def": "A high-potency typical antipsychotic class (haloperidol, droperidol) with strong D2 blockade and EPS and QT risk.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "thioxanthene",
+    "aliases": ["thioxanthene", "thioxanthenes"],
+    "def": "A typical antipsychotic class (e.g., zuclopenthixol, flupenthixol) often used in depot form.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "stimulant",
+    "aliases": ["stimulant", "stimulants"],
+    "def": "Dopamine/norepinephrine-boosting agents (methylphenidate, amphetamines) — first-line, most effective ADHD treatment; controlled substances.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "dora",
+    "aliases": ["dora", "doras", "orexin antagonist", "dual orexin receptor antagonist"],
+    "def": "Dual orexin receptor antagonist (lemborexant) — blocks the brain's wake signal to promote sleep without dependence.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "nri",
+    "aliases": ["nri", "norepinephrine reuptake inhibitor", "selective norepinephrine reuptake inhibitor"],
+    "def": "A selective norepinephrine reuptake inhibitor (atomoxetine); a non-controlled ADHD option with delayed 2-4 week onset.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "alpha-2 agonist",
+    "aliases": ["alpha-2 agonist", "alpha2 agonist", "α2 agonist", "α2-adrenergic agonist"],
+    "def": "Agents (clonidine, guanfacine, dexmedetomidine) that lower sympathetic outflow; used in ADHD, agitation, and withdrawal.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "alpha-1 blocker",
+    "aliases": ["alpha-1 blocker", "alpha-1 antagonist", "α1 antagonist", "α1 blocker"],
+    "def": "An alpha-1 adrenergic antagonist (prazosin) that lowers blood pressure and is used for PTSD nightmares.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "beta-blocker",
+    "aliases": ["beta-blocker", "beta blocker", "β-blocker"],
+    "def": "A beta-adrenergic antagonist (propranolol); first-line for akathisia and useful for tremor and performance anxiety.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "mood stabilizer",
+    "aliases": ["mood stabilizer", "mood stabiliser", "mood stabilizers"],
+    "def": "A drug that prevents manic and depressive relapse in bipolar disorder (lithium, valproate, lamotrigine).",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "opioid agonist therapy",
+    "aliases": ["opioid agonist therapy", "oat"],
+    "def": "Maintenance buprenorphine or methadone that prevents withdrawal and craving in opioid use disorder.",
+    "wikiId": "oud",
+    "category": "class"
+  },
+  {
+    "term": "rima",
+    "aliases": ["rima", "reversible inhibitor of mao-a"],
+    "def": "A reversible MAO-A inhibitor (moclobemide) that tyramine can displace, so no strict diet — but serotonin cautions remain.",
+    "wikiId": null,
+    "category": "class"
+  },
+  {
+    "term": "hla-b*1502",
+    "aliases": ["hla-b*1502", "hla-b1502"],
+    "def": "A genetic marker; carriers (more common in some Asian ancestries) have high SJS/TEN risk with carbamazepine — screen before starting.",
+    "wikiId": null,
+    "category": "lab"
+  },
+  {
+    "term": "creatine kinase",
+    "aliases": ["creatine kinase", "ck", "elevated ck"],
+    "def": "A muscle enzyme; a markedly raised CK signals muscle breakdown, as in neuroleptic malignant syndrome.",
+    "wikiId": null,
+    "category": "lab"
+  },
+  {
+    "term": "absolute neutrophil count",
+    "aliases": ["absolute neutrophil count", "anc"],
+    "def": "The count of infection-fighting neutrophils; monitored on clozapine to catch agranulocytosis early.",
+    "wikiId": null,
+    "category": "lab"
+  },
+  {
+    "term": "aims",
+    "aliases": ["aims", "abnormal involuntary movement scale"],
+    "def": "Abnormal Involuntary Movement Scale — a standardized exam tracking tardive dyskinesia over time.",
+    "wikiId": null,
+    "category": "other"
+  },
+  {
+    "term": "ciwa",
+    "aliases": ["ciwa", "ciwa-guided"],
+    "def": "A structured scale rating alcohol-withdrawal severity to guide symptom-triggered benzodiazepine dosing.",
+    "wikiId": null,
+    "category": "other"
+  },
+  {
+    "term": "beers criteria",
+    "aliases": ["beers criteria", "beers list", "beers-type"],
+    "def": "A list of medications best avoided in older adults due to high risk, such as strongly anticholinergic drugs.",
+    "wikiId": null,
+    "category": "other"
+  }
+]

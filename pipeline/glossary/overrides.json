@@ -1,0 +1,10 @@
+{
+  "_comment": "Manual clinical-QA overrides applied by build.js after consolidation. Keys are canonical terms. Value 'DROP' removes the term; an object may set {def, dropAliases[], wiki}.",
+  "panic attack": { "def": "A sudden surge of intense fear peaking within minutes, with somatic symptoms and fear of dying or losing control; recurrent unexpected attacks define panic disorder." },
+  "stimulant": { "dropAliases": ["non-stimulant"] },
+  "stevens-johnson syndrome": { "dropAliases": ["ten", "dress"] },
+  "loading dose": { "dropAliases": ["loading", "loaded", "load it", "loadable"] },
+  "second-generation antipsychotic": { "dropAliases": ["atypical"] },
+  "controlled substance": { "dropAliases": ["scheduled"] },
+  "ceiling effect": { "dropAliases": ["ceiling"] }
+}

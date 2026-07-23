@@ -139,7 +139,7 @@
       var frac = total ? m.got / total : 1;
       var q = frac >= 1 ? 5 : frac >= 0.8 ? 4 : frac >= 0.5 ? 3 : 2;   // Easy / Good / Hard / Again
       PML.srs.review(m.id, q);
-      var xpEv = PML.game.addXp(q >= 4 ? 8 : q === 3 ? 6 : 3);
+      var xpEv = PML.game.addXp(q >= 4 ? 8 : q === 3 ? 6 : 3, 'drill');
       reviewed++;
       if (xpEv.leveled) PML.ui.celebrate({ xp: xpEv, leveled: true, level: xpEv.to }, { anchor: container });
       PML.ui.refreshHud();

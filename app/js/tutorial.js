@@ -61,6 +61,10 @@
     var list = steps();
     if (!list.length) { opts.onDone && opts.onDone(); return; }
     var i = 0;
+    // Skippable on any run AFTER the first: once the resident has completed the tour once
+    // (tutorialSeen), replays let them skip the whole tour and advance past steps freely.
+    // The very first run stays mandatory (gated, no skip).
+    var skippable = opts.skippable != null ? opts.skippable : (PML.store.get().settings.tutorialSeen === true);
 
     var overlay = ce('div', { class: 'tutorial-overlay' });
     var card = ce('div', { class: 'tutorial-card pop', role: 'dialog', 'aria-label': 'Tutorial', 'aria-live': 'polite' });
@@ -73,8 +77,10 @@
     var backBtn = ce('button', { class: 'btn sm ghost', onclick: prev }, ['← Back']);
     var nextBtn = ce('button', { class: 'btn primary', onclick: next }, ['Next →']);
     var hint = ce('span', { class: 'tut-hint' }, ['']);
-    // No "Skip" — the tour is not skippable.
-    var controls = ce('div', { class: 'row spread', style: { marginTop: 'var(--sp-3)' } }, [hint, ce('div', { class: 'row', style: { gap: '8px' } }, [backBtn, nextBtn])]);
+    // "Skip tour" appears only on replays (skippable) — the first run has no skip.
+    var skipBtn = skippable ? ce('button', { class: 'btn sm ghost', onclick: function () { finish(); } }, ['Skip tour ✕']) : null;
+    var leftSide = skippable ? ce('div', { class: 'row', style: { gap: '10px', alignItems: 'center' } }, [skipBtn, hint]) : hint;
+    var controls = ce('div', { class: 'row spread', style: { marginTop: 'var(--sp-3)' } }, [leftSide, ce('div', { class: 'row', style: { gap: '8px' } }, [backBtn, nextBtn])]);
 
     card.appendChild(dots);
     card.appendChild(ce('div', { class: 'row', style: { gap: '12px', alignItems: 'flex-start' } }, [mascotWrap, bubble]));
@@ -137,6 +143,23 @@
     function beginStepGate(step) {
       clearGate();
       resolved = false;
+      // On replays the tour is skippable: never gate Next (steps can be skipped freely). Audio
+      // still plays if narration is on, but the resident is not held on any step.
+      if (skippable) {
+        setGate(false);
+        setTalking(false);
+        var vOn = PML.store.get().settings.voice !== false;
+        if (vOn) {
+          var p2 = playStep(step.id);
+          if (p2 && p2.audio) {
+            p2.audio.addEventListener('playing', function () { setTalking(true); });
+            p2.audio.addEventListener('pause', function () { setTalking(false); });
+            p2.audio.addEventListener('ended', function () { setTalking(false); });
+            if (p2.promise) p2.promise.catch(function () { setTalking(false); });
+          }
+        } else { stopAudio(); }
+        return;
+      }
       setGate(true);
       setTalking(false);
       function ungate() { if (resolved) return; resolved = true; clearGate(); setGate(false); }
@@ -169,7 +192,8 @@
     function next() { if (nextBtn.disabled) return; if (i < list.length - 1) { i++; render(); } else finish(); }
     function prev() { if (i > 0) { i--; render(); } }
     function onKey(e) {
-      // Escape is intentionally ignored — the tour is not skippable.
+      // Escape closes the tour only on replays (skippable); the first run ignores it.
+      if (e.key === 'Escape') { if (skippable) { e.preventDefault(); finish(); } return; }
       if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
       else if ((e.key === 'ArrowRight' || e.key === 'Enter') && !nextBtn.disabled) { e.preventDefault(); next(); }
     }
