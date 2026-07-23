@@ -1,0 +1,148 @@
+{
+  "0": [
+    {
+      "id": "rev_substance_0_1",
+      "stem": "On the OAT induction ward you need the agent that is a FULL mu-opioid agonist with no ceiling on respiratory depression, whose dose-dependent QT prolongation warrants a baseline and follow-up ECG. Which do you choose?",
+      "options": ["Methadone", "Buprenorphine/naloxone", "Naltrexone", "Naloxone"],
+      "answer": "Methadone",
+      "explanation": "Methadone is a full mu agonist, so unlike buprenorphine's partial-agonist ceiling there is no plateau on respiratory depression, and it prolongs QT dose-dependently (get an ECG, especially >100 mg). Buprenorphine/naloxone has the safety ceiling and minimal QT effect; naltrexone and naloxone are antagonists, not agonists.",
+      "meds": ["methadone", "buprenorphine_naloxone", "naltrexone", "naloxone"],
+      "focus": "full-agonist QTc/no-ceiling (methadone) vs partial-agonist ceiling (buprenorphine)",
+      "source": {"name": "Methadone product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_0_2",
+      "stem": "A stable patient's take-home OAT contains a second ingredient that is essentially inert when the film is taken sublingually but precipitates withdrawal if the product is dissolved and injected, deterring IV misuse. Which agent is this?",
+      "options": ["Buprenorphine/naloxone", "Methadone", "Naltrexone", "Naloxone"],
+      "answer": "Buprenorphine/naloxone",
+      "explanation": "In buprenorphine/naloxone the naloxone is poorly bioavailable sublingually (inert if used correctly) and only blocks the high / precipitates withdrawal if injected — an abuse-deterrent. The precipitated-withdrawal caution on INDUCTION, by contrast, is driven by buprenorphine's high mu affinity, not the naloxone. Methadone is a single full agonist; naltrexone and naloxone are standalone antagonists.",
+      "meds": ["buprenorphine_naloxone", "methadone", "naltrexone", "naloxone"],
+      "focus": "combo product: naloxone as abuse-deterrent (inert SL) vs buprenorphine-driven induction risk",
+      "source": {"name": "Buprenorphine/naloxone product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_0_3",
+      "stem": "EMS reverses an overdose with a SHORT-acting pure opioid antagonist, then you counsel the family to keep watching the patient because it can wear off before a long-acting opioid does. Which agent was used?",
+      "options": ["Naloxone", "Naltrexone", "Methadone", "Buprenorphine/naloxone"],
+      "answer": "Naloxone",
+      "explanation": "Naloxone is the short-acting overdose RESCUE antagonist; because it can wear off before methadone or extended-release opioids clear, re-narcotization is the key risk (re-dose or infuse, always call EMS). Naltrexone is the LONG-acting maintenance antagonist, not a rescue agent; methadone and buprenorphine/naloxone are agonist therapies.",
+      "meds": ["naloxone", "naltrexone", "methadone", "buprenorphine_naloxone"],
+      "focus": "short-acting rescue antagonist (naloxone) vs long-acting maintenance antagonist (naltrexone)",
+      "source": {"name": "Naloxone product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_0_4",
+      "stem": "Before starting an OUD relapse-prevention agent you insist on roughly 7-10 opioid-free days, and you note it is contraindicated in anyone still receiving opioid ANALGESICS. Skipping the washout would precipitate withdrawal. Which agent demands this?",
+      "options": ["Naltrexone", "Naloxone", "Methadone", "Buprenorphine/naloxone"],
+      "answer": "Naltrexone",
+      "explanation": "Naltrexone is a maintenance antagonist, so the patient must be opioid-free ~7-10 days or you precipitate withdrawal, and it is contraindicated with opioid analgesics / current opioid dependence (plan non-opioid or regional analgesia for surgery). Naloxone is the acute rescue antagonist, not maintenance; methadone and buprenorphine/naloxone are agonists started IN objective withdrawal, not after a washout.",
+      "meds": ["naltrexone", "naloxone", "methadone", "buprenorphine_naloxone"],
+      "focus": "naltrexone opioid-free interval + opioid-analgesic contraindication",
+      "source": {"name": "Naltrexone product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_0_5",
+      "stem": "Two of the OUD-core agents are opioid antagonists. One is the emergency reversal drug; the other is a once-monthly-capable maintenance drug that also cuts heavy-drinking days in alcohol use disorder. Which is the MAINTENANCE antagonist?",
+      "options": ["Naltrexone", "Naloxone"],
+      "answer": "Naltrexone",
+      "explanation": "Both block mu receptors, but naltrexone is the long-acting oral / IM-depot MAINTENANCE antagonist — dual use for detoxified OUD relapse prevention and for reducing craving/heavy drinking in AUD. Naloxone is the short-acting emergency reversal agent only. Confusing the two matters: giving naltrexone to someone still on opioids precipitates withdrawal.",
+      "meds": ["naltrexone", "naloxone"],
+      "focus": "naltrexone (maintenance, dual AUD/OUD) vs naloxone (acute rescue)",
+      "source": {"name": "Naltrexone product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_0_6",
+      "stem": "For most patients starting OAT, national (CRISM) guidance favours the agent whose partial-agonist ceiling on respiratory depression makes overdose safer than the full agonist. Which is preferred first-line?",
+      "options": ["Buprenorphine/naloxone", "Methadone", "Naltrexone", "Naloxone"],
+      "answer": "Buprenorphine/naloxone",
+      "explanation": "Buprenorphine/naloxone is first-line OAT for most patients because buprenorphine's partial-agonist ceiling limits respiratory depression, unlike methadone's full-agonist risk (accumulation, delayed overdose in the first 1-2 weeks, QT/torsades). Methadone remains a valid full-agonist option; naltrexone/naloxone are antagonists, not agonist maintenance.",
+      "meds": ["buprenorphine_naloxone", "methadone", "naltrexone", "naloxone"],
+      "focus": "first-line safety ceiling (buprenorphine/naloxone) vs full-agonist methadone",
+      "source": {"name": "CRISM national OUD/OAT guideline", "origin": "guideline"}
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_substance_1_1",
+      "stem": "You want an AUD strategy that works by DETERRENCE: it irreversibly inhibits aldehyde dehydrogenase so any drinking floods the patient with acetaldehyde, causing flushing, throbbing headache and vomiting. Which agent is this?",
+      "options": ["Disulfiram", "Acamprosate", "Naltrexone", "Varenicline"],
+      "answer": "Disulfiram",
+      "explanation": "Disulfiram irreversibly blocks ALDH, so acetaldehyde accumulates and produces the aversive disulfiram-alcohol reaction — a deterrent, not an anti-craving effect. Acamprosate and naltrexone reduce craving without any aversive reaction; varenicline treats nicotine, not alcohol.",
+      "meds": ["disulfiram", "acamprosate", "naltrexone", "varenicline"],
+      "focus": "aversive ALDH inhibition (disulfiram) vs anti-craving agents",
+      "source": {"name": "Disulfiram product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_1_2",
+      "stem": "For maintaining abstinence in an already-abstinent patient you pick a non-aversive AUD agent that is renally excreted unchanged (so it must be avoided in severe renal impairment, CrCl <=30) rather than hepatically metabolized. Which agent?",
+      "options": ["Acamprosate", "Disulfiram", "Naltrexone", "Varenicline"],
+      "answer": "Acamprosate",
+      "explanation": "Acamprosate modulates glutamate/GABA to support abstinence, is renally cleared (contraindicated in severe renal impairment, CrCl <=30 mL/min) and non-aversive. It does NOT treat acute withdrawal. Contrast disulfiram (aversive, hepatotoxic) and naltrexone (hepatotoxic, hepatically handled); varenicline is for smoking cessation.",
+      "meds": ["acamprosate", "disulfiram", "naltrexone", "varenicline"],
+      "focus": "acamprosate renal clearance / non-aversive maintenance",
+      "source": {"name": "Acamprosate product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_1_3",
+      "stem": "A patient wants to quit SMOKING. You reach for the alpha4-beta2 nicotinic partial agonist — the most effective single pharmacotherapy for cessation — and tell them to start it about a week before their quit date. Which agent?",
+      "options": ["Varenicline", "Acamprosate", "Disulfiram", "Naltrexone"],
+      "answer": "Varenicline",
+      "explanation": "Varenicline is an alpha4-beta2 nicotinic partial agonist: partial stimulation eases craving/withdrawal while blocking nicotine's reward. Start ~1 week before the quit date; nausea and vivid dreams are hallmark effects. Acamprosate and disulfiram/naltrexone target ALCOHOL, not nicotine.",
+      "meds": ["varenicline", "acamprosate", "disulfiram", "naltrexone"],
+      "focus": "varenicline for nicotine cessation vs alcohol-use-disorder agents",
+      "source": {"name": "Varenicline product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_1_4",
+      "stem": "Which AUD medication is appropriate ONLY for a motivated, insightful, already-abstinent patient who understands that a slip will trigger a punishing physical reaction, and is best taken under supervision — because its whole strategy is deterrence rather than craving reduction?",
+      "options": ["Disulfiram", "Acamprosate", "Varenicline", "Naltrexone"],
+      "answer": "Disulfiram",
+      "explanation": "Disulfiram's aversive mechanism requires a motivated, insightful, abstinent patient (and must never be given without their knowledge or while intoxicated); it is not first-line. Acamprosate and naltrexone are anti-craving agents that do not depend on fear of a reaction; varenicline is for smoking.",
+      "meds": ["disulfiram", "acamprosate", "varenicline", "naltrexone"],
+      "focus": "aversive-therapy patient selection (disulfiram) vs anti-craving agents",
+      "source": {"name": "Disulfiram product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_1_5",
+      "stem": "Your AUD patient has significant hepatic impairment / alcoholic liver disease. Which agent is the safest choice because it is renally excreted unchanged rather than hepatically metabolized or overtly hepatotoxic?",
+      "options": ["Acamprosate", "Disulfiram", "Naltrexone", "Varenicline"],
+      "answer": "Acamprosate",
+      "explanation": "Acamprosate bypasses hepatic metabolism (renally excreted unchanged), so it is a good fit in alcoholic liver disease — provided renal function is adequate. Disulfiram can cause fulminant hepatotoxicity and naltrexone is dose-dependently hepatotoxic, both less ideal here; varenicline targets nicotine, not alcohol.",
+      "meds": ["acamprosate", "disulfiram", "naltrexone", "varenicline"],
+      "focus": "organ-based selection: liver-sparing acamprosate vs hepatotoxic disulfiram/naltrexone",
+      "source": {"name": "Acamprosate product monograph", "origin": "monograph"}
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_substance_2_1",
+      "stem": "You want the PARTIAL mu-opioid agonist whose ceiling on respiratory depression makes it safer in overdose than methadone and whose QT effect is minimal by comparison. Which single agent fits?",
+      "options": ["Buprenorphine", "Methadone", "Naltrexone", "Naloxone"],
+      "answer": "Buprenorphine",
+      "explanation": "Buprenorphine is a high-affinity partial mu agonist (with kappa antagonism): the partial activation gives a ceiling on respiratory depression, so it is safer in overdose than full-agonist methadone, and its QT effect is much smaller. Methadone is the full agonist with dose-dependent QT/torsades; naltrexone and naloxone are antagonists.",
+      "meds": ["buprenorphine", "methadone", "naltrexone", "naloxone"],
+      "focus": "partial-agonist ceiling / minimal QT (buprenorphine) vs full-agonist methadone",
+      "source": {"name": "Buprenorphine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_2_2",
+      "stem": "Because this agent's high mu affinity DISPLACES full agonists, starting it too soon precipitates withdrawal — so you wait for objective withdrawal (COWS) or use a micro-dosing induction. Which agent requires that timing?",
+      "options": ["Buprenorphine", "Methadone", "Naltrexone", "Naloxone"],
+      "answer": "Buprenorphine",
+      "explanation": "Buprenorphine's high receptor affinity plus low intrinsic activity means it knocks full agonists off the receptor, precipitating withdrawal if given before the patient is in objective withdrawal — hence wait for COWS or micro-dose. Methadone (full agonist) is started low/slow without that displacement issue; naltrexone precipitates withdrawal by full antagonism and needs a 7-10 day washout, not COWS timing; naloxone is emergency reversal.",
+      "meds": ["buprenorphine", "methadone", "naltrexone", "naloxone"],
+      "focus": "buprenorphine induction timing / precipitated withdrawal (COWS, micro-dosing)",
+      "source": {"name": "Buprenorphine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_substance_2_3",
+      "stem": "Compared with the sublingual buprenorphine/naloxone COMBINATION, which product is the plain partial agonist that LACKS the added naloxone abuse-deterrent component (as used in mono formulations)?",
+      "options": ["Buprenorphine", "Buprenorphine/naloxone", "Methadone", "Naltrexone"],
+      "answer": "Buprenorphine",
+      "explanation": "Mono buprenorphine is the partial agonist WITHOUT naloxone; the combination adds naloxone (inert sublingually, but precipitates withdrawal if injected) purely as an abuse-deterrent. The pharmacology at the mu receptor is the same buprenorphine — the difference is the missing deterrent. Methadone is a full agonist and naltrexone an antagonist.",
+      "meds": ["buprenorphine", "buprenorphine_naloxone", "methadone", "naltrexone"],
+      "focus": "buprenorphine mono vs combo — absence of the naloxone abuse-deterrent",
+      "source": {"name": "Buprenorphine product monograph", "origin": "monograph"}
+    }
+  ]
+}

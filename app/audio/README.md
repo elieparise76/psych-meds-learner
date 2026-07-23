@@ -4,18 +4,23 @@ The guided tutorial always works as text. Drop one MP3 per step here and it play
 while narration is on (Settings → *Tutorial narration*). Because you can't press **Next** until
 the clip finishes, the voice sets the pace of the whole (non-skippable) tour.
 
-## The 10 clips — exact filenames
+## The 11 clips — exact filenames
 
 Name each file by the step `id`, lowercase, `.mp3`. The full set (order = tour order):
 
 ```
-welcome.mp3   home.mp3   lesson.mp3   review.mp3   practice.mp3
+welcome.mp3   home.mp3   roadmap.mp3   lesson.mp3   review.mp3   practice.mp3
 wiki.mp3      compare-cram.mp3   progress.mp3   safety.mp3   go.mp3
 ```
 
 Put them **right here**, in `app/audio/`. That's it — no config, no rebuild. The exact text for
 each is in `pipeline/tutorial-script.js` (single source of truth). If you edit the script, re-run
 `node pipeline/build-content.js` and re-record the changed clips.
+
+**New in the roadmap update:** `roadmap.mp3` is a brand-new step, and `home.mp3`, `lesson.mp3`,
+and `go.mp3` were reworded — re-record those. **Switching to a new voice?** Re-record **all 11**
+with that voice so the tour stays consistent (a step with no clip just falls back to a short
+reading-time gate, so a missing/older clip won't break the tour — it'll only sound mismatched).
 
 ## Generating them from the ElevenLabs website (free account)
 

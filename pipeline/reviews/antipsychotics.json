@@ -1,0 +1,372 @@
+{
+  "0": [
+    {
+      "id": "rev_antipsychotics_0_1",
+      "stem": "A 24-year-old woman started on a first-line SGA develops amenorrhea, galactorrhea and cogwheel rigidity within a few weeks. Which agent — the most D2-potent of the SGAs — best explains BOTH the hyperprolactinemia and the extrapyramidal signs?",
+      "options": ["Risperidone", "Olanzapine", "Quetiapine", "Aripiprazole"],
+      "answer": "Risperidone",
+      "explanation": "Risperidone is the most D2-potent SGA, so at usual doses it produces the most dose-dependent EPS and the most hyperprolactinemia of the atypicals — at higher doses it behaves like a high-potency FGA. Olanzapine and quetiapine both have loose/low D2 occupancy (low EPS, low prolactin), and aripiprazole is a partial agonist that is prolactin-sparing (it can even lower prolactin). The galactorrhea-plus-EPS picture points squarely to risperidone.",
+      "meds": ["risperidone", "olanzapine", "quetiapine", "aripiprazole"],
+      "focus": "risperidone = most EPS + most hyperprolactinemia of the SGAs",
+      "source": { "name": "Risperidone monograph (dose-dependent EPS and hyperprolactinemia)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_0_2",
+      "stem": "A 22-year-old man with a first episode of psychosis gains 9 kg over three months with new dyslipidemia and impaired fasting glucose. Which first-line SGA is, along with clozapine, among the WORST for weight gain and metabolic syndrome?",
+      "options": ["Aripiprazole", "Olanzapine", "Quetiapine", "Risperidone"],
+      "answer": "Olanzapine",
+      "explanation": "Olanzapine's broad H1, muscarinic and 5-HT2C blockade makes it — with clozapine — one of the two highest metabolic-risk antipsychotics: marked weight gain, dyslipidemia and hyperglycemia/DKA. Aripiprazole is essentially weight- and prolactin-neutral, quetiapine carries only moderate metabolic risk, and risperidone is intermediate. Olanzapine buys high efficacy and strong sedation at the cost of the worst metabolic burden of the first-line group.",
+      "meds": ["aripiprazole", "olanzapine", "quetiapine", "risperidone"],
+      "focus": "olanzapine = worst metabolic risk (with clozapine)",
+      "source": { "name": "Olanzapine monograph (metabolic warnings; hyperglycemia/DKA)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_0_3",
+      "stem": "A patient with Parkinson disease develops distressing visual hallucinations. If a standard antipsychotic must be used, which first-line SGA is preferred because its loose D2 binding gives the LOWEST EPS and prolactin, minimizing worsening of motor symptoms?",
+      "options": ["Haloperidol", "Risperidone", "Quetiapine", "Olanzapine"],
+      "answer": "Quetiapine",
+      "explanation": "Quetiapine has the loosest/lowest D2 occupancy of these agents, giving the lowest EPS and prolactin — which is why it is a traditional go-to when psychosis must be treated in Parkinson disease or in EPS-prone patients. Haloperidol (high-potency FGA) and risperidone (most D2-potent SGA) would both worsen parkinsonism, and olanzapine carries more anticholinergic and metabolic burden. Quetiapine is also very sedating via potent H1.",
+      "meds": ["haloperidol", "risperidone", "quetiapine", "olanzapine"],
+      "focus": "quetiapine = lowest EPS/prolactin (Parkinson disease psychosis)",
+      "source": { "name": "CANMAT/monograph — low-EPS choice in Parkinson disease psychosis", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antipsychotics_0_4",
+      "stem": "A young man started on an antipsychotic becomes restless and unable to sit still (akathisia), stays activated, and later discloses new compulsive online gambling. Which first-line agent — a D2/D3 partial agonist — best fits this activating, prolactin-sparing, impulse-control profile?",
+      "options": ["Olanzapine", "Quetiapine", "Haloperidol", "Aripiprazole"],
+      "answer": "Aripiprazole",
+      "explanation": "Aripiprazole is the prototype D2/D3 PARTIAL agonist (\"dopamine system stabilizer\"): weight- and prolactin-neutral and low-sedation, but characteristically activating with prominent akathisia, and it carries the dopamine-agonist impulse-control warning (pathological gambling, hypersexuality, compulsive shopping/eating). Olanzapine and quetiapine are sedating antagonists, and haloperidol causes EPS and raises prolactin rather than activation and gambling. Ask specifically about impulse-control urges.",
+      "meds": ["olanzapine", "quetiapine", "haloperidol", "aripiprazole"],
+      "focus": "aripiprazole = partial agonist (akathisia/activation + impulse-control)",
+      "source": { "name": "Aripiprazole monograph (impulse-control disorders; akathisia)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_0_5",
+      "stem": "An agitated inpatient needs a high-potency dopamine blocker, and the team also wants a long-acting depot for a patient with poor adherence. Which of these first-line-row agents is the prototype HIGH-potency drug — maximal EPS, minimal sedation/anticholinergic effect — with a decanoate LAI and an IV form notorious for torsades?",
+      "options": ["Haloperidol", "Quetiapine", "Olanzapine", "Aripiprazole"],
+      "answer": "Haloperidol",
+      "explanation": "Haloperidol is the high-potency butyrophenone benchmark: very high D2 affinity with little H1/M1 activity, so EPS dominate while sedation and anticholinergic effects are minimal. It is available as a decanoate depot (about every 4 weeks) for non-adherence, and IV haloperidol carries the highest torsades risk (telemetry required). Quetiapine, olanzapine and aripiprazole are all SGAs and are not the high-potency, EPS-heavy, decanoate-plus-IV-torsades agent described.",
+      "meds": ["haloperidol", "quetiapine", "olanzapine", "aripiprazole"],
+      "focus": "haloperidol = high-potency FGA (decanoate LAI; IV torsades)",
+      "source": { "name": "Haloperidol monograph (QT/torsades with IV; decanoate)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_0_6",
+      "stem": "A patient with obesity, dyslipidemia and a strong family history of type 2 diabetes needs an antipsychotic that is least likely to worsen weight, glucose and lipids. Among these first-line options, which is the most metabolically favourable choice?",
+      "options": ["Olanzapine", "Quetiapine", "Aripiprazole", "Risperidone"],
+      "answer": "Aripiprazole",
+      "explanation": "Aripiprazole's partial-agonist profile with low H1/muscarinic activity makes it weight- and prolactin-neutral — the best metabolic pick here. Olanzapine is among the two worst SGAs metabolically, quetiapine carries moderate metabolic risk, and risperidone is intermediate. The trade-off for aripiprazole's metabolic advantage is its activating, akathisia-prone character rather than sedation or weight gain.",
+      "meds": ["olanzapine", "quetiapine", "aripiprazole", "risperidone"],
+      "focus": "aripiprazole = metabolically favourable (lowest weight/prolactin)",
+      "source": { "name": "Aripiprazole monograph (weight/prolactin-neutral profile)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_0_7",
+      "stem": "A distressed patient with insomnia asks to \"just stay on the low dose that helps me sleep.\" Which first-line agent is so sedating (via potent H1) that low doses are commonly — and problematically — used off-label as a hypnotic, with a dose-dependent identity that only becomes antipsychotic at high doses?",
+      "options": ["Quetiapine", "Aripiprazole", "Risperidone", "Haloperidol"],
+      "answer": "Quetiapine",
+      "explanation": "Quetiapine has a dose-effect ladder: low dose is sedative/anxiolytic (potent H1), mid dose is antidepressant (norquetiapine NET inhibition), and only high dose is reliably antipsychotic — which is why low-dose off-label use as a sleep aid is common but discouraged. Aripiprazole is activating (worsens insomnia), risperidone is only modestly sedating, and haloperidol has minimal H1 effect. Quetiapine is the sedation outlier here.",
+      "meds": ["quetiapine", "aripiprazole", "risperidone", "haloperidol"],
+      "focus": "quetiapine = potent H1 sedation / dose-dependent identity",
+      "source": { "name": "Quetiapine monograph (sedation; dose-effect ladder)", "origin": "monograph" }
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_antipsychotics_1_1",
+      "stem": "A patient with hepatic impairment and heavy polypharmacy needs an SGA with minimal CYP drug interactions, and the team wants long-acting injectable options for adherence. Which next-line agent is the renally-cleared active 9-hydroxy metabolite of risperidone, available as monthly and every-3-month LAIs?",
+      "options": ["Paliperidone", "Lurasidone", "Ziprasidone", "Risperidone"],
+      "answer": "Paliperidone",
+      "explanation": "Paliperidone IS 9-hydroxyrisperidone, excreted largely unchanged by the kidney — so it has few CYP interactions (useful with hepatic impairment or polypharmacy) but must be dose-reduced for renal function. Its LAIs (Sustenna monthly, Trinza every 3 months) are major adherence tools. Lurasidone and ziprasidone are CYP3A4-dependent oral agents with food requirements and no LAI. Risperidone is the parent drug, not the renally-cleared metabolite described.",
+      "meds": ["paliperidone", "lurasidone", "ziprasidone", "risperidone"],
+      "focus": "paliperidone = renally-cleared risperidone metabolite (LAI options)",
+      "source": { "name": "Paliperidone monograph (renal clearance; Sustenna/Trinza LAIs)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_1_2",
+      "stem": "A patient with bipolar I depression who is metabolically vulnerable (obese, prediabetic) needs a well-tolerated antipsychotic. Which next-line SGA is a first-line choice for bipolar depression, is weight-/lipid-/glucose-favourable with low QT, but MUST be taken with a meal of at least 350 kcal for absorption?",
+      "options": ["Ziprasidone", "Lurasidone", "Paliperidone", "Quetiapine"],
+      "answer": "Lurasidone",
+      "explanation": "Lurasidone is metabolically favourable (very low H1/muscarinic activity → weight-, lipid- and glucose-neutral, low prolactin, low QT) and a strong first-line agent for bipolar I depression — but its absorption depends on taking it with food (≥350 kcal), and as a CYP3A4 substrate it is contraindicated with strong 3A4 inhibitors/inducers and grapefruit. Ziprasidone also needs food but requires a larger meal and is the QT outlier; paliperidone raises prolactin; quetiapine is more sedating with moderate metabolic risk.",
+      "meds": ["ziprasidone", "lurasidone", "paliperidone", "quetiapine"],
+      "focus": "lurasidone = bipolar depression; food ≥350 kcal; metabolically favourable",
+      "source": { "name": "Lurasidone monograph (food ≥350 kcal; bipolar depression; CYP3A4)", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antipsychotics_1_3",
+      "stem": "A patient with a baseline QTc of 475 ms who is also on methadone needs an antipsychotic. Which next-line SGA has the GREATEST QT-prolonging effect of the class — its defining caution — and should therefore be avoided here?",
+      "options": ["Paliperidone", "Lurasidone", "Ziprasidone", "Aripiprazole"],
+      "answer": "Ziprasidone",
+      "explanation": "Ziprasidone produces the greatest QT prolongation of the SGAs, with torsades risk, so it is exactly the wrong choice at QTc 475 ms on methadone. Paliperidone has only modest QT effect, lurasidone is low-QT, and aripiprazole has no notable QT signal — any of these is a safer cardiac option. Recognizing ziprasidone as the QT outlier (and correcting electrolytes/avoiding other QT drugs) is the key point.",
+      "meds": ["paliperidone", "lurasidone", "ziprasidone", "aripiprazole"],
+      "focus": "ziprasidone = greatest QT prolongation of the SGAs",
+      "source": { "name": "Ziprasidone monograph (greatest QT prolongation of SGAs)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_1_4",
+      "stem": "Two SGAs in this next-line row must be taken with food or absorption fails. Which one requires the LARGER meal — at least 500 kcal — and is also the agent most associated with QT prolongation, making a skipped-meal \"treatment failure\" doubly important to counsel about?",
+      "options": ["Lurasidone", "Ziprasidone", "Paliperidone"],
+      "answer": "Ziprasidone",
+      "explanation": "Both lurasidone and ziprasidone depend on food, but ziprasidone requires the larger meal (≥500 kcal versus lurasidone's ≥350 kcal); on an empty stomach its absorption roughly halves — a classic cause of apparent treatment failure. Ziprasidone is also the QT-prolongation outlier of the SGAs. Paliperidone (OROS tablet) has no caloric food requirement. The teaching point is the 500-vs-350 kcal contrast and ziprasidone's dual food-plus-QT caution.",
+      "meds": ["lurasidone", "ziprasidone", "paliperidone"],
+      "focus": "ziprasidone food ≥500 kcal (vs lurasidone ≥350 kcal)",
+      "source": { "name": "Ziprasidone monograph (≥500 kcal food requirement)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_1_5",
+      "stem": "A woman on a next-line SGA develops galactorrhea and menstrual irregularity. Which agent in this row is most likely responsible, because its receptor profile mirrors risperidone's with dose-dependent hyperprolactinemia and EPS?",
+      "options": ["Ziprasidone", "Lurasidone", "Paliperidone"],
+      "answer": "Paliperidone",
+      "explanation": "Paliperidone is 9-hydroxyrisperidone, so it shares risperidone's dose-dependent EPS and hyperprolactinemia — galactorrhea and amenorrhea are expected class effects. Lurasidone and ziprasidone are both low-prolactin and metabolically favourable, so neither typically causes marked hyperprolactinemia. When prolactin-related symptoms appear in this row, paliperidone is the culprit.",
+      "meds": ["ziprasidone", "lurasidone", "paliperidone"],
+      "focus": "paliperidone = hyperprolactinemia (mirrors risperidone)",
+      "source": { "name": "Paliperidone monograph (hyperprolactinemia)", "origin": "monograph" }
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_antipsychotics_2_1",
+      "stem": "A 29-year-old man with schizophrenia remains floridly psychotic after two adequate antipsychotic trials with confirmed adherence. Which agent in this row is the only one proven superior for treatment-resistant schizophrenia (and to reduce suicidality), obligating registry-enforced ANC monitoring — weekly for 6 months, then every 2 weeks to 12 months, then every 4 weeks?",
+      "options": ["Clozapine", "Olanzapine", "Quetiapine", "Risperidone"],
+      "answer": "Clozapine",
+      "explanation": "Two failed adequate trials define treatment-resistant schizophrenia, and clozapine is uniquely effective there and uniquely anti-suicidal. Because of agranulocytosis it mandates registry ANC monitoring (weekly ×6 months → every 2 weeks to 12 months → every 4 weeks). Beyond the blood count, remember its early killers: myocarditis in the first 6–8 weeks and severe constipation progressing to ileus. Olanzapine, quetiapine and risperidone are reasonable general agents but none is a resistance-specific drug and none carries mandatory ANC surveillance.",
+      "meds": ["clozapine", "olanzapine", "quetiapine", "risperidone"],
+      "focus": "clozapine = treatment-resistant schizophrenia + mandatory ANC monitoring",
+      "source": { "name": "Clozapine monograph (boxed warning; ANC schedule)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_2_2",
+      "stem": "A patient did well on a dopamine partial agonist but could not tolerate the akathisia. Which agent in this newer row is also a D2 partial agonist but is engineered for better tolerability (lower D2 intrinsic activity → less activation/akathisia than aripiprazole) and is approved as an ADJUNCT for major depressive disorder?",
+      "options": ["Cariprazine", "Brexpiprazole", "Aripiprazole", "Asenapine"],
+      "answer": "Brexpiprazole",
+      "explanation": "Brexpiprazole is a D2 partial agonist with lower intrinsic activity than aripiprazole, giving less activation and less akathisia (at the cost of slightly more weight gain), and it is approved as an adjunct in MDD. Cariprazine is a partial agonist too but is D3-preferring and more EPS/akathisia-prone. Aripiprazole is the more activating comparator being replaced here, and asenapine is a sublingual antagonist, not a partial agonist.",
+      "meds": ["cariprazine", "brexpiprazole", "aripiprazole", "asenapine"],
+      "focus": "brexpiprazole = partial agonist with less akathisia; adjunct MDD",
+      "source": { "name": "Brexpiprazole monograph (lower akathisia; adjunctive MDD)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_2_3",
+      "stem": "A clinician wants a partial agonist that covers BOTH poles of bipolar I (mania/mixed and depression) and may help negative symptoms, but warns the patient that dose changes and side effects take weeks to appear or resolve. Which agent — the most D3-selective antipsychotic, with active metabolites lasting weeks — is described?",
+      "options": ["Brexpiprazole", "Asenapine", "Cariprazine", "Clozapine"],
+      "answer": "Cariprazine",
+      "explanation": "Cariprazine is the D3-preferring D2/D3 partial agonist (theoretical benefit for negative symptoms/anhedonia) and is distinctive among partial agonists for covering both mania/mixed AND bipolar depression. Its very long-lived active metabolites mean slow onset and slow offset — effects and side effects persist for weeks after a dose change or discontinuation. Brexpiprazole lacks the dual bipolar coverage and long-metabolite tail; asenapine and clozapine are antagonists, not D3-preferring partial agonists.",
+      "meds": ["brexpiprazole", "asenapine", "cariprazine", "clozapine"],
+      "focus": "cariprazine = D3-preferring, dual bipolar coverage, weeks-long metabolites",
+      "source": { "name": "Cariprazine monograph (D3 preference; long-lived metabolites)", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antipsychotics_2_4",
+      "stem": "A patient reports tongue numbness and an odd taste after each dose of a new antipsychotic, and is counselled to avoid food and drink for 10 minutes after taking it. Which agent — the only one given by a route where swallowing destroys bioavailability — is this, and what route is it?",
+      "options": ["Asenapine", "Cariprazine", "Brexpiprazole", "Clozapine"],
+      "answer": "Asenapine",
+      "explanation": "Asenapine is the only SUBLINGUAL antipsychotic: extensive first-pass metabolism means swallowing it destroys bioavailability, so it is placed under the tongue and dissolved, with no food or drink for 10 minutes. Oral hypoesthesia (tongue numbness) and altered taste are characteristic, and serious hypersensitivity (angioedema/anaphylaxis) can occur even with the first dose. Cariprazine, brexpiprazole and clozapine are all swallowed oral agents.",
+      "meds": ["asenapine", "cariprazine", "brexpiprazole", "clozapine"],
+      "focus": "asenapine = only sublingual antipsychotic (no food/drink ×10 min)",
+      "source": { "name": "Asenapine monograph (sublingual administration; oral hypoesthesia)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_2_5",
+      "stem": "Three weeks after starting a new antipsychotic, a young man develops chest pain, tachycardia, fatigue and a fever, with rising troponin and CRP. Which agent in this row demands surveillance for exactly this early complication?",
+      "options": ["Cariprazine", "Clozapine", "Asenapine", "Brexpiprazole"],
+      "answer": "Clozapine",
+      "explanation": "Clozapine-induced myocarditis peaks in the first 6–8 weeks and presents with tachycardia, chest pain, fever, fatigue and rising troponin/CRP — a can't-miss early killer that warrants active surveillance (symptoms, heart rate, troponin/CRP) during initiation. This is separate from the mandatory ANC monitoring for agranulocytosis and from severe constipation/ileus, its other early hazards. Cariprazine, asenapine and brexpiprazole do not carry this early myocarditis signal.",
+      "meds": ["cariprazine", "clozapine", "asenapine", "brexpiprazole"],
+      "focus": "clozapine = early myocarditis (first 6–8 weeks)",
+      "source": { "name": "Clozapine monograph (myocarditis/cardiomyopathy warning)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_2_6",
+      "stem": "A patient with residual anhedonia and prominent negative symptoms is being considered for a partial agonist, and the team specifically wants the one theorized to help negative symptoms through the highest D3 selectivity of the class. Which agent is that?",
+      "options": ["Asenapine", "Brexpiprazole", "Clozapine", "Cariprazine"],
+      "answer": "Cariprazine",
+      "explanation": "Cariprazine is the most D3-selective antipsychotic; its D3 preference is the basis for the theorized benefit in negative symptoms and anhedonia, distinguishing it from brexpiprazole (a tolerability-optimized D2 partial agonist without D3 preference). Asenapine and clozapine are broad antagonists rather than D3-preferring partial agonists. This contrast — brexpiprazole for tolerability versus cariprazine for D3-driven negative-symptom coverage — is the high-yield discriminator between the two newer partial agonists.",
+      "meds": ["asenapine", "brexpiprazole", "clozapine", "cariprazine"],
+      "focus": "cariprazine = highest D3 selectivity (negative symptoms)",
+      "source": { "name": "Cariprazine monograph (D3-preferring partial agonism)", "origin": "canmat" }
+    }
+  ],
+  "3": [
+    {
+      "id": "rev_antipsychotics_3_1",
+      "stem": "An older FGA causes marked sedation, orthostatic hypotension, dry mouth and photosensitivity, with comparatively LESS EPS than high-potency agents; long-term high doses can cause blue-grey skin and cholestatic jaundice. Which classic low-potency phenothiazine prototype is this?",
+      "options": ["Chlorpromazine", "Fluphenazine", "Perphenazine", "Loxapine"],
+      "answer": "Chlorpromazine",
+      "explanation": "Chlorpromazine is the prototype LOW-potency phenothiazine: strong H1 (sedation), M1 (anticholinergic) and α1 (orthostasis) blockade with comparatively less EPS, plus its signature photosensitivity, cholestatic jaundice and lowered seizure threshold. Fluphenazine is high-potency (EPS-heavy, low sedation), perphenazine is mid-potency, and loxapine is a mid-potency dibenzoxazepine. Potency, not chemistry, predicts this sedating/hypotensive/anticholinergic pattern.",
+      "meds": ["chlorpromazine", "fluphenazine", "perphenazine", "loxapine"],
+      "focus": "chlorpromazine = low-potency prototype (sedation/orthostasis/photosensitivity)",
+      "source": { "name": "Chlorpromazine monograph (low-potency profile; photosensitivity; jaundice)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_2",
+      "stem": "A non-adherent patient stabilized on an oral high-potency phenothiazine is switched to a decanoate depot. Which of these agents is the high-potency phenothiazine whose decanoate is dosed every 2–3 weeks — a SHORTER interval than haloperidol decanoate's ~4 weeks?",
+      "options": ["Chlorpromazine", "Fluphenazine", "Loxapine", "Zuclopenthixol"],
+      "answer": "Fluphenazine",
+      "explanation": "Fluphenazine is a high-potency piperazine phenothiazine (lots of EPS, little sedation/anticholinergic effect) whose decanoate LAI is given roughly every 2–3 weeks — a shorter dosing interval than haloperidol decanoate's ~4 weeks, a common exam contrast. Chlorpromazine is low-potency and not a standard depot, loxapine's niche is the inhaled form, and zuclopenthixol's decanoate is a thioxanthene depot rather than a phenothiazine one.",
+      "meds": ["chlorpromazine", "fluphenazine", "loxapine", "zuclopenthixol"],
+      "focus": "fluphenazine = high-potency; decanoate q2–3 wk (shorter than haloperidol)",
+      "source": { "name": "Fluphenazine monograph (decanoate dosing interval)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_3",
+      "stem": "Which of these first-generation agents was the FGA comparator in the CATIE effectiveness trial, where this mid-potency phenothiazine performed comparably to several SGAs at far lower cost — challenging the assumption that newer equals better?",
+      "options": ["Loxapine", "Fluphenazine", "Perphenazine", "Chlorpromazine"],
+      "answer": "Perphenazine",
+      "explanation": "Perphenazine, a mid-potency piperazine phenothiazine, was the FGA arm in CATIE and was roughly as effective as several SGAs while being highly cost-effective. Its side-effect profile sits between chlorpromazine (low-potency, sedating) and haloperidol/fluphenazine (high-potency, EPS-heavy): moderate EPS, moderate sedation and autonomic effects. Loxapine, fluphenazine and chlorpromazine were not the CATIE FGA benchmark.",
+      "meds": ["loxapine", "fluphenazine", "perphenazine", "chlorpromazine"],
+      "focus": "perphenazine = CATIE FGA benchmark (mid-potency)",
+      "source": { "name": "CATIE trial (perphenazine as FGA comparator)", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antipsychotics_3_4",
+      "stem": "For rapid in-clinic control of acute agitation, which of these FGAs is available as a single-dose INHALED formulation (Adasuve) that can cause bronchospasm — mandating an on-hand bronchodilator and making it contraindicated in asthma or COPD?",
+      "options": ["Perphenazine", "Loxapine", "Chlorpromazine", "Fluphenazine"],
+      "answer": "Loxapine",
+      "explanation": "Loxapine is a mid-potency dibenzoxazepine, but the high-yield point is its inhaled formulation (Adasuve) for rapid single-dose control of agitation — which can cause bronchospasm, so a short-acting bronchodilator must be available and it is contraindicated in asthma/COPD or active bronchospasm. Perphenazine, chlorpromazine and fluphenazine have no inhaled route or bronchospasm caveat.",
+      "meds": ["perphenazine", "loxapine", "chlorpromazine", "fluphenazine"],
+      "focus": "loxapine = inhaled route (bronchospasm; contraindicated asthma/COPD)",
+      "source": { "name": "Inhaled loxapine (Adasuve) monograph (bronchospasm warning)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_5",
+      "stem": "An acutely agitated, floridly psychotic patient needs an injection that covers about 2–3 days to bridge to oral or depot therapy — but must NOT be used for maintenance. Which Canadian thioxanthene's short-acting ACETATE ester (Acuphase) fills this niche?",
+      "options": ["Zuclopenthixol", "Flupenthixol", "Fluphenazine", "Perphenazine"],
+      "answer": "Zuclopenthixol",
+      "explanation": "Zuclopenthixol acetate (Acuphase) is a Canadian tool for the acutely disturbed patient: one injection covers roughly 2–3 days (~72 h) to bridge to oral or depot treatment, and it is explicitly NOT a maintenance depot. Its sibling flupenthixol has only oral and decanoate forms (no acetate), while fluphenazine and perphenazine are phenothiazines. The acetate-for-acute-only concept is the key.",
+      "meds": ["zuclopenthixol", "flupenthixol", "fluphenazine", "perphenazine"],
+      "focus": "zuclopenthixol acetate (Acuphase) = short-acting, acute-only",
+      "source": { "name": "Zuclopenthixol acetate (Acuphase) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_6",
+      "stem": "Which Canada-specific thioxanthene is distinctive because at LOW doses it is activating/mildly antidepressant, while higher doses are antipsychotic — and it is available only as oral tablets plus a decanoate depot (no short-acting acetate)?",
+      "options": ["Zuclopenthixol", "Chlorpromazine", "Perphenazine", "Flupenthixol"],
+      "answer": "Flupenthixol",
+      "explanation": "Flupenthixol is the thioxanthene with a low-dose activating/antidepressant quirk (historically used for depression/anxiety) that becomes antipsychotic at higher doses; it comes as oral tablets and a decanoate depot (q2–3 weeks) but has no acetate. Its sibling zuclopenthixol adds the short-acting Acuphase acetate — the distinguishing difference between the two thioxanthenes. Chlorpromazine and perphenazine are phenothiazines without this low-dose antidepressant profile.",
+      "meds": ["zuclopenthixol", "chlorpromazine", "perphenazine", "flupenthixol"],
+      "focus": "flupenthixol = low-dose activating/antidepressant; oral + decanoate only",
+      "source": { "name": "Flupenthixol monograph (low-dose activating use; oral + decanoate)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_7",
+      "stem": "Two of these phenothiazines share the same chemical family but opposite side-effect patterns. Which one, because it is HIGH-potency, causes the most EPS and acute dystonia with little sedation — the opposite of low-potency chlorpromazine — illustrating that potency, not chemistry, predicts the profile?",
+      "options": ["Chlorpromazine", "Perphenazine", "Fluphenazine", "Loxapine"],
+      "answer": "Fluphenazine",
+      "explanation": "Fluphenazine is a high-potency phenothiazine: very high D2 affinity with low H1/M1 activity means EPS and acute dystonia dominate while sedation and anticholinergic effects are minimal — the mirror image of low-potency chlorpromazine, even though both are phenothiazines. Perphenazine is intermediate and loxapine is a mid-potency dibenzoxazepine. The lesson is that within one chemical family, potency drives the EPS-versus-sedation trade-off.",
+      "meds": ["chlorpromazine", "perphenazine", "fluphenazine", "loxapine"],
+      "focus": "high- vs low-potency: fluphenazine = most EPS, least sedation",
+      "source": { "name": "Fluphenazine monograph (high-potency EPS profile)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_3_8",
+      "stem": "Depot esters differ by drug. Which of these agents is unique in offering BOTH a short-acting acetate for acute management AND a maintenance decanoate depot (three ester forms in total: oral, acetate, decanoate)?",
+      "options": ["Zuclopenthixol", "Flupenthixol", "Fluphenazine", "Pipotiazine"],
+      "answer": "Zuclopenthixol",
+      "explanation": "Zuclopenthixol is distinctive for three ester forms: oral, a short-acting acetate (Acuphase, ~72 h for acute disturbance) and a maintenance decanoate depot (q2–4 weeks) — no other agent here spans acute-acetate plus maintenance-decanoate. Flupenthixol and fluphenazine have oral plus decanoate only (no acetate), and pipotiazine is a phenothiazine offered essentially only as a palmitate LAI. Matching drug to available ester is the discrimination.",
+      "meds": ["zuclopenthixol", "flupenthixol", "fluphenazine", "pipotiazine"],
+      "focus": "zuclopenthixol = both acetate (acute) and decanoate (maintenance)",
+      "source": { "name": "Zuclopenthixol monograph (acetate + decanoate esters)", "origin": "monograph" }
+    }
+  ],
+  "4": [
+    {
+      "id": "rev_antipsychotics_4_1",
+      "stem": "Which of these legacy agents is a HIGH-potency piperazine phenothiazine that is EPS-heavy with little sedation or anticholinergic effect — behaving much like haloperidol — in contrast to low-potency, sedating chlorpromazine of the same chemical family?",
+      "options": ["Trifluoperazine", "Chlorpromazine", "Methotrimeprazine", "Prochlorperazine"],
+      "answer": "Trifluoperazine",
+      "explanation": "Trifluoperazine is a high-potency piperazine phenothiazine: EPS-predominant with minimal sedation/anticholinergic burden, so it behaves like haloperidol/fluphenazine despite being a phenothiazine. Chlorpromazine and methotrimeprazine are low-potency (very sedating, hypotensive), and prochlorperazine is used mainly as an antiemetic. The point is that potency, not the phenothiazine chemistry, predicts the side-effect pattern.",
+      "meds": ["trifluoperazine", "chlorpromazine", "methotrimeprazine", "prochlorperazine"],
+      "focus": "trifluoperazine = high-potency phenothiazine (behaves like haloperidol)",
+      "source": { "name": "Trifluoperazine monograph (high-potency EPS profile)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_2",
+      "stem": "A palliative-care team needs a single agent that provides sedation, analgesia AND antiemesis for terminal restlessness, intractable nausea and pain, often given subcutaneously. Which low-potency phenothiazine (levomepromazine) — dose-limited by profound sedation and marked orthostasis — fits this role?",
+      "options": ["Trifluoperazine", "Methotrimeprazine", "Pimozide", "Droperidol"],
+      "answer": "Methotrimeprazine",
+      "explanation": "Methotrimeprazine (levomepromazine) is a low-potency phenothiazine that is a palliative-care workhorse: it combines profound sedation with genuine analgesic and antiemetic activity, and is frequently given subcutaneously for terminal agitation, nausea and pain. Its dose-limiting effects are marked orthostatic hypotension and sedation, while EPS are comparatively mild (low-potency). Trifluoperazine is high-potency/EPS-heavy, and pimozide and droperidol are not the sedative-analgesic-antiemetic palliative agent.",
+      "meds": ["trifluoperazine", "methotrimeprazine", "pimozide", "droperidol"],
+      "focus": "methotrimeprazine = palliative sedation + analgesia + antiemesis",
+      "source": { "name": "Methotrimeprazine (levomepromazine) monograph (palliative use)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_3",
+      "stem": "Which diphenylbutylpiperidine, reserved largely for Tourette syndrome refractory to other agents, has the strongest QT signal of the FGAs — dose-dependent prolongation with torsades and reported sudden death — requiring ECG-driven dosing?",
+      "options": ["Droperidol", "Trifluoperazine", "Pimozide", "Prochlorperazine"],
+      "answer": "Pimozide",
+      "explanation": "Pimozide is the QT champion among FGAs: it blocks cardiac calcium channels, causing marked dose-dependent QT prolongation with torsades and reported sudden death, so baseline and follow-up ECGs are mandatory. Its niche is refractory Tourette syndrome. Droperidol also prolongs QT but is a short-acting butyrophenone used for acute agitation/PONV, trifluoperazine is a high-potency antipsychotic phenothiazine, and prochlorperazine is used mainly as an antiemetic — none matches pimozide's ECG-driven, Tourette-reserved, torsades profile.",
+      "meds": ["droperidol", "trifluoperazine", "pimozide", "prochlorperazine"],
+      "focus": "pimozide = strongest QT/torsades FGA (Tourette niche; ECG-driven)",
+      "source": { "name": "Pimozide monograph (QT prolongation; ECG-driven dosing)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_4",
+      "stem": "A young woman given a single dose of a phenothiazine for nausea/vertigo in the ED develops an acute dystonic reaction (oculogyric crisis). Which agent — used mainly as an ANTIEMETIC (Stemetil) rather than for psychosis — is the classic culprit?",
+      "options": ["Prochlorperazine", "Pimozide", "Droperidol", "Trifluoperazine"],
+      "answer": "Prochlorperazine",
+      "explanation": "Prochlorperazine is a piperazine phenothiazine used mainly as an antiemetic/anti-vertigo agent (Stemetil), and acute dystonic reactions can occur even after a single antiemetic dose — classically in young women — treated with an anticholinergic (benztropine) or diphenhydramine. It is the reminder that dopamine-blocking antiemetics carry EPS/TD risk. Pimozide and trifluoperazine are used for psychosis/Tourette, and droperidol, though also antiemetic, is defined by its QT risk rather than the single-dose dystonia teaching point.",
+      "meds": ["prochlorperazine", "pimozide", "droperidol", "trifluoperazine"],
+      "focus": "prochlorperazine = antiemetic; acute dystonia from a single dose",
+      "source": { "name": "Prochlorperazine monograph (acute dystonic reactions)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_5",
+      "stem": "In the ED, a fast-acting, titratable agent with a short (~2 h) half-life is wanted for acute agitation and for postoperative nausea/vomiting — but it carries a prominent torsades warning even at low antiemetic doses. Which short-acting butyrophenone (haloperidol's cousin) is this?",
+      "options": ["Pimozide", "Droperidol", "Methotrimeprazine", "Prochlorperazine"],
+      "answer": "Droperidol",
+      "explanation": "Droperidol is haloperidol's short-acting butyrophenone cousin: fast onset and a ~2 h half-life make it useful for rapid, titratable control of agitation and for PONV, but it carries a prominent QT-prolongation/torsades warning even at low antiemetic doses — assess QT risk, correct K/Mg and monitor ECG. Pimozide is the oral, long-acting Tourette agent with QT risk, methotrimeprazine is the sedating palliative phenothiazine, and prochlorperazine's signature hazard is acute dystonia rather than torsades.",
+      "meds": ["pimozide", "droperidol", "methotrimeprazine", "prochlorperazine"],
+      "focus": "droperidol = short-acting butyrophenone; QT/torsades at antiemetic doses",
+      "source": { "name": "Droperidol monograph (QT/torsades warning)", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_6",
+      "stem": "A Canadian patient with schizophrenia and poor adherence is to be maintained on a long-acting injectable. Which Canada-specific phenothiazine is used essentially only as a PALMITATE-ester depot (Piportil L4), dosed roughly every 4 weeks?",
+      "options": ["Fluphenazine", "Trifluoperazine", "Pipotiazine", "Methotrimeprazine"],
+      "answer": "Pipotiazine",
+      "explanation": "Pipotiazine (Piportil L4) is a Canada-specific piperidine phenothiazine used essentially only as a maintenance depot, notable for its PALMITATE ester — distinguishing it from the decanoate depots (haloperidol, fluphenazine, zuclopenthixol, flupenthixol) — with roughly monthly (q4-week) dosing. Fluphenazine's depot is a decanoate, trifluoperazine is an oral high-potency agent, and methotrimeprazine is a sedating/analgesic palliative phenothiazine, not a maintenance LAI. Matching the palmitate ester to pipotiazine is the discrimination.",
+      "meds": ["fluphenazine", "trifluoperazine", "pipotiazine", "methotrimeprazine"],
+      "focus": "pipotiazine = palmitate-ester LAI (≈ monthly; vs decanoates)",
+      "source": { "name": "Pipotiazine palmitate (Piportil L4) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antipsychotics_4_7",
+      "stem": "A novel-mechanism antipsychotic (US-only) achieves its effect with LOW absolute D2 occupancy (~40%) and a high 5-HT2A:D2 ratio plus SERT inhibition, giving unusually low EPS, low prolactin and low metabolic signal — and is approved across schizophrenia AND both bipolar I and II depression. Which agent is this?",
+      "options": ["Pimavanserin", "Lumateperone", "Xanomeline–Trospium", "Trifluoperazine"],
+      "answer": "Lumateperone",
+      "explanation": "Lumateperone (Caplyta; US-only, not marketed in Canada) has a high 5-HT2A:D2 ratio with low absolute D2 occupancy (~40%) plus SERT inhibition, yielding low EPS, low prolactin and a low metabolic/weight signal — and it is uniquely approved across schizophrenia and both bipolar I and II depression, at a fixed single dose with food. Pimavanserin is a 5-HT2A inverse agonist for Parkinson psychosis, xanomeline–trospium is a muscarinic agonist with no D2 activity, and trifluoperazine is a classic high-potency D2 blocker.",
+      "meds": ["pimavanserin", "lumateperone", "xanomeline_trospium", "trifluoperazine"],
+      "focus": "lumateperone = low D2 occupancy + SERT; schizophrenia + bipolar I/II depression",
+      "source": { "name": "Lumateperone (Caplyta) label (mechanism; indications)", "origin": "dailymed" }
+    },
+    {
+      "id": "rev_antipsychotics_4_8",
+      "stem": "A first-in-class antipsychotic (US-only) treats schizophrenia WITHOUT blocking dopamine at all — an M1/M4 muscarinic agonist paired with a peripherally-restricted muscarinic antagonist to limit cholinergic side effects — so it produces no EPS, no tardive dyskinesia from D2 blockade, and no prolactin elevation. Which agent is this?",
+      "options": ["Xanomeline–Trospium", "Lumateperone", "Pimavanserin", "Pimozide"],
+      "answer": "Xanomeline–Trospium",
+      "explanation": "Xanomeline–trospium (Cobenfy, formerly KarXT; US-only) is the first antipsychotic approved for schizophrenia that does NOT block dopamine: xanomeline is an M1/M4 muscarinic agonist acting upstream of the dopamine synapse, and trospium is a peripherally-restricted muscarinic antagonist added purely to blunt peripheral cholinergic effects (nausea, GI, sweating) without reducing central efficacy. Because there is no D2 blockade, there is essentially no EPS, no D2-driven tardive dyskinesia and no hyperprolactinemia; its side effects are cholinergic/anticholinergic instead. Lumateperone still has some D2 activity, pimavanserin is a 5-HT2A inverse agonist, and pimozide is a potent D2 blocker.",
+      "meds": ["xanomeline_trospium", "lumateperone", "pimavanserin", "pimozide"],
+      "focus": "xanomeline–trospium = muscarinic M1/M4 agonist, no D2 blockade",
+      "source": { "name": "Xanomeline–trospium (Cobenfy) label (muscarinic mechanism)", "origin": "dailymed" }
+    },
+    {
+      "id": "rev_antipsychotics_4_9",
+      "stem": "A patient with Parkinson disease develops hallucinations and delusions. Which US-only agent — a selective 5-HT2A INVERSE AGONIST with essentially no dopamine (D2) activity — treats the psychosis without worsening parkinsonian motor symptoms, while carrying a QT caution and the class boxed warning for dementia-related mortality?",
+      "options": ["Lumateperone", "Xanomeline–Trospium", "Pimavanserin", "Quetiapine"],
+      "answer": "Pimavanserin",
+      "explanation": "Pimavanserin (Nuplazid; US-only) is a selective 5-HT2A inverse agonist with no D2 activity, purpose-built for Parkinson disease psychosis — it controls hallucinations/delusions without the motor worsening that D2-blocking antipsychotics cause. Its profile is dominated by QT prolongation and the class boxed warning for increased mortality in elderly dementia-related psychosis rather than EPS/metabolic effects. Lumateperone still has some D2 occupancy, xanomeline–trospium is a muscarinic agonist, and quetiapine (though low-EPS) still blocks D2.",
+      "meds": ["lumateperone", "xanomeline_trospium", "pimavanserin", "quetiapine"],
+      "focus": "pimavanserin = 5-HT2A inverse agonist for Parkinson psychosis (no D2)",
+      "source": { "name": "Pimavanserin (Nuplazid) label (5-HT2A inverse agonist; PD psychosis)", "origin": "dailymed" }
+    },
+    {
+      "id": "rev_antipsychotics_4_10",
+      "stem": "A patient on an oral FGA for refractory Tourette syndrome is about to start clarithromycin, and the pharmacist flags a dangerous interaction. Which agent is contraindicated with macrolides, azole antifungals, protease inhibitors and grapefruit juice because CYP3A4 inhibition raises its level and dangerously prolongs the QT interval?",
+      "options": ["Droperidol", "Pimavanserin", "Trifluoperazine", "Pimozide"],
+      "answer": "Pimozide",
+      "explanation": "Pimozide is CYP3A4-metabolized, so strong 3A4 inhibitors — macrolides (clarithromycin), azole antifungals, protease inhibitors and grapefruit juice — raise its plasma level and, given its intrinsic QT effect, dangerously prolong the QT interval; these are contraindicated combinations. Droperidol prolongs QT but is short-acting and not defined by this 3A4 contraindication list, pimavanserin is only halved with strong 3A4 inhibitors rather than contraindicated, and trifluoperazine lacks pimozide's marked QT/3A4 interaction profile. The pimozide-plus-macrolide combination is the classic can't-miss interaction.",
+      "meds": ["droperidol", "pimavanserin", "trifluoperazine", "pimozide"],
+      "focus": "pimozide = CYP3A4 contraindications (macrolides/azoles/grapefruit) + QT",
+      "source": { "name": "Pimozide monograph (CYP3A4 drug interactions; QT)", "origin": "monograph" }
+    }
+  ]
+}

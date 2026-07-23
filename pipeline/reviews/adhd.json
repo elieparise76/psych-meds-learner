@@ -1,0 +1,118 @@
+{
+  "0": [
+    {
+      "id": "rev_adhd_0_1",
+      "stem": "You are choosing a first-line stimulant and want to teach the trainee the core mechanistic split. Which of these two first-line agents works purely by BLOCKING the dopamine/norepinephrine transporters (DAT/NET) to raise synaptic catecholamines, WITHOUT driving vesicular release of dopamine?",
+      "options": ["Methylphenidate", "Lisdexamfetamine"],
+      "answer": "Methylphenidate",
+      "explanation": "Methylphenidate is a pure reuptake blocker (DAT/NET) — it does not trigger vesicular release. Lisdexamfetamine is a prodrug of dextroamphetamine, and amphetamines primarily RELEASE dopamine/norepinephrine (reversing the transporters/VMAT2) in addition to blocking reuptake. That releaser-vs-blocker distinction is the fundamental way these two first-line stimulant families differ.",
+      "meds": ["methylphenidate", "lisdexamfetamine"],
+      "focus": "mechanism: methylphenidate = reuptake blocker vs lisdexamfetamine/amphetamine = releaser",
+      "source": {"name": "Methylphenidate product monograph — reuptake-blockade mechanism", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_0_2",
+      "stem": "A university student with ADHD lives in a shared dorm and previously had a stimulant crushed and snorted by a roommate. You want the first-line agent least able to produce a rapid 'high' if insufflated or injected. Which one is an inactive prodrug that must be enzymatically hydrolyzed in the bloodstream before it becomes active?",
+      "options": ["Methylphenidate", "Lisdexamfetamine"],
+      "answer": "Lisdexamfetamine",
+      "explanation": "Lisdexamfetamine is d-amphetamine covalently bound to L-lysine — inactive until red-blood-cell peptidases hydrolyze it to active dextroamphetamine. Because conversion is rate-limited and happens in the blood, snorting or injecting it does not generate a fast euphoric surge, giving it the lowest misuse liability of the stimulants. Methylphenidate is immediately active and can be insufflated for effect. Both are Controlled Drugs in Canada, but only the prodrug specifically defeats the snort/inject route.",
+      "meds": ["methylphenidate", "lisdexamfetamine"],
+      "focus": "prodrug / low diversion liability of lisdexamfetamine",
+      "source": {"name": "Lisdexamfetamine product monograph — prodrug activation & misuse", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_0_3",
+      "stem": "You are adding a stimulant for a patient already on several CYP-metabolized psychotropics and want to minimize pharmacokinetic drug interactions. Which first-line stimulant is cleared mainly by carboxylesterase (CES1) rather than CYP enzymes, giving it notably few PK interactions?",
+      "options": ["Lisdexamfetamine", "Methylphenidate"],
+      "answer": "Methylphenidate",
+      "explanation": "Methylphenidate is metabolized by carboxylesterase (CES1), not the CYP system, so it has far fewer pharmacokinetic interactions than most psychotropics — useful in polypharmacy. Lisdexamfetamine's conversion depends on RBC peptidase hydrolysis and, like other amphetamines, its exposure is sensitive to urine pH rather than being a 'clean' CES1 story. This makes methylphenidate the more interaction-sparing pick here.",
+      "meds": ["lisdexamfetamine", "methylphenidate"],
+      "focus": "methylphenidate CES1 metabolism → few PK interactions",
+      "source": {"name": "Methylphenidate product monograph — CES1 metabolism & interactions", "origin": "monograph"}
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_adhd_1_1",
+      "stem": "A patient on a pure single-enantiomer amphetamine is switched to a preparation with more prominent peripheral cardiovascular (noradrenergic) effect at a comparable dose. Which of these 'other stimulant' options is a 3:1 dextro-to-levoamphetamine blend, whose levo-isomer contributes relatively more peripheral noradrenergic effect?",
+      "options": ["Dextroamphetamine", "Amphetamine mixed salts"],
+      "answer": "Amphetamine mixed salts",
+      "explanation": "Mixed amphetamine salts are roughly a 3:1 d:l-amphetamine blend; the l-isomer adds relatively more peripheral noradrenergic (cardiovascular) effect than pure dextroamphetamine. Dextroamphetamine is the single d-enantiomer without that added levo component. Both are releasers and share amphetamine's misuse potential and MAOI contraindication — the practical difference here is the l-isomer's cardiovascular contribution.",
+      "meds": ["dextroamphetamine", "amphetamine_salts"],
+      "focus": "mixed salts = 3:1 d:l blend, l-isomer adds peripheral CV effect",
+      "source": {"name": "Mixed amphetamine salts product monograph — enantiomer composition", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_1_2",
+      "stem": "You want to prescribe the amphetamine preparation that contains ONLY the dextro-enantiomer, without any added levoamphetamine. Which of these 'other stimulant' options fits?",
+      "options": ["Dextroamphetamine", "Amphetamine mixed salts"],
+      "answer": "Dextroamphetamine",
+      "explanation": "Dextroamphetamine is the pure single d-enantiomer. Mixed amphetamine salts deliberately combine d- and l-amphetamine in about a 3:1 ratio, adding the levo component (and its greater peripheral noradrenergic effect). Both act primarily by releasing dopamine/norepinephrine and blocking reuptake; the distinction is enantiomer content, not mechanism class.",
+      "meds": ["dextroamphetamine", "amphetamine_salts"],
+      "focus": "dextroamphetamine = single d-enantiomer (coverage / contrast with mixed salts)",
+      "source": {"name": "Dextroamphetamine product monograph — single-enantiomer composition", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_1_3",
+      "stem": "To reinforce the amphetamine-vs-methylphenidate contrast: which agent primarily drives presynaptic RELEASE of dopamine and norepinephrine — entering the neuron via DAT/NET and reversing the transporters/VMAT2 — rather than only blocking reuptake?",
+      "options": ["Methylphenidate", "Dextroamphetamine"],
+      "answer": "Dextroamphetamine",
+      "explanation": "Dextroamphetamine (like all amphetamines) is a releaser: it enters the presynaptic terminal via DAT/NET and drives dopamine/norepinephrine release by reversing the transporters and VMAT2, and it also blocks reuptake. Methylphenidate is a pure reuptake blocker that does NOT release transmitter. This releaser-vs-blocker split is the mechanistic anchor separating the amphetamine stimulants from methylphenidate.",
+      "meds": ["methylphenidate", "dextroamphetamine"],
+      "focus": "amphetamine = releaser vs methylphenidate = reuptake blocker",
+      "source": {"name": "Dextroamphetamine product monograph — releaser mechanism", "origin": "monograph"}
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_adhd_2_1",
+      "stem": "You need an ADHD agent for a patient where diversion risk and same-day 'boost' are concerns, and the family should expect a gradual, not immediate, benefit. Which non-stimulant is a selective norepinephrine reuptake inhibitor whose meaningful effect builds over about 2–4 weeks and which is NOT a controlled substance?",
+      "options": ["Atomoxetine", "Guanfacine", "Clonidine"],
+      "answer": "Atomoxetine",
+      "explanation": "Atomoxetine is a selective norepinephrine reuptake inhibitor (NRI). It raises prefrontal NE/DA without a striatal dopamine surge, so it has essentially no misuse potential (not controlled) but takes about 2–4 weeks for full effect — unlike the same-day stimulants. Guanfacine and clonidine are α2-adrenergic agonists (also non-controlled), a different mechanism; the NRI-with-delayed-onset description points specifically to atomoxetine.",
+      "meds": ["atomoxetine", "guanfacine", "clonidine"],
+      "focus": "atomoxetine = non-stimulant NRI, delayed 2–4 wk onset, not controlled",
+      "source": {"name": "Atomoxetine product monograph — mechanism & delayed onset", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_2_2",
+      "stem": "You want an α2-adrenergic agent for ADHD but daytime sedation and hypotension must be minimized, and you specifically want the more α2A-selective agent that carries its own ADHD (extended-release) indication and an approved stimulant-adjunct role. Which do you choose?",
+      "options": ["Clonidine", "Guanfacine", "Atomoxetine"],
+      "answer": "Guanfacine",
+      "explanation": "Guanfacine is a selective α2A-agonist — more α2A-selective than clonidine — so it is relatively less sedating and hypotensive for a given effect, and it is the α2 agonist with a specific ADHD (XR) indication plus an approved stimulant-adjunct role. Clonidine is less α2A-selective and markedly more sedating. Atomoxetine is an NRI, not an α2 agonist. Note guanfacine is CYP3A4-metabolized and must be tapered (rebound hypertension).",
+      "meds": ["clonidine", "guanfacine", "atomoxetine"],
+      "focus": "guanfacine = α2A-selective, less sedating, ADHD-XR indication + adjunct role",
+      "source": {"name": "Guanfacine XR product monograph — α2A selectivity & indication", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_2_3",
+      "stem": "A child with ADHD also has motor tics and prominent sleep-onset insomnia, and you want the α2 agonist that is more sedating (useful dosed at bedtime) and favoured in this tic/sleep scenario. Which agent — also the classic dangerous pediatric overdose that mimics opioid toxicity — fits best?",
+      "options": ["Atomoxetine", "Guanfacine", "Clonidine"],
+      "answer": "Clonidine",
+      "explanation": "Clonidine is less α2A-selective, shorter-acting and MORE sedating than guanfacine, so it is favoured for sleep-onset insomnia and tics and is often dosed at bedtime. Its pediatric overdose is a classic potentially lethal ingestion — CNS/respiratory depression, bradycardia and miosis mimicking opioid toxicity — and rebound hypertension on abrupt withdrawal is more marked than with guanfacine, so it must be tapered. Guanfacine is the less-sedating α2A-selective agent; atomoxetine is an NRI.",
+      "meds": ["atomoxetine", "guanfacine", "clonidine"],
+      "focus": "clonidine = more sedating, tics/sleep-onset, lethal pediatric overdose",
+      "source": {"name": "Clonidine product monograph — sedation, tics/insomnia use & overdose", "origin": "monograph"}
+    },
+    {
+      "id": "rev_adhd_2_4",
+      "stem": "Between the two α2A-adrenergic agonists on this row, a family needs the option LEAST likely to cause daytime somnolence and hypotension for a comparable ADHD effect. Which do you pick?",
+      "options": ["Clonidine", "Guanfacine"],
+      "answer": "Guanfacine",
+      "explanation": "Guanfacine is more α2A-selective than clonidine, so it produces relatively less sedation and hypotension for a given ADHD effect — the better fit when daytime alertness must be preserved. Clonidine is less selective and markedly more sedating (which is exactly why it is favoured at bedtime for sleep-onset insomnia). Both still cause hypotension/bradycardia and both require tapering to avoid rebound hypertension.",
+      "meds": ["clonidine", "guanfacine"],
+      "focus": "guanfacine (α2A-selective, less sedating) vs clonidine (more sedating)",
+      "source": {"name": "CADDRA/CANMAT ADHD guidance — α2 agonist selection", "origin": "canmat"}
+    },
+    {
+      "id": "rev_adhd_2_5",
+      "stem": "One of these non-stimulants carries a warning for rare but potentially severe hepatotoxicity — you would stop it for jaundice or markedly elevated LFTs and not rechallenge — and it also carries a suicidal-ideation caution in children/adolescents. Which agent is it?",
+      "options": ["Guanfacine", "Clonidine", "Atomoxetine"],
+      "answer": "Atomoxetine",
+      "explanation": "Atomoxetine carries warnings for rare, potentially severe hepatotoxicity (discontinue for jaundice or markedly elevated LFTs and do not rechallenge) and for suicidal ideation in children/adolescents, warranting close early monitoring. Guanfacine and clonidine are α2 agonists whose principal cautions are hypotension, bradycardia, sedation and rebound hypertension on abrupt withdrawal — not hepatotoxicity. This safety profile distinguishes the NRI from the α2 agonists.",
+      "meds": ["guanfacine", "clonidine", "atomoxetine"],
+      "focus": "atomoxetine hepatotoxicity + pediatric suicidality warning (vs α2 agonists)",
+      "source": {"name": "Atomoxetine product monograph — hepatotoxicity & suicidality warnings", "origin": "monograph"}
+    }
+  ]
+}

@@ -128,6 +128,14 @@
     { id: 'level_10', emoji: '🌟', title: 'Level 10', desc: 'Reach level 10.', test: function (x) { return x.level >= 10; } },
     { id: 'no_lapse_week', emoji: '🎯', title: 'Clean Week', desc: 'Answer 25+ in a week with no lapses.', test: function (x) { return x.weekAnswered >= 25 && (x.lapsesThisWeek || 0) === 0; } },
     { id: 'cram_run', emoji: '🏁', title: 'Crammer', desc: 'Finish a cram run.', test: function (x) { return (x.cramRuns || 0) >= 1; } },
+    // roadmap achievements
+    { id: 'first_review', emoji: '📝', title: 'Checked', desc: 'Pass your first row review.', test: function (x) { return x.reviewsPassed >= 1; } },
+    { id: 'ten_reviews', emoji: '🧾', title: 'Consolidator', desc: 'Pass 10 row reviews.', test: function (x) { return x.reviewsPassed >= 10; } },
+    { id: 'all_reviews', emoji: '🎓', title: 'Fully Reviewed', desc: 'Pass every row review on the roadmap.', test: function (x) { return x.reviewsTotal > 0 && x.reviewsPassed >= x.reviewsTotal; } },
+    { id: 'first_chapter', emoji: '🧱', title: 'Foundations', desc: 'Complete a whole chapter of the roadmap.', test: function (x) { return x.chaptersComplete >= 1; } },
+    { id: 'all_chapters', emoji: '🗺️', title: 'Cartographer', desc: 'Complete every chapter of the roadmap.', test: function (x) { return x.chaptersTotal > 0 && x.chaptersComplete >= x.chaptersTotal; } },
+    { id: 'first_class', emoji: '🏵️', title: 'Class Act', desc: 'Learn every medication in a drug class.', test: function (x) { return x.classesComplete >= 1; } },
+    { id: 'keystone_gold', emoji: '💠', title: 'Keystone', desc: 'Take a keystone medication to Gold mastery.', test: function (x) { return !!x.keystoneGold; } },
   ];
 
   function achContext() {
@@ -136,12 +144,27 @@
     var ids = Object.keys(cards);
     var learned = ids.filter(function (i) { return cards[i].learned; }).length;
     var tiers = ids.map(function (i) { return tierRank(cards[i].mastery); });
+    // roadmap metrics (chapters/classes complete, reviews passed, keystones at gold)
+    var chaptersTotal = 0, chaptersComplete = 0, classesComplete = 0, reviewsTotal = 0, keystoneGold = false;
+    if (PML.tree && PML.tree.chapters) {
+      var chs = PML.tree.chapters(); chaptersTotal = chs.length;
+      chs.forEach(function (ch) { if (ch.total && ch.learned === ch.total) chaptersComplete++; });
+      PML.tree.branches().forEach(function (b) {
+        reviewsTotal += b.tiers.length;
+        var pr = PML.tree.branchProgress(b); if (pr.total && pr.learned === pr.total) classesComplete++;
+      });
+    }
+    var reviewsPassed = Object.keys(s.progress.reviews || {}).length;
+    var ksMap = (window.CURRICULUM && window.CURRICULUM.keystones) || {};
+    Object.keys(ksMap).forEach(function (id) { if (cards[id] && tierRank(cards[id].mastery) >= 3) keystoneGold = true; });
     return {
       learned: learned, total: PML.deck.count(),
       streak: s.progress.streak, level: levelInfo(s.progress.xp).level,
       bestCombo: (s.stats.bestCombo || 0), vignetteAces: (s.stats.vignetteAces || 0),
       tags: s.stats.tags || {}, cramRuns: s.stats.cramRuns || 0,
       weekAnswered: s.stats.weekAnswered || 0, lapsesThisWeek: s.progress.lapsesThisWeek || 0,
+      chaptersTotal: chaptersTotal, chaptersComplete: chaptersComplete, classesComplete: classesComplete,
+      reviewsPassed: reviewsPassed, reviewsTotal: reviewsTotal, keystoneGold: keystoneGold,
       anyTier: function (r) { return tiers.some(function (t) { return t >= r; }); },
       subclassAll: function (sub) {
         var ms = PML.deck.all().filter(function (m) { return (m.subclass || '') === sub || (m.subclass || '').indexOf(sub) === 0; });

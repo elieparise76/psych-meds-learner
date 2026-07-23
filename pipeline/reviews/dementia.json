@@ -1,0 +1,86 @@
+{
+  "0": [
+    {
+      "id": "rev_dementia_0_1",
+      "stem": "You are starting a cholinesterase inhibitor for a patient whose caregiver worries about occasionally forgetting a dose. Which agent has the longest half-life, allowing simple once-daily dosing that is the most forgiving of an occasional missed dose?",
+      "options": ["Donepezil", "Rivastigmine", "Galantamine", "Memantine"],
+      "answer": "Donepezil",
+      "explanation": "Donepezil has the longest half-life of the cholinesterase inhibitors, so it is given once daily and tolerates an occasional missed dose. Rivastigmine is the contrast here: short-acting, and after an interruption of more than about 3 days it must be restarted low and re-titrated because resuming the prior dose risks severe vomiting. Galantamine is also shorter-acting (IR is twice daily), and memantine is not a cholinesterase inhibitor at all.",
+      "meds": ["donepezil", "rivastigmine", "galantamine", "memantine"],
+      "focus": "Donepezil = longest half-life, once daily, forgiving of a missed dose",
+      "source": { "name": "Donepezil / rivastigmine monographs — half-life and dosing", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_0_2",
+      "stem": "A patient on an oral cholinesterase inhibitor has recurrent nausea and vomiting and adherence to twice-daily capsules is poor. You want an agent available as a transdermal patch that smooths drug levels to reduce GI side effects and improve adherence. Which one do you choose?",
+      "options": ["Rivastigmine", "Donepezil", "Galantamine", "Memantine"],
+      "answer": "Rivastigmine",
+      "explanation": "Rivastigmine is the cholinesterase inhibitor available as a transdermal patch; smoother plasma levels from the patch cut GI side effects and improve adherence versus oral dosing. Donepezil and galantamine come only as oral formulations (tablet/ODT and tablet/ER capsule respectively), and memantine is an oral NMDA antagonist, not a cholinesterase inhibitor.",
+      "meds": ["rivastigmine", "donepezil", "galantamine", "memantine"],
+      "focus": "Rivastigmine = transdermal patch reduces GI side effects and aids adherence",
+      "source": { "name": "Rivastigmine monograph — transdermal patch formulation", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_0_3",
+      "stem": "Which cholinesterase inhibitor is distinguished by inhibiting BOTH acetylcholinesterase and butyrylcholinesterase, is metabolised by esterases rather than CYP enzymes (few CYP interactions), and is the only one in the class also approved for Parkinson disease dementia?",
+      "options": ["Rivastigmine", "Donepezil", "Galantamine", "Memantine"],
+      "answer": "Rivastigmine",
+      "explanation": "Rivastigmine is a pseudo-irreversible carbamate that inhibits both acetylcholinesterase and butyrylcholinesterase, is cleared by esterases (not CYP, so few CYP drug interactions), and is the only cholinesterase inhibitor also approved for Parkinson disease dementia. Donepezil is a centrally selective AChE-only inhibitor; galantamine adds nicotinic modulation but does not inhibit butyrylcholinesterase; memantine is an NMDA antagonist.",
+      "meds": ["rivastigmine", "donepezil", "galantamine", "memantine"],
+      "focus": "Rivastigmine = dual AChE + BuChE, esterase metabolism, Parkinson disease dementia",
+      "source": { "name": "Rivastigmine monograph — dual esterase inhibition and indications", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_0_4",
+      "stem": "A patient started on a bedtime cholinesterase inhibitor now reports vivid, disturbing dreams and nightmares, and moving the dose to the morning is expected to help. Which agent is this pattern most characteristic of?",
+      "options": ["Donepezil", "Rivastigmine", "Galantamine", "Memantine"],
+      "answer": "Donepezil",
+      "explanation": "Donepezil taken at bedtime is classically associated with vivid dreams/nightmares and insomnia; because its long half-life allows flexible once-daily timing, simply moving the dose to the morning usually resolves this. Rivastigmine and galantamine are dosed with food and are less identified with this bedtime nightmare pattern, and memantine (an NMDA antagonist) causes dizziness/constipation/confusion rather than the cholinergic-sleep effects.",
+      "meds": ["donepezil", "rivastigmine", "galantamine", "memantine"],
+      "focus": "Donepezil = bedtime vivid dreams/nightmares; move dose to the morning",
+      "source": { "name": "Donepezil monograph — sleep/dosing-time adverse effects", "origin": "monograph" }
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_dementia_1_1",
+      "stem": "A patient with moderate-to-severe Alzheimer disease is already on a well-tolerated cholinesterase inhibitor but is declining. You want to ADD an agent with a completely different mechanism that can be safely combined with the cholinesterase inhibitor. Which do you add?",
+      "options": ["Memantine", "Galantamine", "Donepezil", "Rivastigmine"],
+      "answer": "Memantine",
+      "explanation": "Memantine is an uncompetitive NMDA-receptor antagonist — a mechanism entirely distinct from the cholinesterase inhibitors — so it can be combined with a cholinesterase inhibitor in moderate-to-severe Alzheimer disease. Adding a second cholinesterase inhibitor (galantamine, donepezil, or rivastigmine) instead would not add a new mechanism and would compound cholinergic GI and bradycardic toxicity.",
+      "meds": ["memantine", "galantamine", "donepezil", "rivastigmine"],
+      "focus": "Memantine = distinct NMDA mechanism, combinable with a ChEI in moderate-severe disease",
+      "source": { "name": "Memantine monograph — NMDA antagonism and combination therapy", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_1_2",
+      "stem": "Which add-on dementia agent works through a DUAL cholinergic mechanism — reversible acetylcholinesterase inhibition PLUS allosteric potentiation of nicotinic acetylcholine receptors — and is approved only for mild-to-moderate Alzheimer disease?",
+      "options": ["Galantamine", "Memantine", "Donepezil", "Rivastigmine"],
+      "answer": "Galantamine",
+      "explanation": "Galantamine combines competitive, reversible acetylcholinesterase inhibition with allosteric potentiation of nicotinic receptors, and is indicated for mild-to-moderate Alzheimer disease only. Memantine is an NMDA antagonist (no cholinergic action) reserved for moderate-severe disease; donepezil is a centrally selective AChE-only inhibitor; rivastigmine's second target is butyrylcholinesterase, not nicotinic modulation.",
+      "meds": ["galantamine", "memantine", "donepezil", "rivastigmine"],
+      "focus": "Galantamine = AChE inhibition PLUS nicotinic allosteric potentiation, mild-moderate only",
+      "source": { "name": "Galantamine monograph — dual cholinergic mechanism and indication", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_1_3",
+      "stem": "You need a dementia agent for a patient with significant renal impairment and a low tolerance for cholinergic GI upset and bradycardia. Which agent is renally excreted largely unchanged (requiring dose reduction in severe renal impairment) and lacks the cholinergic GI and bradycardic effects of the other agents?",
+      "options": ["Memantine", "Galantamine", "Donepezil", "Rivastigmine"],
+      "answer": "Memantine",
+      "explanation": "Memantine is excreted renally, largely unchanged, so it must be dose-reduced in severe renal impairment — contrasting the hepatically-metabolised cholinesterase inhibitors. As an NMDA antagonist it produces no cholinergic GI upset or bradycardia; its main issues are dizziness, constipation, and confusion. Galantamine, donepezil, and rivastigmine all carry the class cholinergic nausea/vomiting and bradycardia/syncope risk.",
+      "meds": ["memantine", "galantamine", "donepezil", "rivastigmine"],
+      "focus": "Memantine = renally cleared (dose-reduce in renal impairment), no cholinergic GI/bradycardia",
+      "source": { "name": "Memantine monograph — renal excretion and tolerability", "origin": "monograph" }
+    },
+    {
+      "id": "rev_dementia_1_4",
+      "stem": "Two add-on agents remain. One is a cholinesterase inhibitor that should be taken with food and fluids to limit nausea, is restricted to mild-to-moderate Alzheimer disease, and carries an excess-mortality signal from trials in mild cognitive impairment (not an approved use). Which agent is this?",
+      "options": ["Galantamine", "Memantine", "Donepezil", "Rivastigmine"],
+      "answer": "Galantamine",
+      "explanation": "Galantamine is approved for mild-to-moderate Alzheimer only, is taken with food and fluids to reduce cholinergic nausea, and showed an excess-mortality signal in mild-cognitive-impairment trials — a non-approved indication. Memantine (the other add-on) is an NMDA antagonist reserved for moderate-severe disease, without that cholinergic tolerability profile; donepezil and rivastigmine are the tier-0 cholinesterase inhibitors, not the mild-cognitive-impairment mortality signal drug.",
+      "meds": ["galantamine", "memantine", "donepezil", "rivastigmine"],
+      "focus": "Galantamine = mild-moderate only, take with food, MCI excess-mortality signal",
+      "source": { "name": "Galantamine monograph — indication limits and mild-cognitive-impairment safety signal", "origin": "monograph" }
+    }
+  ]
+}

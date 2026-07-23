@@ -47,15 +47,19 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   main button), laid out as **chapters** — horizontal priority bands top→bottom ("The
   essentials" → "Deep cuts"), each holding **class rows** where every same-level med sits on one
   horizontal line (basic SSRIs side by side, etc.). Flat circular nodes (learned ✓ / available /
-  current / locked / keystone ⭐💎 / due 🔁), a **boss** at the end of each class's last row.
-  Unlock is *derived* from `learned` (a class's next row opens at 50% of the current one;
-  specialist branches gate on total learned; boss at 60%), so returning users keep all progress
-  and just light up their nodes while the "Continue" frontier restarts at the basics. Data:
-  `data/curriculum.js` → `window.CURRICULUM` (all 120 meds placed once as class branches × tiers
-  + `chapters` metadata, decoupled from state like vignettes); bosses are per-branch
-  **discrimination vignettes** (`data/boss.js` → `window.BOSSES`, authored in
-  `pipeline/boss/*.json`, built by `pipeline/build-boss.js`). Engine in `tree.js`, view + boss
-  runner in `roadmap.js`. **Home stays a dashboard** (greeting, streak, XP, quests, class mastery).
+  current / locked / keystone ⭐💎 / due 🔁), and **a Review at the end of every row** (one per
+  class per chapter). To open a class's next-chapter row you must learn its **whole** current row
+  **and pass that row's Review** (`tierUnlocked = rowComplete(prev) && reviewCleared(prev)`);
+  specialist branches also gate on total learned. Learning derives from the `learned` flag so
+  returning users keep all progress; the "Continue" button (`nextAction`) feeds the next med to
+  learn, or the next available Review when nothing's left to learn. Data: `data/curriculum.js` →
+  `window.CURRICULUM` (all 120 meds placed once as class branches × tiers + `chapters` metadata).
+  **Reviews** are per-row discrimination+coverage quizzes authored fresh by subagents
+  (`pipeline/reviews/<branchId>.json` → `data/reviews.js` → `window.REVIEWS`, keyed
+  `"branchId:tierIndex"`, built by `node pipeline/build-reviews.js`; 165 Qs / 28 rows). Engine in
+  `tree.js`, view + review runner in `roadmap.js`. **Home stays a dashboard** (greeting, streak,
+  XP, quests, class mastery). New roadmap **achievements** in `game.js` (Foundations, Cartographer,
+  Consolidator, Class Act, Keystone, …). (The old per-branch boss system was retired.)
 - **Study loop**: one-new-med-a-day daily engine now fed by the roadmap frontier (manual pick counts toward streak),
   SM-2 lite spaced **Review** — now a per-fact active-recall **question set** (each due med is
   quizzed on its populated non-identity facts one at a time: recall → reveal sourced answer →

@@ -1,0 +1,158 @@
+{
+  "0": [
+    {
+      "id": "rev_mood_0_1",
+      "stem": "A 60-year-old on a mood stabilizer for bipolar I develops nausea, a coarse tremor, ataxia and confusion two weeks after starting a thiazide for hypertension. Which pillar is renally excreted (not metabolized), has a narrow therapeutic index (0.6–1.2 mmol/L; toxic >1.5), and is followed with a 12-hour trough level?",
+      "options": ["Valproate", "Lithium", "Lamotrigine"],
+      "answer": "Lithium",
+      "explanation": "Lithium is renally cleared and NOT metabolized, so anything that lowers renal clearance — thiazides, NSAIDs, ACEi/ARBs, dehydration, low sodium — raises the level into the toxic range (>1.5 mmol/L: coarse tremor, ataxia, confusion), and it must be dosed to a 12-h trough (0.6–1.2 mmol/L). Contrast: valproate is hepatically metabolized and monitored at 350–700 µmol/L but is not driven toxic by a thiazide; lamotrigine is glucuronidated and has no routine serum level.",
+      "meds": ["lithium", "valproate", "lamotrigine"],
+      "focus": "Which pillar is renally cleared with a narrow index requiring 12-h trough levels",
+      "source": {"name": "Lithium carbonate product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_0_2",
+      "stem": "A 26-year-old woman with bipolar I who uses no reliable contraception and may wish to conceive needs a maintenance stabilizer. Which of the pillars is the MOST teratogenic — neural-tube defects and the lowest childhood IQ — and should be avoided here?",
+      "options": ["Lamotrigine", "Lithium", "Valproate", "Carbamazepine"],
+      "answer": "Valproate",
+      "explanation": "Valproate is the most teratogenic mood stabilizer: neural-tube defects (spina bifida), craniofacial/cardiac malformations, and dose-dependent neurodevelopmental harm with the LOWEST childhood IQ and increased autism — avoid in anyone who could become pregnant. Contrast: lamotrigine shows no consistent major teratogenic signal and is often preferred in pregnancy; lithium carries a smaller first-trimester Ebstein-anomaly risk; carbamazepine is teratogenic (NTDs) but overall less severe than valproate.",
+      "meds": ["valproate", "lamotrigine", "lithium", "carbamazepine"],
+      "focus": "Teratogenicity ranking — valproate is the one to avoid in pregnancy potential",
+      "source": {"name": "Valproate (divalproex sodium) product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_0_3",
+      "stem": "Which pillar is first-line for bipolar DEPRESSION and maintenance (but ineffective for acute mania), and requires a deliberately SLOW titration — restarting from scratch after a >5-day gap — to reduce the risk of Stevens–Johnson syndrome?",
+      "options": ["Lamotrigine", "Lithium", "Valproate"],
+      "answer": "Lamotrigine",
+      "explanation": "Lamotrigine is the bipolar-depression/maintenance agent and does NOT treat acute mania; its slow titration exists specifically to lower SJS/TEN risk, and you must restart from scratch after a >5-day gap. Contrast: lithium and valproate are antimanic (valproate can even be loaded for acute mania), and neither carries lamotrigine's rash-driven titration constraint.",
+      "meds": ["lamotrigine", "lithium", "valproate"],
+      "focus": "Lamotrigine is the bipolar-depression agent with SJS-driven slow titration",
+      "source": {"name": "Lamotrigine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_0_4",
+      "stem": "A patient stable on lamotrigine needs a second agent for a mixed episode. Adding which drug roughly DOUBLES the lamotrigine level by inhibiting its glucuronidation, forcing you to halve the lamotrigine dose to avoid SJS?",
+      "options": ["Carbamazepine", "Valproate", "Lithium"],
+      "answer": "Valproate",
+      "explanation": "Valproate inhibits lamotrigine glucuronidation, roughly doubling its level — always halve the lamotrigine dose when co-prescribing, because the elevated level raises SJS/TEN risk. Contrast: carbamazepine does the OPPOSITE (induces glucuronidation and LOWERS lamotrigine, risking loss of effect), and lithium is renally cleared and does not touch lamotrigine metabolism.",
+      "meds": ["valproate", "lamotrigine", "carbamazepine", "lithium"],
+      "focus": "Valproate doubles lamotrigine (halve the dose) vs carbamazepine which lowers it",
+      "source": {"name": "Lamotrigine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_0_5",
+      "stem": "Of the three pillars, which does NOT require routine serum-level monitoring, in contrast to the two that are dosed to a target trough concentration?",
+      "options": ["Lithium", "Valproate", "Lamotrigine"],
+      "answer": "Lamotrigine",
+      "explanation": "Lamotrigine has no routine serum level — it is titrated clinically while watching for rash — whereas lithium (0.6–1.2 mmol/L) and valproate (350–700 µmol/L) are dosed to trough targets. The one TDM caveat for lamotrigine is pregnancy, when levels fall markedly and are tracked so the dose can be raised antenatally and reduced postpartum.",
+      "meds": ["lamotrigine", "lithium", "valproate"],
+      "focus": "Which pillar needs no routine level — the TDM difference among the three",
+      "source": {"name": "Lamotrigine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_0_6",
+      "stem": "Which pillar is the gold-standard mood stabilizer and the ONLY psychotropic with robust evidence for reducing suicide?",
+      "options": ["Lithium", "Valproate", "Lamotrigine", "Carbamazepine"],
+      "answer": "Lithium",
+      "explanation": "Lithium is the reference mood stabilizer and uniquely reduces suicide risk — a benefit that helps justify tolerating its narrow index and monitoring burden. Contrast: valproate and carbamazepine are antimanic anticonvulsants without demonstrated anti-suicide evidence, and lamotrigine covers bipolar depression/maintenance — none share lithium's suicide-reduction data.",
+      "meds": ["lithium", "valproate", "lamotrigine", "carbamazepine"],
+      "focus": "Lithium's unique anti-suicide evidence distinguishes it from the anticonvulsant pillars",
+      "source": {"name": "Lithium carbonate product monograph", "origin": "monograph"}
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_mood_1_1",
+      "stem": "Two to four weeks after this anticonvulsant mood stabilizer was titrated to a therapeutic level, the trough has fallen and symptoms return. Which agent AUTOINDUCES its own metabolism, so the level drops over the first weeks and must be rechecked and re-titrated at ~1 month?",
+      "options": ["Oxcarbazepine", "Carbamazepine", "Valproate", "Lamotrigine"],
+      "answer": "Carbamazepine",
+      "explanation": "Carbamazepine induces the CYP3A4 that metabolizes it (autoinduction), so its level falls over the first 2–4 weeks — recheck and re-titrate at ~1 month (target 17–51 µmol/L / 4–12 µg/mL). Contrast: oxcarbazepine has much less autoinduction; valproate does not autoinduce (rather, inducers lower it); lamotrigine has no routine level to fall.",
+      "meds": ["carbamazepine", "oxcarbazepine", "valproate", "lamotrigine"],
+      "focus": "Carbamazepine autoinduction — recheck the level at ~1 month",
+      "source": {"name": "Carbamazepine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_1_2",
+      "stem": "Between these two sodium-channel blockers, in which is clinically significant HYPONATREMIA more common — warranting sodium checks early and in the elderly or diuretic users?",
+      "options": ["Carbamazepine", "Oxcarbazepine"],
+      "answer": "Oxcarbazepine",
+      "explanation": "Hyponatremia/SIADH is MORE frequent with oxcarbazepine than with carbamazepine — monitor sodium especially in the first 3 months and in older or diuretic-treated patients (additive with SSRIs and diuretics). Contrast: carbamazepine also causes hyponatremia but less often, and instead carries the heavier hematologic (agranulocytosis/aplastic anemia) monitoring burden.",
+      "meds": ["oxcarbazepine", "carbamazepine"],
+      "focus": "Hyponatremia is more common with oxcarbazepine than carbamazepine",
+      "source": {"name": "Oxcarbazepine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_1_3",
+      "stem": "Which agent requires HLA-B*1502 screening in patients of Han Chinese / Southeast-Asian ancestry before starting (SJS/TEN risk), can cause agranulocytosis and aplastic anemia, and is a potent 3A4 inducer that causes oral-contraceptive failure?",
+      "options": ["Lamotrigine", "Oxcarbazepine", "Carbamazepine"],
+      "answer": "Carbamazepine",
+      "explanation": "Carbamazepine carries the HLA-B*1502 SJS/TEN association (screen before starting in at-risk ancestry), marrow suppression (agranulocytosis/aplastic anemia) requiring periodic CBC, and potent 3A4 induction that lowers OCP levels to the point of contraceptive failure (use a non-hormonal method). Contrast: oxcarbazepine shares some HLA-B*1502 cross-risk and weaker induction but far less marrow monitoring; lamotrigine's serious rash is not HLA-B*1502-linked and it does not suppress marrow.",
+      "meds": ["carbamazepine", "oxcarbazepine", "lamotrigine"],
+      "focus": "Carbamazepine: HLA-B*1502 screening + agranulocytosis + potent 3A4 inducer (OCP failure)",
+      "source": {"name": "Carbamazepine product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_1_4",
+      "stem": "Which agent is the keto-analog prodrug (rapidly reduced to the 10-monohydroxy derivative) that lacks the active epoxide — giving better tolerability and much less marrow monitoring, but weaker, off-label evidence as a mood stabilizer?",
+      "options": ["Oxcarbazepine", "Carbamazepine"],
+      "answer": "Oxcarbazepine",
+      "explanation": "Oxcarbazepine is the keto-analog of carbamazepine; without the active epoxide it is better tolerated and needs far less hematologic monitoring and re-titration, but its mood-stabilizer evidence is weaker and off-label (not first-line). Contrast: carbamazepine has the stronger antimanic evidence but the epoxide-related toxicity, autoinduction, and CBC-monitoring burden.",
+      "meds": ["oxcarbazepine", "carbamazepine"],
+      "focus": "Oxcarbazepine keto-analog — fewer labs but weaker mood-stabilizer evidence",
+      "source": {"name": "Oxcarbazepine product monograph", "origin": "monograph"}
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_mood_2_1",
+      "stem": "Which adjunctive agent causes weight LOSS, cognitive/word-finding slowing (\"dopamax\"), paresthesia, non-anion-gap metabolic acidosis, calcium-phosphate kidney stones, and (idiosyncratically) acute angle-closure glaucoma — all traceable to carbonic-anhydrase inhibition?",
+      "options": ["Gabapentin", "Pregabalin", "Topiramate"],
+      "answer": "Topiramate",
+      "explanation": "Topiramate's carbonic-anhydrase inhibition ties together the cluster of paresthesia, metabolic acidosis (check bicarbonate), calcium-phosphate stones, and angle-closure glaucoma, and it is the weight-LOSS anticonvulsant with \"dopamax\" cognitive dulling. Contrast: gabapentin and pregabalin are α2δ calcium-channel ligands that cause weight GAIN and peripheral edema, not this metabolic/stone/acidosis cluster.",
+      "meds": ["topiramate", "gabapentin", "pregabalin"],
+      "focus": "Topiramate's carbonic-anhydrase cluster + weight loss vs the α2δ pair's weight gain",
+      "source": {"name": "Topiramate product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_2_2",
+      "stem": "Which α2δ calcium-channel ligand has genuine anti-anxiety efficacy with a GAD indication (Europe) and a faster onset than SSRIs, is more potent, and has predictable LINEAR kinetics — though it is an anxiolytic, not a bipolar mood stabilizer?",
+      "options": ["Pregabalin", "Gabapentin", "Topiramate"],
+      "answer": "Pregabalin",
+      "explanation": "Pregabalin binds the α2δ subunit with linear, reliable absorption and greater potency, and carries a European GAD indication with faster anxiolysis than SSRIs — but it is an anxiolytic, NOT a mood stabilizer, and can be misused. Contrast: gabapentin shares the mechanism but has saturable/nonlinear absorption and no formal anxiety indication; topiramate works by a different (carbonic-anhydrase/AMPA/GABA-A/sodium) mechanism.",
+      "meds": ["pregabalin", "gabapentin", "topiramate"],
+      "focus": "Pregabalin — more potent, linear kinetics, GAD anxiolytic (not a mood stabilizer)",
+      "source": {"name": "Pregabalin product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_2_3",
+      "stem": "Which adjunct is renally excreted with NO CYP metabolism (a clean interaction profile) yet has saturable, nonlinear absorption, has negative bipolar RCTs (used for anxiety/sleep/pain, not as a primary mood stabilizer), and carries recognized misuse potential?",
+      "options": ["Topiramate", "Pregabalin", "Gabapentin"],
+      "answer": "Gabapentin",
+      "explanation": "Gabapentin is renally cleared with no CYP involvement — clean when polypharmacy/CYP issues matter — but has saturable absorption and no efficacy as a bipolar mood stabilizer (negative RCTs); it is adjunctive and can be misused (respiratory depression with opioids). Contrast: pregabalin is its more potent, linear-kinetics sibling; topiramate is also CYP-independent but has active anticonvulsant/metabolic effects and is used for weight/migraine.",
+      "meds": ["gabapentin", "pregabalin", "topiramate"],
+      "focus": "Gabapentin — renal/clean, nonlinear absorption, not a primary mood stabilizer",
+      "source": {"name": "Gabapentin product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_2_4",
+      "stem": "Both α2δ ligands can be misused, but which one has NONLINEAR (saturable) absorption — bioavailability falling as the dose rises — in contrast to its more potent, linear-kinetics sibling?",
+      "options": ["Pregabalin", "Gabapentin"],
+      "answer": "Gabapentin",
+      "explanation": "Gabapentin's absorption is saturable, so bioavailability drops at higher doses and its dose–level relationship is unpredictable. Contrast: pregabalin has linear kinetics and greater potency, giving more reliable dosing — the key pharmacokinetic difference between the two α2δ ligands despite their shared mechanism.",
+      "meds": ["gabapentin", "pregabalin"],
+      "focus": "Gabapentin nonlinear/saturable vs pregabalin linear kinetics",
+      "source": {"name": "Gabapentin product monograph", "origin": "monograph"}
+    },
+    {
+      "id": "rev_mood_2_5",
+      "stem": "Which adjunct is a teratogen causing oral clefts (cleft lip/palate) and reduced fetal growth, and also lowers oral-contraceptive efficacy at higher doses — so reliable contraception must be counselled?",
+      "options": ["Gabapentin", "Topiramate", "Pregabalin"],
+      "answer": "Topiramate",
+      "explanation": "Topiramate causes oral clefts and reduced fetal growth and lowers OCP efficacy (>200 mg/day), so counsel on reliable contraception. Contrast: gabapentin and pregabalin have limited pregnancy data (pregabalin carries a possible-harm signal — avoid if possible), but neither is the classic oral-cleft / OCP-interaction teratogen of this row.",
+      "meds": ["topiramate", "gabapentin", "pregabalin"],
+      "focus": "Topiramate — oral clefts + reduced OCP efficacy (contraception counselling)",
+      "source": {"name": "Topiramate product monograph", "origin": "monograph"}
+    }
+  ]
+}

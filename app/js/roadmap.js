@@ -16,31 +16,42 @@
   function reduce() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
 
   // ---------- the page ----------
+  var _curReviewKey = null;   // the review that "Continue" points at (for the pulse), if any
   function view(root) {
     var frontierId = PML.tree.frontier();
-    root.appendChild(head(frontierId));
+    var act = PML.tree.nextAction();
+    _curReviewKey = (act && act.type === 'review') ? (act.branch.id + ':' + act.tierIndex) : null;
+    root.appendChild(head(act, frontierId));
     var wrap = ce('div', { class: 'roadmap view' });
     PML.tree.chapters().forEach(function (ch) { wrap.appendChild(chapterEl(ch, frontierId)); });
     root.appendChild(wrap);
-    // gently bring the current node into view so "Continue" lands you where you left off
+    // gently bring the current node/review into view so "Continue" lands you where you left off
     setTimeout(function () {
       var cur = document.querySelector('.rnode.is-current');
       if (cur) cur.scrollIntoView({ block: 'center', behavior: reduce() ? 'auto' : 'smooth' });
     }, 40);
   }
 
-  function head(frontierId) {
+  function head(act, frontierId) {
     var st = PML.tree.stats();
-    var fmed = frontierId ? med(frontierId) : null;
     var pct = st.total ? Math.round(st.learned / st.total * 100) : 0;
-    var cont = ce('button', { class: 'btn primary', onclick: function () { if (frontierId) PML.ui.startLearn([frontierId], 'roadmap'); } },
-      [fmed ? '✨ Learn ' + fmed.generic : '✓ All learned']);
-    if (!frontierId) cont.disabled = true;
+    var cont, upnext;
+    if (!act) {
+      cont = ce('button', { class: 'btn primary', disabled: 'disabled' }, ['✓ All done']);
+      upnext = 'You have learned every medication.';
+    } else if (act.type === 'learn') {
+      var m = med(act.id);
+      cont = ce('button', { class: 'btn primary', onclick: function () { PML.ui.startLearn([act.id], 'roadmap'); } }, ['✨ Learn ' + m.generic]);
+      upnext = 'Up next: ' + m.generic + ' — a ' + (m.subclass || m.class) + '.';
+    } else {
+      cont = ce('button', { class: 'btn primary', onclick: function () { runReview(act.branch, act.tierIndex); } }, ['📝 Review: ' + act.branch.tiers[act.tierIndex].title]);
+      upnext = 'Up next: the “' + act.branch.tiers[act.tierIndex].title + '” review — you have learned the whole row.';
+    }
     return ce('div', { class: 'card pad roadmap-head view' }, [
       ce('div', { class: 'row spread wrap', style: { alignItems: 'flex-end', gap: 'var(--sp-3)' } }, [
         ce('div', {}, [
           ce('h1', { style: { margin: 0 } }, ['Your roadmap']),
-          ce('p', { class: 'muted', style: { margin: '4px 0 0' } }, [fmed ? 'Up next: ' + fmed.generic + ' — a ' + (fmed.subclass || fmed.class) + '.' : 'You have learned every medication.']),
+          ce('p', { class: 'muted', style: { margin: '4px 0 0' } }, [upnext]),
         ]),
         cont,
       ]),
@@ -69,17 +80,17 @@
     return card;
   }
 
-  // ---------- a class row (same-level meds on one line) ----------
+  // ---------- a class row (same-level meds on one line, ending in a Review) ----------
   function rowEl(row, frontierId) {
     var wrap = ce('div', { class: 'rrow', style: { '--nhue': hue(row.branch.class) } });
     wrap.appendChild(ce('div', { class: 'rrow-label' }, [
       ce('span', { class: 'rrow-dot' }),
-      ce('span', {}, [row.tier.title]),
+      ce('span', { class: 'rrow-name' }, [row.tier.title]),
       row.unlocked ? null : ce('span', { class: 'rrow-lock', title: 'Locked' }, ['🔒']),
     ]));
     var nodes = ce('div', { class: 'rrow-nodes' });
     row.nodes.forEach(function (id) { nodes.appendChild(nodeEl(row.branch, id, frontierId)); });
-    if (row.isLastTier) nodes.appendChild(bossEl(row.branch));
+    nodes.appendChild(reviewEl(row.branch, row.tierIndex));
     wrap.appendChild(nodes);
     return wrap;
   }
@@ -116,36 +127,35 @@
     toast(loc ? PML.tree.tierLockReason(loc.b, loc.ti) : 'Locked.');
   }
 
-  function bossEl(b) {
-    var st = PML.tree.bossState(b);              // locked | available | cleared
-    var wrap = ce('div', { class: 'rnode rnode-boss' + (st === 'available' ? ' is-current' : ''), style: { '--nhue': hue(b.class) } });
-    var glyph = st === 'cleared' ? '🏆' : (st === 'locked' ? '🔒' : '🎁');
+  function reviewEl(b, tierIndex) {
+    var st = PML.tree.reviewState(b, tierIndex);   // locked | available | cleared
+    var key = b.id + ':' + tierIndex;
+    var isCur = (st === 'available' && key === _curReviewKey);
+    var wrap = ce('div', { class: 'rnode rnode-review' + (isCur ? ' is-current' : ''), style: { '--nhue': hue(b.class) } });
+    var glyph = st === 'cleared' ? '🏅' : (st === 'locked' ? '🔒' : '📝');
     var dot = ce('button', {
-      class: 'rnode-dot boss ' + st, 'aria-label': b.boss.title + ' — ' + st,
-      onclick: function () { if (st === 'locked') { sfx('wrong'); toast(PML.tree.bossLockReason(b)); return; } runBoss(b); },
+      class: 'rnode-dot review ' + st + (isCur ? ' current' : ''), 'aria-label': b.tiers[tierIndex].title + ' review — ' + st,
+      onclick: function () { if (st === 'locked') { sfx('wrong'); toast(PML.tree.reviewLockReason(b, tierIndex)); return; } runReview(b, tierIndex); },
     }, [ce('span', { class: 'rnode-glyph' }, [glyph])]);
     wrap.appendChild(dot);
-    wrap.appendChild(ce('div', { class: 'rnode-label' }, ['Boss']));
+    wrap.appendChild(ce('div', { class: 'rnode-label' }, ['Review']));
     return wrap;
   }
 
-  // ---------- boss gauntlet runner ----------
-  function bossQuestions(b) {
-    var list = (window.BOSSES && window.BOSSES[b.id]) ? window.BOSSES[b.id].slice() : [];
-    if (!list.length) {
-      var inBranch = {}; PML.tree.branchNodes(b).forEach(function (id) { inBranch[id] = 1; });
-      list = (window.VIGNETTES || []).filter(function (v) { return (v.meds || []).some(function (m) { return inBranch[m]; }); }).slice(0, 5);
-    }
-    return list.slice(0, 5);
+  // ---------- review runner ----------
+  function reviewQuestions(b, tierIndex) {
+    var key = b.id + ':' + tierIndex;
+    return (window.REVIEWS && window.REVIEWS[key]) ? window.REVIEWS[key].slice() : [];
   }
 
-  function runBoss(b) {
-    var qs = bossQuestions(b);
+  function runReview(b, tierIndex) {
+    var qs = reviewQuestions(b, tierIndex);
+    var rowTitle = b.tiers[tierIndex].title;
     var main = document.getElementById('main');
-    if (!qs.length) { toast('This boss has no questions yet.'); return; }
+    if (!qs.length) { toast('This review isn’t ready yet.'); return; }
     PML.game.resetCombo();
     var idx = 0, score = 0;
-    var pass = Math.max(1, Math.ceil(qs.length * 0.6));
+    var pass = Math.max(1, Math.round(qs.length * 0.7));
 
     function shell(children) { U.clear(main); main.appendChild(ce('div', { class: 'boss-wrap view' }, children)); window.scrollTo({ top: 0, behavior: 'auto' }); }
     function dots() {
@@ -157,7 +167,7 @@
       var v = qs[idx];
       var card = ce('div', { class: 'card pad stack boss-card', style: { '--nhue': hue(b.class) } });
       card.appendChild(ce('div', { class: 'boss-head' }, [
-        ce('span', { class: 'boss-badge' }, ['🎁 Boss · ' + b.title]),
+        ce('span', { class: 'boss-badge' }, ['📝 Review · ' + b.title + ' · ' + rowTitle]),
         ce('span', { class: 'dim', style: { fontSize: '.8rem' } }, ['Q' + (idx + 1) + ' / ' + qs.length]),
       ]));
       card.appendChild(dots());
@@ -178,7 +188,7 @@
       if (correct) score++;
       U.qsa('.opt', list).forEach(function (x) { x.disabled = true; if (x.dataset.opt === v.answer) x.classList.add('correct'); });
       if (!correct) btn.classList.add('wrong');
-      var ev = PML.game.recordAnswer(v.answerId || (v.meds && v.meds[0]), 'vignette', correct, v.tags || ['comparison']);
+      var ev = PML.game.recordAnswer(v.answerId || (v.meds && v.meds[0]), 'vignette', correct, v.tags || ['review']);
       PML.game.noteQuest('vignette', 1);
       PML.ui.refreshHud();
       if (correct) sfx('correct'); else sfx('wrong');
@@ -195,15 +205,15 @@
     function nextQ() { idx++; if (idx >= qs.length) return results(); question(); }
     function results() {
       var won = score >= pass;
-      if (won && !PML.tree.bossCleared(b)) PML.tree.markBossCleared(b.id);
-      if (won) { sfx('fanfare'); window.PMLConfetti && PMLConfetti.burst({ count: 160 }); }
+      if (won && !PML.tree.reviewCleared(b, tierIndex)) PML.tree.markReviewCleared(b, tierIndex);
+      if (won) { sfx('fanfare'); window.PMLConfetti && PMLConfetti.burst({ count: 150 }); }
       var card = ce('div', { class: 'card pad stack center boss-card', style: { '--nhue': hue(b.class) } }, [
-        ce('div', { class: 'boss-result-glyph' }, [won ? '🏆' : '💪']),
-        ce('h2', { style: { margin: 0 } }, [won ? 'Boss defeated!' : 'So close!']),
+        ce('div', { class: 'boss-result-glyph' }, [won ? '🏅' : '💪']),
+        ce('h2', { style: { margin: 0 } }, [won ? 'Review passed!' : 'Not quite']),
         ce('div', { class: 'boss-score' }, [score + ' / ' + qs.length]),
-        ce('p', { class: 'muted' }, [won ? b.title + ' mastered — the branch is stamped on your roadmap.' : 'You need ' + pass + ' to defeat this boss. Nothing lost — go again.']),
+        ce('p', { class: 'muted' }, [won ? ('“' + rowTitle + '” is locked in — the next row is open.') : ('You need ' + pass + ' to pass. Nothing lost — brush up on the row and try again.')]),
         ce('div', { class: 'row', style: { gap: '10px', justifyContent: 'center', flexWrap: 'wrap' } }, [
-          ce('button', { class: 'btn primary', onclick: function () { runBoss(b); } }, ['↻ ' + (won ? 'Replay' : 'Try again')]),
+          ce('button', { class: 'btn primary', onclick: function () { runReview(b, tierIndex); } }, ['↻ ' + (won ? 'Retake' : 'Try again')]),
           ce('button', { class: 'btn', onclick: function () { PML.ui.go('roadmap'); } }, ['← Back to roadmap']),
         ]),
       ]);
@@ -213,5 +223,5 @@
     question();
   }
 
-  PML.roadmap = { view: view, boss: runBoss };
+  PML.roadmap = { view: view, review: runReview };
 })();

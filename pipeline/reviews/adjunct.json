@@ -1,0 +1,168 @@
+{
+  "0": [
+    {
+      "id": "rev_adjunct_0_1",
+      "stem": "Two hours after his first dose of intramuscular haloperidol, a young man develops a painful, sustained upward and lateral eye deviation with neck twisting (oculogyric crisis). Which agent, given IM, reverses this fastest?",
+      "options": ["Propranolol", "Amantadine", "Benztropine"],
+      "answer": "Benztropine",
+      "explanation": "This is an acute dystonic reaction — D2 blockade acutely unbalances striatal acetylcholine against dopamine, and an IM/IV central anticholinergic (benztropine) rebalances it within minutes, so it is the rescue agent. Propranolol, the other tier-0 adjunct, is first-line for AKATHISIA, not dystonia, and would do nothing here. Amantadine is a dopaminergic/NMDA agent for drug-induced parkinsonism that works orally and slowly — not an acute-dystonia rescue.",
+      "meds": ["benztropine", "propranolol", "amantadine"],
+      "focus": "acute dystonia/EPS -> anticholinergic (IM benztropine); propranolol is for akathisia, not dystonia",
+      "source": { "name": "Benztropine product monograph - acute dystonia / drug-induced EPS", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_0_2",
+      "stem": "Two weeks into risperidone, a woman paces relentlessly and describes an unbearable inner restlessness she rates as worse than her psychosis. A trial of an oral anticholinergic gave no relief. She has no asthma, bradycardia, or heart block. Which is first-line?",
+      "options": ["Propranolol", "Benztropine"],
+      "answer": "Propranolol",
+      "explanation": "Her restlessness is antipsychotic-induced akathisia, for which the non-selective beta-blocker propranolol is first-line; the failed anticholinergic trial is the classic clue, because anticholinergics do not reliably relieve akathisia. Benztropine treats acute dystonia and drug-induced parkinsonism by rebalancing striatal ACh:dopamine, but it does not fix the noradrenergically driven restlessness of akathisia. (Confirm no asthma/bradycardia/AV block before starting propranolol.)",
+      "meds": ["propranolol", "benztropine"],
+      "focus": "akathisia -> propranolol; anticholinergics (benztropine) do not reliably help akathisia",
+      "source": { "name": "CANMAT / movement-disorder guidance - antipsychotic-induced akathisia", "origin": "canmat" }
+    },
+    {
+      "id": "rev_adjunct_0_3",
+      "stem": "On a high-potency antipsychotic, a patient develops a resting tremor, cogwheel rigidity, and bradykinesia (drug-induced parkinsonism). Which of these two adjuncts rebalances striatal acetylcholine against dopamine to relieve it?",
+      "options": ["Benztropine", "Propranolol"],
+      "answer": "Benztropine",
+      "explanation": "Benztropine's central anticholinergic action restores the striatal dopamine:acetylcholine balance disrupted by D2 blockade, so it relieves BOTH acute dystonia and drug-induced parkinsonism. Propranolol, a beta-blocker, targets akathisia and tremor via adrenergic blockade but does nothing for parkinsonian rigidity/bradykinesia. Trade-off to remember: benztropine adds anticholinergic burden (dry mouth, constipation, urinary retention, confusion in the elderly) and can WORSEN tardive dyskinesia.",
+      "meds": ["benztropine", "propranolol"],
+      "focus": "key difference - anticholinergic (benztropine) covers dystonia + parkinsonism; beta-blocker (propranolol) covers akathisia",
+      "source": { "name": "Benztropine product monograph - drug-induced parkinsonism", "origin": "monograph" }
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_adjunct_1_1",
+      "stem": "A veteran with PTSD has recurrent trauma nightmares and fragmented sleep. Which adjunct, dosed at bedtime and titrated up, is the off-label go-to?",
+      "options": ["Amantadine", "Prazosin", "Procyclidine", "Trihexyphenidyl"],
+      "answer": "Prazosin",
+      "explanation": "Prazosin is a selective alpha-1 antagonist that blunts the central noradrenergic surge implicated in trauma nightmares; it is the off-label go-to for PTSD nightmares and trauma-related sleep disruption. Procyclidine and trihexyphenidyl are anticholinergics for EPS, and amantadine is a dopaminergic/NMDA agent for drug-induced parkinsonism — none target trauma nightmares. Warn about the first-dose orthostatic drop: start 1 mg at bedtime.",
+      "meds": ["prazosin", "amantadine", "procyclidine", "trihexyphenidyl"],
+      "focus": "PTSD nightmares -> alpha-1 antagonist (prazosin), not the anticholinergic/dopaminergic EPS agents",
+      "source": { "name": "Prazosin product monograph - PTSD-nightmare use", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_1_2",
+      "stem": "You must treat drug-induced parkinsonism in an elderly man already burdened by constipation and urinary retention, so you want to AVOID adding anticholinergic load. Which agent — a dopaminergic/NMDA drug whose signature adverse effects are livedo reticularis and ankle edema — fits?",
+      "options": ["Procyclidine", "Trihexyphenidyl", "Amantadine", "Prazosin"],
+      "answer": "Amantadine",
+      "explanation": "Amantadine enhances dopamine release and antagonizes NMDA receptors, treating drug-induced parkinsonism with far LESS anticholinergic burden than benztropine/procyclidine/trihexyphenidyl — ideal when anticholinergic effects are already a problem. Its signature adverse effects are livedo reticularis and ankle edema; it is renally excreted unchanged (reduce dose in renal impairment) and must not be stopped abruptly. Procyclidine and trihexyphenidyl would ADD anticholinergic burden; prazosin is an alpha-1 blocker for PTSD nightmares.",
+      "meds": ["amantadine", "procyclidine", "trihexyphenidyl", "prazosin"],
+      "focus": "drug-induced parkinsonism with low anticholinergic burden -> amantadine (livedo reticularis, ankle edema)",
+      "source": { "name": "Amantadine product monograph - drug-induced parkinsonism / adverse effects", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_1_3",
+      "stem": "Among the anticholinergic EPS agents, one is notable for a euphoriant/hallucinogenic misuse potential and is sometimes diverted. Which one warrants extra vigilance for diversion (and is also contraindicated in narrow-angle glaucoma)?",
+      "options": ["Trihexyphenidyl", "Procyclidine", "Amantadine", "Prazosin"],
+      "answer": "Trihexyphenidyl",
+      "explanation": "Trihexyphenidyl, though a standard anticholinergic for EPS/parkinsonism, carries a distinctive euphoriant/hallucinogenic misuse liability (unlike its peers) — watch for diversion; it is also contraindicated in narrow-angle glaucoma. Procyclidine is an essentially interchangeable anticholinergic WITHOUT that misuse profile. Amantadine (dopaminergic/NMDA) and prazosin (alpha-1 blocker) are not anticholinergics at all.",
+      "meds": ["trihexyphenidyl", "procyclidine", "amantadine", "prazosin"],
+      "focus": "key difference - trihexyphenidyl's euphoriant misuse/diversion potential among the anticholinergics",
+      "source": { "name": "Trihexyphenidyl product monograph - misuse potential / glaucoma", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_1_4",
+      "stem": "You want a short-acting anticholinergic (typically dosed three times daily) that is essentially interchangeable with benztropine for acute dystonia and drug-induced parkinsonism, but WITHOUT the euphoriant misuse liability of trihexyphenidyl. Which agent?",
+      "options": ["Trihexyphenidyl", "Amantadine", "Procyclidine", "Prazosin"],
+      "answer": "Procyclidine",
+      "explanation": "Procyclidine is a central anticholinergic essentially interchangeable with benztropine for drug-induced EPS, more often dosed TID (shorter-acting), and it lacks the euphoriant/diversion liability that distinguishes trihexyphenidyl. Like all anticholinergics it helps acute dystonia and parkinsonism but NOT akathisia, and can worsen tardive dyskinesia. Amantadine is dopaminergic (not anticholinergic); prazosin is an alpha-1 blocker.",
+      "meds": ["procyclidine", "trihexyphenidyl", "amantadine", "prazosin"],
+      "focus": "procyclidine - TID anticholinergic interchangeable with benztropine, no euphoriant misuse (vs trihexyphenidyl)",
+      "source": { "name": "Procyclidine product monograph - drug-induced EPS", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_1_5",
+      "stem": "You start one of these adjuncts and specifically warn the patient to take the FIRST dose at bedtime because of a risk of marked orthostatic hypotension and syncope on initiation. Which agent's 'first-dose phenomenon' is this?",
+      "options": ["Amantadine", "Procyclidine", "Trihexyphenidyl", "Prazosin"],
+      "answer": "Prazosin",
+      "explanation": "Prazosin's alpha-1 blockade produces a well-described first-dose phenomenon — marked orthostatic hypotension/syncope — so it is started at 1 mg at bedtime and titrated up. The anticholinergics (procyclidine, trihexyphenidyl) can cause dizziness but not this vasodilatory first-dose collapse, and amantadine causes ankle edema/livedo rather than orthostatic first-dose syncope. This initiation caveat is what sets prazosin apart in the row.",
+      "meds": ["prazosin", "amantadine", "procyclidine", "trihexyphenidyl"],
+      "focus": "key difference - prazosin's first-dose orthostatic hypotension (bedtime start), unique to the alpha-1 blocker",
+      "source": { "name": "Prazosin product monograph - first-dose phenomenon", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_1_6",
+      "stem": "The other adjuncts in this row block muscarinic (procyclidine, trihexyphenidyl) or alpha-1 (prazosin) receptors. Which agent instead ENHANCES dopamine and blocks NMDA — a mechanism that makes it a useful tardive-dyskinesia adjunct, and that requires renal dose reduction and no abrupt discontinuation?",
+      "options": ["Procyclidine", "Prazosin", "Trihexyphenidyl", "Amantadine"],
+      "answer": "Amantadine",
+      "explanation": "Amantadine is the row's dopaminergic/NMDA-antagonist — unlike the anticholinergics or prazosin's alpha-1 blockade — which underlies its use for drug-induced parkinsonism and as a tardive-dyskinesia adjunct. Because it is renally excreted unchanged, the dose must be reduced in renal impairment, and abrupt discontinuation can precipitate an NMS-like withdrawal. Critically, the anticholinergics WORSEN tardive dyskinesia, so amantadine's dopaminergic mechanism is the safer adjunct when TD coexists.",
+      "meds": ["amantadine", "procyclidine", "trihexyphenidyl", "prazosin"],
+      "focus": "key difference - amantadine is dopaminergic/NMDA (not anticholinergic/alpha-1); renal dosing, TD-adjunct, no abrupt stop",
+      "source": { "name": "Amantadine product monograph - mechanism, renal excretion, discontinuation", "origin": "monograph" }
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_adjunct_2_1",
+      "stem": "You want to start a VMAT2 inhibitor for tardive dyskinesia in a Canadian patient, using an agent actually marketed in Canada (brand Nitoman). Which one?",
+      "options": ["Valbenazine", "Deutetrabenazine", "Tetrabenazine", "Modafinil"],
+      "answer": "Tetrabenazine",
+      "explanation": "Tetrabenazine (Nitoman) is the VMAT2 inhibitor available in Canada, labelled for hyperkinetic movement disorders including Huntington chorea and tardive dyskinesia. Valbenazine (Ingrezza) and deutetrabenazine (Austedo) are VMAT2 inhibitors approved in the US but NOT marketed in Canada. Modafinil is a wakefulness-promoting agent, unrelated to TD.",
+      "meds": ["tetrabenazine", "valbenazine", "deutetrabenazine", "modafinil"],
+      "focus": "Canadian availability - tetrabenazine (Nitoman) is the VMAT2 inhibitor sold in Canada; valbenazine/deutetrabenazine are US-only",
+      "source": { "name": "Tetrabenazine (Nitoman) product monograph - hyperkinetic movement disorders", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_2",
+      "stem": "Among the VMAT2 inhibitors for tardive dyskinesia, which US-only agent (Ingrezza) is a purified/prodrug relative of tetrabenazine offering ONCE-DAILY dosing and generally better tolerability?",
+      "options": ["Tetrabenazine", "Valbenazine", "Deutetrabenazine", "Dexmedetomidine"],
+      "answer": "Valbenazine",
+      "explanation": "Valbenazine is a purified/prodrug relative of tetrabenazine given once daily with generally better tolerability — its key advantage over tetrabenazine. It is a US drug (Ingrezza) not marketed in Canada. Deutetrabenazine is dosed twice daily, and tetrabenazine (the Canadian Nitoman) has the shortest-acting, least-tolerable profile of the three. Dexmedetomidine is an alpha-2 agonist for agitation, not a VMAT2 inhibitor.",
+      "meds": ["valbenazine", "tetrabenazine", "deutetrabenazine", "dexmedetomidine"],
+      "focus": "valbenazine - once-daily VMAT2 inhibitor, better tolerability than tetrabenazine (US-only)",
+      "source": { "name": "Valbenazine (Ingrezza) product monograph - once-daily VMAT2 inhibitor", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_3",
+      "stem": "Which VMAT2 inhibitor is the DEUTERATED form of tetrabenazine — carbon-deuterium bonds slowing metabolism of the active metabolites to give steadier levels and twice-daily dosing (US brand Austedo, approved for both tardive dyskinesia and Huntington chorea)?",
+      "options": ["Valbenazine", "Tetrabenazine", "Deutetrabenazine", "Armodafinil"],
+      "answer": "Deutetrabenazine",
+      "explanation": "Deutetrabenazine is tetrabenazine with deuterium substituted at key positions; the stronger carbon-deuterium bonds slow metabolism of the active HTBZ metabolites, smoothing levels and allowing BID dosing with better tolerability than tetrabenazine. It is US-only (Austedo), approved for both TD and Huntington chorea. Valbenazine is a once-daily prodrug relative; tetrabenazine is the parent (Canadian Nitoman); armodafinil is a wakefulness agent.",
+      "meds": ["deutetrabenazine", "valbenazine", "tetrabenazine", "armodafinil"],
+      "focus": "deutetrabenazine - deuterated tetrabenazine -> smoother levels, BID dosing (US-only)",
+      "source": { "name": "Deutetrabenazine (Austedo) product monograph - deuteration, BID dosing", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_4",
+      "stem": "A woman with narcolepsy needs a wakefulness-promoting agent that IS marketed in Canada. Which agent — a CYP3A4 inducer that lowers oral-contraceptive efficacy, so you counsel backup contraception — fits?",
+      "options": ["Modafinil", "Armodafinil", "Dexmedetomidine", "Valbenazine"],
+      "answer": "Modafinil",
+      "explanation": "Modafinil is a wakefulness-promoting agent approved in Canada for narcolepsy, obstructive sleep apnea (adjunct to CPAP), and shift-work disorder; as a CYP3A4 INDUCER it lowers oral-contraceptive efficacy, so counsel backup contraception during use and for about one month after. Armodafinil is its R-enantiomer with the same caveat but is US-only (Nuvigil). Dexmedetomidine (alpha-2 agonist) and valbenazine (VMAT2) treat agitation and TD, not sleepiness.",
+      "meds": ["modafinil", "armodafinil", "dexmedetomidine", "valbenazine"],
+      "focus": "excessive sleepiness/narcolepsy -> modafinil (Canada); CYP3A4 inducer lowers oral-contraceptive efficacy",
+      "source": { "name": "Modafinil product monograph - narcolepsy, CYP3A4 induction / contraception", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_5",
+      "stem": "Which wakefulness-promoting agent is simply the longer-acting R-(minus)-enantiomer of modafinil — sustaining wakefulness later into the day, and marketed in the US as Nuvigil (not available in Canada)?",
+      "options": ["Modafinil", "Armodafinil", "Tetrabenazine", "Dexmedetomidine"],
+      "answer": "Armodafinil",
+      "explanation": "Armodafinil is the single R-enantiomer of racemic modafinil; being longer-acting it sustains wakefulness further into the day, but it is US-only (Nuvigil) whereas MODAFINIL is the version available in Canada. It shares modafinil's CYP3A4-induction/contraceptive caveat and Schedule-IV misuse potential. Tetrabenazine (VMAT2 inhibitor) and dexmedetomidine (alpha-2 agonist) are unrelated in mechanism and indication.",
+      "meds": ["armodafinil", "modafinil", "tetrabenazine", "dexmedetomidine"],
+      "focus": "key difference - armodafinil is the longer-acting R-enantiomer of modafinil (US-only vs modafinil in Canada)",
+      "source": { "name": "Armodafinil (Nuvigil) product monograph - R-enantiomer of modafinil", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_6",
+      "stem": "A patient with schizophrenia is acutely agitated. Which specialist adjunct is a sublingual alpha-2-adrenergic agonist FILM that calms agitation WITHOUT the EPS risk of antipsychotics — but requires blood-pressure and heart-rate monitoring for hypotension and bradycardia?",
+      "options": ["Modafinil", "Deutetrabenazine", "Tetrabenazine", "Dexmedetomidine"],
+      "answer": "Dexmedetomidine",
+      "explanation": "Dexmedetomidine is a selective alpha-2 agonist; its sublingual/buccal film (US Igalmi) treats acute agitation in schizophrenia or bipolar I/II by reducing central sympathetic outflow — calming without dopamine blockade, so no EPS, but with hypotension/bradycardia/orthostasis requiring cardiovascular monitoring. Modafinil PROMOTES wakefulness (the opposite of sedation); deutetrabenazine and tetrabenazine are VMAT2 inhibitors for hyperkinetic movements, not agitation.",
+      "meds": ["dexmedetomidine", "modafinil", "deutetrabenazine", "tetrabenazine"],
+      "focus": "acute agitation -> alpha-2 agonist (dexmedetomidine); calms without EPS, needs BP/HR monitoring",
+      "source": { "name": "Dexmedetomidine sublingual (Igalmi) product monograph - acute agitation", "origin": "monograph" }
+    },
+    {
+      "id": "rev_adjunct_2_7",
+      "stem": "VMAT2 inhibitors treat tardive dyskinesia by DEPLETING dopamine — the mechanistic opposite of what drives drug-induced parkinsonism. Which of these agents can therefore itself CAUSE depression/suicidality and parkinsonism, mandating a mood screen and avoidance in active depression?",
+      "options": ["Modafinil", "Armodafinil", "Dexmedetomidine", "Tetrabenazine"],
+      "answer": "Tetrabenazine",
+      "explanation": "Tetrabenazine depletes presynaptic dopamine (and serotonin/norepinephrine) via VMAT2 inhibition; because that depletion can precipitate depression/suicidality and drug-induced parkinsonism, its label warns against use in active or inadequately treated depression and requires mood monitoring. (Its VMAT2 relatives valbenazine and deutetrabenazine share this class caveat, but tetrabenazine is the only dopamine-depleter among these options.) Modafinil and armodafinil RAISE dopaminergic tone for wakefulness, and dexmedetomidine is an alpha-2 agonist — none deplete dopamine.",
+      "meds": ["tetrabenazine", "modafinil", "armodafinil", "dexmedetomidine"],
+      "focus": "key difference - VMAT2 dopamine depletion (tetrabenazine) causes depression/parkinsonism; screen mood, avoid in active depression",
+      "source": { "name": "Tetrabenazine (Nitoman) product monograph - depression/parkinsonism from dopamine depletion", "origin": "monograph" }
+    }
+  ]
+}

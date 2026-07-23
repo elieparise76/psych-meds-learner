@@ -1,0 +1,290 @@
+{
+  "0": [
+    {
+      "id": "rev_anxiolytics_0_1",
+      "stem": "A patient with decompensated cirrhosis needs a benzodiazepine for acute anxiety. Which agent is safest here because it is cleared by glucuronidation with NO oxidative CYP step, so its clearance is largely preserved in liver disease?",
+      "options": ["Lorazepam", "Clonazepam", "Zopiclone"],
+      "answer": "Lorazepam",
+      "explanation": "Lorazepam is a LOT benzo (Lorazepam, Oxazepam, Temazepam) conjugated by UGT glucuronidation with no CYP oxidation, so it is preferred in hepatic impairment. Clonazepam depends on hepatic CYP3A4/nitro-reduction and accumulates when the liver fails; zopiclone is a Z-drug also cleared by CYP3A4.",
+      "meds": ["lorazepam", "clonazepam", "zopiclone"],
+      "focus": "LOT benzo (glucuronidation) preferred in hepatic impairment",
+      "source": { "name": "Lorazepam / clonazepam / zopiclone monographs — metabolism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_0_2",
+      "stem": "Which of these has the LONGEST half-life, making it a long-acting benzodiazepine suited to sustained daytime anxiolysis rather than PRN use?",
+      "options": ["Zopiclone", "Lorazepam", "Clonazepam"],
+      "answer": "Clonazepam",
+      "explanation": "Clonazepam is long-acting (~18–50 h), giving smooth all-day coverage. Lorazepam is short-to-intermediate (~10–20 h), and zopiclone is very short (~5 h), timed for sleep onset, not daytime anxiolysis.",
+      "meds": ["clonazepam", "lorazepam", "zopiclone"],
+      "focus": "half-life / duration: long-acting vs short-acting",
+      "source": { "name": "Clonazepam / lorazepam / zopiclone monographs — half-life", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_0_3",
+      "stem": "For sleep-onset insomnia you want a hypnotic that is NOT a benzodiazepine and (unlike the benzos in this row) is not a controlled/Targeted Substance in Canada. Which fits?",
+      "options": ["Lorazepam", "Zopiclone", "Clonazepam"],
+      "answer": "Zopiclone",
+      "explanation": "Zopiclone is a non-benzodiazepine cyclopyrrolone (Z-drug) acting at the GABA-A benzodiazepine site but marketed for sleep onset; in Canada it is prescription-only, not a Targeted Substance. Lorazepam and clonazepam are benzodiazepines and Targeted Substances.",
+      "meds": ["zopiclone", "lorazepam", "clonazepam"],
+      "focus": "Z-drug vs benzodiazepine / controlled status",
+      "source": { "name": "Zopiclone monograph; Canada controlled-substance scheduling", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_0_4",
+      "stem": "Which of these is available parenterally and given IV as a first-line agent for status epilepticus and acute severe agitation because of its rapid IV onset (1–3 min)?",
+      "options": ["Zopiclone", "Clonazepam", "Lorazepam"],
+      "answer": "Lorazepam",
+      "explanation": "IV lorazepam acts within 1–3 minutes and is a standard benzodiazepine for status epilepticus and acute agitation. Clonazepam is used orally for chronic anxiety/seizure prophylaxis, and zopiclone is an oral hypnotic only.",
+      "meds": ["lorazepam", "clonazepam", "zopiclone"],
+      "focus": "route/onset: IV agent for acute use",
+      "source": { "name": "Lorazepam monograph — parenteral onset/indications", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_0_5",
+      "stem": "A patient with a history of benzodiazepine dependence needs help falling asleep. Which of these carries the least benzodiazepine-dependence liability, being a Z-drug that is not scheduled as a Targeted Substance in Canada?",
+      "options": ["Clonazepam", "Zopiclone", "Lorazepam"],
+      "answer": "Zopiclone",
+      "explanation": "Zopiclone is not a controlled/Targeted Substance in Canada, whereas lorazepam and clonazepam are Targeted Substances with clear dependence potential. (Zopiclone can still be misused, but among this row it carries the lightest formal control status.)",
+      "meds": ["zopiclone", "clonazepam", "lorazepam"],
+      "focus": "dependence / controlled status contrast",
+      "source": { "name": "Canada controlled-substance scheduling; zopiclone monograph", "origin": "monograph" }
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_anxiolytics_1_1",
+      "stem": "A patient with generalized anxiety and a substance-use history needs a NON-dependence-forming anxiolytic. Which agent is a 5-HT1A partial agonist with no GABA/benzodiazepine activity, dosed on a schedule (not PRN), whose full effect builds over ~2–4 weeks?",
+      "options": ["Alprazolam", "Buspirone", "Hydroxyzine", "Diazepam"],
+      "answer": "Buspirone",
+      "explanation": "Buspirone is a 5-HT1A partial agonist with no dependence liability, but its onset is delayed (1–2 weeks, full effect ~4 weeks), so it is scheduled BID–TID and useless for acute/PRN anxiety. Alprazolam and diazepam are dependence-forming benzos; hydroxyzine is a fast-acting antihistamine.",
+      "meds": ["buspirone", "alprazolam", "hydroxyzine", "diazepam"],
+      "focus": "buspirone = non-dependence, delayed onset, scheduled not PRN",
+      "source": { "name": "Buspirone monograph — mechanism/onset", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_2",
+      "stem": "Which anxiolytic works through central H1-antihistamine antagonism (no GABA/benzodiazepine activity), giving anxiolysis within ~30–60 minutes so it can be used PRN without dependence?",
+      "options": ["Hydroxyzine", "Buspirone", "Alprazolam", "Zolpidem"],
+      "answer": "Hydroxyzine",
+      "explanation": "Hydroxyzine is a first-generation (piperazine) H1-antihistamine; its rapid onset lets it be used PRN with no dependence or controlled status. Buspirone (5-HT1A) is delayed and not PRN; alprazolam is a benzo; zolpidem is a Z-drug hypnotic for sleep.",
+      "meds": ["hydroxyzine", "buspirone", "alprazolam", "zolpidem"],
+      "focus": "hydroxyzine = non-benzo antihistamine, rapid/PRN",
+      "source": { "name": "Hydroxyzine monograph — mechanism/onset", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_3",
+      "stem": "For sleep-ONSET insomnia you want a hypnotic that binds preferentially the α1 (BZ1) GABA-A subunit — giving mainly a sedative effect with little anxiolytic or myorelaxant action — and has a very short (~2.5–3 h) half-life. Which agent?",
+      "options": ["Diazepam", "Zolpidem", "Alprazolam", "Buspirone"],
+      "answer": "Zolpidem",
+      "explanation": "Zolpidem is an α1-preferential Z-drug hypnotic with a very short half-life, matched to sleep onset with minimal next-day carryover. Diazepam and alprazolam are anxiolytic benzos; buspirone is a non-sedating 5-HT1A anxiolytic.",
+      "meds": ["zolpidem", "diazepam", "alprazolam", "buspirone"],
+      "focus": "zolpidem = Z-drug hypnotic, α1-selective, very short",
+      "source": { "name": "Zolpidem monograph — receptor selectivity/half-life", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_4",
+      "stem": "Which of these is a high-potency, rapid-onset benzodiazepine whose quick anxiolysis makes it the highest-misuse/dependence-liability agent in this row?",
+      "options": ["Alprazolam", "Buspirone", "Hydroxyzine", "Zolpidem"],
+      "answer": "Alprazolam",
+      "explanation": "Alprazolam's high potency plus rapid PO onset (~20–30 min) strongly reinforces misuse and dependence. Buspirone and hydroxyzine are non-dependence-forming, and zolpidem, while controlled, is a hypnotic rather than a high-potency anxiolytic.",
+      "meds": ["alprazolam", "buspirone", "hydroxyzine", "zolpidem"],
+      "focus": "dependence/misuse liability of high-potency benzo",
+      "source": { "name": "Alprazolam monograph — onset/abuse liability", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_5",
+      "stem": "Which benzodiazepine combines a very rapid CNS onset (highly lipophilic) with a LONG effective duration via active metabolites (desmethyldiazepam up to ~200 h), so it accumulates and is favoured for smooth benzodiazepine tapers?",
+      "options": ["Zolpidem", "Alprazolam", "Diazepam", "Buspirone"],
+      "answer": "Diazepam",
+      "explanation": "Diazepam is highly lipophilic (fast onset) but generates long-lived active metabolites (nordiazepam ~200 h), giving self-tapering kinetics useful in withdrawal but risking accumulation in the elderly/hepatically impaired. Alprazolam is short-acting; zolpidem and buspirone are not long-acting benzos.",
+      "meds": ["diazepam", "alprazolam", "zolpidem", "buspirone"],
+      "focus": "long half-life via active metabolites / accumulation",
+      "source": { "name": "Diazepam monograph — half-life/active metabolites", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_6",
+      "stem": "A patient asks for something to take at the onset of an acute panic/anxiety episode. Which of these would NOT help acutely because its anxiolytic effect only builds over 1–2 weeks?",
+      "options": ["Hydroxyzine", "Alprazolam", "Buspirone", "Diazepam"],
+      "answer": "Buspirone",
+      "explanation": "Buspirone has a delayed onset (~1–2 weeks, full effect ~4 weeks) and is NOT effective PRN for acute anxiety. Hydroxyzine, alprazolam, and diazepam all act within an hour and can blunt an acute episode.",
+      "meds": ["buspirone", "hydroxyzine", "alprazolam", "diazepam"],
+      "focus": "onset — buspirone not for acute/PRN use",
+      "source": { "name": "Buspirone monograph — delayed onset", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_1_7",
+      "stem": "Two agents in this row avoid dependence entirely. Which one gives anxiolysis within ~30–60 minutes and can therefore be used PRN — unlike the other non-dependence agent, which must be taken on a schedule and takes weeks to work?",
+      "options": ["Buspirone", "Hydroxyzine", "Alprazolam", "Zolpidem"],
+      "answer": "Hydroxyzine",
+      "explanation": "Both hydroxyzine and buspirone lack dependence liability, but hydroxyzine (antihistamine) acts within an hour and works PRN, whereas buspirone (5-HT1A) is scheduled with a multi-week onset. Alprazolam and zolpidem are controlled and dependence-forming.",
+      "meds": ["hydroxyzine", "buspirone", "alprazolam", "zolpidem"],
+      "focus": "non-dependence agents: rapid/PRN (hydroxyzine) vs scheduled/delayed (buspirone)",
+      "source": { "name": "Hydroxyzine vs buspirone monographs — onset", "origin": "monograph" }
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_anxiolytics_2_1",
+      "stem": "An anxious patient with significant liver disease needs a benzodiazepine. Which agent is cleared solely by glucuronidation (no oxidative CYP step) and has slow, least-abuse-reinforcing kinetics, making it a preferred choice in hepatic impairment?",
+      "options": ["Bromazepam", "Oxazepam", "Chlordiazepoxide", "Temazepam"],
+      "answer": "Oxazepam",
+      "explanation": "Oxazepam is a LOT benzo conjugated by UGT with no CYP oxidation, so it is liver-safe; its slow onset also makes it the least abuse-reinforcing benzo. Bromazepam and chlordiazepoxide undergo hepatic oxidation (chlordiazepoxide to long-lived active metabolites). Temazepam is also a LOT benzo but is marketed as a hypnotic.",
+      "meds": ["oxazepam", "bromazepam", "chlordiazepoxide", "temazepam"],
+      "focus": "LOT benzo (glucuronidation) for hepatic impairment",
+      "source": { "name": "Oxazepam monograph — metabolism/onset", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_2",
+      "stem": "Which of these is a benzodiazepine marketed specifically as a HYPNOTIC for sleep, yet (like oxazepam) is metabolized only by glucuronidation with no CYP oxidation, so it is comparatively liver-safe?",
+      "options": ["Bromazepam", "Chlordiazepoxide", "Temazepam", "Oxazepam"],
+      "answer": "Temazepam",
+      "explanation": "Temazepam is a LOT benzo (glucuronidation only) positioned as a hypnotic, with an intermediate half-life (~8–15 h) that limits next-day hangover versus long-acting agents. Oxazepam is a LOT benzo too but is used for anxiety; bromazepam and chlordiazepoxide are oxidatively metabolized anxiety agents.",
+      "meds": ["temazepam", "bromazepam", "chlordiazepoxide", "oxazepam"],
+      "focus": "hypnotic LOT benzo (temazepam vs anxiety agents)",
+      "source": { "name": "Temazepam monograph — indication/metabolism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_3",
+      "stem": "Which of these is the classic LONG-acting benzodiazepine (with long-lived active metabolites) traditionally used for managing alcohol withdrawal?",
+      "options": ["Oxazepam", "Temazepam", "Chlordiazepoxide", "Bromazepam"],
+      "answer": "Chlordiazepoxide",
+      "explanation": "Chlordiazepoxide generates active metabolites (including desmethyldiazepam) that give long-acting, self-tapering coverage ideal for alcohol withdrawal. Oxazepam and temazepam are short/intermediate LOT benzos (oxazepam is used for withdrawal when the liver is impaired); bromazepam is an intermediate anxiety agent.",
+      "meds": ["chlordiazepoxide", "oxazepam", "temazepam", "bromazepam"],
+      "focus": "long-acting active metabolites / alcohol withdrawal",
+      "source": { "name": "Chlordiazepoxide monograph — metabolites/indication", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_4",
+      "stem": "Which is an intermediate-acting benzodiazepine marketed for generalized anxiety that is cleared by hepatic CYP oxidation — unlike the glucuronidation-only LOT benzos in this row?",
+      "options": ["Oxazepam", "Bromazepam", "Temazepam", "Chlordiazepoxide"],
+      "answer": "Bromazepam",
+      "explanation": "Bromazepam (~10–20 h) is an oxidatively metabolized anxiety benzodiazepine. Oxazepam and temazepam are conjugated only (LOT, liver-safe); chlordiazepoxide is oxidatively metabolized but is long-acting via active metabolites and used for withdrawal, not primarily GAD.",
+      "meds": ["bromazepam", "oxazepam", "temazepam", "chlordiazepoxide"],
+      "focus": "oxidative vs conjugated (glucuronidation) metabolism",
+      "source": { "name": "Bromazepam monograph — half-life/metabolism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_5",
+      "stem": "For insomnia with both sleep-onset AND sleep-maintenance problems, which agent works by competitively blocking orexin (OX1R/OX2R) wake-promoting signalling, with no GABA/benzodiazepine activity and no controlled-substance status?",
+      "options": ["Lemborexant", "Daridorexant", "Melatonin", "Temazepam"],
+      "answer": "Lemborexant",
+      "explanation": "Lemborexant is a dual orexin receptor antagonist (DORA) that promotes both sleep onset and maintenance without GABA-A activity. Daridorexant is also a DORA but with a shorter half-life; melatonin is a melatonergic agonist; temazepam is a GABAergic benzodiazepine.",
+      "meds": ["lemborexant", "daridorexant", "melatonin", "temazepam"],
+      "focus": "orexin-antagonist mechanism (DORA)",
+      "source": { "name": "Lemborexant monograph — mechanism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_6",
+      "stem": "Between the two dual orexin receptor antagonists, which has the SHORTER half-life (~8 h) — deliberately designed to minimize next-day residual sedation?",
+      "options": ["Lemborexant", "Daridorexant", "Temazepam", "Melatonin"],
+      "answer": "Daridorexant",
+      "explanation": "Daridorexant's ~8 h half-life is shorter than lemborexant's ~17–19 h, reducing morning grogginess. Both are DORAs with no GABA activity; temazepam and melatonin work by entirely different mechanisms.",
+      "meds": ["daridorexant", "lemborexant", "temazepam", "melatonin"],
+      "focus": "half-life among DORAs / next-day residual",
+      "source": { "name": "Daridorexant vs lemborexant monographs — half-life", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_7",
+      "stem": "Which sleep aid is an MT1/MT2 melatonin-receptor agonist (an endogenous pineal hormone) that only weakly promotes sleep onset and works through the circadian system rather than GABA?",
+      "options": ["Lemborexant", "Daridorexant", "Melatonin", "Temazepam"],
+      "answer": "Melatonin",
+      "explanation": "Melatonin acts at MT1 (sleep onset) and MT2 (circadian phase-shift) receptors, a melatonergic mechanism distinct from the orexin antagonists (lemborexant, daridorexant) and the GABAergic temazepam.",
+      "meds": ["melatonin", "lemborexant", "daridorexant", "temazepam"],
+      "focus": "melatonergic (MT1/MT2) mechanism vs orexin/GABA",
+      "source": { "name": "Melatonin monograph — receptor mechanism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_2_8",
+      "stem": "A shift worker wants to phase-shift their body clock. Which agent's effect on sleep depends chiefly on the TIMING of the dose relative to the circadian rhythm rather than on a sedative dose effect?",
+      "options": ["Temazepam", "Lemborexant", "Daridorexant", "Melatonin"],
+      "answer": "Melatonin",
+      "explanation": "Melatonin's circadian phase-shifting is timing-dependent (via MT2), so administration time relative to the body clock matters more than dose. The DORAs (lemborexant, daridorexant) and the benzodiazepine temazepam act pharmacologically at any suitable bedtime without a circadian-timing requirement.",
+      "meds": ["melatonin", "temazepam", "lemborexant", "daridorexant"],
+      "focus": "circadian timing (melatonin) vs dose-driven sedation",
+      "source": { "name": "Melatonin monograph — circadian timing", "origin": "monograph" }
+    }
+  ],
+  "3": [
+    {
+      "id": "rev_anxiolytics_3_1",
+      "stem": "For procedural sedation you need an ultra-short-acting benzodiazepine with very fast parenteral onset (IV 1–3 min, also IM/intranasal). Which agent is the standard choice?",
+      "options": ["Triazolam", "Midazolam", "Nitrazepam", "Phenobarbital"],
+      "answer": "Midazolam",
+      "explanation": "Midazolam is water-soluble at low pH but lipophilic at physiologic pH, giving rapid CNS entry and a brief (~1.5–3 h) effect ideal for procedural sedation. Triazolam is an oral ultra-short hypnotic; nitrazepam is a long-acting hypnotic; phenobarbital is a long-acting barbiturate.",
+      "meds": ["midazolam", "triazolam", "nitrazepam", "phenobarbital"],
+      "focus": "procedural sedation: ultra-short parenteral benzo",
+      "source": { "name": "Midazolam monograph — onset/duration/routes", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_2",
+      "stem": "Which ultra-short-acting benzodiazepine HYPNOTIC undergoes extensive CYP3A4 first-pass metabolism, so strong 3A4 inhibitors (e.g., azole antifungals, macrolides) dramatically raise its levels and are labelled contraindications?",
+      "options": ["Triazolam", "Midazolam", "Flurazepam", "Nitrazepam"],
+      "answer": "Triazolam",
+      "explanation": "Triazolam is an oral ultra-short hypnotic with heavy CYP3A4 first-pass metabolism and numerous labelled 3A4-inhibitor contraindications. Midazolam is also 3A4-dependent but is a parenteral procedural agent; flurazepam and nitrazepam are long-acting hypnotics.",
+      "meds": ["triazolam", "midazolam", "flurazepam", "nitrazepam"],
+      "focus": "CYP3A4 interactions / ultra-short hypnotic",
+      "source": { "name": "Triazolam monograph — metabolism/interactions", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_3",
+      "stem": "Which agent is a barbiturate that increases the DURATION of GABA-A chloride-channel opening (and at high concentrations opens the channel directly, independent of GABA) — giving it NO ceiling effect and a high risk of fatal respiratory depression in overdose?",
+      "options": ["Midazolam", "Phenobarbital", "Clobazam", "Clorazepate"],
+      "answer": "Phenobarbital",
+      "explanation": "Phenobarbital is a barbiturate: it prolongs Cl- channel-opening DURATION (benzodiazepines instead raise opening FREQUENCY) and directly opens the channel at high doses, so there is no ceiling and overdose causes profound respiratory depression. It is also a potent enzyme inducer and a Controlled Drug. The others are benzodiazepines with a ceiling effect and lower overdose lethality.",
+      "meds": ["phenobarbital", "midazolam", "clobazam", "clorazepate"],
+      "focus": "barbiturate mechanism (duration, no ceiling) vs benzodiazepine",
+      "source": { "name": "Phenobarbital monograph — mechanism/overdose", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_4",
+      "stem": "Which sleep aid is a selective melatonin MT1/MT2 receptor agonist with no GABA/benzodiazepine activity and no controlled-substance status, useful for sleep-ONSET insomnia?",
+      "options": ["Triazolam", "Nitrazepam", "Phenobarbital", "Ramelteon"],
+      "answer": "Ramelteon",
+      "explanation": "Ramelteon is a melatonergic MT1/MT2 agonist that reduces sleep latency without GABA activity or dependence liability. Triazolam and nitrazepam are benzodiazepines (Targeted Substances); phenobarbital is a Controlled Drug barbiturate.",
+      "meds": ["ramelteon", "triazolam", "nitrazepam", "phenobarbital"],
+      "focus": "melatonergic, non-controlled hypnotic vs GABAergic agents",
+      "source": { "name": "Ramelteon monograph — mechanism/scheduling", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_5",
+      "stem": "Which is a 1,5-benzodiazepine whose structure gives relatively MORE anticonvulsant/anxiolytic effect with comparatively LESS sedation, used as an adjunct for seizures (e.g., Lennox-Gastaut)?",
+      "options": ["Clorazepate", "Nitrazepam", "Clobazam", "Flurazepam"],
+      "answer": "Clobazam",
+      "explanation": "Clobazam is a 1,5-benzodiazepine (versus the classic 1,4 structure), giving more anticonvulsant/anxiolytic action with less sedation, and is used as a seizure adjunct. Clorazepate is a long-acting prodrug; nitrazepam and flurazepam are sedating long-acting hypnotics.",
+      "meds": ["clobazam", "clorazepate", "nitrazepam", "flurazepam"],
+      "focus": "1,5-benzodiazepine: anticonvulsant, less sedation",
+      "source": { "name": "Clobazam monograph — structure/indication", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_6",
+      "stem": "Which agent is a benzodiazepine PRODRUG that is decarboxylated in the acidic stomach to desmethyldiazepam (nordiazepam), giving it long-acting kinetics?",
+      "options": ["Clobazam", "Clorazepate", "Flurazepam", "Triazolam"],
+      "answer": "Clorazepate",
+      "explanation": "Clorazepate is converted pre-systemically in the stomach to nordiazepam (half-life up to ~100–200 h), so it behaves as a long-acting agent. Clobazam is a 1,5-benzodiazepine, flurazepam is a hypnotic with its own active metabolite, and triazolam is ultra-short-acting.",
+      "meds": ["clorazepate", "clobazam", "flurazepam", "triazolam"],
+      "focus": "prodrug → long-acting nordiazepam",
+      "source": { "name": "Clorazepate monograph — prodrug/metabolism", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_7",
+      "stem": "Which hypnotic has a short-lived PARENT drug but owes its prolonged action (and next-day accumulation risk, especially in the elderly) to an ACTIVE metabolite with a half-life up to ~250 hours?",
+      "options": ["Triazolam", "Midazolam", "Flurazepam", "Nitrazepam"],
+      "answer": "Flurazepam",
+      "explanation": "Flurazepam's parent is short-acting, but its metabolite N-desalkylflurazepam (~40–250 h) accumulates and causes next-day sedation. Triazolam and midazolam are ultra-short with no such metabolite; nitrazepam is long-acting through its own long parent half-life, not an active metabolite.",
+      "meds": ["flurazepam", "triazolam", "midazolam", "nitrazepam"],
+      "focus": "long duration via long-lived active metabolite / accumulation",
+      "source": { "name": "Flurazepam monograph — active metabolite half-life", "origin": "monograph" }
+    },
+    {
+      "id": "rev_anxiolytics_3_8",
+      "stem": "Which is a LONG-acting benzodiazepine hypnotic (parent half-life ~16–40 h) that commonly causes next-day residual sedation, in contrast to the ultra-short agents used for procedures?",
+      "options": ["Triazolam", "Midazolam", "Nitrazepam", "Ramelteon"],
+      "answer": "Nitrazepam",
+      "explanation": "Nitrazepam's own long parent half-life (~16–40 h) produces hangover/next-day residual sedation. Triazolam and midazolam are ultra-short-acting; ramelteon is a short-acting melatonergic agent with no GABA activity.",
+      "meds": ["nitrazepam", "triazolam", "midazolam", "ramelteon"],
+      "focus": "long parent half-life / next-day residual sedation",
+      "source": { "name": "Nitrazepam monograph — half-life", "origin": "monograph" }
+    }
+  ]
+}

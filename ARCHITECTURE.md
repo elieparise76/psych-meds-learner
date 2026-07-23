@@ -122,23 +122,26 @@ state** (like `vignettes.js`): reorder it freely, nobody loses progress.
   top→bottom (`CURRICULUM.chapters`), where chapter _i_ = tier _i_ of every class. So Chapter 1
   ("The essentials") is the first-line row of every class, and **every med at the same level
   sits on one horizontal line**. High-yield ids are flagged `keystones`.
-- **Unlock model — derived, never stored.** A class's tier-0 row is open from the start; **its
-  next-tier row opens once `gate` (default 50%, min 1) of the current row is learned**; a
-  branch's **boss** unlocks at `bossAt` (60%) of the branch learned; `specialist` branches
-  (substance/dementia/adjunct) stay dim until `specialistAtLearned` meds are learned anywhere.
-  Because unlock is a pure function of each card's existing `learned` flag, a returning user's
-  meds light up automatically — **no migration, no reset** — while `frontier()` always points at
-  the *shallowest unlearned* node so everyone re-enters at the basics.
-- **Bosses.** Per-branch **discrimination vignettes** (`data/boss.js` → `window.BOSSES`,
-  authored in `pipeline/boss/*.json`, assembled by `pipeline/build-boss.js`): 4 options all
-  from the branch, chosen to force telling look-alike agents apart. A boss sits at the end of
-  its class's last row; defeat it (≥60%) to stamp the branch; retries are free (no hearts). The
-  runner lives in `roadmap.js`.
+- **Unlock model.** A class's tier-0 row is open from the start; **its next-tier row opens only
+  when the current row is _fully_ learned AND that row's Review is passed** (`tierUnlocked` =
+  `rowComplete(prev) && reviewCleared(prev)`). `specialist` branches (substance/dementia/adjunct)
+  stay dim until `specialistAtLearned` meds are learned anywhere. Node availability derives from
+  each card's `learned` flag, so a returning user's meds light up automatically — **no reset** —
+  while `frontier()` points at the *shallowest unlearned* node. Row-Review completion is the one
+  bit of new stored state (`progress.reviews["<branchId>:<tierIndex>"]`, back-filled for old
+  saves by `store.load`'s shallow merge). `nextAction()` drives the "Continue" button: a med to
+  learn if any open tier has one, else the shallowest available Review.
+- **Reviews (one per row = per class per chapter).** Each row ends in a **Review** — a
+  discrimination + coverage quiz over exactly that row's meds, authored fresh by clinician-lens
+  subagents (`pipeline/reviews/<branchId>.json` → `data/reviews.js` → `window.REVIEWS`, keyed
+  `"<branchId>:<tierIndex>"`, assembled by `pipeline/build-reviews.js`). It unlocks when the row
+  is fully learned; pass ≥70% to clear it and open the next row. Retries are free (no hearts).
+  The runner lives in `roadmap.js`. (The old per-branch boss system was retired.)
 - **View.** `roadmap.js` renders chapter cards (number, title, subtitle, progress) each holding
   class rows (a label + same-level meds on one line) of flat circular nodes (learned ✓ /
-  available / current / locked / keystone ⭐💎 / due 🔁 / boss chest), reusing the celebration +
-  XP/mastery engines. The **dashboard home** (`ui.home`) keeps greeting/ring/streak/XP/quests/
-  class-mastery; its primary button opens the roadmap.
+  available / current / locked / keystone ⭐💎 / due 🔁) ending in a Review node, reusing the
+  celebration + XP/mastery engines. The **dashboard home** (`ui.home`) keeps greeting/ring/
+  streak/XP/quests/class-mastery; its primary button opens the roadmap.
 
 ## Daily engine
 

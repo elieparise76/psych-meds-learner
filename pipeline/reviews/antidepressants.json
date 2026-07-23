@@ -1,0 +1,382 @@
+{
+  "0": [
+    {
+      "id": "rev_antidepressants_0_1",
+      "stem": "A patient stopped his SSRI abruptly 2 days ago and now has dizziness, electric-shock 'brain zap' sensations, nausea and flu-like malaise. Which SSRI is most likely responsible for this severe discontinuation syndrome?",
+      "options": ["Sertraline", "Fluoxetine", "Paroxetine", "Escitalopram"],
+      "answer": "Paroxetine",
+      "explanation": "Paroxetine has the worst discontinuation syndrome of the SSRIs — a short half-life (~21 h) with no active metabolite plus anticholinergic rebound. Fluoxetine is the opposite extreme: its long-acting metabolite norfluoxetine (7–15 days) self-tapers, so discontinuation is rare. Sertraline and escitalopram are intermediate.",
+      "meds": ["sertraline", "fluoxetine", "paroxetine", "escitalopram"],
+      "focus": "discontinuation syndrome",
+      "source": { "name": "Paroxetine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_0_2",
+      "stem": "Which SSRI carries a dose-dependent QT-prolongation risk that led to a hard maximum of 40 mg/day (20 mg/day in the elderly, hepatic impairment, or CYP2C19 poor metabolizers)?",
+      "options": ["Citalopram", "Sertraline", "Escitalopram", "Fluoxetine"],
+      "answer": "Citalopram",
+      "explanation": "Citalopram is the QT SSRI, with regulator-mandated dose ceilings for dose-dependent QTc prolongation. Its purified S-enantiomer escitalopram prolongs QT far less and has no comparable hard cap. Sertraline and fluoxetine are not notable QT offenders.",
+      "meds": ["citalopram", "sertraline", "escitalopram", "fluoxetine"],
+      "focus": "QT prolongation / dose ceiling",
+      "source": { "name": "Citalopram label (QT warning)", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_0_3",
+      "stem": "You want to start an SSRI in a young adult with anergic, hypersomnic depression who is frequently non-adherent and often misses doses. Which agent is the most activating and has the longest half-life, so missed doses are least problematic and discontinuation is minimal?",
+      "options": ["Paroxetine", "Fluoxetine", "Sertraline", "Citalopram"],
+      "answer": "Fluoxetine",
+      "explanation": "Fluoxetine is the most activating SSRI (dose in the morning; can worsen initial anxiety/insomnia) and has the longest half-life via norfluoxetine (7–15 days), so it tolerates missed doses and rarely causes discontinuation symptoms. Paroxetine is sedating with the worst discontinuation; sertraline and citalopram are intermediate.",
+      "meds": ["paroxetine", "fluoxetine", "sertraline", "citalopram"],
+      "focus": "half-life / activation",
+      "source": { "name": "Fluoxetine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_0_4",
+      "stem": "A patient three weeks post-myocardial infarction develops major depression. Which SSRI has the best cardiac-safety evidence (SADHART) and characteristically causes diarrhea as its signature GI effect?",
+      "options": ["Paroxetine", "Fluoxetine", "Citalopram", "Sertraline"],
+      "answer": "Sertraline",
+      "explanation": "Sertraline is the cardiac-preferred SSRI (SADHART) with a clean interaction profile and diarrhea as its hallmark GI effect. Citalopram would be a QT concern in cardiac patients; paroxetine is anticholinergic and sedating; fluoxetine is activating and a potent CYP2D6 inhibitor.",
+      "meds": ["paroxetine", "fluoxetine", "citalopram", "sertraline"],
+      "focus": "cardiac safety / GI signature",
+      "source": { "name": "SADHART / CANMAT", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antidepressants_0_5",
+      "stem": "Which SSRI is the purified active S-enantiomer of another SSRI in this group, is frequently chosen first-line for its tolerability and clean interaction profile, and carries a generalized anxiety disorder indication?",
+      "options": ["Escitalopram", "Citalopram", "Fluoxetine", "Paroxetine"],
+      "answer": "Escitalopram",
+      "explanation": "Escitalopram is the S-enantiomer of citalopram (~20 mg escitalopram ≈ 40 mg citalopram) but with a better tolerability/interaction profile, far less QT effect, and a GAD indication. Fluoxetine (activating, potent 2D6 inhibitor) and paroxetine (anticholinergic, worst discontinuation) are less clean.",
+      "meds": ["escitalopram", "citalopram", "fluoxetine", "paroxetine"],
+      "focus": "enantiomer relationship / tolerability",
+      "source": { "name": "CANMAT MDD guidelines", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antidepressants_0_6",
+      "stem": "A woman on tamoxifen for breast cancer needs an SSRI for depression. Which agent should be AVOIDED because its potent CYP2D6 inhibition blocks conversion of tamoxifen to its active metabolite endoxifen?",
+      "options": ["Sertraline", "Paroxetine", "Escitalopram", "Citalopram"],
+      "answer": "Paroxetine",
+      "explanation": "Paroxetine is a potent CYP2D6 inhibitor and the classic SSRI to avoid with tamoxifen — it lowers active endoxifen and has been linked to worse breast-cancer outcomes. Sertraline, escitalopram and citalopram are weak 2D6 inhibitors and are preferred here. (Fluoxetine is also a potent 2D6 inhibitor and would likewise be avoided.)",
+      "meds": ["sertraline", "paroxetine", "escitalopram", "citalopram"],
+      "focus": "CYP2D6 inhibition (tamoxifen)",
+      "source": { "name": "Paroxetine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_0_7",
+      "stem": "A breastfeeding mother with postpartum depression needs an SSRI. Which agent has the most reassuring lactation data and is generally preferred in pregnancy, whereas one of the other options carries a first-trimester cardiac-malformation signal?",
+      "options": ["Paroxetine", "Fluoxetine", "Sertraline", "Citalopram"],
+      "answer": "Sertraline",
+      "explanation": "Sertraline has low breast-milk transfer and the best pregnancy/lactation evidence, making it a first choice peripartum. Paroxetine is the SSRI generally avoided in pregnancy because of a signal for fetal cardiac (septal) defects. Fluoxetine's very long half-life persists in the neonate; citalopram is a QT consideration.",
+      "meds": ["paroxetine", "fluoxetine", "sertraline", "citalopram"],
+      "focus": "pregnancy / lactation safety",
+      "source": { "name": "CANMAT / sertraline monograph", "origin": "canmat" }
+    }
+  ],
+  "1": [
+    {
+      "id": "rev_antidepressants_1_1",
+      "stem": "A patient titrated above 150 mg/day of an SNRI develops a sustained rise in diastolic blood pressure. Which agent is most classically associated with this dose-dependent noradrenergic hypertension, warranting blood-pressure monitoring during titration?",
+      "options": ["Venlafaxine", "Duloxetine", "Desvenlafaxine", "Bupropion"],
+      "answer": "Venlafaxine",
+      "explanation": "Venlafaxine's noradrenergic effect (and dose-dependent hypertension) emerges above ~150 mg/day — check BP as you push the dose. Desvenlafaxine (its active metabolite) also raises BP but has flat 50 mg dosing; duloxetine's BP effect is milder; bupropion is an NDRI that can raise BP but is not the prototype for dose-dependent SNRI hypertension.",
+      "meds": ["venlafaxine", "duloxetine", "desvenlafaxine", "bupropion"],
+      "focus": "dose-dependent hypertension",
+      "source": { "name": "Venlafaxine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_1_2",
+      "stem": "A patient with major depression and comorbid diabetic peripheral neuropathy would benefit most from an antidepressant with a formal chronic-pain indication — but it must be avoided in significant liver disease or heavy alcohol use. Which agent?",
+      "options": ["Venlafaxine", "Duloxetine", "Desvenlafaxine", "Mirtazapine"],
+      "answer": "Duloxetine",
+      "explanation": "Duloxetine has formal indications for diabetic neuropathy, fibromyalgia and chronic musculoskeletal pain (its analgesia is partly noradrenergic and can precede mood benefit), but it carries a hepatotoxicity caution and should be avoided in liver disease or substantial alcohol use. Venlafaxine and desvenlafaxine lack the same pain indications; mirtazapine is not an analgesic.",
+      "meds": ["venlafaxine", "duloxetine", "desvenlafaxine", "mirtazapine"],
+      "focus": "chronic-pain indication / hepatotoxicity",
+      "source": { "name": "Duloxetine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_1_3",
+      "stem": "A CYP2D6 poor metabolizer already taking several CYP-interacting drugs needs an SNRI with predictable levels and minimal CYP involvement. Which agent — itself the active metabolite of another SNRI — is cleared mainly by glucuronidation and essentially bypasses CYP2D6?",
+      "options": ["Desvenlafaxine", "Venlafaxine", "Duloxetine", "Fluvoxamine"],
+      "answer": "Desvenlafaxine",
+      "explanation": "Desvenlafaxine IS O-desmethylvenlafaxine (venlafaxine's active metabolite); it is cleared largely by UGT glucuronidation with negligible CYP2D6 dependence, giving predictable levels and few interactions, plus flat 50 mg dosing. Venlafaxine is a CYP2D6 substrate; duloxetine involves CYP1A2/2D6; fluvoxamine is the most interaction-prone SSRI.",
+      "meds": ["desvenlafaxine", "venlafaxine", "duloxetine", "fluvoxamine"],
+      "focus": "CYP2D6-independent metabolism",
+      "source": { "name": "Desvenlafaxine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_1_4",
+      "stem": "A patient responding to an SSRI is distressed by sexual dysfunction and modest weight gain. Which agent — free of serotonergic activity — is the best choice to switch to or add, given it typically causes no sexual dysfunction and is weight-neutral or causes weight loss?",
+      "options": ["Mirtazapine", "Venlafaxine", "Duloxetine", "Bupropion"],
+      "answer": "Bupropion",
+      "explanation": "Bupropion is an NDRI with no serotonergic activity, so it neither causes sexual dysfunction (it is used to augment SSRI-induced sexual side effects) nor weight gain (often weight loss). Mirtazapine causes the most weight gain of this group; venlafaxine and duloxetine share SSRI-like sexual side effects.",
+      "meds": ["mirtazapine", "venlafaxine", "duloxetine", "bupropion"],
+      "focus": "sexual dysfunction / weight neutrality",
+      "source": { "name": "Bupropion product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_1_5",
+      "stem": "An underweight, cachectic patient with depression, severe insomnia and poor appetite would benefit most from which agent — one whose sedation and appetite stimulation are paradoxically STRONGER at LOW doses?",
+      "options": ["Mirtazapine", "Bupropion", "Venlafaxine", "Duloxetine"],
+      "answer": "Mirtazapine",
+      "explanation": "Mirtazapine (a presynaptic α2 antagonist / NaSSA) is ideal for depression with insomnia and weight loss; its potent H1 antihistamine effect dominates at LOW doses (sedation and appetite are greater at 7.5–15 mg than at higher doses, where added noradrenergic drive offsets it), and 5-HT3 blockade gives an antiemetic effect. Bupropion would suppress appetite and worsen insomnia.",
+      "meds": ["mirtazapine", "bupropion", "venlafaxine", "duloxetine"],
+      "focus": "sedation/appetite (low-dose H1 predominance)",
+      "source": { "name": "Mirtazapine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_1_6",
+      "stem": "A patient stabilized on clozapine is started on a new antidepressant and days later develops rising sedation, sialorrhea and a supratherapeutic clozapine level. Which agent — a potent CYP1A2 inhibitor — is the culprit?",
+      "options": ["Fluvoxamine", "Duloxetine", "Bupropion", "Mirtazapine"],
+      "answer": "Fluvoxamine",
+      "explanation": "Fluvoxamine is the most interaction-prone SSRI: as a potent CYP1A2 (and 2C19) inhibitor it sharply raises clozapine, olanzapine, theophylline, caffeine and tizanidine levels. Duloxetine is a CYP1A2 SUBSTRATE (its own levels rise with fluvoxamine) but not a potent 1A2 inhibitor; bupropion and mirtazapine do not drive this interaction.",
+      "meds": ["fluvoxamine", "duloxetine", "bupropion", "mirtazapine"],
+      "focus": "CYP1A2 inhibition (clozapine)",
+      "source": { "name": "Fluvoxamine label / DDI", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_1_7",
+      "stem": "Which antidepressant is contraindicated in a patient with active bulimia nervosa or a seizure disorder, and should be avoided during abrupt alcohol or benzodiazepine withdrawal, because it lowers the seizure threshold?",
+      "options": ["Mirtazapine", "Bupropion", "Venlafaxine", "Fluvoxamine"],
+      "answer": "Bupropion",
+      "explanation": "Bupropion lowers the seizure threshold in a dose-dependent way and is contraindicated in seizure disorders and in bulimia/anorexia (higher seizure incidence, compounded by purging-related electrolyte shifts), and should be avoided with abrupt alcohol/benzodiazepine withdrawal. The other agents do not carry these specific contraindications.",
+      "meds": ["mirtazapine", "bupropion", "venlafaxine", "fluvoxamine"],
+      "focus": "seizure threshold / eating-disorder contraindication",
+      "source": { "name": "Bupropion XL label (contraindications)", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_1_8",
+      "stem": "Among these agents, which has the worst discontinuation syndrome — driven by the shortest half-life — such that even a single missed dose can trigger dizziness, irritability and 'brain zaps'?",
+      "options": ["Bupropion", "Mirtazapine", "Venlafaxine", "Duloxetine"],
+      "answer": "Venlafaxine",
+      "explanation": "Venlafaxine has the shortest half-life here (~5 h; active metabolite ~11 h), giving the most abrupt, severe discontinuation syndrome of the antidepressants — never stop it abruptly. Bupropion and mirtazapine have minimal serotonergic discontinuation; duloxetine is intermediate.",
+      "meds": ["bupropion", "mirtazapine", "venlafaxine", "duloxetine"],
+      "focus": "discontinuation syndrome",
+      "source": { "name": "Venlafaxine product monograph", "origin": "monograph" }
+    }
+  ],
+  "2": [
+    {
+      "id": "rev_antidepressants_2_1",
+      "stem": "A man taking a sedating antidepressant (used mainly at low dose for sleep) presents with a painful erection lasting over 4 hours. Which agent's α1-adrenergic blockade is responsible for this urologic emergency?",
+      "options": ["Vortioxetine", "Trazodone", "Levomilnacipran", "Moclobemide"],
+      "answer": "Trazodone",
+      "explanation": "Trazodone (a SARI) causes priapism via α1-adrenergic blockade — the classic board fact; warn men to seek emergency care for an erection lasting >4 h. Its α1/H1 effects also make it a low-dose hypnotic with orthostatic hypotension. Vortioxetine, levomilnacipran and moclobemide do not cause priapism.",
+      "meds": ["vortioxetine", "trazodone", "levomilnacipran", "moclobemide"],
+      "focus": "priapism (α1 blockade)",
+      "source": { "name": "Trazodone product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_2_2",
+      "stem": "A Canadian patient needs an MAO inhibitor but cannot reliably follow a strict low-tyramine diet. Which agent — a reversible inhibitor of MAO-A available in Canada but not the US — lets dietary tyramine competitively displace it, so no strict diet is required and washout is short?",
+      "options": ["Vortioxetine", "Trazodone", "Levomilnacipran", "Moclobemide"],
+      "answer": "Moclobemide",
+      "explanation": "Moclobemide is a RIMA (reversible inhibitor of MAO-A): tyramine outcompetes it at the enzyme, so there is no strict diet and only a short washout (very short half-life). It is marketed in Canada (Manerix), not the US. The others are not MAOIs — though note that moclobemide's serotonin-syndrome contraindications still apply.",
+      "meds": ["vortioxetine", "trazodone", "levomilnacipran", "moclobemide"],
+      "focus": "RIMA / tyramine handling",
+      "source": { "name": "Moclobemide (Manerix) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_2_3",
+      "stem": "Which agent is a 'multimodal' antidepressant — combining serotonin reuptake inhibition with direct 5-HT receptor modulation (5-HT1A agonism, 5-HT3/5-HT7 antagonism) — marketed for possible pro-cognitive benefit and a lower rate of sexual dysfunction than classic SSRIs?",
+      "options": ["Vortioxetine", "Trazodone", "Levomilnacipran", "Moclobemide"],
+      "answer": "Vortioxetine",
+      "explanation": "Vortioxetine combines SERT inhibition with direct 5-HT receptor modulation, is promoted for pro-cognitive effects (processing speed/executive function) and has lower sexual dysfunction than classic SSRIs; dose-dependent nausea is its main side effect. Trazodone is a sedating SARI; levomilnacipran an SNRI; moclobemide a RIMA.",
+      "meds": ["vortioxetine", "trazodone", "levomilnacipran", "moclobemide"],
+      "focus": "multimodal mechanism / cognition",
+      "source": { "name": "Vortioxetine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_2_4",
+      "stem": "Which second-line agent is the most noradrenergic-predominant SNRI (greater potency at NET than SERT), so patients more often show tachycardia, blood-pressure rise and urinary hesitancy than with the usual serotonergic-leaning SNRIs?",
+      "options": ["Vortioxetine", "Moclobemide", "Levomilnacipran", "Trazodone"],
+      "answer": "Levomilnacipran",
+      "explanation": "Levomilnacipran is the SNRI with NET > SERT potency (the reverse of most), so noradrenergic effects — tachycardia, hypertension, urinary hesitancy, sweating — predominate. It is a CYP3A4 substrate (cap the dose with strong 3A4 inhibitors and in renal impairment). The others are not noradrenergic-predominant SNRIs.",
+      "meds": ["vortioxetine", "moclobemide", "levomilnacipran", "trazodone"],
+      "focus": "noradrenergic-predominant SNRI",
+      "source": { "name": "Levomilnacipran (Fetzima) label", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_2_5",
+      "stem": "Despite being 'diet-liberal' and reversible, which of these still MUST NOT be combined with an SSRI, tramadol, meperidine or dextromethorphan because its risk of serotonin syndrome is unchanged from that of an irreversible MAOI?",
+      "options": ["Vortioxetine", "Trazodone", "Moclobemide", "Levomilnacipran"],
+      "answer": "Moclobemide",
+      "explanation": "Moclobemide's reversibility lowers the TYRAMINE/hypertensive risk, but it is still an MAO-A inhibitor, so the SEROTONIN-syndrome contraindications (SSRIs/SNRIs, tramadol, meperidine, dextromethorphan, triptans) are unchanged — a common misconception that it is 'safe.' Trazodone, vortioxetine and levomilnacipran are serotonergic but are not MAOIs.",
+      "meds": ["vortioxetine", "trazodone", "moclobemide", "levomilnacipran"],
+      "focus": "serotonin-syndrome risk persists (RIMA)",
+      "source": { "name": "Moclobemide (Manerix) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_2_6",
+      "stem": "An older man with benign prostatic hyperplasia and borderline-controlled hypertension needs a second-line antidepressant. Which agent is least ideal because its strong noradrenergic action can worsen urinary hesitancy/retention and raise heart rate and blood pressure?",
+      "options": ["Trazodone", "Levomilnacipran", "Vortioxetine", "Moclobemide"],
+      "answer": "Levomilnacipran",
+      "explanation": "Levomilnacipran's NET-predominant action commonly causes urinary hesitancy, tachycardia and blood-pressure elevation — problematic with BPH and hypertension. Vortioxetine and moclobemide lack these noradrenergic effects; trazodone's α1 blockade tends to relax bladder-neck tone but risks orthostatic hypotension instead.",
+      "meds": ["trazodone", "levomilnacipran", "vortioxetine", "moclobemide"],
+      "focus": "urinary retention / noradrenergic caution",
+      "source": { "name": "Levomilnacipran (Fetzima) label", "origin": "openfda" }
+    }
+  ],
+  "3": [
+    {
+      "id": "rev_antidepressants_3_1",
+      "stem": "A patient with severe OCD who has failed SSRIs is considered for a tricyclic. Which TCA is the most serotonergic and the historical gold-standard for OCD — yet also has the highest seizure risk, capping the dose near 250 mg/day?",
+      "options": ["Amitriptyline", "Nortriptyline", "Clomipramine", "Imipramine"],
+      "answer": "Clomipramine",
+      "explanation": "Clomipramine is the most serotonergic TCA and the only one with robust OCD efficacy. That potent serotonergic action comes with the highest seizure risk of the TCAs (dose-dependent, hence the ~250 mg/day ceiling). Amitriptyline, nortriptyline and imipramine lack clomipramine's OCD efficacy.",
+      "meds": ["amitriptyline", "nortriptyline", "clomipramine", "imipramine"],
+      "focus": "most serotonergic / OCD / seizure risk",
+      "source": { "name": "Clomipramine monograph / CANMAT", "origin": "canmat" }
+    },
+    {
+      "id": "rev_antidepressants_3_2",
+      "stem": "Which TCA is a secondary amine notable for a true therapeutic window (~50–150 ng/mL) — where levels ABOVE the window can reduce efficacy — making it a rare antidepressant guided by therapeutic drug monitoring, and the best-tolerated/least-orthostatic TCA, preferred in the elderly?",
+      "options": ["Nortriptyline", "Amitriptyline", "Clomipramine", "Desipramine"],
+      "answer": "Nortriptyline",
+      "explanation": "Nortriptyline (a secondary amine, the active metabolite of amitriptyline) has a genuine therapeutic window with a curvilinear response, so both sub- and supra-therapeutic levels underperform — a classic TDM agent. It is the least orthostatic and best-tolerated TCA, favoured in the elderly. Amitriptyline and clomipramine are sedating tertiary amines; desipramine is activating.",
+      "meds": ["nortriptyline", "amitriptyline", "clomipramine", "desipramine"],
+      "focus": "therapeutic window / TDM",
+      "source": { "name": "Nortriptyline product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_3",
+      "stem": "Which TCA is the most noradrenergic-selective and least anticholinergic/sedating — effectively the closest to a 'clean,' activating tricyclic — but is a strong CYP2D6 substrate whose (cardiotoxic) levels rise sharply with fluoxetine, paroxetine or bupropion?",
+      "options": ["Amitriptyline", "Doxepin", "Clomipramine", "Desipramine"],
+      "answer": "Desipramine",
+      "explanation": "Desipramine (secondary amine, the metabolite of imipramine) is the most selective noradrenergic reuptake inhibitor and least anticholinergic/sedating TCA, so it is activating. As a CYP2D6 substrate, its levels climb with potent 2D6 inhibitors — a concern given TCA cardiotoxicity. Amitriptyline, doxepin and clomipramine are sedating, anticholinergic tertiary amines.",
+      "meds": ["amitriptyline", "doxepin", "clomipramine", "desipramine"],
+      "focus": "secondary-amine NE selectivity / activation",
+      "source": { "name": "Desipramine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_4",
+      "stem": "Which tricyclic is one of the most potent H1 antihistamines available and, at very low dose (3–6 mg), is repurposed as a selective histamine-blocking hypnotic for sleep maintenance — with minimal anticholinergic or cardiac toxicity at that dose?",
+      "options": ["Doxepin", "Amitriptyline", "Nortriptyline", "Trimipramine"],
+      "answer": "Doxepin",
+      "explanation": "Doxepin is an exceptionally potent H1 antagonist; at 3–6 mg it acts as a near-pure antihistamine hypnotic with negligible TCA toxicity, whereas full antidepressant doses behave like any sedating tertiary amine (anticholinergic, cardiotoxic in overdose). Amitriptyline and trimipramine are also sedating but are not used as selective low-dose H1 hypnotics; nortriptyline is comparatively activating.",
+      "meds": ["doxepin", "amitriptyline", "nortriptyline", "trimipramine"],
+      "focus": "low-dose H1 hypnotic",
+      "source": { "name": "Doxepin (low-dose) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_5",
+      "stem": "A patient on a 'tricyclic' develops akathisia, parkinsonism and hyperprolactinemia, and later tardive dyskinesia. Which agent — a metabolite of the antipsychotic loxapine — has D2 antagonism that explains these extrapyramidal effects (and a risk of neuroleptic malignant syndrome)?",
+      "options": ["Maprotiline", "Amoxapine", "Nortriptyline", "Desipramine"],
+      "answer": "Amoxapine",
+      "explanation": "Amoxapine is the odd one out: as a metabolite of loxapine it blocks D2 receptors, so unlike other TCAs it can cause EPS, tardive dyskinesia, hyperprolactinemia and even NMS. Its overdose is also especially dangerous (severe seizures/status epilepticus and reports of acute renal failure). Maprotiline, nortriptyline and desipramine lack meaningful D2 blockade.",
+      "meds": ["maprotiline", "amoxapine", "nortriptyline", "desipramine"],
+      "focus": "D2 antagonism → EPS/TD/NMS",
+      "source": { "name": "Amoxapine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_6",
+      "stem": "Which prototype tertiary-amine TCA is classically used for childhood nocturnal enuresis and for panic disorder, and is demethylated to the secondary amine desipramine?",
+      "options": ["Amitriptyline", "Clomipramine", "Imipramine", "Nortriptyline"],
+      "answer": "Imipramine",
+      "explanation": "Imipramine is the prototype TCA, with historical indications for childhood nocturnal enuresis and panic disorder; it is demethylated to desipramine (mirroring amitriptyline→nortriptyline). Its overdose lethality is a special concern when tablets are kept in homes with children. Amitriptyline, clomipramine and nortriptyline do not carry the enuresis indication.",
+      "meds": ["amitriptyline", "clomipramine", "imipramine", "nortriptyline"],
+      "focus": "enuresis / panic indication",
+      "source": { "name": "Imipramine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_7",
+      "stem": "Which TCA is the most sedating and most anticholinergic, and at low dose is widely used off-label for migraine prophylaxis, neuropathic pain and insomnia — while, like all TCAs, remaining potentially lethal in overdose (wide QRS, arrhythmia)?",
+      "options": ["Desipramine", "Amitriptyline", "Protriptyline", "Nortriptyline"],
+      "answer": "Amitriptyline",
+      "explanation": "Amitriptyline is the prototypical sedating/anticholinergic tertiary amine, hence its low-dose niche in migraine, neuropathic pain and insomnia; like all TCAs it is cardiotoxic in overdose, so it is avoided first-line in suicide-risk patients. Desipramine and protriptyline are activating secondary amines; nortriptyline is the better-tolerated secondary amine.",
+      "meds": ["desipramine", "amitriptyline", "protriptyline", "nortriptyline"],
+      "focus": "sedation/anticholinergic / low-dose pain use",
+      "source": { "name": "Amitriptyline product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_3_8",
+      "stem": "Which tetracyclic antidepressant — functionally a selective-noradrenergic TCA — has a long half-life and a notably HIGH seizure risk (dose- and accumulation-dependent), plus a relatively common skin rash?",
+      "options": ["Nortriptyline", "Desipramine", "Doxepin", "Maprotiline"],
+      "answer": "Maprotiline",
+      "explanation": "Maprotiline is a tetracyclic that behaves like a selective-NE TCA; its long half-life (~43 h) and strong seizure-threshold lowering give it a high seizure risk, so titrate slowly and cap the dose. A skin rash is a recognized, relatively common effect. Nortriptyline, desipramine and doxepin do not share this high seizure/rash profile.",
+      "meds": ["nortriptyline", "desipramine", "doxepin", "maprotiline"],
+      "focus": "tetracyclic seizure risk / rash",
+      "source": { "name": "Maprotiline product monograph", "origin": "monograph" }
+    }
+  ],
+  "4": [
+    {
+      "id": "rev_antidepressants_4_1",
+      "stem": "Which irreversible MAOI is a hydrazine that can deplete pyridoxine (vitamin B6) — causing peripheral neuropathy — and carries a distinct hepatotoxicity risk?",
+      "options": ["Phenelzine", "Tranylcypromine", "Selegiline", "Moclobemide"],
+      "answer": "Phenelzine",
+      "explanation": "Phenelzine is a hydrazine MAOI; its hydrazine structure can deplete B6 (peripheral neuropathy) and cause hepatotoxicity. It is also the more sedating/anxiolytic classic MAOI. Tranylcypromine (amphetamine-like, non-hydrazine) and selegiline do not cause B6-depletion neuropathy; moclobemide is a reversible RIMA.",
+      "meds": ["phenelzine", "tranylcypromine", "selegiline", "moclobemide"],
+      "focus": "hydrazine: B6 depletion / hepatotoxicity",
+      "source": { "name": "Phenelzine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_4_2",
+      "stem": "Which irreversible MAOI has an amphetamine-like structure, making it activating (prominent insomnia — dose early) with some dependence/abuse potential and LESS weight gain than the sedating hydrazine MAOI?",
+      "options": ["Phenelzine", "Tranylcypromine", "Selegiline", "Moclobemide"],
+      "answer": "Tranylcypromine",
+      "explanation": "Tranylcypromine is structurally amphetamine-like: activating, causing insomnia, and carrying some abuse potential, with less weight gain than phenelzine (the classic contrast pair — tranylcypromine activating/less weight; phenelzine sedating/more weight). Selegiline is MAO-B–selective at low dose; moclobemide is a RIMA.",
+      "meds": ["phenelzine", "tranylcypromine", "selegiline", "moclobemide"],
+      "focus": "amphetamine-like activation / abuse potential",
+      "source": { "name": "Tranylcypromine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_4_3",
+      "stem": "Which MAOI is MAO-B–selective at low dose and, in its low-dose transdermal patch (6 mg/24 h), bypasses first-pass gut MAO-A so that NO dietary tyramine restriction is required — though selectivity is lost (and the diet returns) at higher doses?",
+      "options": ["Phenelzine", "Tranylcypromine", "Moclobemide", "Selegiline"],
+      "answer": "Selegiline",
+      "explanation": "Selegiline is MAO-B–selective at low dose; the 6 mg/24 h patch spares gut MAO-A (no diet needed), but 9–12 mg/24 h or high oral doses inhibit MAO-A and reinstate the diet. It is metabolized to l-amphetamine/l-methamphetamine (insomnia/activation). Crucially, its serotonin-syndrome contraindications apply at ANY dose or route. Phenelzine and tranylcypromine require the diet at all doses; moclobemide is a RIMA.",
+      "meds": ["phenelzine", "tranylcypromine", "moclobemide", "selegiline"],
+      "focus": "MAO-B selectivity / transdermal diet-sparing",
+      "source": { "name": "Selegiline transdermal (Emsam) monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_4_4",
+      "stem": "A patient with treatment-resistant depression and acute suicidal ideation needs a rapid-acting agent. Which is an intranasal NMDA-receptor antagonist that must be given in-clinic under a REMS-type program with ≥2 hours of monitoring for sedation, dissociation and blood-pressure rise?",
+      "options": ["Esketamine", "Brexanolone", "Zuranolone", "Tranylcypromine"],
+      "answer": "Esketamine",
+      "explanation": "Esketamine (intranasal S-ketamine) is an NMDA antagonist producing an antidepressant effect within hours; it is used for treatment-resistant depression and MDD with acute suicidality and requires supervised in-clinic dosing (≥2 h monitoring, REMS), always paired with an oral antidepressant. Brexanolone and zuranolone are GABA-A neurosteroids for postpartum depression; tranylcypromine is a slow-onset MAOI.",
+      "meds": ["esketamine", "brexanolone", "zuranolone", "tranylcypromine"],
+      "focus": "NMDA antagonist / rapid-acting / monitored dosing",
+      "source": { "name": "Esketamine (Spravato) label", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_4_5",
+      "stem": "Which agent for postpartum depression is a neurosteroid (GABA-A positive allosteric modulator) given as a single continuous 60-hour IV infusion in a certified setting with continuous pulse-oximetry, because of a risk of excessive sedation and sudden loss of consciousness?",
+      "options": ["Zuranolone", "Brexanolone", "Esketamine", "Phenelzine"],
+      "answer": "Brexanolone",
+      "explanation": "Brexanolone (IV allopregnanolone) was the first drug approved specifically for postpartum depression; its 60-h monitored infusion with continuous pulse-oximetry addresses the risk of excessive sedation and sudden loss of consciousness. Zuranolone is the ORAL neurosteroid successor; esketamine is intranasal for TRD; phenelzine is an MAOI.",
+      "meds": ["zuranolone", "brexanolone", "esketamine", "phenelzine"],
+      "focus": "IV neurosteroid / continuous monitoring",
+      "source": { "name": "Brexanolone (Zulresso) label", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_4_6",
+      "stem": "Which rapid-acting neurosteroid for postpartum depression is taken ORALLY as a finite 14-day course at home (in the evening, with fatty food; no driving for ≥12 h), rather than as a monitored infusion or a nasal spray?",
+      "options": ["Zuranolone", "Brexanolone", "Esketamine", "Selegiline"],
+      "answer": "Zuranolone",
+      "explanation": "Zuranolone is an oral GABA-A-modulating neurosteroid given as a self-administered 14-day course — the practical outpatient counterpart to IV brexanolone — with benefit by roughly day 3. It is dosed in the evening with fatty food and prohibits driving for ≥12 h (sedation). Brexanolone is IV; esketamine is intranasal; selegiline is an MAOI.",
+      "meds": ["zuranolone", "brexanolone", "esketamine", "selegiline"],
+      "focus": "oral finite-course neurosteroid (PPD)",
+      "source": { "name": "Zuranolone (Zurzuvae) label", "origin": "openfda" }
+    },
+    {
+      "id": "rev_antidepressants_4_7",
+      "stem": "Between the two classic irreversible non-selective MAOIs, which is the MORE sedating and anxiolytic and causes MORE weight gain — historically favoured for atypical/anxious depression?",
+      "options": ["Selegiline", "Moclobemide", "Phenelzine", "Tranylcypromine"],
+      "answer": "Phenelzine",
+      "explanation": "Phenelzine is the sedating, anxiolytic, weight-gaining MAOI (historically used for atypical/anxious depression), in contrast to activating, weight-sparing tranylcypromine. Selegiline (MAO-B–selective) and moclobemide (RIMA) are the diet-sparing alternatives, not the sedating hydrazine.",
+      "meds": ["selegiline", "moclobemide", "phenelzine", "tranylcypromine"],
+      "focus": "phenelzine sedation/weight vs tranylcypromine activation",
+      "source": { "name": "Phenelzine product monograph", "origin": "monograph" }
+    },
+    {
+      "id": "rev_antidepressants_4_8",
+      "stem": "Which agent is contraindicated in patients with aneurysmal vascular disease, an arteriovenous malformation, or a history of intracerebral hemorrhage, because it transiently raises blood pressure after each dose?",
+      "options": ["Zuranolone", "Brexanolone", "Esketamine", "Selegiline"],
+      "answer": "Esketamine",
+      "explanation": "Esketamine transiently raises blood pressure after dosing, so it is contraindicated in aneurysmal vascular disease, AVM and prior intracerebral hemorrhage, and BP is monitored at each visit. Zuranolone and brexanolone (neurosteroids) and selegiline do not carry this vascular contraindication.",
+      "meds": ["zuranolone", "brexanolone", "esketamine", "selegiline"],
+      "focus": "BP elevation / vascular contraindication",
+      "source": { "name": "Esketamine (Spravato) label", "origin": "openfda" }
+    }
+  ]
+}

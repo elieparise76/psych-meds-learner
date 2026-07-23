@@ -36,9 +36,26 @@
   function learnedIn(nodes) { var n = 0; nodes.forEach(function (id) { if (isLearned(id)) n++; }); return n; }
   function totalLearned() { var cs = cards(); return Object.keys(cs).filter(function (k) { return cs[k].learned; }).length; }
 
-  // ---- gating ----
-  function gateCount(tier) { return Math.max(1, Math.ceil(tier.nodes.length * (C().gate || 0.5))); }
+  // ---- reviews (one per row: key = branchId + ':' + tierIndex) ----
+  function reviewStore() { var p = PML.store.get().progress; if (!p.reviews) p.reviews = {}; return p.reviews; }
+  function reviewKey(b, i) { return b.id + ':' + i; }
+  function rowComplete(b, i) { var t = b.tiers[i]; return !!t && learnedIn(t.nodes) === t.nodes.length; }
+  function reviewCleared(b, i) { return !!reviewStore()[reviewKey(b, i)]; }
+  function markReviewCleared(b, i) { reviewStore()[reviewKey(b, i)] = new Date().toISOString(); PML.store.save(); }
+  // 'cleared' | 'available' (row fully learned, not yet passed) | 'locked'
+  function reviewState(b, i) {
+    if (reviewCleared(b, i)) return 'cleared';
+    if (branchUnlocked(b) && tierUnlocked(b, i) && rowComplete(b, i)) return 'available';
+    return 'locked';
+  }
+  function reviewLockReason(b, i) {
+    if (!branchUnlocked(b)) return branchUnlockReason(b);
+    if (i > 0 && !tierUnlocked(b, i)) return tierLockReason(b, i);
+    var t = b.tiers[i]; var need = t.nodes.length - learnedIn(t.nodes);
+    return need > 0 ? 'Learn all of “' + t.title + '” (' + need + ' left) to unlock its review.' : '';
+  }
 
+  // ---- gating: a row opens only when the row above is FULLY learned AND its review is passed ----
   function branchUnlocked(b) {
     if (!b) return false;
     if (!b.specialist) return true;
@@ -48,20 +65,18 @@
     var need = (C().specialistAtLearned || 5) - totalLearned();
     return need > 0 ? 'Learn ' + need + ' more med' + (need === 1 ? '' : 's') + ' to unlock ' + b.title + '.' : '';
   }
-
   function tierUnlocked(b, i) {
     if (!branchUnlocked(b)) return false;
     if (i <= 0) return true;
-    var prev = b.tiers[i - 1];
-    return learnedIn(prev.nodes) >= gateCount(prev);
+    return rowComplete(b, i - 1) && reviewCleared(b, i - 1);
   }
   function tierLockReason(b, i) {
     if (!branchUnlocked(b)) return branchUnlockReason(b);
     if (i <= 0) return '';
     var prev = b.tiers[i - 1];
-    var need = gateCount(prev) - learnedIn(prev.nodes);
-    if (need <= 0) return '';
-    return 'Learn ' + need + ' more in “' + prev.title + '” to unlock.';
+    if (!rowComplete(b, i - 1)) { var need = prev.nodes.length - learnedIn(prev.nodes); return 'Learn all of “' + prev.title + '” (' + need + ' left) to continue.'; }
+    if (!reviewCleared(b, i - 1)) return 'Pass the “' + prev.title + '” review to continue.';
+    return '';
   }
 
   // ---- node state ----
@@ -111,26 +126,18 @@
     return { learned: learned, total: nodes.length, pct: nodes.length ? learned / nodes.length : 0 };
   }
 
-  // ---- boss ----
-  function bossStore() {
-    var p = PML.store.get().progress;
-    if (!p.bosses) p.bosses = {};
-    return p.bosses;
-  }
-  function bossCleared(b) { return !!bossStore()[b.id]; }
-  function bossState(b) {
-    if (bossCleared(b)) return 'cleared';
-    return branchProgress(b).pct >= (C().bossAt || 0.6) ? 'available' : 'locked';
-  }
-  function bossLockReason(b) {
-    var pr = branchProgress(b);
-    var needFrac = (C().bossAt || 0.6);
-    var need = Math.ceil(pr.total * needFrac) - pr.learned;
-    return need > 0 ? 'Learn ' + need + ' more in this branch to face the boss.' : '';
-  }
-  function markBossCleared(bid) {
-    bossStore()[bid] = new Date().toISOString();
-    PML.store.save();
+  // ---- next action for the "Continue" button: a med to learn, else a pending review ----
+  function nextAction() {
+    var f = frontier();
+    if (f) return { type: 'learn', id: f };
+    var maxT = 0; branches().forEach(function (b) { maxT = Math.max(maxT, b.tiers.length); });
+    for (var ti = 0; ti < maxT; ti++) {
+      for (var bi = 0; bi < branches().length; bi++) {
+        var b = branches()[bi];
+        if (ti < b.tiers.length && reviewState(b, ti) === 'available') return { type: 'review', branch: b, tierIndex: ti };
+      }
+    }
+    return null;
   }
 
   function stats() { return { learned: totalLearned(), total: PML.deck.count() }; }
@@ -161,10 +168,11 @@
     branches: branches, branchById: branchById, branchByClass: branchByClass, locate: locate,
     nodeState: nodeState, isDue: isDue, keystone: keystone,
     branchUnlocked: branchUnlocked, branchUnlockReason: branchUnlockReason,
-    tierUnlocked: tierUnlocked, tierLockReason: tierLockReason, gateCount: gateCount,
+    tierUnlocked: tierUnlocked, tierLockReason: tierLockReason,
     frontier: frontier, nextInBranch: nextInBranch, nextInClass: nextInClass,
     branchProgress: branchProgress, branchNodes: branchNodes,
-    bossState: bossState, bossCleared: bossCleared, bossLockReason: bossLockReason, markBossCleared: markBossCleared,
+    reviewState: reviewState, reviewCleared: reviewCleared, reviewLockReason: reviewLockReason,
+    markReviewCleared: markReviewCleared, rowComplete: rowComplete, nextAction: nextAction,
     stats: stats, chapters: chapters,
   };
 })();
