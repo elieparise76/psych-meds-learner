@@ -47,7 +47,10 @@
     return frag;
   }
 
-  function factRow(med, key, label) {
+  // The value column for one field: rendered value + provenance badges + expandable source text.
+  // Returns null when the field is empty. Shared by the fact card and the question-based Review
+  // surface so a revealed answer looks (and cites) exactly like the reference card.
+  function valueBlock(med, key) {
     var v = med[key];
     if (isEmpty(v)) return null;
     var vwrap = ce('div', { class: 'v' });
@@ -63,6 +66,12 @@
       det.appendChild(ce('div', { class: 'src-text' }, [p.sourceText]));
       vwrap.appendChild(det);
     }
+    return vwrap;
+  }
+
+  function factRow(med, key, label) {
+    var vwrap = valueBlock(med, key);
+    if (!vwrap) return null;
     return ce('div', { class: 'fact' }, [ce('div', { class: 'k' }, [label]), vwrap]);
   }
 
@@ -98,5 +107,5 @@
     return chips;
   }
 
-  PML.render = { factGroups: factGroups, classChip: classChip, tierChip: tierChip, statusChips: statusChips, isEmpty: isEmpty, GROUPS: GROUPS, provBadges: provBadges };
+  PML.render = { factGroups: factGroups, valueBlock: valueBlock, classChip: classChip, tierChip: tierChip, statusChips: statusChips, isEmpty: isEmpty, GROUPS: GROUPS, provBadges: provBadges };
 })();
