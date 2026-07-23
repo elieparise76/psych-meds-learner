@@ -43,17 +43,20 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
   (class tiles / condition tiles / syndrome tiles; "Full list & filters" opens the dex).
   Med↔disorder cross-links both ways; `linkify()` makes med/condition names clickable in prose
   and vignette explanations. `data/disorders.js` → `window.DISORDERS`.
-- **Learning path (skill tree)**: the home screen is a **Duolingo-style path**. Class
-  **branches** stack as colourful unit sections; each is a serpentine of chunky node bubbles
-  (locked / available / current+START / learned ✓ / keystone ⭐) ordered first-line → obscure,
-  ending in a **boss**. Unlock is *derived* from `learned` (tier _i_ opens at 50% of tier
-  _i–1_; specialist branches gate on total learned; boss at 60%), so returning users keep all
-  progress and just light up their nodes while the "Continue" frontier restarts at the basics.
-  Content is `data/curriculum.js` → `window.CURRICULUM` (all 120 meds placed once, decoupled
-  from state like vignettes); bosses are per-branch **discrimination vignettes**
-  (`data/boss.js` → `window.BOSSES`, authored in `pipeline/boss/*.json`, built by
-  `pipeline/build-boss.js`). Engine in `tree.js`, view + boss runner in `path.js`.
-- **Study loop**: one-new-med-a-day daily engine now fed by the path frontier (manual pick counts toward streak),
+- **Learning roadmap (skill tree)**: a dedicated **Roadmap page** (nav tab + the dashboard's
+  main button), laid out as **chapters** — horizontal priority bands top→bottom ("The
+  essentials" → "Deep cuts"), each holding **class rows** where every same-level med sits on one
+  horizontal line (basic SSRIs side by side, etc.). Flat circular nodes (learned ✓ / available /
+  current / locked / keystone ⭐💎 / due 🔁), a **boss** at the end of each class's last row.
+  Unlock is *derived* from `learned` (a class's next row opens at 50% of the current one;
+  specialist branches gate on total learned; boss at 60%), so returning users keep all progress
+  and just light up their nodes while the "Continue" frontier restarts at the basics. Data:
+  `data/curriculum.js` → `window.CURRICULUM` (all 120 meds placed once as class branches × tiers
+  + `chapters` metadata, decoupled from state like vignettes); bosses are per-branch
+  **discrimination vignettes** (`data/boss.js` → `window.BOSSES`, authored in
+  `pipeline/boss/*.json`, built by `pipeline/build-boss.js`). Engine in `tree.js`, view + boss
+  runner in `roadmap.js`. **Home stays a dashboard** (greeting, streak, XP, quests, class mastery).
+- **Study loop**: one-new-med-a-day daily engine now fed by the roadmap frontier (manual pick counts toward streak),
   SM-2 lite spaced **Review** — now a per-fact active-recall **question set** (each due med is
   quizzed on its populated non-identity facts one at a time: recall → reveal sourced answer →
   Got it / Missed; the score maps to the SM-2 quality), adaptive **Practice** (clinical-first, 7 exercise
@@ -122,8 +125,8 @@ real sources and cited; model-authored fallbacks are flagged (`verifyFlag`, ⚠ 
 `util` (PML namespace, seeded PRNG, fuzzy match, DOM helpers) · `deck` (read-only `window.MEDS`
 accessor + `primaryBrand`) · `store` (localStorage state, day/week rollover, streak, export/import)
 · `srs` (SM-2 lite) · `game` (XP/levels/combo/mastery/achievements/quests) · `daily` (daily
-engine + streak/goal, now fed by the path frontier) · `tree` (skill-tree derivation over
-`window.CURRICULUM`: node states, tier/branch unlocks, frontier, boss state) · `render` (shared
+engine + streak/goal, now fed by the roadmap frontier) · `tree` (skill-tree derivation over
+`window.CURRICULUM`: node states, tier/branch unlocks, chapters, frontier, boss state) · `render` (shared
 fact groups + provenance badges + source text) · `profile`
 (first-run + 8 SVG avatars) · `flashcard` (Review = per-fact recall question set → SM-2; flip card
 kept for the learn fallback) · `lesson` (v2 learning flow —
@@ -131,8 +134,8 @@ Neuro explain+check) · `exercises` (clinical-first exercise generators) · `pra
 session runner + all exercise renderers) · `catalog` (the filterable "dex" grid; `detail` delegates
 to `wiki.medPage`) · `wiki` (hub + med pages + disorder pages + linkify + reverse index) · `compare`
 (v2 versus picker) · `cram` (timed) · `progress` (class map + achievements + stats) · `tutorial`
-(Neuro walkthrough + Neuro mascot SVG, reused by lessons) · `path` (the Duolingo-style learning-path
-view — branch rail, unit banners, serpentine nodes, boss gauntlet runner) · `ui` (router, HUD, home, celebrations,
+(Neuro walkthrough + Neuro mascot SVG, reused by lessons) · `roadmap` (the Roadmap page —
+chapters × class rows of flat nodes + the boss gauntlet runner) · `ui` (router, HUD, home, celebrations,
 settings, sounds wiring) · `main` (boot). Vendored offline: `app/vendor/confetti.js`, `sfx.js`
 (WebAudio, 17 sounds), `fonts.css` (Space Grotesk woff2 base64).
 

@@ -135,6 +135,28 @@
 
   function stats() { return { learned: totalLearned(), total: PML.deck.count() }; }
 
+  // ---- CHAPTERS: regroup the per-class tiers into horizontal priority bands ----
+  // Chapter i = tier i of every branch that has one. Each row is a class's tier-i meds on one line.
+  function chapters() {
+    var meta = C().chapters || [];
+    var maxT = 0; branches().forEach(function (b) { maxT = Math.max(maxT, b.tiers.length); });
+    var out = [];
+    for (var i = 0; i < maxT; i++) {
+      var rows = [], learned = 0, total = 0;
+      branches().forEach(function (b) {
+        if (i >= b.tiers.length) return;
+        var tier = b.tiers[i];
+        var l = learnedIn(tier.nodes);
+        learned += l; total += tier.nodes.length;
+        rows.push({ branch: b, tier: tier, tierIndex: i, nodes: tier.nodes,
+          unlocked: tierUnlocked(b, i), isLastTier: i === b.tiers.length - 1 });
+      });
+      out.push({ index: i, title: (meta[i] && meta[i].title) || ('Chapter ' + (i + 1)),
+        subtitle: (meta[i] && meta[i].subtitle) || '', rows: rows, learned: learned, total: total });
+    }
+    return out;
+  }
+
   PML.tree = {
     branches: branches, branchById: branchById, branchByClass: branchByClass, locate: locate,
     nodeState: nodeState, isDue: isDue, keystone: keystone,
@@ -143,6 +165,6 @@
     frontier: frontier, nextInBranch: nextInBranch, nextInClass: nextInClass,
     branchProgress: branchProgress, branchNodes: branchNodes,
     bossState: bossState, bossCleared: bossCleared, bossLockReason: bossLockReason, markBossCleared: markBossCleared,
-    stats: stats,
+    stats: stats, chapters: chapters,
   };
 })();

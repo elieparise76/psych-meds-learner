@@ -109,36 +109,42 @@ A newly learned med enters review **the day after** it is first learned. **Remem
 works the queue of every card with `dueDate <= today`. Lapses reschedule quietly — they
 never scold (Duolingo's whole trick).
 
-## Learning path (the skill tree)
+## Learning roadmap (the skill tree)
 
-The "what to learn next" surface is a **Duolingo-style path** (`data/curriculum.js` →
-`window.CURRICULUM`, engine in `tree.js`, view in `path.js`), which replaced the old random
-daily card. It is **content decoupled from state** (like `vignettes.js`): reorder it freely,
-nobody loses progress.
+"What to learn next" lives on a dedicated **Roadmap page** (`data/curriculum.js` →
+`window.CURRICULUM`, engine in `tree.js`, view in `roadmap.js`), opened from the dashboard home
+and its own nav tab. It replaced the old random daily card and is **content decoupled from
+state** (like `vignettes.js`): reorder it freely, nobody loses progress.
 
-- **Shape.** Each drug **class is a branch** (column); each branch is a ladder of **tiers**
-  ordered first-line (top, "the basics") → obscure (bottom). Every one of the 120 deck ids
-  appears exactly once (asserted at build time). High-yield ids are flagged `keystones`.
-- **Unlock model — derived, never stored.** A branch's tier 0 is open from the start; **tier
-  _i_ opens once `gate` (default 50%, min 1) of tier _i–1_ is learned**; a branch's **boss**
-  unlocks at `bossAt` (60%) of the branch learned; `specialist` branches (substance/dementia/
-  adjunct) stay dim until `specialistAtLearned` meds are learned anywhere. Because unlock is a
-  pure function of each card's existing `learned` flag, a returning user's meds light up
-  automatically — **no migration, no reset** — while `frontier()` always points at the
-  *shallowest unlearned* node so everyone re-enters at the basics.
+- **Two readings of one dataset.** The data is authored as **class branches × tiers** (each
+  class ordered first-line → obscure; every one of the 120 ids appears once, asserted at build
+  time). The page renders it the other way: as **chapters** — horizontal priority bands
+  top→bottom (`CURRICULUM.chapters`), where chapter _i_ = tier _i_ of every class. So Chapter 1
+  ("The essentials") is the first-line row of every class, and **every med at the same level
+  sits on one horizontal line**. High-yield ids are flagged `keystones`.
+- **Unlock model — derived, never stored.** A class's tier-0 row is open from the start; **its
+  next-tier row opens once `gate` (default 50%, min 1) of the current row is learned**; a
+  branch's **boss** unlocks at `bossAt` (60%) of the branch learned; `specialist` branches
+  (substance/dementia/adjunct) stay dim until `specialistAtLearned` meds are learned anywhere.
+  Because unlock is a pure function of each card's existing `learned` flag, a returning user's
+  meds light up automatically — **no migration, no reset** — while `frontier()` always points at
+  the *shallowest unlearned* node so everyone re-enters at the basics.
 - **Bosses.** Per-branch **discrimination vignettes** (`data/boss.js` → `window.BOSSES`,
   authored in `pipeline/boss/*.json`, assembled by `pipeline/build-boss.js`): 4 options all
-  from the branch, chosen to force telling look-alike agents apart. Defeat a boss (≥60%) to
-  stamp the branch; retries are free (no hearts). The runner lives in `path.js`.
-- **View.** `path.js` renders a branch rail (parallel jump-between-classes), colourful unit
-  banners, and a serpentine of chunky node bubbles (locked / available / current+START flag /
-  learned ✓ / keystone ⭐ / boss chest), reusing the celebration + XP/mastery engines.
+  from the branch, chosen to force telling look-alike agents apart. A boss sits at the end of
+  its class's last row; defeat it (≥60%) to stamp the branch; retries are free (no hearts). The
+  runner lives in `roadmap.js`.
+- **View.** `roadmap.js` renders chapter cards (number, title, subtitle, progress) each holding
+  class rows (a label + same-level meds on one line) of flat circular nodes (learned ✓ /
+  available / current / locked / keystone ⭐💎 / due 🔁 / boss chest), reusing the celebration +
+  XP/mastery engines. The **dashboard home** (`ui.home`) keeps greeting/ring/streak/XP/quests/
+  class-mastery; its primary button opens the roadmap.
 
 ## Daily engine
 
-- **Path frontier drives the day.** `daily.nextNew()` delegates to `PML.tree.frontier()` — the
-  shallowest unlearned node, basics-first across classes. The old **seeded shuffle**
-  (`seededOrder` in `localStorage`) is kept only as a legacy/import fallback when the path is
+- **Roadmap frontier drives the day.** `daily.nextNew()` delegates to `PML.tree.frontier()` —
+  the shallowest unlearned node, basics-first across classes. The old **seeded shuffle**
+  (`seededOrder` in `localStorage`) is kept only as a legacy/import fallback when the tree is
   unavailable.
 - **One new/day minimum, more allowed.** Reviews are always available.
 - **Streak.** Increments on any day the daily goal is met: **≥1 new card learned OR all due

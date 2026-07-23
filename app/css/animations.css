@@ -50,10 +50,11 @@
 /* celebration count-up number pop on each tick */
 .celeb-num.tickpop { animation: celeb-tick .28s var(--ease-bounce); }
 
-/* learning-path: current node bounce + pulse ring, start-flag bob */
-@keyframes node-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-@keyframes node-pulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.4); opacity: 0; } }
-@keyframes flag-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+/* roadmap: gentle pulsing ring on the current (frontier) node */
+@keyframes node-pulse-soft {
+  0%,100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--nhue) 26%, transparent); }
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--nhue) 7%, transparent); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
