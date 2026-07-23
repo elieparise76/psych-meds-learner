@@ -109,11 +109,37 @@ A newly learned med enters review **the day after** it is first learned. **Remem
 works the queue of every card with `dueDate <= today`. Lapses reschedule quietly — they
 never scold (Duolingo's whole trick).
 
+## Learning path (the skill tree)
+
+The "what to learn next" surface is a **Duolingo-style path** (`data/curriculum.js` →
+`window.CURRICULUM`, engine in `tree.js`, view in `path.js`), which replaced the old random
+daily card. It is **content decoupled from state** (like `vignettes.js`): reorder it freely,
+nobody loses progress.
+
+- **Shape.** Each drug **class is a branch** (column); each branch is a ladder of **tiers**
+  ordered first-line (top, "the basics") → obscure (bottom). Every one of the 120 deck ids
+  appears exactly once (asserted at build time). High-yield ids are flagged `keystones`.
+- **Unlock model — derived, never stored.** A branch's tier 0 is open from the start; **tier
+  _i_ opens once `gate` (default 50%, min 1) of tier _i–1_ is learned**; a branch's **boss**
+  unlocks at `bossAt` (60%) of the branch learned; `specialist` branches (substance/dementia/
+  adjunct) stay dim until `specialistAtLearned` meds are learned anywhere. Because unlock is a
+  pure function of each card's existing `learned` flag, a returning user's meds light up
+  automatically — **no migration, no reset** — while `frontier()` always points at the
+  *shallowest unlearned* node so everyone re-enters at the basics.
+- **Bosses.** Per-branch **discrimination vignettes** (`data/boss.js` → `window.BOSSES`,
+  authored in `pipeline/boss/*.json`, assembled by `pipeline/build-boss.js`): 4 options all
+  from the branch, chosen to force telling look-alike agents apart. Defeat a boss (≥60%) to
+  stamp the branch; retries are free (no hearts). The runner lives in `path.js`.
+- **View.** `path.js` renders a branch rail (parallel jump-between-classes), colourful unit
+  banners, and a serpentine of chunky node bubbles (locked / available / current+START flag /
+  learned ✓ / keystone ⭐ / boss chest), reusing the celebration + XP/mastery engines.
+
 ## Daily engine
 
-- **Seeded random order.** On first launch we generate a fixed shuffle of the deck using a
-  seeded PRNG; the resulting order is persisted to `localStorage`. Each day serves the next
-  *unlearned* card in that fixed order — arbitrary but deterministic per user.
+- **Path frontier drives the day.** `daily.nextNew()` delegates to `PML.tree.frontier()` — the
+  shallowest unlearned node, basics-first across classes. The old **seeded shuffle**
+  (`seededOrder` in `localStorage`) is kept only as a legacy/import fallback when the path is
+  unavailable.
 - **One new/day minimum, more allowed.** Reviews are always available.
 - **Streak.** Increments on any day the daily goal is met: **≥1 new card learned OR all due
   reviews cleared.** (Either satisfies the goal — a day with nothing new but a cleared review

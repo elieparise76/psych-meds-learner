@@ -13,7 +13,7 @@
       if (k === 'class') el.className = attrs[k];
       else if (k === 'html') el.innerHTML = attrs[k];
       else if (k === 'text') el.textContent = attrs[k];
-      else if (k === 'style' && typeof attrs[k] === 'object') Object.assign(el.style, attrs[k]);
+      else if (k === 'style' && typeof attrs[k] === 'object') { var sty = attrs[k]; Object.keys(sty).forEach(function (p) { if (p.slice(0, 2) === '--') el.style.setProperty(p, sty[p]); else el.style[p] = sty[p]; }); }
       else if (k.slice(0, 2) === 'on' && typeof attrs[k] === 'function') el.addEventListener(k.slice(2), attrs[k]);
       else if (attrs[k] != null && attrs[k] !== false) el.setAttribute(k, attrs[k]);
     });

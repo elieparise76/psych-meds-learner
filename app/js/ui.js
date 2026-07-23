@@ -215,52 +215,13 @@
     return { close: close, el: back };
   }
 
-  // ---------- HOME ----------
+  // ---------- HOME (the learning PATH) ----------
   function home(root) {
     PML.store.rollover();
-    var st = PML.daily.todayStatus();
-    var s = PML.store.get();
-    var li = PML.game.levelInfo(s.progress.xp);
-    var nextId = PML.daily.nextNew();
-    var nextMed = nextId ? PML.deck.get(nextId) : null;
 
-    // ring
-    var ring = ce('div', { class: 'ring' }, [ce('div', { class: 'inner' }, [ce('b', { text: st.progressPct + '%' }), ce('span', { class: 'dim', style: { fontSize: '.62rem' } }, ['daily goal'])])]);
-    ring.style.setProperty('--p', st.progressPct);
-
-    var learnBtn = ce('button', { class: 'btn primary lg', onclick: function () { if (nextId) startLearn([nextId]); } }, [nextMed ? '✨ Learn: ' + nextMed.generic : '✓ Deck complete']);
-    if (!nextId) learnBtn.disabled = true;
-    var reviewBtn = ce('button', { class: 'btn lg', onclick: function () { go('review'); } }, ['🔁 Review (' + st.reviewsDue + ' due)']);
-    if (st.reviewsDue === 0) reviewBtn.classList.add('ghost');
-
-    var hero = ce('div', { class: 'hero view' }, [
-      ce('div', { class: 'card pad hero-card stack' }, [
-        ce('div', { class: 'row spread wrap' }, [
-          ce('div', {}, [
-            ce('h1', {}, ['Good ' + partOfDay() + '.']),
-            ce('p', { class: 'muted', style: { margin: 0 } }, [st.goalMet ? 'Daily goal complete — keep the streak alive.' : (nextMed ? 'One new med a day. Today: a ' + (nextMed.subclass || nextMed.class) + '.' : 'You have learned the whole deck. Keep reviewing to reach mastery.')]),
-          ]),
-          ring,
-        ]),
-        ce('div', { class: 'daily-actions' }, [learnBtn, reviewBtn]),
-        ce('div', { class: 'row', style: { gap: '8px', flexWrap: 'wrap' } }, [
-          ce('button', { class: 'btn sm ghost', onclick: pickFromClass }, ['🎯 Choose from a class']),
-          ce('button', { class: 'btn sm ghost', onclick: function () { go('practice'); } }, ['🎮 Practice session']),
-          ce('button', { class: 'btn sm ghost', onclick: searchPick }, ['🔍 Pick a specific med']),
-        ]),
-      ]),
-      ce('div', { class: 'card pad stack' }, [
-        ce('h3', {}, ['Level ' + li.level]),
-        ce('div', { class: 'bar xpbar' }, [ce('span', { style: { width: Math.round(li.into / li.need * 100) + '%' } })]),
-        ce('div', { class: 'row spread', style: { fontSize: '.8rem' } }, [ce('span', { class: 'muted' }, [li.into + ' / ' + li.need + ' XP']), ce('span', { class: 'muted' }, [s.progress.xp + ' total'])]),
-        ce('div', { class: 'stat-tiles' }, [
-          tile(st.learned, 'learned', 'of ' + PML.deck.count()),
-          tile(s.progress.streak || 0, 'day streak'),
-          tile(s.progress.weekXp || 0, 'XP this week', 'goal ' + (s.settings.weeklyXpGoal || 210)),
-        ]),
-      ]),
-    ]);
-    root.appendChild(hero);
+    // The Duolingo-style path is the home: today strip + branch rail + class branches + bosses.
+    if (PML.path && PML.path.render) PML.path.render(root);
+    else legacyHome(root);   // defensive fallback if path.js failed to load
 
     // quests
     var q = PML.game.refreshQuests();
@@ -274,22 +235,18 @@
     });
     root.appendChild(questCard);
 
-    // class mastery mini
-    var cmCard = ce('div', { class: 'card pad stack view', style: { marginTop: 'var(--sp-5)' } }, [ce('div', { class: 'row spread' }, [ce('h3', { style: { margin: 0 } }, ['Class mastery']), ce('button', { class: 'btn sm ghost', onclick: function () { go('progress'); } }, ['See map →'])])]);
-    var cm = ce('div', { class: 'stat-tiles' });
-    PML.deck.classes().forEach(function (cls) {
-      var m = PML.game.classMastery(cls);
-      var key = PML.deck.classKey(cls);
-      cm.appendChild(ce('div', { class: 'tile' }, [
-        ce('div', { class: 'row', style: { gap: '6px' } }, [ce('span', { style: { width: '10px', height: '10px', borderRadius: '50%', background: 'var(--c-' + key + ')', display: 'inline-block' } }), ce('b', { style: { fontSize: '1rem' } }, [m.learned + '/' + m.total])]),
-        ce('span', { text: cls }),
-        ce('div', { class: 'bar', style: { marginTop: '6px', height: '6px' } }, [ce('span', { style: { width: Math.round(m.progress * 100) + '%', background: 'var(--c-' + key + ')' } })]),
-      ]));
-    });
-    cmCard.appendChild(cm);
-    root.appendChild(cmCard);
-
     root.appendChild(safetyBanner());
+  }
+
+  // minimal fallback learn card (only used if PML.path is unavailable)
+  function legacyHome(root) {
+    var nextId = PML.daily.nextNew();
+    var nextMed = nextId ? PML.deck.get(nextId) : null;
+    root.appendChild(ce('div', { class: 'card pad stack view' }, [
+      ce('h1', {}, ['Good ' + partOfDay() + '.']),
+      ce('button', { class: 'btn primary lg', onclick: function () { if (nextId) startLearn([nextId]); } }, [nextMed ? '✨ Learn: ' + nextMed.generic : '✓ Deck complete']),
+      ce('button', { class: 'btn lg', onclick: function () { go('review'); } }, ['🔁 Review']),
+    ]));
   }
 
   function tile(big, label, sub) {

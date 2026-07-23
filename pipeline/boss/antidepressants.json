@@ -1,0 +1,57 @@
+[
+  {
+    "id": "boss_antidepressants_1",
+    "stem": "A 46-year-old with treatment-resistant depression is about to start an oral MAO inhibitor, but he travels constantly for work, eats most meals in restaurants, and admits he cannot reliably follow a strict low-tyramine diet. You want the oral agent with the lowest risk of a tyramine-triggered hypertensive crisis and the shortest washout on stopping. Which agent do you choose?",
+    "options": ["Moclobemide", "Phenelzine", "Tranylcypromine", "Selegiline"],
+    "answer": "Moclobemide",
+    "explanation": "Moclobemide is a Reversible Inhibitor of MAO-A (RIMA): dietary tyramine can competitively displace it from the enzyme, so no strict low-tyramine diet is required, and its very short half-life gives a far shorter washout than the irreversible drugs. Phenelzine and tranylcypromine are irreversible, non-selective MAOIs that mandate strict tyramine restriction and a ~2-week washout while new MAO is synthesized. Oral selegiline at antidepressant doses loses its MAO-B selectivity and also inhibits MAO-A, reinstating the tyramine diet (only the low-dose 6 mg/24h transdermal patch bypasses gut MAO-A and spares the diet).",
+    "meds": ["moclobemide", "phenelzine", "tranylcypromine", "selegiline"],
+    "focus": "MAOI tyramine diet/washout — reversible MAO-A (RIMA) vs irreversible MAOIs",
+    "tags": ["comparison"],
+    "source": { "name": "MAOI product monographs (moclobemide RIMA; phenelzine/tranylcypromine irreversible; selegiline dose-dependent MAO-A)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_antidepressants_2",
+    "stem": "A patient with schizophrenia stabilized on clozapine develops a comorbid major depressive episode with prominent obsessive-compulsive features, and you plan to add an SSRI. Clozapine is cleared largely by CYP1A2. Which SSRI is the most likely to precipitate clozapine toxicity (over-sedation, seizures, rising clozapine level) through enzyme inhibition?",
+    "options": ["Fluvoxamine", "Sertraline", "Escitalopram", "Citalopram"],
+    "answer": "Fluvoxamine",
+    "explanation": "Fluvoxamine is a potent CYP1A2 (and CYP2C19) inhibitor — the most interaction-prone SSRI — and sharply raises clozapine levels, risking sedation, seizures and other dose-related toxicity. Sertraline, escitalopram and citalopram are only weak-to-mild CYP inhibitors with clean interaction profiles, so they are far safer to combine with clozapine. The discriminator is the CYP1A2 burden, not serotonergic potency, which is comparable across the four.",
+    "meds": ["fluvoxamine", "sertraline", "escitalopram", "citalopram"],
+    "focus": "CYP1A2 inhibition (fluvoxamine) raising clozapine/theophylline levels",
+    "tags": ["comparison"],
+    "source": { "name": "Fluvoxamine label — potent CYP1A2/2C19 inhibition (clozapine interaction)", "origin": "openfda" }
+  },
+  {
+    "id": "boss_antidepressants_3",
+    "stem": "A 24-year-old woman with major depression and a current history of bulimia nervosa (recurrent self-induced purging) asks for an antidepressant. Which agent is explicitly contraindicated in this patient because it lowers the seizure threshold and produced a higher incidence of seizures in patients with eating disorders?",
+    "options": ["Bupropion", "Fluoxetine", "Sertraline", "Mirtazapine"],
+    "answer": "Bupropion",
+    "explanation": "Bupropion is contraindicated in a current or prior diagnosis of bulimia or anorexia nervosa (and in seizure disorders) because a higher seizure incidence was seen in these patients — a dose-dependent seizure-threshold effect. Fluoxetine is, in contrast, the antidepressant of choice in bulimia; sertraline and mirtazapine carry no eating-disorder contraindication. The discriminating axis is the seizure-threshold/eating-disorder contraindication unique to bupropion, not antidepressant efficacy.",
+    "meds": ["bupropion", "fluoxetine", "sertraline", "mirtazapine"],
+    "focus": "Seizure threshold / eating-disorder (bulimia-anorexia) contraindication — bupropion",
+    "tags": ["comparison"],
+    "source": { "name": "Bupropion XL label — contraindications (bulimia/anorexia, seizure disorder)", "origin": "openfda" }
+  },
+  {
+    "id": "boss_antidepressants_4",
+    "stem": "A 70-year-old man with major depression has lost 6 kg from poor appetite, has severe initial insomnia, and previously stopped an SSRI because of persistent nausea and sexual dysfunction. Which antidepressant best targets his appetite loss and insomnia while being least likely to add nausea or sexual dysfunction?",
+    "options": ["Mirtazapine", "Bupropion", "Sertraline", "Venlafaxine"],
+    "answer": "Mirtazapine",
+    "explanation": "Mirtazapine is a presynaptic α2-antagonist whose potent H1 antihistamine effect plus 5-HT2 and 5-HT3 blockade produce sedation, increased appetite/weight gain and an antiemetic effect, with lower sexual dysfunction than SSRIs — an ideal match for depression with insomnia, weight loss and prior SSRI GI/sexual intolerance. Bupropion is activating and tends to cause weight loss and insomnia (the opposite of what is needed); sertraline characteristically causes diarrhea/nausea and sexual dysfunction; venlafaxine causes nausea, insomnia and sexual dysfunction.",
+    "meds": ["mirtazapine", "bupropion", "sertraline", "venlafaxine"],
+    "focus": "Mirtazapine appetite/sedation/weight-gain niche (α2 antagonist + H1, low sexual dysfunction)",
+    "tags": ["comparison"],
+    "source": { "name": "Mirtazapine monograph — H1 antihistamine and 5-HT2/5-HT3 effects (appetite, sedation, antiemetic)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_antidepressants_5",
+    "stem": "A patient with treatment-resistant major depression and acute suicidal ideation needs an antidepressant effect within hours to a day rather than the usual weeks. The chosen agent must be given in a certified clinic with at least two hours of post-dose monitoring for sedation, dissociation and blood-pressure rise under a restricted (REMS) distribution program, alongside an ongoing oral antidepressant. Which agent fits?",
+    "options": ["Esketamine", "Venlafaxine", "Mirtazapine", "Tranylcypromine"],
+    "answer": "Esketamine",
+    "explanation": "Intranasal esketamine is an NMDA-glutamate receptor antagonist with rapid onset (hours to about one day), indicated for treatment-resistant depression and MDD with acute suicidality; it is available only through a REMS program requiring in-clinic administration with ≥2 hours of monitoring for sedation, dissociation and transient BP elevation, and is always paired with an oral antidepressant. Venlafaxine, mirtazapine and tranylcypromine are oral monoaminergic agents with the usual 2–6 week onset lag and no supervised-dosing/REMS requirement.",
+    "meds": ["esketamine", "venlafaxine", "mirtazapine", "tranylcypromine"],
+    "focus": "Rapid-onset glutamatergic NMDA antagonist with REMS/supervised in-clinic dosing — esketamine",
+    "tags": ["comparison"],
+    "source": { "name": "Esketamine (SPRAVATO) label — boxed warning/REMS, rapid onset, NMDA MOA", "origin": "monograph" }
+  }
+]

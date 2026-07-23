@@ -1,0 +1,57 @@
+[
+  {
+    "id": "boss_mood_1",
+    "stem": "A 46-year-old woman with bipolar I disorder, stable for years on a single maintenance mood stabilizer, strains her back and starts taking ibuprofen around the clock for two weeks. She now presents with a coarse tremor, ataxia, slurred speech, vomiting, and confusion. Which maintenance agent's rising serum concentration best explains this picture, given that it is renally excreted (not metabolized) and has a narrow therapeutic index?",
+    "options": ["Valproate", "Lithium", "Carbamazepine", "Lamotrigine"],
+    "answer": "Lithium",
+    "explanation": "Lithium is renally excreted and NOT metabolized, so anything that lowers renal clearance — NSAIDs, thiazide diuretics, ACE inhibitors/ARBs, dehydration, or a low-sodium state — raises the level and precipitates toxicity. Its therapeutic range is narrow (0.6-1.2 mmol/L; toxicity begins >1.5, severe >2.0), so the sustained ibuprofen easily pushed her into the toxic range: coarse tremor, ataxia, dysarthria, vomiting, and confusion are the classic toxicity syndrome. Valproate is hepatically metabolized (glucuronidation/beta-oxidation), monitored at 350-700 umol/L, and is not driven into toxicity by an NSAID. Carbamazepine is CYP3A4-metabolized (4-12 ug/mL); its toxicity is driven by 3A4 inhibitors such as grapefruit juice, not by ibuprofen. Lamotrigine has no routine serum level and is cleared by glucuronidation, unaffected by NSAIDs.",
+    "meds": ["valproate", "lithium", "carbamazepine", "lamotrigine"],
+    "focus": "therapeutic drug monitoring / renal excretion — narrow-index agent whose toxicity is precipitated by NSAIDs, thiazides, and dehydration",
+    "tags": ["comparison"],
+    "source": { "name": "Lithium product monograph (boxed warning: lithium toxicity)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_mood_2",
+    "stem": "A 24-year-old woman with bipolar I disorder is not using contraception and hopes to conceive within the year. Reviewing her options for maintenance, you want to identify and avoid the mood stabilizer that carries the greatest fetal risk — the one associated with neural-tube defects, the lowest childhood IQ, and increased autism. Which agent should be avoided in someone who may become pregnant?",
+    "options": ["Lamotrigine", "Topiramate", "Valproate", "Carbamazepine"],
+    "answer": "Valproate",
+    "explanation": "Valproate is the most teratogenic mood stabilizer: neural-tube defects (spina bifida), craniofacial and cardiac malformations, and dose-dependent neurodevelopmental harm including the LOWEST childhood IQ and increased autism — it is the classic agent to avoid in anyone who could become pregnant. Carbamazepine is also teratogenic (neural-tube defects, craniofacial/cardiac malformations) but overall less severe than valproate, particularly for neurodevelopment. Topiramate causes oral clefts and reduced fetal growth (and lowers oral-contraceptive efficacy), but it is not a first-line mood stabilizer and its risk profile is narrower than valproate's. Lamotrigine is the comparatively pregnancy-SAFER choice with no consistent major teratogenic signal and is often the preferred maintenance stabilizer around pregnancy.",
+    "meds": ["lamotrigine", "topiramate", "valproate", "carbamazepine"],
+    "focus": "teratogenicity — the worst teratogen (NTDs, lowest IQ, autism) to avoid in reproductive-age patients",
+    "tags": ["comparison"],
+    "source": { "name": "Valproate product monograph (boxed warning; teratogenicity)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_mood_3",
+    "stem": "A patient is started on a new agent for bipolar maintenance and depression. The psychiatrist stresses that the dose must be built up very slowly over about six weeks, must never be front-loaded, must be restarted from scratch after any gap longer than five days, and that co-prescribing one other mood stabilizer would force HALVING the dose. Two weeks after a rushed dose increase, the patient develops a spreading rash with painful oral mucosal erosions. Which drug was started?",
+    "options": ["Carbamazepine", "Oxcarbazepine", "Valproate", "Lamotrigine"],
+    "answer": "Lamotrigine",
+    "explanation": "The mandated slow titration exists specifically to reduce the risk of Stevens-Johnson syndrome/TEN, and the risk climbs with fast titration or with valproate co-therapy — valproate inhibits glucuronidation and roughly DOUBLES the lamotrigine level, which is exactly why the dose must be halved when they are combined. The 'restart from scratch after a >5-day gap' rule and 'no routine serum level' are also lamotrigine hallmarks; the painful mucosal rash after a rushed increase is the feared SJS/TEN. Carbamazepine and oxcarbazepine can also cause HLA-B*1502-associated SJS/TEN, but neither is defined by this slow anti-rash titration schedule nor by the valproate 'halve-the-dose' interaction. Valproate is the interacting partner that doubles the level here, not the drug being titrated.",
+    "meds": ["carbamazepine", "oxcarbazepine", "valproate", "lamotrigine"],
+    "focus": "SJS / slow titration — the agent whose slow up-titration prevents SJS/TEN and that valproate doubles",
+    "tags": ["comparison"],
+    "source": { "name": "Lamotrigine product monograph (boxed warning: serious skin rashes)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_mood_4",
+    "stem": "A 30-year-old woman taking a combined estrogen-progestin oral contraceptive is started on a mood stabilizer. At the one-month recheck her drug level has fallen below the therapeutic range despite confirmed good adherence, prompting a dose increase; three months later she reports an unplanned pregnancy. Which agent best explains BOTH the self-lowering serum level and the contraceptive failure?",
+    "options": ["Lithium", "Carbamazepine", "Lamotrigine", "Valproate"],
+    "answer": "Carbamazepine",
+    "explanation": "Carbamazepine autoinduces — it accelerates its own metabolism over the first 2-4 weeks, so the level drops and it must be re-titrated with a recheck at about one month. It is also a potent CYP3A4 INDUCER that lowers estrogen/progestin exposure, a classic cause of oral-contraceptive failure (a non-hormonal method is advised). Valproate is an enzyme INHIBITOR (it raises lamotrigine) and does not autoinduce or defeat contraception. Lamotrigine has no routine serum level and the interaction runs the opposite way — estrogen-containing pills LOWER lamotrigine (it does not lower the pill). Lithium is renally excreted with no CYP metabolism, so it neither autoinduces nor affects contraceptive efficacy.",
+    "meds": ["lithium", "carbamazepine", "lamotrigine", "valproate"],
+    "focus": "drug interactions / autoinduction — the 3A4 inducer that self-lowers its level and causes OCP failure",
+    "tags": ["comparison"],
+    "source": { "name": "Carbamazepine product monograph (autoinduction; CYP3A4 induction)", "origin": "monograph" }
+  },
+  {
+    "id": "boss_mood_5",
+    "stem": "A 29-year-old with bipolar II disorder has had three depressive episodes and no manic or hypomanic episodes requiring hospitalization. You want a maintenance agent that best prevents DEPRESSIVE relapse, accepting that it will not treat acute mania. Which agent is the preferred choice?",
+    "options": ["Valproate", "Carbamazepine", "Gabapentin", "Lamotrigine"],
+    "answer": "Lamotrigine",
+    "explanation": "Lamotrigine is the maintenance stabilizer with the strongest role in bipolar DEPRESSION — it prevents depressive relapse but is NOT effective for acute mania, exactly matching a predominantly depressive bipolar II course. Valproate and carbamazepine are antimanic agents better suited to mania, mixed features, and rapid cycling, with weaker evidence for preventing depressive episodes. Gabapentin is NOT a primary mood stabilizer at all — it has negative bipolar RCTs and is used only adjunctively for anxiety, sleep, or pain — so it is the trap option here.",
+    "meds": ["valproate", "carbamazepine", "gabapentin", "lamotrigine"],
+    "focus": "first-line for bipolar depression maintenance — the agent that prevents depressive relapse but not mania",
+    "tags": ["comparison"],
+    "source": { "name": "CANMAT bipolar disorder guidelines", "origin": "canmat" }
+  }
+]

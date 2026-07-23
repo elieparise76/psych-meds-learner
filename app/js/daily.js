@@ -9,13 +9,16 @@
   function order() { return PML.store.get().seededOrder || []; }
   function isLearned(id) { var c = PML.store.get().cards[id]; return c && c.learned; }
 
-  // next unlearned med in the fixed seeded order
+  // What to learn next now comes from the PATH (tree.js): the shallowest unlearned node, basics
+  // first across classes. seededOrder is kept only as a legacy fallback (import compat / no tree).
   function nextNew() {
+    if (PML.tree && PML.tree.frontier) return PML.tree.frontier();
     var o = order();
     for (var i = 0; i < o.length; i++) if (!isLearned(o[i])) return o[i];
     return null;
   }
   function nextNewInClass(cls) {
+    if (PML.tree && PML.tree.nextInClass) return PML.tree.nextInClass(cls);
     var o = order();
     for (var i = 0; i < o.length; i++) {
       var m = PML.deck.get(o[i]);

@@ -26,6 +26,7 @@
         lastGoalDay: null, activeDays: [],
         todayKey: null, newToday: 0, reviewsClearedToday: false, xpToday: 0,
         weekKey: null, weekXp: 0,
+        bosses: {},          // branchId -> ISO date the path boss was cleared
       },
       achievements: {},    // id -> ISO date
       quests: { dayKey: null, list: [] },
